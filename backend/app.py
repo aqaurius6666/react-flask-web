@@ -1,12 +1,14 @@
 
 from flask import Flask, jsonify, request
 from .database.model import db, User
-'''
+import os
 DATABASE_URL = os.environ['DATABASE_URL']
 SECRET_KEY = os.environ['SECRET_KEY']
+
 '''
-DATABASE_URL = 'sqlite:///E:\\Code\\heroku\\app\\database\\db.db'
+DATABASE_URL = 'sqlite:///E:\\Code\\heroku\\backend\\database\\db.db'
 SECRET_KEY = "asdadas"
+'''
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SECRET_KEY"] = SECRET_KEY
@@ -30,7 +32,7 @@ def create_table():
 
 @app.route('/create', methods=['POST'])
 def create_user():
-    data = request.data
+    data = request.json
     user = User(sid=data['sid'], name=data['name'])
     db.session.add(user)
     db.session.commit()
