@@ -1,5 +1,5 @@
 
-from flask import Flask, json, jsonify
+from flask import Flask, jsonify, request
 from .database.model import db, User
 '''
 DATABASE_URL = os.environ['DATABASE_URL']
@@ -27,3 +27,11 @@ def create_table():
     db.drop_all()
     db.create_all()
     return jsonify({"message" : "Created tables successfully!"})
+
+@app.route('/create', methods=['POST'])
+def create_user():
+    data = request.data
+    user = User(sid=data['sid'], name=data['name'])
+    db.session.add(user)
+    db.session.commit()
+    return jsonify({"message" : "Created user successfully!"})
