@@ -1,7 +1,5 @@
-from types import ClassMethodDescriptorType
+
 from flask import Flask, json, jsonify
-import os
-import psycopg2
 from .database.model import db, User
 '''
 DATABASE_URL = os.environ['DATABASE_URL']
