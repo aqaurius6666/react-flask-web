@@ -4,10 +4,10 @@ import datetime
 import jwt
 def get_new_id():
     
-    last_id = Student.query.order_by(Student.sid.desc()).first().sid
+    last_id = Student.query.order_by(Student.sid.desc()).first()
     if last_id:
 
-        last_id = str(int(last_id) + 1)
+        last_id = str(int(last_id.sid) + 1)
     else:
         last_id = "10000000"
     return last_id
