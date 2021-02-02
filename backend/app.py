@@ -3,28 +3,28 @@ from flask import Flask, json, jsonify, request
 from .database.model import (db,
                             Student, Teacher, Course, Score, House, Account)
 from werkzeug.security import generate_password_hash, check_password_hash     
+from flask_cors import CORS
 import os
 import uuid
 import jwt
 from functools import wraps
 from random import choice
 from .modules import *
-'''
+
 DATABASE_URL = os.environ['DATABASE_URL']
 SECRET_KEY = os.environ['SECRET_KEY']
 
 '''
 DATABASE_URL = 'sqlite:///database.db'
 SECRET_KEY = "itssecretkey"
-
+'''
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SECRET_KEY"] = SECRET_KEY
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JSON_AS_ASCII'] = False
 db.init_app(app)
-
-
+CORS(app)
 
 def token_required(f):
     @wraps(f)
@@ -48,9 +48,6 @@ def token_required(f):
             return jsonify({"message" : "Token is expired"}), 401
         
     return decorated
-
-
-
 
 
 
