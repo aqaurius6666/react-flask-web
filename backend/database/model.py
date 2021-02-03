@@ -9,7 +9,7 @@ class Account(db.Model):
 
     public_id = db.Column(db.String(36), primary_key=True)
     username = db.Column(db.String(36), unique=True)
-    password = db.Column(db.String(64))
+    password = db.Column(db.String(128))
     sid = db.Column(db.String(8), db.ForeignKey('student.sid'))
 
     def to_dict(self):
