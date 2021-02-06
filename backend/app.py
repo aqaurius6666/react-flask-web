@@ -167,6 +167,8 @@ def login():
 @app.route('/drop-tables', methods=['GET'])
 def drop():
     db.drop_all()
+
+    print(131231)
     return jsonify({"message" : "Dropped tables successfully!"})
 
 @app.route('/authentication', methods=['GET'])
