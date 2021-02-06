@@ -63,7 +63,6 @@ def get_user(sid):
 
 @app.route('/create-tables', methods=['GET'])
 def create_table():
-    db.drop_all()
     db.create_all()
     return jsonify({"message" : "Created tables successfully!"})
 
@@ -165,27 +164,13 @@ def login():
     else:
         return jsonify({"message" : "Username or password is incorrect!"}), 401
         
-
-
+@app.route('/drop-tables', methods=['GET'])
+def drop():
+    db.drop_all()
+    return jsonify({"message" : "Dropped tables successfully!"})
 
 @app.route('/authentication', methods=['GET'])
 @token_required
 def check(current):
     return jsonify(current.to_dict())
 
-
-@app.route('/test', methods=['GET'])
-def test_dump():
-    with open('dummy_file', 'wb') as file_handler:
-        file_handler.write(dumps(House.query.all()))
-    return jsonify({})
-
-@app.route('/re-create')
-def test_create():
-    db.drop_all()
-    db.create_all()
-    with open('dummy_file', 'rb') as file_handler:
-        for row in loads(file_handler.read()):
-            db.session.merge(row)
-    db.session.commit()
-    return jsonify({})
