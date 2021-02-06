@@ -3,6 +3,7 @@ from flask import Flask, json, jsonify, request
 from .database.model import (db,
                             Student, Teacher, Course, Score, House, Account)
 from werkzeug.security import generate_password_hash, check_password_hash     
+from sqlalchemy.ext.serializer import loads, dumps
 from flask_cors import CORS
 import os
 import uuid
@@ -10,14 +11,14 @@ import jwt
 from functools import wraps
 from random import choice
 from .modules import *
-
+'''
 DATABASE_URL = os.environ['DATABASE_URL']
 SECRET_KEY = os.environ['SECRET_KEY']
 
 '''
 DATABASE_URL = 'sqlite:///database.db'
 SECRET_KEY = "itssecretkey"
-'''
+
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SECRET_KEY"] = SECRET_KEY
@@ -48,7 +49,6 @@ def token_required(f):
             return jsonify({"message" : "Token is expired"}), 401
         
     return decorated
-
 
 
 @app.route('/')
@@ -172,3 +172,20 @@ def login():
 @token_required
 def check(current):
     return jsonify(current.to_dict())
+
+
+@app.route('/test', methods=['GET'])
+def test_dump():
+    with open('dummy_file', 'wb') as file_handler:
+        file_handler.write(dumps(House.query.all()))
+    return jsonify({})
+
+@app.route('/re-create')
+def test_create():
+    db.drop_all()
+    db.create_all()
+    with open('dummy_file', 'rb') as file_handler:
+        for row in loads(file_handler.read()):
+            db.session.merge(row)
+    db.session.commit()
+    return jsonify({})

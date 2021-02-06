@@ -1,0 +1,13 @@
+/ index
+/houses POST tạo house mới {"hid","name"}
+/houses GET lấy list house
+/teachers POST tạo gv mới {"tid","name", "house_name"}
+/teachers GET lấy list gv
+/courses POST tạo khóa học mới {"cid", "name","credit","class", "teacher"}
+/course GET lấy list khóa học 
+/accounts GET  lấy list account
+/accounts POST tạo account mới {"username", "password"}
+/students GET lấy list sv
+/students/<public_id> GET lấy thông tin sv cụ thể
+/authentication POST đăng nhập {"username", "password"} return {"token"}
+/authentication GET check thông tin đăng nhập
