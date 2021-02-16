@@ -119,7 +119,7 @@ def get_account():
 @app.route('/api/accounts', methods=['POST'])
 def create_account():
     data = request.json
-    if not Account.query.filter_by(username=data['username']).first():
+    if Account.query.filter_by(username=data['username']).first():
         return jsonify({"message" : "This account has already created!"})
     new_student = Student(sid=get_new_id(), name = "", of_house=get_random_house())
     db.session.add(new_student)
