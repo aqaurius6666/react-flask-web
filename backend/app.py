@@ -153,7 +153,9 @@ def login():
         return jsonify({"message" : "Username or password is incorrect!"}), 401
     
     if check_password_hash(account.password, data['password']):
-        return jsonify({"token" : encode_auth_token(account.public_id, app.config.get('SECRET_KEY'))})
+        return jsonify({"token" : encode_auth_token(account.public_id, app.config.get('SECRET_KEY')),
+                        "user" : {**account.to_dict(), **Student.query.filter_by(sid=account.sid).to_dict()}
+                        })
     else:
         return jsonify({"message" : "Username or password is incorrect!"}), 401
         
