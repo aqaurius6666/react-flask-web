@@ -10,14 +10,14 @@ import jwt
 from functools import wraps
 from random import choice
 from .modules import *
-
+'''
 DATABASE_URL = os.environ['DATABASE_URL']
 SECRET_KEY = os.environ['SECRET_KEY']
 
 '''
 DATABASE_URL = 'sqlite:///database.db'
 SECRET_KEY = "itssecretkey"
-'''
+
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SECRET_KEY"] = SECRET_KEY
@@ -119,7 +119,8 @@ def get_account():
 @app.route('/api/accounts', methods=['POST'])
 def create_account():
     data = request.json
-
+    if not Account.query.filter_by(username=data['username']).first():
+        return jsonify({"message" : "This account has already created!"})
     new_student = Student(sid=get_new_id(), name = "", of_house=get_random_house())
     db.session.add(new_student)
 
