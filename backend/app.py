@@ -3,7 +3,6 @@ from flask import Flask, json, jsonify, request
 from .database.model import (db,
                             Student, Teacher, Course, Score, House, Account)
 from werkzeug.security import generate_password_hash, check_password_hash     
-from sqlalchemy.ext.serializer import loads, dumps
 from flask_cors import CORS
 import os
 import uuid
@@ -50,23 +49,17 @@ def token_required(f):
         
     return decorated
 
-
 @app.route('/')
 def index():
 
     return "<h1>It's index</h1>"
 
-@app.route('/<sid>', methods=['GET'])
-def get_user(sid):
-    user = Student.query.filter_by(sid = sid).one()
-    return jsonify(user.to_dict())
-
-@app.route('/create-tables', methods=['GET'])
+@app.route('/api/create-tables', methods=['GET'])
 def create_table():
     db.create_all()
     return jsonify({"message" : "Created tables successfully!"})
 
-@app.route('/create', methods=['POST'])
+@app.route('/api/create', methods=['POST'])
 def create_user():
     data = request.json
     user = Student(sid=data['sid'], name=data['name'])
@@ -74,7 +67,7 @@ def create_user():
     db.session.commit()
     return jsonify({"message" : "Created user successfully!"})
 
-@app.route('/houses', methods=['POST'])
+@app.route('/api/houses', methods=['POST'])
 def create_house():
     data = request.json
     house = House(hid=data['hid'], name=data['name'])
@@ -82,12 +75,12 @@ def create_house():
     db.session.commit()
     return jsonify({"message" : "Created house successfully!"})
 
-@app.route('/houses', methods=['GET'])
+@app.route('/api/houses', methods=['GET'])
 def get_houses():
     houses = [house.to_dict() for house in House.query.all()]
     return jsonify(houses)
 
-@app.route('/teachers', methods=['POST'])
+@app.route('/api/teachers', methods=['POST'])
 def create_teacher():
     data = request.json
     teacher = Teacher(tid=data['tid'], name=data['name'], of_house=House.query.filter_by(name=data['house_name']).first())
@@ -95,7 +88,7 @@ def create_teacher():
     db.session.commit()
     return jsonify({"message" : "Created teacher successfully!"})
 
-@app.route('/teachers', methods=['GET'])
+@app.route('/api/teachers', methods=['GET'])
 def get_teachers():
     teachers = [teacher.to_dict() for teacher in Teacher.query.all()]
     return jsonify(teachers)
@@ -113,17 +106,17 @@ def create_course():
     db.session.commit()
     return jsonify({"message" : "Created course successfully!"})
 
-@app.route('/courses', methods=['GET'])
+@app.route('/api/courses', methods=['GET'])
 def get_courses():
     courses = [course.to_dict() for course in Course.query.all()]
     return jsonify(courses)
 
-@app.route('/accounts', methods=['GET'])
+@app.route('/api/accounts', methods=['GET'])
 def get_account():
     accounts = [account.to_dict() for account in Account.query.all()]
     return jsonify(accounts)
 
-@app.route('/accounts', methods=['POST'])
+@app.route('/api/accounts', methods=['POST'])
 def create_account():
     data = request.json
 
@@ -140,19 +133,18 @@ def create_account():
     db.session.commit()
     return jsonify({"message" : "Created account successfully!"})
 
-
-@app.route('/students', methods=['GET'])
+@app.route('/api/students', methods=['GET'])
 def get_students():
     students = [student.to_dict() for student in Student.query.all()]
     return jsonify(students)
 
-@app.route('/students/<public_id>', methods=['GET'])
+@app.route('/api/students/<public_id>', methods=['GET'])
 def get_student(public_id):
     account = Account.query.filter_by(public_id=public_id).first()
     student = Student.query.filter_by(sid=account.sid).first()
     return jsonify(info(account, student))
 
-@app.route('/authentication', methods=['POST'])
+@app.route('/api/authentication', methods=['POST'])
 def login():
     data = request.json
     account = Account.query.filter_by(username=data['username']).first()
@@ -164,14 +156,12 @@ def login():
     else:
         return jsonify({"message" : "Username or password is incorrect!"}), 401
         
-@app.route('/drop-tables', methods=['GET'])
+@app.route('/api/drop-tables', methods=['GET'])
 def drop():
     db.drop_all()
-
-    print(131231)
     return jsonify({"message" : "Dropped tables successfully!"})
 
-@app.route('/authentication', methods=['GET'])
+@app.route('/api/authentication', methods=['GET'])
 @token_required
 def check(current):
     return jsonify(current.to_dict())
