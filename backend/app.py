@@ -10,14 +10,14 @@ import jwt
 from functools import wraps
 from random import choice
 from .modules import *
-'''
+
 DATABASE_URL = os.environ['DATABASE_URL']
 SECRET_KEY = os.environ['SECRET_KEY']
 
 '''
 DATABASE_URL = 'sqlite:///database.db'
 SECRET_KEY = "itssecretkey"
-
+'''
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SECRET_KEY"] = SECRET_KEY
