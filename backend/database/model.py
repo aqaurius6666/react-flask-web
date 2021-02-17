@@ -43,6 +43,13 @@ class Student(db.Model):
             'credit' : self.credit,
             'gpa' : self.gpa
         }
+    def update(self, data):
+        self.name = data['name']
+        self.dob = data['dob']
+        self.hid = data['hid']
+        self.credit = data['credit']
+        self.gpa = data['gpa']
+        self.sid = data['sid']
 class Course(db.Model):
 
     cid = db.Column(db.String(8), primary_key=True)

@@ -167,5 +167,17 @@ def drop():
 @app.route('/api/authentication', methods=['GET'])
 @token_required
 def check(current):
+    
     return jsonify(current.to_dict())
 
+
+@app.route('/api/students/<public_id>', methods=['PUT'])
+@token_required
+def check(current):
+    data = request.json
+    if data['public_id'] != current.public_id:
+        return jsonify({"message" : "unauthenticated"}), 404
+    student = Student.query.filter_by(data["public_id"]).first()
+    student.update(data)
+    db.session.commit()
+    return jsonify({"user" : student.to_dict(), "message" : "update successfully!"})
