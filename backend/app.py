@@ -132,7 +132,7 @@ def create_account():
 
     db.session.add(account)
     db.session.commit()
-    return jsonify({"message" : "Created account successfully!"})
+    return jsonify({"message" : "Created account successfully!"}), 201
 
 @app.route('/api/students', methods=['GET'])
 def get_students():
@@ -167,8 +167,7 @@ def drop():
 @app.route('/api/authentication', methods=['GET'])
 @token_required
 def check(current):
-    
-    return jsonify(current.to_dict())
+    return jsonify({"user" : current.to_dict()})
 
 
 @app.route('/api/students/<public_id>', methods=['PUT'])
