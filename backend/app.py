@@ -154,7 +154,7 @@ def login():
     
     if check_password_hash(account.password, data['password']):
         return jsonify({"token" : encode_auth_token(account.public_id, app.config.get('SECRET_KEY')),
-                        "user" : Student.query.filter_by(account=account).first().to_dict(),
+                        "user" : account.of_student.to_dict(),
                         "message" : "Login successfully!"
                         }), 200
     else:
