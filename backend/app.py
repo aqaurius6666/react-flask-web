@@ -120,7 +120,7 @@ def get_account():
 def create_account():
     data = request.json
     if Account.query.filter_by(username=data['username']).first():
-        return jsonify({"message" : "This account has already created!"})
+        return jsonify({"message" : "This account has already created!"}), 401
     new_student = Student(sid=get_new_id(), name = "", of_house=get_random_house())
     db.session.add(new_student)
 
