@@ -176,9 +176,13 @@ def check(current):
 def update(current):
     student = current.of_student
     data = request.json
-    
+    student.update(data)
+    db.session.commit()
+    return jsonify({"student" : student.to_dict(), "message" : "Update successfully!"})
+
+
 
 @app.route('/api/student', methods=['GET'])
 @token_required
 def get_student_info(current):
-    return jsonify({"user" : current.of_student.to_dict()})
+    return jsonify({"student" : current.of_student.to_dict()})
