@@ -36,10 +36,19 @@ class Student(db.Model):
 
     def to_dict(self):
         """Return object data in easily serializeable format"""
-        return {
+        if self.dob:
+            return {
             'sid' : self.sid,
             'name' : self.name,
             'dob' : self.dob.strftime("%d/%m/%Y"),
+            'hid' : self.hid,
+            'credit' : self.credit,
+            'gpa' : self.gpa
+        }
+        return {
+            'sid' : self.sid,
+            'name' : self.name,
+            'dob' : self.dob,
             'hid' : self.hid,
             'credit' : self.credit,
             'gpa' : self.gpa
