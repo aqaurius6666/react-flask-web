@@ -16,7 +16,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 
 '''
 DATABASE_URL = 'sqlite:///database.db'
-SECRET_KEY = "itssecretkey"
+SECRET_KEY =  "itssecretkey"
 '''
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
@@ -176,6 +176,11 @@ def check(current):
 def update(current):
     student = current.of_student
     data = request.json
+    if data['dob']:
+        try:
+            data['dob'] = validate_date(data['dob'])
+        except:
+            return jsonify({"message" : "Bad input"}), 400
     student.update(data)
     db.session.commit()
     return jsonify({"student" : student.to_dict(), "message" : "Update successfully!"})

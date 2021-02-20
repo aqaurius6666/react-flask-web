@@ -27,7 +27,7 @@ def encode_auth_token(id, key):
     """
     try:
         payload = {
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=1),
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=3),
             'iat': datetime.datetime.utcnow(),
             'public_id': id
         }
@@ -38,4 +38,11 @@ def encode_auth_token(id, key):
         )
     except Exception as e:
         return e
-
+        
+def validate_date(string):
+    try:
+        list = [int(x) for x in string.split('/')]
+        date = datetime.date(day=list[0], month=list[1], year=list[2])
+        return date.strftime("%d/%m/%Y")
+    except ValueError:
+        raise Exception("Bad Input")
