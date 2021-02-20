@@ -171,13 +171,14 @@ def check(current):
     return jsonify({"user" : current.to_dict()})
 
 
-@app.route('/api/students', methods=['PUT'])
+@app.route('/api/student', methods=['PUT'])
 @token_required
 def update(current):
+    student = current.of_student
     data = request.json
-    if data['public_id'] != current.public_id:
-        return jsonify({"message" : "unauthenticated"}), 404
-    student = Student.query.filter_by(data["public_id"]).first()
-    student.update(data)
-    db.session.commit()
-    return jsonify({"user" : student.to_dict(), "message" : "update successfully!"})
+    
+
+@app.route('/api/student', methods=['GET'])
+@token_required
+def get_student_info(current):
+    return jsonify({"user" : current.of_student.to_dict()})
