@@ -38,11 +38,11 @@ def encode_auth_token(id, key):
         )
     except Exception as e:
         return e
-        
+
 def validate_date(string):
     try:
         list = [int(x) for x in string.split('/')]
         date = datetime.date(day=list[0], month=list[1], year=list[2])
-        return date.strftime("%d/%m/%Y")
+        return date
     except ValueError:
         raise Exception("Bad Input")

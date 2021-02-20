@@ -1,4 +1,5 @@
 
+from datetime import datetime
 from enum import unique
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import backref
@@ -38,7 +39,7 @@ class Student(db.Model):
         return {
             'sid' : self.sid,
             'name' : self.name,
-            'dob' : self.dob,
+            'dob' : self.dob.strftime("%d/%m/%Y"),
             'hid' : self.hid,
             'credit' : self.credit,
             'gpa' : self.gpa
@@ -50,6 +51,7 @@ class Student(db.Model):
         self.credit = data['credit']
         self.gpa = data['gpa']
         self.sid = data['sid']
+
 class Course(db.Model):
 
     cid = db.Column(db.String(8), primary_key=True)
