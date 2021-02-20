@@ -154,7 +154,7 @@ def login():
     
     if check_password_hash(account.password, data['password']):
         return jsonify({"token" : encode_auth_token(account.public_id, app.config.get('SECRET_KEY')),
-                        "user" : account.of_student.to_dict(),
+                        "user" : account.to_dict(),
                         "message" : "Login successfully!"
                         }), 200
     else:
@@ -171,9 +171,9 @@ def check(current):
     return jsonify({"user" : current.to_dict()})
 
 
-@app.route('/api/students/<public_id>', methods=['PUT'])
+@app.route('/api/students', methods=['PUT'])
 @token_required
-def update(current, public_id):
+def update(current):
     data = request.json
     if data['public_id'] != current.public_id:
         return jsonify({"message" : "unauthenticated"}), 404
