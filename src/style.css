@@ -52,8 +52,14 @@ body{
     color: white;
 }
 
-.nav-link-bar {
-    padding: 20px;
+#navbarbrand {
+    padding: 0px 50px 0px 0px;
 }
 
 
+
+.house_title {
+    color: orangered;
+    font-size: 80px;
+    padding: 0px 0px 20px 200px;
+}

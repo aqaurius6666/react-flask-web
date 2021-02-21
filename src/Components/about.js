@@ -1,14 +1,11 @@
-import React, {useEffect, useState} from 'react'
-import {getUsers, logout} from '../FetchAPI/action'
-import {useHistory, Link} from 'react-router-dom'
-import "bootstrap/dist/css/bootstrap.min.css"
-import "../css/styles.css"
+import React, {useContext} from 'react'
 import Gryffindor from "../img/Gryffindor.png"
 import Hufflepuff from "../img/Hufflepuff.png"
 import Slytherin from "../img/Slytherin.png"
 import Ravenclaw from "../img/Ravenclaw.png"
 import hogwart from "../img/hogwarts_school.jpg"
-import {NavBar} from "../Components/NavBar";
+import NavBar from "./nav-bar";
+import userContext from "./userContext";
 
 const Presidents = () => {
     return (
@@ -140,21 +137,19 @@ const Houses = () => {
 }
 
 export const About = () => {
-    const history = useHistory();
-    const [users, setUsers] = useState([])
-    useEffect(() => {
-        getUsers().then(data => setUsers(data.users))
-    }, [])
-    const handleLogout = (event) => {
-        logout()
-        history.push("/login")
+    const {user} = useContext(userContext)
+    if (user) {
+        return (
+            <div className="about">
+                <NavBar />
+                <br />
+                <Houses />
+                <Presidents />
+            </div>
+        );
+    } else {
+        return (
+            <div>You are not log in!</div>
+        )
     }
-    return (
-        <div className="about">
-            <NavBar />
-            <br />
-            <Houses />
-            <Presidents />
-        </div>
-    );
 }

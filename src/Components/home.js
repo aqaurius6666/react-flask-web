@@ -130,7 +130,7 @@ const Notification = () => {
     )
 }
 
-export const Home = (props) => {
+export const Home = () => {
     const {user} = useContext(userContext)
     if (user) {
         return (
