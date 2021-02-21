@@ -23,6 +23,7 @@ export const api_login = (username, password, cb) => {
         .then(handleResponse)
         .then(data => {
             localStorage.setItem("token", data.token)
+            localStorage.setItem("user", data.user)
             cb(data.message, data.user)
         })
         .catch(error => console.log(error))
@@ -31,15 +32,21 @@ export const api_login = (username, password, cb) => {
 
 export const api_get_user = (cb) => {
     const url = "https://it-must-be-ok.herokuapp.com/api/authentication"
+    cb(localStorage.getItem("user"))
     fetch(url, {
         method: "GET",
         headers: authHeader(),
     })
         .then(handleResponse)
-        .then(data => cb(data.user))
-        .catch(msg => { console.log(msg)
-                        cb(undefined)            
-            })
+        .then(data => {
+            localStorage.setItem("user", data.user)
+            cb(data.user)
+        })
+        .catch(msg => {
+            console.log(msg)
+            cb(undefined)
+            localStorage.removeItem("user")
+        })
 }
 export const api_get_student = (cb) => {
     const url = "https://it-must-be-ok.herokuapp.com/api/student"
@@ -49,20 +56,21 @@ export const api_get_student = (cb) => {
     })
         .then(handleResponse)
         .then(data => cb(data.student))
-        .catch(msg => { console.log(msg)
-                        cb(undefined)            
-            })
+        .catch(msg => {
+            console.log(msg)
+            cb(undefined)
+        })
 }
 export const api_update_passowrd = (old_password, password, cb) => {
     const url = "https://it-must-be-ok.herokuapp.com/api/account"
     fetch(url, {
         method: "PUT",
         headers: authHeader(),
-        body: JSON.stringify({old_password, password})
+        body: JSON.stringify({ old_password, password })
     })
-    .then(handleResponse)
-    .then(data => cb(data.message))
-    .catch(error => cb(error))
+        .then(handleResponse)
+        .then(data => cb(data.message))
+        .catch(error => cb(error))
 }
 export const api_update_student = (student, cb) => {
     const url = "https://it-must-be-ok.herokuapp.com/api/student"
@@ -71,9 +79,9 @@ export const api_update_student = (student, cb) => {
         headers: authHeader(),
         body: JSON.stringify(student)
     })
-    .then(handleResponse)
-    .then(data => cb(data.message))
-    .catch(error => cb(error))
+        .then(handleResponse)
+        .then(data => cb(data.message))
+        .catch(error => cb(error))
 }
 export const logout = (cb) => {
     localStorage.removeItem("token")
@@ -94,4 +102,8 @@ export const authHeader = () => {
         "x-access-token": localStorage.getItem("token"),
         "Content-type": "Application/json"
     }
+}
+
+export const initialUser = () => {
+    return localStorage.getItem("user")
 }
