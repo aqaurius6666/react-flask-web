@@ -1,14 +1,12 @@
 
-from flask import Flask, json, jsonify, request
+from flask import Flask, jsonify, request
 from .database.model import (db,
                             Student, Teacher, Course, Score, House, Account)
 from werkzeug.security import generate_password_hash, check_password_hash     
 from flask_cors import CORS
-import os
 import uuid
 import jwt
 from functools import wraps
-from random import choice
 from .modules import *
 
 app = Flask(__name__)
@@ -43,7 +41,7 @@ def token_required(f):
 @app.route('/')
 def index():
 
-    return "<h1>It's index</h1>"
+    return "<h1>Đây là Hà =))</h1>"
 #-------------------------------------------------------------------------------------------------------------
 # GET LIST METHODS
 #-------------------------------------------------------------------------------------------------------------
