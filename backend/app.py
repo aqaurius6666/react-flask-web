@@ -208,3 +208,17 @@ def update_account(current):
         return jsonify({"message" : "Change password successfully!"}), 200
     else:
         return jsonify({"message" : "Old password is wrong!"}), 400
+
+
+@app.route('/api/delete/<id>', methods=['PUT'])
+def delete_account(id):
+    try:
+        account = Account.query.filter_by(public_id=id).first()
+        student = account.of_student
+        db.session.delete(account)
+        db.session.delete(student)
+        db.session.commit()
+        return jsonify({"message" : "Delete successfully!"}), 200
+    except Exception as e:
+        print(e)
+        return jsonify({"message" : "Failed to delete!"}), 400
