@@ -18,8 +18,7 @@ export const Info = (props) => {
     if (student) {
         return (
             <div>
-                <br />
-                <br />
+                <br /> <br />
                 <div>Name: {student.name}</div>
                 <div>DoB: {student.dob}</div>
                 <div>House: {student.hid}</div>

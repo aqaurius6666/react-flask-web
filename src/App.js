@@ -21,18 +21,12 @@ function App() {
 
     }, [])
     useEffect(() => {
-        console.log(user)
-        api_get_user((data) => {
-            if (data != user_) {
-                setUser(data)
-            }
-        })
-
+        setUser(user_)
     }, [user_])
     return (
         <>
             <userContext.Provider value = {{user, setUser}}>
-                <NavBar/>
+                <NavBar />
                 <Switch>
                     <Route exact path="/" component={() => <Home/>} />
                     <Route exact path="/login" component={() => <Login/>} />

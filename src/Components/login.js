@@ -4,8 +4,10 @@ import { api_login } from "../API/action"
 import App from "../App"
 import history from "../history"
 import userContext from "./userContext"
+import NavBar from "./nav-bar";
 
-export const Login = (props) => {
+
+export const Login = () => {
     const {setUser} = useContext(userContext)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -18,16 +20,21 @@ export const Login = (props) => {
         })
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Username: </label>
-                <input type="text" onChange={(e) => setUsername(e.target.value)} value={username}></input>
-            </div>
-            <div>
-                <label>Password: </label>
-                <input type="password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
-            </div>
-            <div><button>Log in</button></div>
-        </form>
+        <div>
+            <br /> <br />
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>Username: </label>
+                    <input type="text" onChange={(e) =>
+                        setUsername(e.target.value)} value={username} />
+                </div>
+                <div className="form-group">
+                    <label>Password: </label>
+                    <input type="password" onChange={(e) =>
+                        setPassword(e.target.value)} value={password} />
+                </div>
+                <button type="submit" value="Login" className="btn btn-dark btn-lg">Log in</button>
+            </form>
+        </div>
     )
 }
