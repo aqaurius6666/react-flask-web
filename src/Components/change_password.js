@@ -20,6 +20,7 @@ export const ChangePassword = (props) => {
     }
     if (form) {
         return (
+            <label>Change Password </label>
             <form onSubmit={onSubmitForm}>
                 <div>
                     <label>Old password: </label>

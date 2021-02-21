@@ -1,6 +1,5 @@
 import { useContext} from "react"
 import userContext from "./userContext"
-import {ChangePassword} from "./change_password"
 
 export const Home = (props) => {
     const {user} = useContext(userContext)
@@ -8,7 +7,6 @@ export const Home = (props) => {
         return (
             <>
             <div>Welcome, {user.username}!</div>
-            <ChangePassword/>
             </>
         )
     } else {

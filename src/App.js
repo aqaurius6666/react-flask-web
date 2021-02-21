@@ -16,17 +16,8 @@ function App() {
   const [user, setUser] = useState(initialUser())
 
   useEffect(() => {
-    api_get_user(
-      (data) => {
-        setUser(data)
-
-      })
+    api_get_user(setUser)
   }, [])
-  if (!user) {
-    return (
-      <div>Loading...</div>
-    )
-  }
   return (
     <>
       <userContext.Provider value={{ user, setUser }}>
