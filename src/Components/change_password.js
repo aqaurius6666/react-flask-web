@@ -20,6 +20,7 @@ export const ChangePassword = (props) => {
     }
     if (form) {
         return (
+            <>
             <label>Change Password </label>
             <form onSubmit={onSubmitForm}>
                 <div>
@@ -38,6 +39,7 @@ export const ChangePassword = (props) => {
 
                 <button>Update</button>
             </form>
+            </>
         )
     } else {
         return (

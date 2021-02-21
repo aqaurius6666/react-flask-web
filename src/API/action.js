@@ -85,6 +85,7 @@ export const api_update_student = (student, cb) => {
 }
 export const logout = (cb) => {
     localStorage.removeItem("token")
+    localStorage.removeItem("user")
     cb()
 }
 const handleResponse = (res) => {
