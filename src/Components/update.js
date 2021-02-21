@@ -10,7 +10,7 @@ export const Update = (props) => {
     }, [])
     const onSubmitForm = (e) => {
         e.preventDefault()
-        api_update_student(form)
+        api_update_student(form, (msg) =>console.log(msg))
 
     }
     if (!user) {
