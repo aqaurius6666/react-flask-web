@@ -33,8 +33,8 @@ export const Update = (props) => {
                     <input value={form.hid ? form.hid : ""} onChange={(e) => setForm({ ...form, hid: e.target.value })}></input>
                 </div>
 
-                <button>Update</button>
-            </form>
+                    <button>Update</button>
+                </form>
         )
     } else {
         return (
