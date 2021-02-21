@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { api_get_student, api_update_passowrd, api_update_student } from "../API/action"
 import userContext from "./userContext"
 
-export const ChangePassword = (props) => {
+export const ChangePassword = () => {
     const [form, setForm] = useState({
         "old_password": "",
         "password": "",
@@ -21,20 +21,20 @@ export const ChangePassword = (props) => {
     if (form) {
         return (
             <div>
-                <label>Change Password </label>
+                <label>Change Password</label>
                 <form onSubmit={onSubmitForm}>
                     <div>
                         <label>Old password: </label>
-                        <input value={form.old_password} type="password" onChange={(e) => setForm({ ...form, old_password: e.target.value })}></input>
+                        <input value={form.old_password} type="password" onChange={(e) => setForm({ ...form, old_password: e.target.value })} />
                     </div>
 
                     <div>
                         <label>New password: </label>
-                        <input value={form.password} type="password" onChange={(e) => setForm({ ...form, password: e.target.value })}></input>
+                        <input value={form.password} type="password" onChange={(e) => setForm({ ...form, password: e.target.value })} />
                     </div>
                     <div>
                         <label>Conf password: </label>
-                        <input value={form.conf_password} type="password" onChange={(e) => setForm({ ...form, conf_password: e.target.value })}></input>
+                        <input value={form.conf_password} type="password" onChange={(e) => setForm({ ...form, conf_password: e.target.value })} />
                     </div>
                     <button>Update</button>
                 </form>

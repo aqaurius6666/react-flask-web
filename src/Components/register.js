@@ -4,15 +4,14 @@ import history from '../history'
 
 
 
-export const Register = (props) => {
-
+export const Register = () => {
     return (
         <>
         <RegisterForm/>
         </>
     )
 }
-export const RegisterForm = (props) => {
+export const RegisterForm = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
@@ -30,21 +29,21 @@ export const RegisterForm = (props) => {
         
     }
     const checkPassword = (pass, pass2) => {
-        return pass == pass2
+        return pass === pass2
     }
     return (
         <form onSubmit={handleSubmit}>
             <div>
                 <label>Username: </label>
-                <input type="text" onChange={(e) => setUsername(e.target.value)} value={username}></input>
+                <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} />
             </div>
             <div>
                 <label>Password: </label>
-                <input type="password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
+                <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
             </div>
             <div>
                 <label>Conf. Password: </label>
-                <input type="password" onChange={(e) => setPassword2(e.target.value)} value={password2}></input>
+                <input type="password" onChange={(e) => setPassword2(e.target.value)} value={password2} />
             </div>
             <div><button>Register</button></div>
         </form>
