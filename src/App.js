@@ -23,7 +23,7 @@ function App() {
     return (
         <>
             <userContext.Provider value = {{user, setUser}}>
-                <NavBar/>
+                <NavBar />
                 <Switch>
                     <Route exact path="/" component={() => <Home/>} />
                     <Route exact path="/login" component={() => <Login/>} />

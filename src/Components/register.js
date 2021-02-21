@@ -32,20 +32,24 @@ export const RegisterForm = () => {
         return pass === pass2
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Username: </label>
-                <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} />
-            </div>
-            <div>
-                <label>Password: </label>
-                <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
-            </div>
-            <div>
-                <label>Conf. Password: </label>
-                <input type="password" onChange={(e) => setPassword2(e.target.value)} value={password2} />
-            </div>
-            <div><button>Register</button></div>
-        </form>
+        <div>
+            <br /> <br />
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>Username: </label>
+                    <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} />
+                </div>
+                <div className="form-group">
+                    <label>Password: </label>
+                    <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
+                </div>
+                <div className="form-group">
+                    <label>Conf. Password: </label>
+                    <input type="password" onChange={(e) => setPassword2(e.target.value)} value={password2} />
+                </div>
+                <div><button className="btn btn-dark btn-lg">Register</button></div>
+            </form>
+        </div>
+
     )
 }

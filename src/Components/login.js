@@ -2,6 +2,7 @@ import { useState, useContext } from "react"
 import { api_login } from "../API/action"
 import history from "../history"
 import userContext from "./userContext"
+import NavBar from "./nav-bar";
 
 
 export const Login = () => {
@@ -17,16 +18,21 @@ export const Login = () => {
         })
     }
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label>Username: </label>
-                <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} />
-            </div>
-            <div>
-                <label>Password: </label>
-                <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
-            </div>
-            <div><button>Log in</button></div>
-        </form>
+        <div>
+            <br /> <br />
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>Username: </label>
+                    <input type="text" onChange={(e) =>
+                        setUsername(e.target.value)} value={username} />
+                </div>
+                <div className="form-group">
+                    <label>Password: </label>
+                    <input type="password" onChange={(e) =>
+                        setPassword(e.target.value)} value={password} />
+                </div>
+                <button type="submit" value="Login" className="btn btn-dark btn-lg">Log in</button>
+            </form>
+        </div>
     )
 }
