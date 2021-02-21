@@ -4,6 +4,7 @@ import React from 'react'
 import logo from "../img/hogwarts_sm_logo.svg"
 import hogwart from "../img/hogwarts_school.jpg"
 import NavBar from "./nav-bar";
+import {ChangePassword} from "./change_password"
 
 const NotificationList = [
     {

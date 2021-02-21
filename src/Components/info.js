@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { api_get_student } from "../API/action"
 import userContext from "./userContext"
+import {ChangePassword} from "./change_password";
 
 
 export const Info = (props) => {
@@ -16,13 +17,15 @@ export const Info = (props) => {
     }
     if (student) {
         return (
-            <>
-            <div>Name: {student.name}</div>
-            <div>DoB: {student.dob}</div>
-            <div>House: {student.hid}</div>
-            <div>GPA: {student.gpa}</div>
-            <div>Credit: {student.credit}</div>
-            </>
+            <div>
+                <br />
+                <br />
+                <div>Name: {student.name}</div>
+                <div>DoB: {student.dob}</div>
+                <div>House: {student.hid}</div>
+                <div>GPA: {student.gpa}</div>
+                <div>Credit: {student.credit}</div>
+            </div>
         )
     } else {
         return <div>Loading...</div>

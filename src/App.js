@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import { api_get_user, initialUser } from "./API/action";
 import { Home } from "./Components/home";
@@ -9,7 +9,6 @@ import { Register } from "./Components/register";
 import { Update } from "./Components/update";
 import userContext from "./Components/userContext";
 import {About} from "./Components/about";
-
 function App() {
     const [user, setUser] = useState(initialUser())
 
@@ -20,11 +19,7 @@ function App() {
 
             })
     }, [])
-    if (!user) {
-        return (
-            <div>Loading...</div>
-        )
-    }
+
     return (
         <>
             <userContext.Provider value = {{user, setUser}}>
