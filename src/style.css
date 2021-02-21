@@ -1,0 +1,59 @@
+:root {
+    --background: #092834;
+    --borders: #FE2712;
+    --root: #F0F7D4;
+    --pad: #347B98;
+    --active: #B2D732;
+}
+
+.row-header {
+    margin: 0px auto;
+    padding: 0px auto;
+}
+
+.row-content {
+    margin: 0px auto;
+    padding: 50px 0px 50px 0px;
+    border-bottom: 1px ridge;
+    min-height: 40px;
+}
+
+.row-footer {
+    background-color: #D1C4E9;
+    margin: 0px auto;
+    padding: 20px 0px 20px 0px;
+}
+
+.jumbotron {
+    background-color: white;
+    color: black;
+}
+
+#notification {
+    background-color: white;
+}
+
+
+.login {
+    position: absolute;
+    padding-left: 400px;
+}
+
+body{
+    padding:50px 0px 0px 0px;
+    z-index:0;
+}
+
+.navbar-dark {
+    background-color: #1e7e34;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link-bar {
+    padding: 20px;
+}
+
+
