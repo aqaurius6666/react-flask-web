@@ -26,6 +26,7 @@ def config_app(deploy = True):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['JSON_AS_ASCII'] = False
     db.init_app(app)
+    print("CONFIGURE SUCCESSFULLY!")
     
 def token_required(f):
     @wraps(f)
