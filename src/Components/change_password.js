@@ -20,6 +20,7 @@ export const ChangePassword = (props) => {
     }
     if (form) {
         return (
+<<<<<<< HEAD
             <>
             <label>Change Password </label>
             <form onSubmit={onSubmitForm}>
@@ -40,6 +41,27 @@ export const ChangePassword = (props) => {
                 <button>Update</button>
             </form>
             </>
+=======
+            <div>
+                <label>Change Password </label>
+                <form onSubmit={onSubmitForm}>
+                    <div>
+                        <label>Old password: </label>
+                        <input value={form.old_password} type="password" onChange={(e) => setForm({ ...form, old_password: e.target.value })}></input>
+                    </div>
+
+                    <div>
+                        <label>New password: </label>
+                        <input value={form.password} type="password" onChange={(e) => setForm({ ...form, password: e.target.value })}></input>
+                    </div>
+                    <div>
+                        <label>Conf password: </label>
+                        <input value={form.conf_password} type="password" onChange={(e) => setForm({ ...form, conf_password: e.target.value })}></input>
+                    </div>
+                    <button>Update</button>
+                </form>
+            </div>
+>>>>>>> 45aa25fc7bcbf08f34c145781c85a4fe254433a5
         )
     } else {
         return (

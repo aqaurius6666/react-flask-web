@@ -6,9 +6,11 @@ import userContext from "./userContext"
 
 export const Update = (props) => {
     return (
-        <>
-        <ChangeInfo/>
-        <ChangePassword/>
-        </>
+        <div>
+            <br />
+            <br />
+            <ChangeInfo/>
+            <ChangePassword/>
+        </div>
     )
 }
