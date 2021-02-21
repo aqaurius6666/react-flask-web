@@ -191,3 +191,20 @@ def update(current):
 @token_required
 def get_student_info(current):
     return jsonify({"student" : current.of_student.to_dict()})
+
+@app.route('/api/account', methods=['GET'])
+@token_required
+def get_account_info(current):
+    return jsonify({"user" : current.to_dict()})
+
+@app.route('/api/account', methods=['PUT'])
+@token_required
+def update_account(current):
+    data = request.json
+    if check_password_hash(current.password, data['old_password']):
+        current.password = generate_password_hash(password=generate_password_hash(data['password'], 
+                                                    method='sha256'))
+        db.session.commit()
+        return jsonify({"message" : "Change password successfully!"}), 200
+    else:
+        return jsonify({"message" : "Old password is wrong!"}), 400
