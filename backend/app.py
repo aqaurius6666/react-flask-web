@@ -210,15 +210,62 @@ def update_account(current):
         return jsonify({"message" : "Old password is wrong!"}), 400
 
 
-@app.route('/api/delete/<id>', methods=['PUT'])
+@app.route('/api/delete/account/<id>', methods=['PUT'])
 def delete_account(id):
     try:
         account = Account.query.filter_by(public_id=id).first()
-        student = account.of_student
         db.session.delete(account)
-        db.session.delete(student)
         db.session.commit()
         return jsonify({"message" : "Delete successfully!"}), 200
     except Exception as e:
         print(e)
+        return jsonify({"message" : "Failed to delete!"}), 400
+
+@app.route('/api/delete/student/<id>', methods=['PUT'])
+def delete_student(id):
+    try:
+        student = Student.query.filter_by(sid=id).first()
+        db.session.delete(student)
+        db.session.commit()
+        return jsonify({"message" : "Delete successfully!"}), 200
+    except Exception as e:
+        return jsonify({"message" : "Failed to delete!"}), 400
+
+@app.route('/api/delete/course/<id>', methods=['PUT'])
+def delete_course(id):
+    try:
+        course = Course.query.filter_by(cid=id).first()
+        db.session.delete(course)
+        db.session.commit()
+        return jsonify({"message" : "Delete successfully!"}), 200
+    except Exception as e:
+        return jsonify({"message" : "Failed to delete!"}), 400
+
+@app.route('/api/delete/score/<id>', methods=['PUT'])
+def delete_score(id):
+    try:
+        score = Score.query.filter_by(sid=id).first()
+        db.session.delete(score)
+        db.session.commit()
+        return jsonify({"message" : "Delete successfully!"}), 200
+    except Exception as e:
+        return jsonify({"message" : "Failed to delete!"}), 400
+
+@app.route('/api/delete/teacher/<id>', methods=['PUT'])
+def delete_teacher(id):
+    try:
+        teacher = Teacher.query.filter_by(tid=id).first()
+        db.session.delete(teacher)
+        db.session.commit()
+        return jsonify({"message" : "Delete successfully!"}), 200
+    except Exception as e:
+        return jsonify({"message" : "Failed to delete!"}), 400
+@app.route('/api/delete/house/<id>', methods=['PUT'])
+def delete_house(id):
+    try:
+        house = House.query.filter_by(hid=id).first()
+        db.session.delete(house)
+        db.session.commit()
+        return jsonify({"message" : "Delete successfully!"}), 200
+    except Exception as e:
         return jsonify({"message" : "Failed to delete!"}), 400
