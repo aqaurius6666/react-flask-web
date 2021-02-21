@@ -13,7 +13,6 @@ from .modules import *
 
 DATABASE_URL = os.environ['DATABASE_URL']
 SECRET_KEY = os.environ['SECRET_KEY']
-
 '''
 DATABASE_URL = 'sqlite:///database.db'
 SECRET_KEY =  "itssecretkey"
@@ -42,8 +41,7 @@ def token_required(f):
             return jsonify({"message" : "Token is invalid"}), 401
         acc = Account.query.filter_by(public_id = data['public_id']).first()
         if acc:
-            current_user = acc
-            return f(current_user, *args, **kwargs)
+            return f(acc, *args, **kwargs)
         else:
             return jsonify({"message" : "Token is expired"}), 401
         
@@ -183,7 +181,7 @@ def update(current):
             return jsonify({"message" : "Bad input"}), 400
     student.update(data)
     db.session.commit()
-    return jsonify({"student" : student.to_dict(), "message" : "Update successfully!"})
+    return jsonify({"student" : student.to_dict(), "message" : "Update successfully!"}), 200
 
 
 
@@ -202,8 +200,10 @@ def get_account_info(current):
 def update_account(current):
     data = request.json
     if check_password_hash(current.password, data['old_password']):
-        current.password = generate_password_hash(password=generate_password_hash(data['password'], 
-                                                    method='sha256'))
+        print(data['old_password'])
+        print(data['password'])
+        current.password = generate_password_hash(password=data['password'], 
+                                                    method='sha256')
         db.session.commit()
         return jsonify({"message" : "Change password successfully!"}), 200
     else:
