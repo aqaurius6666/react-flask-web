@@ -13,21 +13,11 @@ from .modules import *
 
 app = Flask(__name__)
 CORS(app)
-def config_app(deploy = True):
-    if deploy:
-        DATABASE_URL = os.environ['DATABASE_URL']
-        SECRET_KEY = os.environ['SECRET_KEY']
-    else:
-        DATABASE_URL = 'sqlite:///database.db'
-        SECRET_KEY =  "itssecretkey"    
+HEROKU = "config_heroku.py"
+LOCAL = "config_local.py"
+app.config.from_pyfile(LOCAL)
+db.init_app(app)
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
-    app.config["SECRET_KEY"] = SECRET_KEY
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['JSON_AS_ASCII'] = False
-    db.init_app(app)
-    print("CONFIGURE SUCCESSFULLY!")
-    
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
