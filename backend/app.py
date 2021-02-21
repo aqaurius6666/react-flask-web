@@ -1,5 +1,5 @@
 
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template, url_for
 from .database.model import (db,
                             Student, Teacher, Course, Score, House, Account)
 from werkzeug.security import generate_password_hash, check_password_hash     
@@ -8,6 +8,7 @@ import uuid
 import jwt
 from functools import wraps
 from .modules import *
+
 
 app = Flask(__name__)
 CORS(app)
@@ -38,10 +39,12 @@ def token_required(f):
         
     return decorated
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-
-    return "<h1>Đây là Hà =))</h1>"
+    if request.method == 'POST':
+        data = request.form['data']
+        return render_template("form.html", data=data)
+    return render_template("form.html")
 #-------------------------------------------------------------------------------------------------------------
 # GET LIST METHODS
 #-------------------------------------------------------------------------------------------------------------

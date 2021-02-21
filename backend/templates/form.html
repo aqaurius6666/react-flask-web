@@ -1,0 +1,21 @@
+<html>
+
+<body>
+    {% if data: %}
+    <h1>
+        Welcome, {{ data }}!
+    </h1>
+    <form action="/" method="get">
+        <button type="submit">Back</button>
+    </form>
+    {% else: %}
+    <form method="POST">
+        <label>What's your name?</label>
+        <input name="data" >
+        <button>Enter</button>
+    </form>
+    {% endif %}
+        
+</body>
+
+</html>
