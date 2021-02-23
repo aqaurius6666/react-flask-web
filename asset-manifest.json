@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/react-flask-web/static/css/main.cfe66163.chunk.css",
+    "main.js": "/react-flask-web/static/js/main.f1f538e9.chunk.js",
+    "main.js.map": "/react-flask-web/static/js/main.f1f538e9.chunk.js.map",
+    "runtime-main.js": "/react-flask-web/static/js/runtime-main.fcf7bdce.js",
+    "runtime-main.js.map": "/react-flask-web/static/js/runtime-main.fcf7bdce.js.map",
+    "static/css/2.150d169a.chunk.css": "/react-flask-web/static/css/2.150d169a.chunk.css",
+    "static/js/2.1bb41548.chunk.js": "/react-flask-web/static/js/2.1bb41548.chunk.js",
+    "static/js/2.1bb41548.chunk.js.map": "/react-flask-web/static/js/2.1bb41548.chunk.js.map",
+    "static/js/3.916ef183.chunk.js": "/react-flask-web/static/js/3.916ef183.chunk.js",
+    "static/js/3.916ef183.chunk.js.map": "/react-flask-web/static/js/3.916ef183.chunk.js.map",
+    "index.html": "/react-flask-web/index.html",
+    "static/css/2.150d169a.chunk.css.map": "/react-flask-web/static/css/2.150d169a.chunk.css.map",
+    "static/css/main.cfe66163.chunk.css.map": "/react-flask-web/static/css/main.cfe66163.chunk.css.map",
+    "static/js/2.1bb41548.chunk.js.LICENSE.txt": "/react-flask-web/static/js/2.1bb41548.chunk.js.LICENSE.txt",
+    "static/media/Gryffindor.8f2bd61e.png": "/react-flask-web/static/media/Gryffindor.8f2bd61e.png",
+    "static/media/Hufflepuff.8307233c.png": "/react-flask-web/static/media/Hufflepuff.8307233c.png",
+    "static/media/Ravenclaw.0528b0da.png": "/react-flask-web/static/media/Ravenclaw.0528b0da.png",
+    "static/media/Slytherin.a966925a.png": "/react-flask-web/static/media/Slytherin.a966925a.png",
+    "static/media/hogwart.168ab322.svg": "/react-flask-web/static/media/hogwart.168ab322.svg",
+    "static/media/hogwarts_school.f5164985.jpg": "/react-flask-web/static/media/hogwarts_school.f5164985.jpg",
+    "static/media/hogwarts_sm_logo.4189d52d.svg": "/react-flask-web/static/media/hogwarts_sm_logo.4189d52d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fcf7bdce.js",
+    "static/css/2.150d169a.chunk.css",
+    "static/js/2.1bb41548.chunk.js",
+    "static/css/main.cfe66163.chunk.css",
+    "static/js/main.f1f538e9.chunk.js"
+  ]
+}
