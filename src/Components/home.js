@@ -132,8 +132,8 @@ const Notification = () => {
 }
 
 export const Home = () => {
-    const {user} = useContext(userContext)
-    if (user) {
+    const {isLogin} = useContext(userContext)
+    if (isLogin) {
         return (
             <div className="home">
 

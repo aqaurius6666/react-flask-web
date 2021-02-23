@@ -1,71 +1,71 @@
-import { useContext } from "react"
-import userContext from "../Components/userContext"
 
+const BASE_URL = "https://it-must-be-ok.herokuapp.com/"
 export const api_register = (username, password, cb) => {
-    const url = "https://it-must-be-ok.herokuapp.com/api/accounts"
+    const url = BASE_URL + "api/accounts"
     fetch(url, {
         method: "POST",
-        headers: authHeader(),
+        headers: { "Content-Type": "Application/json" },
         body: JSON.stringify({ username, password })
     })
         .then(handleResponse)
-        .then((data) => cb(data.message))
+        .then((data) => cb(data))
         .catch(msg => console.log(msg))
 }
 
 export const api_login = (username, password, cb) => {
-    const url = "https://it-must-be-ok.herokuapp.com/api/authentication"
+    const url = BASE_URL + "api/authentication"
     return fetch(url, {
         method: "POST",
-        headers: authHeader(),
+        headers: { ...authHeader(), "Content-Type": "Application/json" },
         body: JSON.stringify({ username, password })
     })
         .then(handleResponse)
         .then(data => {
-            localStorage.setItem("token", data.token)
-            localStorage.setItem("user", data.user)
-            cb(data.message, data.user)
+            storeLogin(data)
+            cb(data)
         })
         .catch(error => console.log(error))
 
 }
-
+export const storeLogin = ({ token, user }) => {
+    localStorage.setItem("token", token)
+    localStorage.setItem("user", user)
+    localStorage.setItem("isLogin", true)
+}
 export const api_get_user = (cb) => {
-    const url = "https://it-must-be-ok.herokuapp.com/api/authentication"
+    const url = BASE_URL + "api/authentication"
     cb(localStorage.getItem("user"))
     fetch(url, {
         method: "GET",
-        headers: authHeader(),
+        headers: { ...authHeader() },
     })
-        .then(handleResponse)
-        .then(data => {
-            localStorage.setItem("user", data.user)
-            cb(data.user)
-        })
-        .catch(msg => {
-            console.log(msg)
-            cb(undefined)
-            localStorage.removeItem("user")
-        })
+    .then(handleResponse)
+    .then(data => {
+        storeLogin(data)
+        cb(data)
+    })
+    .catch(() => {
+        cb({user : null})
+        logout()
+    })
 }
 export const api_get_student = (cb) => {
-    const url = "https://it-must-be-ok.herokuapp.com/api/student"
+    const url = BASE_URL + "api/student"
     fetch(url, {
         method: "GET",
-        headers: authHeader(),
+        headers: { ...authHeader() },
     })
-        .then(handleResponse)
-        .then(data => cb(data.student))
-        .catch(msg => {
-            console.log(msg)
-            cb(undefined)
-        })
+    .then(handleResponse)
+    .then(data => {
+        cb(data)
+    })
+        
 }
 export const api_update_passowrd = (old_password, password, cb) => {
-    const url = "https://it-must-be-ok.herokuapp.com/api/account"
+    const url = BASE_URL + "api/account"
     fetch(url, {
         method: "PUT",
-        headers: authHeader(),
+        headers: { ...authHeader(), "Content-Type": "Application/json" },
         body: JSON.stringify({ old_password, password })
     })
         .then(handleResponse)
@@ -73,20 +73,19 @@ export const api_update_passowrd = (old_password, password, cb) => {
         .catch(error => cb(error))
 }
 export const api_update_student = (student, cb) => {
-    const url = "https://it-must-be-ok.herokuapp.com/api/student"
+    const url = BASE_URL + "api/student"
     fetch(url, {
         method: "PUT",
-        headers: authHeader(),
+        headers: { ...authHeader(), "Content-Type": "Application/json" },
         body: JSON.stringify(student)
     })
         .then(handleResponse)
         .then(data => cb(data.message))
         .catch(error => cb(error))
 }
-export const logout = (cb) => {
+export const logout = () => {
     localStorage.removeItem("token")
-    localStorage.removeItem("user")
-    cb()
+    localStorage.removeItem("isLogin")
 }
 const handleResponse = (res) => {
     return new Promise((resolve, reject) => {
@@ -100,8 +99,7 @@ const handleResponse = (res) => {
 
 export const authHeader = () => {
     return {
-        "x-access-token": localStorage.getItem("token"),
-        "Content-type": "Application/json"
+        "x-access-token": localStorage.getItem("token")
     }
 }
 

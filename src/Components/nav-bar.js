@@ -6,13 +6,14 @@ import userContext from './userContext';
 import logo1 from "../img/hogwart.svg";
 
 const NavBar = () => {
-    const {user, setUser} = useContext(userContext)
+    const {isLogin, setIsLogin} = useContext(userContext)
 
     const handleLogOut =() => {
-        logout(() => setUser(undefined))
+        logout()
+        setIsLogin(localStorage.getItem("isLogin"))
     }
     
-    if (user) {
+    if (isLogin) {
         return (
             <>
                 <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top" expand="lg">

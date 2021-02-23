@@ -5,14 +5,14 @@ import {ChangePassword} from "./change_password";
 
 
 export const Info = (props) => {
-    const {user} = useContext(userContext)
+    const {isLogin} = useContext(userContext)
     
     const [student, setStudent] = useState()
     
     useEffect(() => {
-        api_get_student((data) => setStudent(data))
+        api_get_student(({student}) => setStudent(student))
     },[])
-    if (!user) {
+    if (!isLogin) {
         return <div>You are not log in!</div>
     }
     if (student) {
