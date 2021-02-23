@@ -29,7 +29,7 @@ function Footer() {
                 </div>
                 <div className="row justify-content-center">
                     <div className="col-auto">
-                        <p>© Copyright 2020 Tra-Thuan-Vu</p>
+                        <p>© Copyright 2021 Tra-Thuan-Vu</p>
                     </div>
                 </div>
             </div>
