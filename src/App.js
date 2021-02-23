@@ -9,6 +9,7 @@ import { Register } from "./Components/register";
 import { Update } from "./Components/update";
 import userContext from "./Components/userContext";
 import {About} from "./Components/about";
+
 function App() {
     const [user, setUser] = useState(initialUser())
     const [user_, setUser_] = useState(initialUser())

@@ -136,6 +136,7 @@ export const Home = () => {
     if (user) {
         return (
             <div className="home">
+
                 <NavBar/>
                 <Header/>
                 <Notification/>
