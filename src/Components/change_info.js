@@ -25,13 +25,17 @@ export const ChangeInfo = () => {
 
                 <div>
                     <label>Date of birth: </label>
-                    <input value={form.dob ? form.dob : ""} placeholder="dd/mm/yyyy" onChange={(e) =>
-                        setForm({...form, dob: e.target.value})} />
+                    <input value={form.dob ? form.dob : ""} placeholder="dd/mm/yyyy"
+                           onChange={(e) => setForm({ ...form, dob: e.target.value })} />
                 </div>
                 <div>
-                    <label>House ID: </label>
-                    <input value={form.hid ? form.hid : ""} onChange={(e) =>
-                        setForm({ ...form, hid: e.target.value })} />
+                    <label>House: </label>
+                    <select name="hid" >
+                        <option value="1000">Gryffindor</option>
+                        <option value="1001">Slytherin</option>
+                        <option value="1002">Ravenclaw</option>
+                        <option value="1003">Hufflepuff</option>
+                    </select>
                 </div>
 
                     <button>Update</button>

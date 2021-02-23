@@ -11,14 +11,24 @@ import userContext from "./Components/userContext";
 import {About} from "./Components/about";
 function App() {
     const [user, setUser] = useState(initialUser())
-
+    const [user_, setUser_] = useState(initialUser())
     useEffect(() => {
-        api_get_user(
-            (data) => {
-                setUser(data)
+        api_get_user((data) => {
+            if (data !== user_) {
+                setUser_(data)
+            }
+        })
 
-            })
     }, [])
+    useEffect(() => {
+        console.log(user)
+        api_get_user((data) => {
+            if (data !== user_) {
+                setUser(data)
+            }
+        })
+
+    }, [user_])
 
     return (
         <>
