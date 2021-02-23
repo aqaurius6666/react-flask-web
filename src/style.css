@@ -88,7 +88,7 @@ body{
     background: -o-linear-gradient(right, #76b852, #8DC26F);
 
     background-image: url("./img/background.jpg");
-    background-repeat: 2;
+    background-repeat: repeat;
     background-size: 700px 350px;
 }
 
@@ -176,4 +176,9 @@ body {
 }
 .container .info span .fa {
     color: #EF3B3A;
+}
+
+.footer {
+    background-color: lightgreen;
+    color: black;
 }

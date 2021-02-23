@@ -120,6 +120,7 @@ export const Info = (props) => {
                                  teacher="Albus Dumbledore" address="101 Gryffindor" />
                     </table>
                 </div>
+                <br />
                 <Footer />
             </div>
         )
