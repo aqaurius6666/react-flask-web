@@ -20,12 +20,14 @@ export const ChangeInfo = () => {
                 <form onSubmit={onSubmitForm}>
                     <div>
                         <label>Name: </label>
-                        <input value={form.name ? form.name : ""} onChange={(e) => setForm({ ...form, name: e.target.value })}></input>
+                        <input value={form.name ? form.name : ""}
+                               onChange={(e) => setForm({ ...form, name: e.target.value })} />
                     </div>
 
                     <div>
                         <label>Date of birth: </label>
-                        <input value={form.dob ? form.dob : ""} placeholder="dd/mm/yyyy" onChange={(e) => setForm({ ...form, dob: e.target.value })}></input>
+                        <input value={form.dob ? form.dob : ""} placeholder="dd/mm/yyyy"
+                               onChange={(e) => setForm({ ...form, dob: e.target.value })} />
                     </div>
                     <div>
                         <label>House: </label>

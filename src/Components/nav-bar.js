@@ -27,7 +27,6 @@ const NavBar = () => {
                             <Nav.Link href="/info">Info</Nav.Link>
                             <Nav.Link href="/update">Update</Nav.Link>
                             <Nav.Link href="/login" onClick={handleLogOut}>Log out</Nav.Link>
-                            <Nav.Link href="/register" onClick={handleLogOut}>Register</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
