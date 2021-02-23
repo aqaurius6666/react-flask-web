@@ -16,6 +16,7 @@ function App() {
 
     useEffect(() => {
         api_get_user(({ user }) => {
+            console.log(user)
             setUser_(user)
             setIsLogin(localStorage.getItem("isLogin"))
             console.log(isLogin)
