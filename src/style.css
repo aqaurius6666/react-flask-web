@@ -56,7 +56,12 @@ body{
     padding: 0px 50px 0px 0px;
 }
 
-
+.student_image {
+    padding: 10px;
+    height:200px;
+    width: auto;
+    border-color: red;
+}
 
 .house_title {
     color: orangered;

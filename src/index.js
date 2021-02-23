@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { Router } from 'react-router-dom';
 import history from './history'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'font-awesome/css/font-awesome.css';
 import './style.css'
 
 ReactDOM.render(
