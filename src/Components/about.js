@@ -6,6 +6,7 @@ import Ravenclaw from "../img/Ravenclaw.png"
 import hogwart from "../img/hogwarts_school.jpg"
 import NavBar from "./nav-bar";
 import userContext from "./userContext";
+import Footer from "./footer";
 
 const Presidents = () => {
     return (
@@ -145,6 +146,7 @@ export const About = () => {
                 <br />
                 <Houses />
                 <Presidents />
+                <Footer/>
             </div>
         );
     } else {
