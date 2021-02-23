@@ -86,7 +86,10 @@ body{
     background: -webkit-linear-gradient(right, #76b852, #8DC26F);
     background: -moz-linear-gradient(right, #76b852, #8DC26F);
     background: -o-linear-gradient(right, #76b852, #8DC26F);
-    background: linear-gradient(to left, #76b852, #8DC26F);
+
+    background-image: url("./img/background.jpg");
+    background-repeat: 2;
+    background-size: 700px 350px;
 }
 
 body {
@@ -96,7 +99,7 @@ body {
 }
 
 .login-padding {
-    padding: 50px;
+    padding: 15px;
 }
 
 .form {
