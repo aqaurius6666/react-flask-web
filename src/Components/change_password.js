@@ -21,7 +21,7 @@ export const ChangePassword = () => {
     if (form) {
         return (
             <>
-                <label>Change Password </label>
+                <h1>Change Password </h1>
                 <form onSubmit={onSubmitForm}>
                     <div>
                         <label>Old password: </label>
@@ -37,7 +37,7 @@ export const ChangePassword = () => {
                         <input value={form.conf_password} type="password" onChange={(e) => setForm({ ...form, conf_password: e.target.value })} />
                     </div>
 
-                    <button>Update</button>
+                    <button className="btn btn-success">Update</button>
                 </form>
             </>
         )

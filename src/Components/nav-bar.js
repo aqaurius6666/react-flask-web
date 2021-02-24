@@ -16,7 +16,7 @@ const NavBar = () => {
         return (
             <>
                 <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top" expand="lg">
-                    <a className="navbar-brand" href="/"><img src={logo1} height="40" width="auto" alt="logo1"/></a>
+                    <a className="navbar-brand d-none d-sm-block" href="/"><img src={logo1} height="40" width="auto" alt="logo1"/></a>
                     <Navbar.Brand id="navbarbrand" href="/">HỌC VIỆN PHÁP THUẬT HOGWART</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

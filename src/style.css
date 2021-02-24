@@ -27,6 +27,8 @@
 .jumbotron {
     background-color: white;
     color: black;
+    padding-bottom: 0px;
+    padding-top: 40px;
 }
 
 #notification {
@@ -45,7 +47,7 @@ body{
 }
 
 .navbar-dark {
-    background-color: #1e7e34;
+    background-color: #218c74;
 }
 
 .nav-link {
@@ -179,6 +181,36 @@ body {
 }
 
 .footer {
-    background-color: lightgreen;
+    background-color: #218c74;
     color: black;
+    padding-top: 14px;
+    margin-top: 20px;
+}
+
+.footer_link {
+    color: black;
+    font-size: 12px;
+}
+
+.media-heading {
+    font-size: 15px;
+    padding-top: 5px;
+}
+
+.date-alert {
+    font-size: 12px;
+}
+
+.hr {
+    border-top: 2px solid black;
+}
+
+.font_medium {
+    font-size: 16px;
+}
+
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+    padding: 0px;
 }

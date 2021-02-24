@@ -95,98 +95,112 @@ const Houses = () => {
                     <img alt="hogwart" src={hogwart} width="400px" height="auto" />
                 </div>
             </div>
-            <table className="simple" border="1" cellPadding="5" cellSpacing="0">
+            <table className="simple" border="1" >
                 <tbody>
-                <tr>
-                    <th>Name/Crest
+                <tr className="row">
+                    <th className="col-1 d-none d-sm-inline">Name/Crest
                     </th>
-                    <th><a title="Gryffindor">Gryffindor</a><img alt="Gryffindor" src={Gryffindor} />
-                    </th>
-                    <th><a title="Hufflepuff">Hufflepuff</a><img alt="Hufflepuff" src={Hufflepuff} />
-                    </th>
-                    <th><a title="Ravenclaw">Ravenclaw</a><img alt="Ravenclaw" src={Ravenclaw} />
-                    </th>
-                    <th><a title="Slytherin">Slytherin</a><img alt="Slytherin" src={Slytherin} />
-                    </th>
+                    <div className="col-11 row">
+                        <th className="col-3"><a title="Gryffindor">Gryffindor</a><img alt="Gryffindor" src={Gryffindor} />
+                        </th>
+                        <th className="col-3"><a title="Hufflepuff">Hufflepuff</a><img alt="Hufflepuff" src={Hufflepuff} />
+                        </th>
+                        <th className="col-3"><a title="Ravenclaw">Ravenclaw</a><img alt="Ravenclaw" src={Ravenclaw} />
+                        </th>
+                        <th className="col-3"><a title="Slytherin">Slytherin</a><img alt="Slytherin" src={Slytherin} />
+                        </th>
+                    </div>
                 </tr>
-                <tr>
-                    <th>Founded By
+                <tr className="row">
+                    <th className="col-1 d-none d-sm-inline">Founded By
                     </th>
-                    <td><a  title="Godric Gryffindor">Godric Gryffindor</a>
-                    </td>
-                    <td><a  title="Helga Hufflepuff">Helga Hufflepuff</a>
-                    </td>
-                    <td><a  title="Rowena Ravenclaw">Rowena Ravenclaw</a>
-                    </td>
-                    <td><a  title="Salazar Slytherin">Salazar Slytherin</a>
-                    </td>
+                    <div className="col-11 row">
+                        <td className="col-3"><a  title="Godric Gryffindor">Godric Gryffindor</a>
+                        </td>
+                        <td className="col-3"><a  title="Helga Hufflepuff">Helga Hufflepuff</a>
+                        </td>
+                        <td className="col-3"><a  title="Rowena Ravenclaw">Rowena Ravenclaw</a>
+                        </td>
+                        <td className="col-3"><a  title="Salazar Slytherin">Salazar Slytherin</a>
+                        </td>
+                    </div>
                 </tr>
-                <tr>
-                    <th>House Ghost
+                <tr className="row">
+                    <th className="col-1 d-none d-sm-inline">House Ghost
                     </th>
-                    <td><a  title="Nicholas de Mimsy-Porpington">Nearly
-                        Headless Nick</a>
-                    </td>
-                    <td><a  title="Fat Friar">Fat Friar</a>
-                    </td>
-                    <td>The <a  title="Helena Ravenclaw">Grey Lady</a>
-                    </td>
-                    <td>The <a  title="Bloody Baron">Bloody Baron</a>
-                    </td>
+                    <div className="col-11 row">
+                        <td className="col-3"><a  title="Nicholas de Mimsy-Porpington">Nearly
+                            Headless Nick</a>
+                        </td>
+                        <td className="col-3"><a  title="Fat Friar">Fat Friar</a>
+                        </td>
+                        <td className="col-3">The <a  title="Helena Ravenclaw">Grey Lady</a>
+                        </td>
+                        <td className="col-3">The <a  title="Bloody Baron">Bloody Baron</a>
+                        </td>
+                    </div>
                 </tr>
-                <tr>
-                    <th>House symbol
+                <tr className="row">
+                    <th className="col-1 d-none d-sm-inline">House symbol
                     </th>
-                    <td><a  title="Lion">Lion</a>
-                    </td>
-                    <td><a  title="Badger">Badger</a>
-                    </td>
-                    <td><a  title="Eagle">Eagle</a>
-                    </td>
-                    <td><a  title="Snake">Serpent</a>
-                    </td>
+                    <div className="col-11 row">
+                        <td className="col-3"><a  title="Lion">Lion</a>
+                        </td>
+                        <td className="col-3"><a  title="Badger">Badger</a>
+                        </td>
+                        <td className="col-3"><a  title="Eagle">Eagle</a>
+                        </td>
+                        <td className="col-3"><a  title="Snake">Serpent</a>
+                        </td>
+                    </div>
                 </tr>
-                <tr>
-                    <th>House colours
+                <tr className="row">
+                    <th className="col-1 d-none d-sm-inline">House colours
                     </th>
-                    <td>Deep red and gold
-                    </td>
-                    <td>Yellow and black
-                    </td>
-                    <td>Blue and bronze
-                    </td>
-                    <td>Green and silver
-                    </td>
+                    <div className="col-11 row">
+                        <td className="col-3">Deep red and gold
+                        </td>
+                        <td className="col-3">Yellow and black
+                        </td>
+                        <td className="col-3">Blue and bronze
+                        </td>
+                        <td className="col-3">Green and silver
+                        </td>
+                    </div>
                 </tr>
-                <tr>
-                    <th>Description
+                <tr className="row">
+                    <th className="col-1 d-none d-sm-inline">Description
                     </th>
-                    <td>Well known for courage, bravery, daring, nerve, and chivalry.
-                    </td>
-                    <td>Well known for loyalty, patience, hard work, fair-play, honesty, and tolerance.
-                    </td>
-                    <td>Values intelligence, wit, cleverness, creativity, and wisdom.
-                    </td>
-                    <td>Values ambition, leadership, cunning, determination, and resourcefulness.
-                    </td>
+                    <div className="col-11 row">
+                        <td className="col-3">Well known for courage, bravery, daring, nerve, and chivalry.
+                        </td>
+                        <td className="col-3">Well known for loyalty, patience, hard work, fair-play, honesty, and tolerance.
+                        </td>
+                        <td className="col-3">Values intelligence, wit, cleverness, creativity, and wisdom.
+                        </td>
+                        <td className="col-3">Values ambition, leadership, cunning, determination, and resourcefulness.
+                        </td>
+                    </div>
                 </tr>
-                <tr>
-                    <th>Common room
+                <tr className="row">
+                    <th className="col-1 d-none d-sm-inline">Common room
                     </th>
-                    <td>The entrance to the common room was on the seventh floor hidden behind a portrait of the <a
-                        title="Fat Lady">Fat Lady</a>. To enter, the correct password must be
-                        provided.
-                    </td>
-                    <td>Located near the kitchens. To enter, one must tap a fake barrel in the rhythm "<a
-                         title="Helga Hufflepuff">Helga Hufflepuff</a>." It was the only
-                        common room to have a way to keep students from other houses out (by dumping vinegar on them).
-                    </td>
-                    <td>Located in a high tower, and the interior was decorated with blue and bronze. To enter, one must
-                        answer a riddle from an eagle door knocker.
-                    </td>
-                    <td>Located in the dungeons, underneath the Black Lake, and hidden behind a stone wall. To enter,
-                        the correct password must be provided.
-                    </td>
+                    <div className="col-11 row">
+                        <td className="col-3">The entrance to the common room was on the seventh floor hidden behind a portrait of the <a
+                            title="Fat Lady">Fat Lady</a>. To enter, the correct password must be
+                            provided.
+                        </td>
+                        <td className="col-3">Located near the kitchens. To enter, one must tap a fake barrel in the rhythm "<a
+                             title="Helga Hufflepuff">Helga Hufflepuff</a>." It was the only
+                            common room to have a way to keep students from other houses out (by dumping vinegar on them).
+                        </td>
+                        <td className="col-3">Located in a high tower, and the interior was decorated with blue and bronze. To enter, one must
+                            answer a riddle from an eagle door knocker.
+                        </td>
+                        <td className="col-3">Located in the dungeons, underneath the Black Lake, and hidden behind a stone wall. To enter,
+                            the correct password must be provided.
+                        </td>
+                    </div>
                 </tr>
                 </tbody>
             </table>

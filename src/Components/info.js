@@ -41,19 +41,19 @@ const checkHouseImg = (house_id) => {
 const Subject = (props) => {
     return (
         <tr className="col-12 row text-center">
-            <td className="col-12 col-md-3">
+            <td className="col-3">
                 <p>{props.sname}</p>
             </td>
-            <td className="col-12 col-md-2 text-center">
+            <td className="col-2 text-center">
                 <p>{props.sid}</p>
             </td>
-            <td className="col-12 col-md-1 text-center">
+            <td className="col-2 text-center">
                 <p>{props.tinchi}</p>
             </td>
-            <td className="col-12 col-md-3 text-center">
+            <td className="col-2 text-center">
                 <p>{props.teacher}</p>
             </td>
-            <td className="col-12 col-md-3 text-center">
+            <td className="col-3 text-center">
                 <p>{props.address}</p>
             </td>
         </tr>
@@ -80,36 +80,36 @@ export const Info = (props) => {
                     <hr />
                 </div>
                 <div>
-                    <table className="simple row" border="2" cellPadding="15" cellSpacing="0">
+                    <table className="row" border="2" cellPadding="15" cellSpacing="0">
                         <tr className="col-12 row">
-                            <th className="col-12 col-md-2">
+                            <th className="col-6 col-md-2">
                                 <img className="student_image" src={harry} alt="student's image" />
                             </th>
-                            <th className="col-12 col-md-8">
+                            <th className="col-6 col-md-8">
                                 <h5>Full Name: {student.name}</h5>
                                 <h5>Date of Birth: {student.dob}</h5>
                                 <h5>House: {checkHouse(student.hid)}</h5>
                                 <h5>GPA: {student.gpa}</h5>
                                 <h5>Credit: {student.credit}</h5>
                             </th>
-                            <th className="col-12 col-md-2">
+                            <th className="col-2 d-none d-sm-inline">
                                 <img className="student_image" src={house_img} alt="house's image" />
                             </th>
                         </tr>
                         <tr className="col-12 row text-center">
-                            <td className="col-12 col-md-3">
+                            <td className="col-3">
                                 <h4>Môn học</h4>
                             </td>
-                            <td className="col-12 col-md-2 text-center">
+                            <td className="col-2 text-center">
                                 <h4>Mã môn học</h4>
                             </td>
-                            <td className="col-12 col-md-1 text-center">
-                                <h4>Tín chỉ</h4>
+                            <td className="col-2 text-center">
+                                <h4>Số tín</h4>
                             </td>
-                            <td className="col-12 col-md-3 text-center">
-                                <h4>Giáo sư giảng dạy</h4>
+                            <td className="col-2 text-center">
+                                <h4>Giáo viên</h4>
                             </td>
-                            <td className="col-12 col-md-3 text-center">
+                            <td className="col-3 text-center">
                                 <h4>Phòng học</h4>
                             </td>
                         </tr>

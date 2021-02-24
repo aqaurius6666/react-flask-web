@@ -1,34 +1,39 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import logo from '../img/hogwarts_sm_logo.svg'
 
 function Footer() {
     return(
         <div className="footer">
-            <br />
             <div className="container">
                 <div className="row">
-                    <div className="col-4 offset-1 col-sm-2">
-                        <h5>Links</h5>
-                        <ul className="list-unstyled">
-                            <li><Link to='/'>Home</Link></li>
-                            <li><Link to='/about'>About</Link></li>
-                            <li><Link to='/info'>Info</Link></li>
+                    <div className="col-4 offset-1 col-sm-3">
+                        <h6>Links</h6>
+                        <ul>
+                            <li><Link className="footer_link" to='/'>Home</Link></li>
+                            <li><Link className="footer_link" to='/about'>About</Link></li>
+                            <li><Link className="footer_link" to='/info'>Info</Link></li>
                         </ul>
                     </div>
-                    <div className="col-7 col-sm-5">
-                        <h5>Our Address</h5>
+                    <div className="col-7 col-sm-3">
+                        <h6>Our Address</h6>
                         <address>
-                            Hogwarts Academy, London, England<br />
+                            <p className="small">Hogwarts Academy, London, England<br />
                             <i className="fa fa-phone fa-lg"></i>: +852 1234 5678<br />
                             <i className="fa fa-fax fa-lg"></i>: +852 8765 4321<br />
-                            <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:hogwarts@wizard.net">
-                            hogwarts@wizard.net</a>
+                            <i className="fa fa-envelope fa-lg"></i>: <a className="footer_link" href="mailto:hogwarts@wizard.net">
+                            hogwarts@wizard.net</a></p>
                         </address>
                     </div>
+                    <div className="col-12 col-sm-5">
+                        <p><img className="d-none d-sm-inline" height="100px" width="auto" src={logo} alt="logo" />
+                        <strong>HOGWARTS ACADEMY</strong></p>
+                    </div>
                 </div>
-                <div className="row justify-content-center">
+                <hr className="hr"/>
+                <div className="row">
                     <div className="col-auto">
-                        <p>© Copyright 2021 Tra-Thuan-Vu</p>
+                        <p className="small">© Copyright 2021 Tra-Thuan-Vu</p>
                     </div>
                 </div>
             </div>

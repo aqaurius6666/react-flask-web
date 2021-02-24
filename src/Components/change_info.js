@@ -16,8 +16,8 @@ export const ChangeInfo = () => {
     if (form) {
         return (
             <>
-                <label>Info: </label>
-                <form onSubmit={onSubmitForm}>
+                <h1>Info: </h1>
+                <form className="form-group" onSubmit={onSubmitForm}>
                     <div>
                         <label>Name: </label>
                         <input value={form.name ? form.name : ""}
@@ -38,7 +38,7 @@ export const ChangeInfo = () => {
                             <option value="1003">Hufflepuff</option>
                         </select>
                     </div>
-                    <button>Update</button>
+                    <button className="btn btn-success">Update</button>
                 </form>
             </>
         )

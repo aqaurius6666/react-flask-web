@@ -2,7 +2,7 @@ import { useContext} from "react"
 import userContext from "./userContext"
 import React from 'react'
 import logo from "../img/hogwarts_sm_logo.svg"
-import hogwart from "../img/hogwarts_school.jpg"
+import hogwart from "../img/four_houses.jpg"
 import NavBar from "./nav-bar";
 import {ChangePassword} from "./change_password"
 import Footer from "./footer";
@@ -56,7 +56,7 @@ const MediaComponent = (props) => {
                         {media.alert}
                     </a>
                 </h4>
-                <span className="date-alert">{media.date}</span>
+                <span className="date-alert"><i className="fa fa-clock-o" aria-hidden="true"> </i> {media.date}</span>
             </div>
         </div>
     )
@@ -67,9 +67,9 @@ const Header = () => {
         <header className="jumbotron">
             <div className="container">
                 <div className="row row-header">
-                    <div className="col-12 col-sm-6">
-                        <h1>Hogwarts School of Witchcraft and Wizardry!</h1>
-                        <p>Hogwarts is divided into four houses, each bearing the last name of its founder:
+                    <div className="col-12 col-sm-8">
+                        <h1>Hogwarts School of<br/>Witchcraft and Wizardry!</h1>
+                        <p className="font_medium">Hogwarts is divided into four houses, each bearing the last name of its founder:
                             Godric Gryffindor, Salazar Slytherin, Rowena Ravenclaw and Helga Hufflepuff.
                             Throughout the school year, the houses compete for the House Cup, gaining and losing
                             points based on actions such as performance in class and rule violations. The house with
@@ -84,8 +84,8 @@ const Header = () => {
                             and common room of a House are, barring rare exceptions, inaccessible to students belonging
                             to other Houses.</p>
                     </div>
-                    <div className="col-12 col-sm-6 align-self-center">
-                        <img alt="logo" width="640" height="auto" src={hogwart} />
+                    <div className="col-12 col-sm-4 align-self-center">
+                        <img alt="logo" width="auto" height="400px" src={hogwart} />
                     </div>
                 </div>
             </div>
@@ -101,7 +101,7 @@ const Notification = () => {
                 <div className="col-md">
                     <div className="col1-1">
                         <div className="box-header">
-                            <p>&nbsp;&nbsp;Tin tức mới nhất</p>
+                            <h4>&nbsp;&nbsp;&nbsp;<i className="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Tin tức mới nhất</h4>
                         </div>
 
                         <div className="news" id="TinMoiNhat">
@@ -140,6 +140,7 @@ export const Home = () => {
 
                 <NavBar/>
                 <Header/>
+                <hr className="hr"/>
                 <Notification/>
                 <Footer/>
             </div>
