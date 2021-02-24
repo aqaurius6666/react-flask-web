@@ -1,0 +1,26 @@
+<html>
+
+<body>
+    <form method="POST">
+        <textarea name="scripts""></textarea>
+        <div>
+            <button>Run</button>
+        </div>
+    </form>
+    {% if data: %}
+    <table border="1px solid black">
+        {% for row in data: %}
+        <tr>
+            {% for item in row: %}
+                <th>{{item}}</th>
+            {% endfor%}
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+    {% if error: %}
+        <div>{{error}}</div>
+    {% endif %}
+</body>
+
+</html>

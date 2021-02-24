@@ -1,5 +1,6 @@
 
 from flask import Flask, jsonify, request, render_template, url_for
+from sqlalchemy.engine import create_engine
 from .database.model import (db,
                             Student, Teacher, Course, Score, House, Account)
 from werkzeug.security import generate_password_hash, check_password_hash     
@@ -14,9 +15,8 @@ app = Flask(__name__)
 CORS(app)
 HEROKU = "config_heroku.py"
 LOCAL = "config_local.py"
-app.config.from_pyfile(HEROKU)
+app.config.from_pyfile(LOCAL)
 db.init_app(app)
-
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
@@ -45,6 +45,27 @@ def index():
         data = request.form['data']
         return render_template("form.html", data=data)
     return render_template("form.html")
+
+@app.route('/api/database/', methods=['GET', 'POST'])
+def database():
+
+    if request.method == 'POST':
+        scripts = request.form['scripts']
+        print("Scripts: ", scripts)
+        print("Result: ")
+        with db.session.connection() as conn:
+            try:
+                result = conn.execute(scripts).fetchall()
+                return render_template("database.html", data = result)
+            except Exception as e:
+                print(e)
+                return render_template("database.html", error = e)
+            finally:
+                db.session.commit()
+                return render_template("database.html")
+        
+    return render_template('database.html')
+
 #-------------------------------------------------------------------------------------------------------------
 # GET LIST METHODS
 #-------------------------------------------------------------------------------------------------------------
@@ -84,7 +105,7 @@ def create_user():
 @app.route('/api/houses', methods=['POST'])
 def create_house():
     data = request.json
-    house = House(hid=data['hid'], name=data['name'])
+    house = House(name=data['name'])
     db.session.add(house)
     db.session.commit()
     return jsonify({"message" : "Created house successfully!"})

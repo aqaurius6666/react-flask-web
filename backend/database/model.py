@@ -3,7 +3,7 @@ from datetime import datetime
 from enum import unique
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import backref
-
+from sqlalchemy import create_engine
 db = SQLAlchemy()
 
 class Account(db.Model):
@@ -25,7 +25,7 @@ class Student(db.Model):
 
     sid = db.Column(db.String(8), primary_key=True)
     name = db.Column(db.String(32, convert_unicode=True), nullable=False)
-    hid = db.Column(db.String(4), db.ForeignKey('house.hid'))
+    house_name = db.Column(db.String(32, convert_unicode=True), db.ForeignKey('house.name'))
     dob = db.Column(db.Date)
     credit = db.Column(db.Integer)
     gpa = db.Column(db.Float)
@@ -41,7 +41,7 @@ class Student(db.Model):
             'sid' : self.sid,
             'name' : self.name,
             'dob' : self.dob.strftime("%d/%m/%Y"),
-            'hid' : self.hid,
+            'house_name' : self.house_name,
             'credit' : self.credit,
             'gpa' : self.gpa
         }
@@ -49,7 +49,7 @@ class Student(db.Model):
             'sid' : self.sid,
             'name' : self.name,
             'dob' : self.dob,
-            'hid' : self.hid,
+            'house_name' : self.house_name,
             'credit' : self.credit,
             'gpa' : self.gpa
         }
@@ -109,11 +109,12 @@ class Teacher(db.Model):
 
     tid = db.Column(db.String(8), primary_key=True)
     name = db.Column(db.String(32, convert_unicode=True), nullable=False)
-    hid = db.Column(db.String(4), db.ForeignKey('house.hid'))
+    house_name = db.Column(db.String(32, convert_unicode=True), db.ForeignKey('house.name'))
     dob = db.Column(db.Date)
     degree = db.Column(db.String(16, convert_unicode=True))
 
     course = db.relationship('Course', backref='who_teach')
+    
 
     def to_dict(self):
         """Return object data in easily serializeable format"""
@@ -121,13 +122,12 @@ class Teacher(db.Model):
             'tid' : self.tid,
             'name' : self.name,
             'dob' : self.dob,
-            'hid' : self.hid,
+            'house_name' : self.house_name,
             'degree' : self.degree
         }
 class House(db.Model):
 
-    hid = db.Column(db.String(4), primary_key=True)
-    name = db.Column(db.String(32, convert_unicode=True), nullable=False)
+    name = db.Column(db.String(32, convert_unicode=True), nullable=False, primary_key=True)
     admin = db.Column(db.String(8))
 
     students = db.relationship('Student', backref='of_house')
@@ -137,6 +137,5 @@ class House(db.Model):
         """Return object data in easily serializeable format"""
         return {
             'name' : self.name,
-            'admin' : self.admin,
-            'hid' : self.hid
+            'admin' : self.admin
         }
