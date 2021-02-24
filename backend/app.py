@@ -94,26 +94,41 @@ def get_courses():
 # CREATE METHODS
 #-------------------------------------------------------------------------------------------------------------
 
-@app.route('/api/create', methods=['POST'])
+@app.route('/api/students', methods=['POST'])
 def create_user():
     data = request.json
-    user = Student(sid=data['sid'], name=data['name'])
-    db.session.add(user)
-    db.session.commit()
+    if 'is_list' in data.keys():
+        if data['is_list']:
+            create_students_by_list(data['array'])
+    else:
+        user = Student(sid=data['sid'], name=data['name'], of_house=House.query.filter_by(name=data['house']).first())
+        account = Account(pid=str(uuid.uuid4()),
+                            username=data['sid'],
+                            password=generate_password_hash(standardize(data['name']), method='sha256'),
+                            student=user)
+        db.session.add(user)
+        db.session.add(account)
+        db.session.commit()
     return jsonify({"message" : "Created user successfully!"})
+
+    
 
 @app.route('/api/houses', methods=['POST'])
 def create_house():
     data = request.json
-    house = House(name=data['name'])
-    db.session.add(house)
-    db.session.commit()
+    if 'is_list' in data.keys():
+        if data['is_list']:
+            create_houses_by_list(data['array'])
+    else:
+        house = House(name=data['name'])
+        db.session.add(house)
+        db.session.commit()
     return jsonify({"message" : "Created house successfully!"})
 
 @app.route('/api/teachers', methods=['POST'])
 def create_teacher():
     data = request.json
-    teacher = Teacher(tid=data['tid'], name=data['name'], of_house=House.query.filter_by(name=data['house_name']).first())
+    teacher = Teacher(tid=data['tid'], name=data['name'], of_house=House.query.filter_by(name=data['house']).first())
     db.session.add(teacher)
     db.session.commit()
     return jsonify({"message" : "Created teacher successfully!"})
@@ -124,8 +139,7 @@ def create_course():
     course = Course(cid=data['cid'], 
                     name=data['name'], 
                     credit = data['credit'],
-                    classes = data['class'],
-                    who_teach=Teacher.query.filter_by(name=data['teacher']).first())
+                    teacher=Teacher.query.filter_by(name=data['teacher']).first())
 
     db.session.add(course)
     db.session.commit()
@@ -139,10 +153,10 @@ def create_account():
     new_student = Student(sid=get_new_id(), name = "", of_house=get_random_house())
     db.session.add(new_student)
 
-    account = Account(public_id=str(uuid.uuid4()), 
+    account = Account(pid=str(uuid.uuid4()), 
                     username=data['username'], 
                     password=generate_password_hash(data['password'], method='sha256'),
-                    of_student=new_student
+                    student=new_student
     )
 
     db.session.add(account)

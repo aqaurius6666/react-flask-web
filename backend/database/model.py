@@ -131,8 +131,8 @@ class House(db.Model):
     name = db.Column(db.String(32, convert_unicode=True), nullable=False, primary_key=True)
     admin = db.Column(db.String(8))
 
-    students = db.relationship('Student', backref='house')
-    teachers = db.relationship('Teacher', backref='house')
+    students = db.relationship('Student', backref='of_house')
+    teachers = db.relationship('Teacher', backref='of_house')
     def to_dict(self):
         """Return object data in easily serializeable format"""
         return {
