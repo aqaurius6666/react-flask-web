@@ -58,12 +58,14 @@ def create_houses_by_list(array):
 
 def create_students_by_list(array):
     for each in array:
-        student = Student(sid=each['sid'], 
+        if each['role'] != 'Student':
+            pass
+        student = Student(sid=get_sid_from_id(each['id']), 
                         name=each['name'], 
-                        dob=each['dob'] if 'dob' in each.keys() else None,
+                        dob=datetime.datetime.strptime(each['dob'], "%d/%m/%Y") if 'dob' in each.keys() else None,
                         of_house=House.query.filter_by(name=each['house']).first())
         account = Account(pid=str(uuid.uuid4()),
-                            username=each['sid'],
+                            username=get_sid_from_id(each['id']),
                             password=generate_password_hash(standardize(each['name']), method='sha256'),
                             student=student)
         db.session.add(student)
@@ -74,4 +76,6 @@ def standardize(name):
     name = name.replace(" ", "")
     name = name.lower()
     return name
-   
+
+def get_sid_from_id(id):
+    return str(1000000 + int(id))
