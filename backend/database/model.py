@@ -24,7 +24,7 @@ class Account(db.Model):
 class Student(db.Model):
 
     sid = db.Column(db.String(8), primary_key=True)
-    name = db.Column(db.String(32, convert_unicode=True), nullable=False)
+    name = db.Column(db.String(64, convert_unicode=True), nullable=False)
     house = db.Column(db.String(32, convert_unicode=True), db.ForeignKey('house.name'))
     dob = db.Column(db.Date)
     credit = db.Column(db.Integer)
@@ -106,7 +106,7 @@ class Score(db.Model):
 class Teacher(db.Model):
 
     tid = db.Column(db.String(8), primary_key=True)
-    name = db.Column(db.String(32, convert_unicode=True), nullable=False)
+    name = db.Column(db.String(64, convert_unicode=True), nullable=False)
     house = db.Column(db.String(32, convert_unicode=True), db.ForeignKey('house.name'))
     dob = db.Column(db.Date)
     degree = db.Column(db.String(16, convert_unicode=True))
