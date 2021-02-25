@@ -8,30 +8,30 @@ import Slytherin from "../img/Slytherin.png"
 import Ravenclaw from "../img/Ravenclaw.png"
 import Footer from "./footer";
 
-const checkHouse = (house_id) => {
-    switch(house_id) {
-        case '1000':
+const checkHouse = (house) => {
+    switch(house) {
+        case 'Gryffindor':
             return 'Gryffindor'
-        case '1001':
+        case 'Slytherin':
             return 'Slytherin'
-        case '1002':
+        case 'Hufflepuff':
             return 'Hufflepuff'
-        case '1003':
+        case 'Ravenclaw':
             return 'Ravenclaw'
         default:
             return 'Hufflepuff'
     }
 }
 
-const checkHouseImg = (house_id) => {
-    switch(house_id) {
-        case '1000':
+const checkHouseImg = (house) => {
+    switch(house) {
+        case 'Gryffindor':
             return Gryffindor
-        case '1001':
+        case 'Slytherin':
             return Slytherin
-        case '1002':
+        case 'Hufflepuff':
             return Hufflepuff
-        case '1003':
+        case 'Ravenclaw':
             return Ravenclaw
         default:
             return Hufflepuff
@@ -71,7 +71,7 @@ export const Info = (props) => {
         return <div>You are not log in!</div>
     }
     if (student) {
-        let house_img = checkHouseImg(student.hid)
+        let house_img = checkHouseImg(student.house)
         return (
             <div>
                 <br /> <br />
@@ -88,7 +88,7 @@ export const Info = (props) => {
                             <th className="col-6 col-md-8">
                                 <h5>Full Name: {student.name}</h5>
                                 <h5>Date of Birth: {student.dob}</h5>
-                                <h5>House: {checkHouse(student.hid)}</h5>
+                                <h5>House: {checkHouse(student.house)}</h5>
                                 <h5>GPA: {student.gpa}</h5>
                                 <h5>Credit: {student.credit}</h5>
                             </th>
