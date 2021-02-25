@@ -1,11 +1,8 @@
 import { useState, useContext } from "react"
 import {Link, Redirect} from "react-router-dom"
 import { api_login } from "../API/action"
-import App from "../App"
 import history from "../history"
 import userContext from "./userContext"
-import NavBar from "./nav-bar";
-
 
 export const Login = () => {
     const {setUser} = useContext(userContext)

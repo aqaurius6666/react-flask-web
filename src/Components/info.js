@@ -21,8 +21,8 @@ const checkHouseImg = (house) => {
 }
 
 const findCharacterImage = (name) => {
-    let URL = name.toLowerCase().replace(/\s/g, '')
-    return `${envURL}/${URL}.jpg`
+    let URL = name.replace(/\s/g, '%20')
+    return `${envURL}/${URL}1.jpg`
 }
 
 

@@ -13,22 +13,22 @@ const Leader = [
     {
         name: 'Professor Albus Dumbledore',
         description: 'Albus Dumbledore was never proud or vain; he could find something to value in anyone, however apparently insignificant or wretched, and I believe that his early losses endowed him with great humanity and sympathy. I shall miss his friendship more than I can say, but my loss is as nothing compared to the Wizarding world’s. That he was the most inspiring and the best loved of all Hogwarts headmasters cannot be in question. He died as he lived: working always for the greater good and, to his last hour, as willing to stretch out a hand to a small boy with dragon pox as he was on the day that I met him.',
-        image: `${envURL}/albuspercivalwulfricbriandumbledore.jpg`
+        image: `${envURL}/Albus%20Percival%20Wulfric%20Brian%20Dumbledore1.jpg`
     },
     {
         name: 'Professor Minerva McGonagall',
         description: 'Professor Minerva McGonagall is the Transfiguration teacher at Hogwarts, head of Gryffindor house and deputy headmistress of Hogwarts during Harry\'s first year. She is described as fair, but very strict. Amongst other things, she led Harry to his sorting in his first year. She has the ability to transform into a tabby cat, because she is animaugus.',
-        image: `${envURL}/minervamcgonagall.jpg`
+        image: `${envURL}/Minerva%20McGonagall1.jpg`
     },
     {
         name: 'Professor Filius Flitwick',
         description: 'Professor Filius Flitwick was the Charms master and head of Ravenclaw house during Harry\'s first year at Hogwarts. He is described as "the best and most knowledgable Charms master alive in the world today." He has a remarkably short stature - Rowling has stated that he has "a dash of goblin blood.',
-        image: `${envURL}/filiusflitwick.jpg`
+        image: `${envURL}/Filius%20Flitwick1.jpg`
     },
     {
         name: 'Professor Severus Snape',
         description: 'Professor Severus Snape is the Potions master and head of Slytherin house, and is seen as the main secondary antagonist up until the end of the first book. His most notable appearance is during Chapter 8, which is named after him ("The Potions Master"). He teaches in the dungeons\' Potions Classroom.',
-        image: `${envURL}/severussnape.jpg`
+        image: `${envURL}/Severus%20Snape1.jpg`
     }
 ]
 
