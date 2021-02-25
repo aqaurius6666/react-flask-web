@@ -201,7 +201,9 @@ def login():
 @app.route('/api/authentication', methods=['GET'])
 @token_required
 def check(current):
-    return jsonify({"token" : encode_auth_token(current.pid, app.config['SECRET_KEY'])})
+    return jsonify({"token" : encode_auth_token(current.pid, app.config['SECRET_KEY']),
+                    "account" : current.to_dict() 
+                    })
 
 #-------------------------------------------------------------------------------------------------------------
 # UPDATE METHODS
