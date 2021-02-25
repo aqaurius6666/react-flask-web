@@ -2,12 +2,8 @@ import { useState, useContext } from "react"
 import {Link} from "react-router-dom"
 import { api_login } from "../API/action"
 import history from "../history"
-<<<<<<< HEAD
 import userContext from "./userContext"
-=======
 import accountContext from "./accountContext"
-
->>>>>>> b66be09429680e42eac9097e9c989f07dc1298ec
 
 export const Login = () => {
     const {setAccount} = useContext(accountContext)
