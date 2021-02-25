@@ -2,7 +2,6 @@ import { useState, useContext } from "react"
 import {Link} from "react-router-dom"
 import { api_login } from "../API/action"
 import history from "../history"
-import userContext from "./userContext"
 import accountContext from "./accountContext"
 
 export const Login = () => {
