@@ -1,6 +1,6 @@
 import { useContext, useState } from "react"
 import { api_update_passowrd } from "../API/action"
-import userContext from "./userContext"
+import accountContext from "./accountContext"
 
 export const ChangePassword = () => {
     const [form, setForm] = useState({
@@ -8,14 +8,14 @@ export const ChangePassword = () => {
         "password": "",
         "conf_password": ""
     })
-    const { user } = useContext(userContext)
+    const { account } = useContext(accountContext)
 
     const onSubmitForm = (e) => {
         e.preventDefault()
         api_update_passowrd(form.old_password, form.password, (msg) => console.log(msg))
 
     }
-    if (!user) {
+    if (!account) {
         return <div>You are not log in!</div>
     }
     if (form) {

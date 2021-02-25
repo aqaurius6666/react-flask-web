@@ -1,39 +1,24 @@
 import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
-import { api_get_account, api_get_user, initialUser } from "./API/action";
+import { api_get_account, initialAccount } from "./API/action";
 import { Home } from "./Components/home";
 import { Info } from "./Components/info";
 import { Login } from "./Components/login";
 import NavBar from "./Components/nav-bar";
 import { Register } from "./Components/register";
 import { Update } from "./Components/update";
-import userContext from "./Components/userContext";
+import accountContext from "./Components/accountContext";
 import {About} from "./Components/about";
 
 function App() {
-    const [user, setUser] = useState(initialUser())
-    const [user_, setUser_] = useState(initialUser())
+    const [account, setAccount] = useState(initialAccount())
     useEffect(() => {
-        api_get_account((data) => {
-            if (data !== user_) {
-                setUser_(data)
-            }
-        })
-
-    }, [])
-    useEffect(() => {
-        console.log(user)
-        api_get_account((data) => {
-            if (data !== user_) {
-                setUser(data)
-            }
-        })
-
-    }, [user_])
+        api_get_account((account) => setAccount(account))
+    } ,[])
 
     return (
         <>
-            <userContext.Provider value = {{user, setUser}}>
+            <accountContext.Provider value = {{account, setAccount}}>
                 <NavBar />
                 <Switch>
                     <Route exact path="/" component={() => <Home/>} />
@@ -43,7 +28,7 @@ function App() {
                     <Route exact path="/update" component={() => <Update/>} />
                     <Route exact path="/info" component={() => <Info/>} />
                 </Switch>
-            </userContext.Provider>
+            </accountContext.Provider>
         </>
     )
 }

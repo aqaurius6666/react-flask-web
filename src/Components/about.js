@@ -5,9 +5,9 @@ import Slytherin from "../img/house_img/Slytherin.png"
 import Ravenclaw from "../img/house_img/Ravenclaw.png"
 import hogwart from "../img/hogwarts_school.jpg"
 import NavBar from "./nav-bar";
-import userContext from "./userContext";
 import Footer from "./footer";
 import envURL from "../data/characterImages";
+import accountContext from './accountContext'
 
 const Leader = [
     {
@@ -205,8 +205,8 @@ const Houses = () => {
 }
 
 export const About = () => {
-    const {user} = useContext(userContext)
-    if (user) {
+    const {account} = useContext(accountContext)
+    if (account) {
         return (
             <div className="about">
                 <NavBar />

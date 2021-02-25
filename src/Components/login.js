@@ -1,18 +1,23 @@
 import { useState, useContext } from "react"
-import {Link, Redirect} from "react-router-dom"
+import {Link} from "react-router-dom"
 import { api_login } from "../API/action"
 import history from "../history"
+<<<<<<< HEAD
 import userContext from "./userContext"
+=======
+import accountContext from "./accountContext"
+
+>>>>>>> b66be09429680e42eac9097e9c989f07dc1298ec
 
 export const Login = () => {
-    const {setUser} = useContext(userContext)
+    const {setAccount} = useContext(accountContext)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const handleSubmit = (e) => {
         e.preventDefault()
-        api_login(username, password, (msg, user) => {
+        api_login(username, password, (msg, account) => {
             console.log(msg)
-            setUser(user)
+            setAccount(account)
             history.push("/")
         })
     }
