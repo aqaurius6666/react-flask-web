@@ -176,7 +176,7 @@ def get_student(pid):
 @app.route('/api/student', methods=['GET'])
 @token_required
 def get_student_info(current):
-    return jsonify({"student" : current.of_student.to_dict()})
+    return jsonify({"student" : current.student.to_dict()})
 @app.route('/api/account', methods=['GET'])
 @token_required
 def get_account_info(current):
