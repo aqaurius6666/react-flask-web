@@ -1,18 +1,17 @@
 import React, { useContext } from 'react'
 import {Nav, Navbar} from "react-bootstrap";
-import { NavLink } from 'react-router-dom'
 import { logout } from '../API/action';
-import userContext from './userContext';
 import logo1 from "../img/hogwart.svg";
+import accountContext from './accountContext';
 
 const NavBar = () => {
-    const {user, setUser} = useContext(userContext)
+    const {account, setAccout} = useContext(accountContext)
 
     const handleLogOut =() => {
-        logout(() => setUser(undefined))
+        logout(() => setAccout(undefined))
     }
     
-    if (user) {
+    if (account) {
         return (
             <>
                 <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top" expand="lg">

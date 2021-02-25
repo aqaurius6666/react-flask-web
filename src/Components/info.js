@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react"
 import { api_get_user } from "../API/action"
-import userContext from "./userContext"
 import Footer from "./footer";
 import houseImages from "../data/houseImages";
 import envURL from "../data/characterImages";
+import accountContext from "./accountContext";
 
 const checkHouseImg = (house) => {
     switch(house) {
@@ -49,7 +49,7 @@ const Subject = (props) => {
 }
 
 export const Info = () => {
-    const {user} = useContext(userContext)
+    const {account} = useContext(accountContext)
     
     const [student, setStudent] = useState()
     
@@ -57,7 +57,7 @@ export const Info = () => {
         api_get_user((data) => setStudent(data))
     },[])
 
-    if (!user) {
+    if (!account) {
         return <div>You are not log in!</div>
     }
     if (student) {

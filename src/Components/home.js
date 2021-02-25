@@ -1,11 +1,10 @@
 import { useContext} from "react"
-import userContext from "./userContext"
 import React from 'react'
 import logo from "../img/hogwarts_sm_logo.svg"
 import hogwart from "../img/four_houses.jpg"
 import NavBar from "./nav-bar";
-import {ChangePassword} from "./change_password"
 import Footer from "./footer";
+import accountContext from "./accountContext"
 
 const NotificationList = [
     {
@@ -133,8 +132,8 @@ const Notification = () => {
 }
 
 export const Home = () => {
-    const {user} = useContext(userContext)
-    if (user) {
+    const {account} = useContext(accountContext)
+    if (account) {
         return (
             <div className="home">
 

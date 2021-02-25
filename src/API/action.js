@@ -21,7 +21,7 @@ export const api_login = (username, password, cb) => {
         .then(data => {
             localStorage.setItem("token", data.token)
             localStorage.setItem("account", data.account)
-            cb(data.message, data.user)
+            cb(data.message, data.account)
         })
         .catch(error => console.log(error))
 
@@ -104,6 +104,6 @@ export const authHeader = () => {
     }
 }
 
-export const initialUser = () => {
-    return localStorage.getItem("user")
+export const initialAccount = () => {
+    return localStorage.getItem("account")
 }
