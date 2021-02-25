@@ -1,38 +1,34 @@
 import React, {useContext} from 'react'
-import Gryffindor from "../img/Gryffindor.png"
-import Hufflepuff from "../img/Hufflepuff.png"
-import Slytherin from "../img/Slytherin.png"
-import Ravenclaw from "../img/Ravenclaw.png"
+import Gryffindor from "../img/house_img/Gryffindor.png"
+import Hufflepuff from "../img/house_img/Hufflepuff.png"
+import Slytherin from "../img/house_img/Slytherin.png"
+import Ravenclaw from "../img/house_img/Ravenclaw.png"
 import hogwart from "../img/hogwarts_school.jpg"
-import albus_dumbledore from "../img/albus_dumbledore.jpg"
-import minerva_mcgonagall from "../img/minerva_mcgonagall.jpg"
-import flitwick from "../img/flitwick.png"
-import severus_snape from "../img/severus_snape.jpg"
 import NavBar from "./nav-bar";
 import userContext from "./userContext";
 import Footer from "./footer";
-import {Media} from 'react-bootstrap'
+import envURL from "../data/characterImages";
 
 const Leader = [
     {
         name: 'Professor Albus Dumbledore',
         description: 'Albus Dumbledore was never proud or vain; he could find something to value in anyone, however apparently insignificant or wretched, and I believe that his early losses endowed him with great humanity and sympathy. I shall miss his friendship more than I can say, but my loss is as nothing compared to the Wizarding world’s. That he was the most inspiring and the best loved of all Hogwarts headmasters cannot be in question. He died as he lived: working always for the greater good and, to his last hour, as willing to stretch out a hand to a small boy with dragon pox as he was on the day that I met him.',
-        image: albus_dumbledore
+        image: `${envURL}/albuspercivalwulfricbriandumbledore.jpg`
     },
     {
         name: 'Professor Minerva McGonagall',
         description: 'Professor Minerva McGonagall is the Transfiguration teacher at Hogwarts, head of Gryffindor house and deputy headmistress of Hogwarts during Harry\'s first year. She is described as fair, but very strict. Amongst other things, she led Harry to his sorting in his first year. She has the ability to transform into a tabby cat, because she is animaugus.',
-        image: minerva_mcgonagall
+        image: `${envURL}/minervamcgonagall.jpg`
     },
     {
         name: 'Professor Filius Flitwick',
         description: 'Professor Filius Flitwick was the Charms master and head of Ravenclaw house during Harry\'s first year at Hogwarts. He is described as "the best and most knowledgable Charms master alive in the world today." He has a remarkably short stature - Rowling has stated that he has "a dash of goblin blood.',
-        image: flitwick
+        image: `${envURL}/filiusflitwick.jpg`
     },
     {
         name: 'Professor Severus Snape',
         description: 'Professor Severus Snape is the Potions master and head of Slytherin house, and is seen as the main secondary antagonist up until the end of the first book. His most notable appearance is during Chapter 8, which is named after him ("The Potions Master"). He teaches in the dungeons\' Potions Classroom.',
-        image: severus_snape
+        image: `${envURL}/severussnape.jpg`
     }
 ]
 

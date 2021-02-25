@@ -1,8 +1,5 @@
-
 import { useEffect, useState } from "react"
 import { api_get_student, api_update_student } from "../API/action"
-
-
 
 export const ChangeInfo = () => {
     const [form, setForm] = useState(undefined)

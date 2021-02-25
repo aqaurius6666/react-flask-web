@@ -1,42 +1,30 @@
 import React, { useContext, useEffect, useState } from "react"
 import { api_get_student } from "../API/action"
 import userContext from "./userContext"
-import harry from '../img/harry.jpg'
-import Gryffindor from "../img/Gryffindor.png"
-import Hufflepuff from "../img/Hufflepuff.png"
-import Slytherin from "../img/Slytherin.png"
-import Ravenclaw from "../img/Ravenclaw.png"
 import Footer from "./footer";
+import houseImages from "../data/houseImages";
+import envURL from "../data/characterImages";
 
-const checkHouse = (house_id) => {
-    switch(house_id) {
-        case '1000':
-            return 'Gryffindor'
-        case '1001':
-            return 'Slytherin'
-        case '1002':
-            return 'Hufflepuff'
-        case '1003':
-            return 'Ravenclaw'
+const checkHouseImg = (house) => {
+    switch(house) {
+        case 'Gryffindor':
+            return houseImages[0]
+        case 'Slytherin':
+            return houseImages[1]
+        case 'Hufflepuff':
+            return houseImages[2]
+        case 'Ravenclaw':
+            return houseImages[3]
         default:
-            return 'Hufflepuff'
+            return houseImages[2]
     }
 }
 
-const checkHouseImg = (house_id) => {
-    switch(house_id) {
-        case '1000':
-            return Gryffindor
-        case '1001':
-            return Slytherin
-        case '1002':
-            return Hufflepuff
-        case '1003':
-            return Ravenclaw
-        default:
-            return Hufflepuff
-    }
+const findCharacterImage = (name) => {
+    let URL = name.toLowerCase().replace(/\s/g, '')
+    return `${envURL}/${URL}.jpg`
 }
+
 
 const Subject = (props) => {
     return (
@@ -59,7 +47,8 @@ const Subject = (props) => {
         </tr>
     )
 }
-export const Info = (props) => {
+
+export const Info = () => {
     const {user} = useContext(userContext)
     
     const [student, setStudent] = useState()
@@ -71,7 +60,8 @@ export const Info = (props) => {
         return <div>You are not log in!</div>
     }
     if (student) {
-        let house_img = checkHouseImg(student.hid)
+        console.log(student)
+        let house_img = checkHouseImg(student.house)
         return (
             <div>
                 <br /> <br />
@@ -82,18 +72,21 @@ export const Info = (props) => {
                 <div>
                     <table className="row" border="2" cellPadding="15" cellSpacing="0">
                         <tr className="col-12 row">
-                            <th className="col-6 col-md-2">
-                                <img className="student_image" src={harry} alt="student's image" />
+                            <th className="col-6 col-md-3 col-lg-2">
+                                <img className="student_image"
+                                     src={findCharacterImage(student.name)}
+                                     alt="student" />
                             </th>
-                            <th className="col-6 col-md-8">
+                            <th className="col-6 col-md-6 col-lg-8">
+                                <h5>Student's ID: {student.sid}</h5>
                                 <h5>Full Name: {student.name}</h5>
                                 <h5>Date of Birth: {student.dob}</h5>
-                                <h5>House: {checkHouse(student.hid)}</h5>
+                                <h5>House: {student.house}</h5>
                                 <h5>GPA: {student.gpa}</h5>
                                 <h5>Credit: {student.credit}</h5>
                             </th>
-                            <th className="col-2 d-none d-sm-inline">
-                                <img className="student_image" src={house_img} alt="house's image" />
+                            <th className="col-lg-2 d-none d-sm-inline">
+                                <img className="student_image" src={house_img} alt="house" />
                             </th>
                         </tr>
                         <tr className="col-12 row text-center">

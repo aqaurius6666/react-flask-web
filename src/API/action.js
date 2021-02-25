@@ -1,6 +1,3 @@
-import { useContext } from "react"
-import userContext from "../Components/userContext"
-
 export const api_register = (username, password, cb) => {
     const url = "https://it-must-be-ok.herokuapp.com/api/accounts"
     fetch(url, {
