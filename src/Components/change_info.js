@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
-import { api_get_student, api_update_student } from "../API/action"
+import { api_get_user, api_update_student } from "../API/action"
 
 export const ChangeInfo = () => {
     const [form, setForm] = useState(undefined)
     useEffect(() => {
-        api_get_student((data) => setForm(data))
+        api_get_user((data) => setForm(data))
     }, [])
     const onSubmitForm = (e) => {
         e.preventDefault()

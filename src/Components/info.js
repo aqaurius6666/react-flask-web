@@ -1,22 +1,10 @@
 import React, { useContext, useEffect, useState } from "react"
-import { api_get_student } from "../API/action"
+import { api_get_user } from "../API/action"
 import userContext from "./userContext"
 import Footer from "./footer";
 import houseImages from "../data/houseImages";
 import envURL from "../data/characterImages";
 
-<<<<<<< HEAD
-const checkHouse = (house) => {
-    switch(house) {
-        case 'Gryffindor':
-            return 'Gryffindor'
-        case 'Slytherin':
-            return 'Slytherin'
-        case 'Hufflepuff':
-            return 'Hufflepuff'
-        case 'Ravenclaw':
-            return 'Ravenclaw'
-=======
 const checkHouseImg = (house) => {
     switch(house) {
         case 'Gryffindor':
@@ -27,31 +15,14 @@ const checkHouseImg = (house) => {
             return houseImages[2]
         case 'Ravenclaw':
             return houseImages[3]
->>>>>>> 51965db620659b0ddef6992bddf465df9b0f5377
         default:
             return houseImages[2]
     }
 }
 
-<<<<<<< HEAD
-const checkHouseImg = (house) => {
-    switch(house) {
-        case 'Gryffindor':
-            return Gryffindor
-        case 'Slytherin':
-            return Slytherin
-        case 'Hufflepuff':
-            return Hufflepuff
-        case 'Ravenclaw':
-            return Ravenclaw
-        default:
-            return Hufflepuff
-    }
-=======
 const findCharacterImage = (name) => {
     let URL = name.toLowerCase().replace(/\s/g, '')
     return `${envURL}/${URL}.jpg`
->>>>>>> 51965db620659b0ddef6992bddf465df9b0f5377
 }
 
 
@@ -83,16 +54,13 @@ export const Info = () => {
     const [student, setStudent] = useState()
     
     useEffect(() => {
-        api_get_student((data) => setStudent(data))
+        api_get_user((data) => setStudent(data))
     },[])
+
     if (!user) {
         return <div>You are not log in!</div>
     }
     if (student) {
-<<<<<<< HEAD
-=======
-        console.log(student)
->>>>>>> 51965db620659b0ddef6992bddf465df9b0f5377
         let house_img = checkHouseImg(student.house)
         return (
             <div>
@@ -113,11 +81,7 @@ export const Info = () => {
                                 <h5>Student's ID: {student.sid}</h5>
                                 <h5>Full Name: {student.name}</h5>
                                 <h5>Date of Birth: {student.dob}</h5>
-<<<<<<< HEAD
-                                <h5>House: {checkHouse(student.house)}</h5>
-=======
                                 <h5>House: {student.house}</h5>
->>>>>>> 51965db620659b0ddef6992bddf465df9b0f5377
                                 <h5>GPA: {student.gpa}</h5>
                                 <h5>Credit: {student.credit}</h5>
                             </th>

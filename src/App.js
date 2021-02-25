@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
-import { api_get_user, initialUser } from "./API/action";
+import { api_get_account, api_get_user, initialUser } from "./API/action";
 import { Home } from "./Components/home";
 import { Info } from "./Components/info";
 import { Login } from "./Components/login";
@@ -14,7 +14,7 @@ function App() {
     const [user, setUser] = useState(initialUser())
     const [user_, setUser_] = useState(initialUser())
     useEffect(() => {
-        api_get_user((data) => {
+        api_get_account((data) => {
             if (data !== user_) {
                 setUser_(data)
             }
@@ -23,7 +23,7 @@ function App() {
     }, [])
     useEffect(() => {
         console.log(user)
-        api_get_user((data) => {
+        api_get_account((data) => {
             if (data !== user_) {
                 setUser(data)
             }
