@@ -167,20 +167,15 @@ def create_account():
 # GET SPECIFIC METHODS
 #-------------------------------------------------------------------------------------------------------------
 
-@app.route('/api/students/<pid>', methods=['GET'])
-def get_student(pid):
-    account = Account.query.filter_by(pid=pid).first()
-    student = Student.query.filter_by(sid=account.sid).first()
-    return jsonify(info(account, student))
-
 @app.route('/api/user', methods=['GET'])
 @token_required
 def get_user(current):
     return jsonify({'user' : current.get_user().to_dict()})
+
 @app.route('/api/account', methods=['GET'])
 @token_required
-def get_account_info(current):
-    return jsonify({"user" : current.to_dict()})
+def get_account(current):
+    return jsonify({"account" : current.to_dict()})
 
 
 #-------------------------------------------------------------------------------------------------------------
@@ -206,7 +201,7 @@ def login():
 @app.route('/api/authentication', methods=['GET'])
 @token_required
 def check(current):
-    return jsonify({"user" : current.to_dict()})
+    return jsonify({"token" : encode_auth_token(current.pid, app.config['SECRET_KEY'])})
 
 #-------------------------------------------------------------------------------------------------------------
 # UPDATE METHODS
@@ -215,7 +210,7 @@ def check(current):
 @app.route('/api/student', methods=['PUT'])
 @token_required
 def update_student(current):
-    student = current.of_student
+    student = current.get_user()
     data = request.json
     if data['dob']:
         try:
