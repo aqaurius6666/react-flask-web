@@ -191,7 +191,7 @@ def login():
     
     if check_password_hash(account.password, data['password']):
         return jsonify({"token" : encode_auth_token(account.pid, app.config.get('SECRET_KEY')),
-                        "user" : account.to_dict(),
+                        "account" : account.to_dict(),
                         "message" : "Login successfully!"
                         }), 200
     else:
