@@ -10,7 +10,8 @@ class Account(db.Model):
     pid = db.Column(db.String(36), primary_key=True)
     username = db.Column(db.String(36), unique=True)
     password = db.Column(db.String(128))
-    sid = db.Column(db.String(8), db.ForeignKey('student.sid'))
+    
+    id = db.Column(db.String(4))
 
 
     def to_dict(self):
@@ -18,14 +19,18 @@ class Account(db.Model):
         return {
             'pid' : self.pid,
             'username' : self.username,
-            'sid' : self.sid
+            'id' : self.id
         }
+    def get_user(self):
+        s = Student.query.filter_by(sid=self.id).first()
+        t = Teacher.query.filter_by(tid=self.id).first()
+        return s if s else t
 
 class Student(db.Model):
 
-    sid = db.Column(db.String(8), primary_key=True)
+    sid = db.Column(db.String(4), primary_key=True)
     name = db.Column(db.String(64, convert_unicode=True), nullable=False)
-    house = db.Column(db.String(32, convert_unicode=True), db.ForeignKey('house.name'))
+    house = db.Column(db.String(16, convert_unicode=True), db.ForeignKey('house.name'))
     dob = db.Column(db.Date)
     credit = db.Column(db.Integer)
     gpa = db.Column(db.Float)
@@ -33,7 +38,6 @@ class Student(db.Model):
     description = db.Column(db.String(512, convert_unicode=True))
 
     score = db.relationship('Score', backref='student')
-    account = db.relationship('Account', backref='student', uselist=None)
 
 
     def to_dict(self):
@@ -46,7 +50,8 @@ class Student(db.Model):
             'credit' : self.credit,
             'gpa' : self.gpa,
             'hobby' : self.hobby,
-            'description' : self.description
+            'description' : self.description,
+            'role' : 'Student'
         }
     def update(self, data):
         self.name = data['name']
@@ -60,9 +65,9 @@ class Student(db.Model):
 
 class Course(db.Model):
 
-    cid = db.Column(db.String(8), primary_key=True)
+    cid = db.Column(db.String(4), primary_key=True)
     name = db.Column(db.String(32, convert_unicode=True), nullable=False)
-    tid = db.Column(db.String(8), db.ForeignKey('teacher.tid'))
+    tid = db.Column(db.String(4), db.ForeignKey('teacher.tid'))
     place = db.Column(db.String(16, convert_unicode=True))
     credit = db.Column(db.Integer)
     refer = db.Column(db.String(128))
@@ -76,7 +81,6 @@ class Course(db.Model):
             'name' : self.name,
             'place' : self.place,
             'tid' : self.tid,
-            'classes' : self.classes,
             'credit' : self.credit,
             'refer' : self.refer
         }
@@ -85,8 +89,8 @@ class Course(db.Model):
 class Score(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
-    cid = db.Column(db.String(8), db.ForeignKey('course.cid'))
-    sid = db.Column(db.String(8), db.ForeignKey('student.sid'))
+    cid = db.Column(db.String(4), db.ForeignKey('course.cid'))
+    sid = db.Column(db.String(4), db.ForeignKey('student.sid'))
     mid = db.Column(db.Float)
     final = db.Column(db.Float)
     total = db.Column(db.Float)
@@ -105,9 +109,9 @@ class Score(db.Model):
         }
 class Teacher(db.Model):
 
-    tid = db.Column(db.String(8), primary_key=True)
+    tid = db.Column(db.String(4), primary_key=True)
     name = db.Column(db.String(64, convert_unicode=True), nullable=False)
-    house = db.Column(db.String(32, convert_unicode=True), db.ForeignKey('house.name'))
+    house = db.Column(db.String(16, convert_unicode=True), db.ForeignKey('house.name'))
     dob = db.Column(db.Date)
     degree = db.Column(db.String(16, convert_unicode=True))
 
@@ -119,17 +123,18 @@ class Teacher(db.Model):
         return {
             'tid' : self.tid,
             'name' : self.name,
-            'dob' : self.dob,
+            'dob' : self.dob.strftime("%d/%m/%Y") if self.dob else None,
             'house' : self.house,
-            'degree' : self.degree
+            'degree' : self.degree,
+            'role' : 'Teacher'
         }
     def get_courses(self):
         return self.courses
 
 class House(db.Model):
 
-    name = db.Column(db.String(32, convert_unicode=True), nullable=False, primary_key=True)
-    admin = db.Column(db.String(8))
+    name = db.Column(db.String(16, convert_unicode=True), primary_key=True)
+    admin = db.Column(db.String(4))
 
     students = db.relationship('Student', backref='of_house')
     teachers = db.relationship('Teacher', backref='of_house')

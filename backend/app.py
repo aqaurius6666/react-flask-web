@@ -173,10 +173,10 @@ def get_student(pid):
     student = Student.query.filter_by(sid=account.sid).first()
     return jsonify(info(account, student))
 
-@app.route('/api/student', methods=['GET'])
+@app.route('/api/user', methods=['GET'])
 @token_required
-def get_student_info(current):
-    return jsonify({"student" : current.student.to_dict()})
+def get_user(current):
+    return jsonify({'user' : current.get_user().to_dict()})
 @app.route('/api/account', methods=['GET'])
 @token_required
 def get_account_info(current):

@@ -1,4 +1,4 @@
-from .database.model import Account, Student, House
+from .database.model import Account, Student, House, Teacher
 from .database.model import db
 from random import choice
 import uuid
@@ -11,7 +11,7 @@ def get_new_id():
     if last_id:
         last_id = str(int(last_id.sid) + 1)
     else:
-        last_id = "10000000"
+        last_id = "1000"
     return last_id
 
 def get_random_house():
@@ -58,17 +58,25 @@ def create_houses_by_list(array):
 
 def create_students_by_list(array):
     for each in array:
+        id = get_sid_from_id(each['id'])
         if each['role'] != 'Student':
-            pass
-        student = Student(sid=get_sid_from_id(each['id']), 
+            teacher = Teacher(tid=id, 
                         name=each['name'], 
                         dob=datetime.datetime.strptime(each['dob'], "%d/%m/%Y") if 'dob' in each.keys() else None,
                         of_house=House.query.filter_by(name=each['house']).first())
+            db.session.add(teacher)
+            
+        else:
+            student = Student(sid=id, 
+                        name=each['name'], 
+                        dob=datetime.datetime.strptime(each['dob'], "%d/%m/%Y") if 'dob' in each.keys() else None,
+                        of_house=House.query.filter_by(name=each['house']).first())
+            db.session.add(student)
+
         account = Account(pid=str(uuid.uuid4()),
-                            username=get_sid_from_id(each['id']),
-                            password=generate_password_hash(standardize(each['name']), method='sha256'),
-                            student=student)
-        db.session.add(student)
+                            username=id,
+                            password=generate_password_hash(id, method='sha256'),
+                            id=id)
         db.session.add(account)
     db.session.commit()
 
@@ -78,4 +86,4 @@ def standardize(name):
     return name
 
 def get_sid_from_id(id):
-    return str(1000000 + int(id))
+    return str(1000 + int(id))
