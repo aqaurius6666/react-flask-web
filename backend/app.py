@@ -31,7 +31,7 @@ def token_required(f):
             data = jwt.decode(token, app.config['SECRET_KEY'], algorithms="HS256")
         except:
             return jsonify({"message" : "Token is invalid"}), 401
-        acc = Account.query.filter_by(public_id = data['public_id']).first()
+        acc = Account.query.filter_by(pid = data['pid']).first()
         if acc:
             return f(acc, *args, **kwargs)
         else:
@@ -167,9 +167,9 @@ def create_account():
 # GET SPECIFIC METHODS
 #-------------------------------------------------------------------------------------------------------------
 
-@app.route('/api/students/<public_id>', methods=['GET'])
-def get_student(public_id):
-    account = Account.query.filter_by(public_id=public_id).first()
+@app.route('/api/students/<pid>', methods=['GET'])
+def get_student(pid):
+    account = Account.query.filter_by(pid=pid).first()
     student = Student.query.filter_by(sid=account.sid).first()
     return jsonify(info(account, student))
 
@@ -195,7 +195,7 @@ def login():
         return jsonify({"message" : "Username or password is incorrect!"}), 401
     
     if check_password_hash(account.password, data['password']):
-        return jsonify({"token" : encode_auth_token(account.public_id, app.config.get('SECRET_KEY')),
+        return jsonify({"token" : encode_auth_token(account.pid, app.config.get('SECRET_KEY')),
                         "user" : account.to_dict(),
                         "message" : "Login successfully!"
                         }), 200
@@ -248,7 +248,7 @@ def update_account(current):
 @app.route('/api/delete/account/<id>', methods=['DELETE'])
 def delete_account(id):
     try:
-        account = Account.query.filter_by(public_id=id).first()
+        account = Account.query.filter_by(pid=id).first()
         db.session.delete(account)
         db.session.commit()
         return jsonify({"message" : "Delete successfully!"}), 200
