@@ -49,7 +49,7 @@ export const api_get_user = (cb) => {
         })
 }
 export const api_get_student = (cb) => {
-    const url = "https://it-must-be-ok.herokuapp.com/api/student"
+    const url = "https://it-must-be-ok.herokuapp.com/api/user"
     fetch(url, {
         method: "GET",
         headers: authHeader(),
