@@ -61,12 +61,14 @@ export const Info = () => {
         return <div>You are not log in!</div>
     }
     if (student) {
+        console.log(student)
         let house_img = checkHouseImg(student.house)
         return (
             <div>
                 <br /> <br />
                 <div className="container header text-center">
-                    <h3>Student's Information</h3>
+                    <h3>{student.role === 'Student'
+                        ? `Student` : `Teacher`}'s Infomation</h3>
                     <hr />
                 </div>
                 <div>
@@ -78,12 +80,18 @@ export const Info = () => {
                                      alt="student" />
                             </th>
                             <th className="col-6 col-md-6 col-lg-8">
-                                <h5>Student's ID: {student.sid}</h5>
+                                <h5>{student.role === 'Student'
+                                    ? `Student` : `Teacher`}'s ID:
+                                    {student.role === 'Student'
+                                            ? student.sid : student.tid}</h5>
                                 <h5>Full Name: {student.name}</h5>
                                 <h5>Date of Birth: {student.dob}</h5>
                                 <h5>House: {student.house}</h5>
-                                <h5>GPA: {student.gpa}</h5>
-                                <h5>Credit: {student.credit}</h5>
+                                <h5>{student.role === 'Student'
+                                    ? `GPA: ${student.gpa}` : ''}</h5>
+                                <h5>{student.role === 'Student'
+                                    ? `Credit: ${student.credit}` : ''}</h5>
+
                             </th>
                             <th className="col-lg-2 d-none d-sm-inline">
                                 <img className="student_image" src={house_img} alt="house" />

@@ -8,7 +8,6 @@ export const AuthenticationApp = (props) => {
         return <div>Hello {user.sid}</div>
     } else {
         return <Redirect to="/login"/>
-        
     }
 
 }

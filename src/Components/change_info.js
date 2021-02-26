@@ -16,9 +16,9 @@ export const ChangeInfo = () => {
                 <h1>Info: </h1>
                 <form className="form-group" onSubmit={onSubmitForm}>
                     <div>
-                        <label>Name: </label>
-                        <input value={form.name ? form.name : ""}
-                               onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                        <label>Hobby: </label>
+                        <input value={form.hobby ? form.hobby : ""}
+                               onChange={(e) => setForm({ ...form, hobby: e.target.value })} />
                     </div>
 
                     <div>
