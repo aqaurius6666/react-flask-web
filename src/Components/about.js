@@ -1,5 +1,5 @@
 import React, {useContext} from 'react'
-import hogwart from "../img/hogwarts_school.jpg"
+import Header from './header'
 import NavBar from "./nav-bar";
 import Footer from "./footer";
 import accountContext from './accountContext'
@@ -23,8 +23,8 @@ const RenderLeader = ({ leader }) => {
 const RenderTr = ({trItem}) => {
     return (
         <tr className="row">
-            <th className="col-md-1 d-none d-xl-block d-sm-inline">{trItem.title}</th>
-            <div className="col-12 col-md-11 row">
+            <th className="col-md-2 d-none d-xl-block d-sm-inline">{trItem.title}</th>
+            <div className="col-12 col-md-10 row">
                 <td className="col-3">{trItem.description[0]}</td>
                 <td className="col-3">{trItem.description[1]}</td>
                 <td className="col-3">{trItem.description[2]}</td>
@@ -46,7 +46,7 @@ const Presidents = () => {
 
     return (
         <div className="container presidents">
-            <h3><span className="mw-headline">Heads of Hogwarts</span></h3>
+            <h3><span className="mw-headline">II. Heads of Hogwarts</span></h3>
             <dd>
                 <div className="noprint"><p>Main article:
                     <a href="https://harrypotter.fandom.com/wiki/Hogwarts_Headmaster" title="Hogwarts Headmaster">Hogwarts
@@ -75,14 +75,12 @@ const Houses = () => {
     })
 
     return (
-        <div>
-            <div className="row">
-                <div className="col col-md-6">
-                    <p className="house_title"><strong>Hogwarts Houses</strong></p>
+        <div className="container">
+            <div>
+                <div>
+                    <h3><span className="mw-headline">I. Heads of Hogwarts</span></h3>
                 </div>
-                <div className="col col-md-6">
-                    <img alt="hogwart" src={hogwart} width="60%" height="auto" />
-                </div>
+
             </div>
             <table className="simple" border="1" >
                 <tbody>
@@ -99,6 +97,7 @@ export const About = () => {
         return (
             <div className="about">
                 <NavBar />
+                <Header />
                 <br />
                 <Houses />
                 <Presidents />

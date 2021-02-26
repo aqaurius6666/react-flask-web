@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
 :root {
     --background: #092834;
     --borders: #FE2712;
@@ -7,27 +9,27 @@
 }
 
 .row-header {
-    margin: 0px auto;
-    padding: 0px auto;
+    margin: 0 auto;
+    padding: 0 auto;
 }
 
 .row-content {
-    margin: 0px auto;
-    padding: 50px 0px 50px 0px;
+    margin: 0 auto;
+    padding: 50px 0 50px 0;
     border-bottom: 1px ridge;
     min-height: 40px;
 }
 
 .row-footer {
     background-color: #D1C4E9;
-    margin: 0px auto;
-    padding: 20px 0px 20px 0px;
+    margin: 0 auto;
+    padding: 20px 0 20px 0;
 }
 
 .jumbotron {
     background-color: white;
     color: black;
-    padding-bottom: 0px;
+    padding-bottom: 0;
     padding-top: 40px;
 }
 
@@ -42,20 +44,21 @@
 }
 
 body{
-    padding:50px 0px 0px 0px;
+    padding:50px 0 0 0;
     z-index:0;
 }
 
 .navbar-dark {
     background-color: #218c74;
+    padding-left: 5vw;
 }
 
 .nav-link {
     color: white;
 }
 
-#navbarbrand {
-    padding: 0px 50px 0px 0px;
+#navbarcollapse {
+    padding: 0 0 0 50px;
 }
 
 .student_image {
@@ -68,14 +71,12 @@ body{
 .house_title {
     color: orangered;
     font-size: 2em;
-    padding: 0px 0px 20px 200px;
+    text-align: center;
 }
 
 
 
 /*login page*/
-
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .login-page {
     width: 360px;
@@ -210,9 +211,9 @@ body {
 }
 
 .row {
-    margin-right: 0px;
-    margin-left: 0px;
-    padding: 0px;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 0;
 }
 
 .social-media-link {
@@ -231,4 +232,10 @@ body {
 
 .presidents {
     padding-top: 15px;
+}
+
+.headerComponent {
+    background-color: #218c74;
+    padding-bottom: 3%;
+    padding-left: 5%;
 }

@@ -15,10 +15,11 @@ const NavBar = () => {
         return (
             <>
                 <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top" expand="lg">
-                    <a className="navbar-brand" href="/"><img src={logo1} height="40" width="auto" alt="logo1"/></a>
-                    <Navbar.Brand id="navbarbrand" href="/">HOGWARTS ACADEMY</Navbar.Brand>
+                    <a className="navbar-brand" href="/">
+                        <img src={logo1} height="40" width="auto" alt="logo1"/></a>
+                    <Navbar.Brand href="/">HOGWARTS ACADEMY</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Collapse id="navbarcollapse">
                         <Nav className="mr-auto row">
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/about">About</Nav.Link>
@@ -32,19 +33,17 @@ const NavBar = () => {
         )
     } else {
         return(
-            <>
-                <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top" expand="lg">
-                    <img src={logo1} height="40" width="auto" alt="logo1"/>
-                    <Navbar.Brand id="navbarbrand" href="#">HOGWARTS ACADEMY</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="mr-auto row">
-                            <Nav.Link href="/login" onClick={handleLogOut}>Log in</Nav.Link>
-                            <Nav.Link href="/register" onClick={handleLogOut}>Register</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Navbar>
-            </>
+            <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top" expand="lg">
+                <img className="d-none d-sm-block" src={logo1} height="40" width="auto" alt="logo1"/>
+                <Navbar.Brand id="navbarbrand" href="#">HOGWARTS ACADEMY</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="mr-auto row">
+                        <Nav.Link href="/login" onClick={handleLogOut}>Log in</Nav.Link>
+                        <Nav.Link href="/register" onClick={handleLogOut}>Register</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
         )
     }
 }; export default NavBar

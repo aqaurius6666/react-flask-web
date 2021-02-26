@@ -6,6 +6,7 @@ import NavBar from "./nav-bar";
 import Footer from "./footer";
 import accountContext from "./accountContext"
 import {NotificationList} from "../data/superData"
+import Header from "./header";
 
 const MediaComponent = (props) => {
     let media = props.media
@@ -29,7 +30,7 @@ const MediaComponent = (props) => {
     )
 }
 
-const Header = () => {
+const Introductory = () => {
     return (
         <header className="jumbotron">
             <div className="container">
@@ -105,6 +106,7 @@ export const Home = () => {
             <div className="home">
                 <NavBar/>
                 <Header/>
+                <Introductory />
                 <hr className="hr"/>
                 <Notification/>
                 <Footer/>
