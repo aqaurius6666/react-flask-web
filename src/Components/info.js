@@ -26,7 +26,6 @@ const findCharacterImage = (name) => {
     return `${envURL}/${URL}1.jpg`
 }
 
-
 const Subject = (props) => {
     return (
         <tr className="col-12 row text-center">
@@ -127,6 +126,8 @@ export const Info = () => {
             </div>
         )
     } else {
-        <img src={loading} alt="loading" width="100%" height="auto" />
+        return (
+            <img src={loading} alt="loading" width="100%" height="auto" />
+        )
     }
 }
