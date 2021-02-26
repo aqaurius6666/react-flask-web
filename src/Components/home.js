@@ -5,39 +5,7 @@ import hogwart from "../img/four_houses.jpg"
 import NavBar from "./nav-bar";
 import Footer from "./footer";
 import accountContext from "./accountContext"
-
-const NotificationList = [
-    {
-        link: "https://uet.vnu.edu.vn/wp-content/uploads/2020/11/DS-SV-ho%C3%A3n-n%E1%BB%99p-h%E1%BB%8Dc-ph%C3%AD.pdf",
-        alert: "Danh sách sinh viên được hoãn nộp học phí kì I (2020-2021)",
-        date: "08/ 09/ 2020"
-    },
-    {
-        link: "https://uet.vnu.edu.vn/wp-content/uploads/2020/11/DANH-SACH-THU-K1.20-21-TT23-1.pdf",
-        alert: "DANH SÁCH CHƯƠNG TRÌNH ĐÀO TẠO CLC 2020-2021",
-        date: "29/ 06/ 2020"
-    },
-    {
-        link: "https://uet.vnu.edu.vn/wp-content/uploads/2021/01/Danh-s%C3%A1ch-SV-4.pdf",
-        alert: "Triệu tập sinh viên tham dự Hội thảo giới thiệu chương trình MB MAGIC CUP",
-        date: "28/ 06/ 2020"
-    },
-    {
-        link: "https://uet.vnu.edu.vn/wp-content/uploads/2021/01/2021_1_Ket-qua-Quy-gui_Danh-s%C3%A1ch-nh%E1%BA%ADn-HB.pdf",
-        alert: "Sinh viên nhận học bổng Kumho Asiana học kỳ 1, năm học 2020-2021",
-        date: "15/ 05/ 2020"
-    },
-    {
-        link: "https://uet.vnu.edu.vn/wp-content/uploads/2021/01/Thong-bao-so-1-Olympic-vat-ly-2021.pdf",
-        alert: "Sinh viên đăng ký thi chọn đội tuyển Quidditch sinh viên toàn quốc lần thứ XXIII năm 2021",
-        date: "07/ 05/ 2020"
-    },
-    {
-        link: "https://uet.vnu.edu.vn/wp-content/uploads/2021/01/2021_1_Ket-qua-Quy-gui_Danh-s%C3%A1ch-nh%E1%BA%ADn-HB.pdf",
-        alert: "Danh sách sinh viên đăng kí thi chọn đội tuyển Olympic Pháp Thuật toàn quốc lần thứ XX năm 2021",
-        date: "08/ 09/ 2020"
-    }
-]
+import {NotificationList} from "../data/superData"
 
 const MediaComponent = (props) => {
     let media = props.media
@@ -100,7 +68,7 @@ const Notification = () => {
                 <div className="col-md">
                     <div className="col1-1">
                         <div className="box-header">
-                            <h4>&nbsp;&nbsp;&nbsp;<i className="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;Tin tức mới nhất</h4>
+                            <h4>&nbsp;&nbsp;&nbsp;<i className="fa fa-bell" aria-hidden="true" />&nbsp;&nbsp;Tin tức mới nhất</h4>
                         </div>
 
                         <div className="news" id="TinMoiNhat">
@@ -113,7 +81,6 @@ const Notification = () => {
                                     <MediaComponent media={NotificationList[1]} />
                                     <MediaComponent media={NotificationList[2]} />
                                 </div>
-
                                 <div className="mediaList col-md-6">
                                     <MediaComponent media={NotificationList[3]} />
                                     <MediaComponent media={NotificationList[4]} />
@@ -136,7 +103,6 @@ export const Home = () => {
     if (account) {
         return (
             <div className="home">
-
                 <NavBar/>
                 <Header/>
                 <hr className="hr"/>

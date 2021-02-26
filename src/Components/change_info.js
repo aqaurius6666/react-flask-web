@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { api_get_user, api_update_student } from "../API/action"
 
 export const ChangeInfo = () => {

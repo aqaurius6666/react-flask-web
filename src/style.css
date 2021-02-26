@@ -67,7 +67,7 @@ body{
 
 .house_title {
     color: orangered;
-    font-size: 80px;
+    font-size: 2em;
     padding: 0px 0px 20px 200px;
 }
 
@@ -213,4 +213,22 @@ body {
     margin-right: 0px;
     margin-left: 0px;
     padding: 0px;
+}
+
+.social-media-link {
+    padding-bottom: 10px;
+}
+
+.copyright {
+    margin-top: 5px;
+    display: block;
+    text-align: right;
+}
+
+.house_img {
+    width: 50%;
+}
+
+.presidents {
+    padding-top: 15px;
 }

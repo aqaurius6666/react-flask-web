@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { api_register, logout } from '../API/action'
+import { api_register } from '../API/action'
 import history from '../history'
 import {Link} from "react-router-dom";
 

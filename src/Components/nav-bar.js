@@ -15,8 +15,8 @@ const NavBar = () => {
         return (
             <>
                 <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top" expand="lg">
-                    <a className="navbar-brand d-none d-sm-block" href="/"><img src={logo1} height="40" width="auto" alt="logo1"/></a>
-                    <Navbar.Brand id="navbarbrand" href="/">HỌC VIỆN PHÁP THUẬT HOGWART</Navbar.Brand>
+                    <a className="navbar-brand" href="/"><img src={logo1} height="40" width="auto" alt="logo1"/></a>
+                    <Navbar.Brand id="navbarbrand" href="/">HOGWARTS ACADEMY</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto row">
@@ -34,8 +34,8 @@ const NavBar = () => {
         return(
             <>
                 <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top" expand="lg">
-                    <a className="navbar-brand" href="#"><img src={logo1} height="40" width="auto" alt="logo1"/></a>
-                    <Navbar.Brand id="navbarbrand" href="#">HỌC VIỆN PHÁP THUẬT HOGWART</Navbar.Brand>
+                    <img src={logo1} height="40" width="auto" alt="logo1"/>
+                    <Navbar.Brand id="navbarbrand" href="#">HOGWARTS ACADEMY</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto row">

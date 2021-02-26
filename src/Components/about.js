@@ -1,36 +1,9 @@
 import React, {useContext} from 'react'
-import Gryffindor from "../img/house_img/Gryffindor.png"
-import Hufflepuff from "../img/house_img/Hufflepuff.png"
-import Slytherin from "../img/house_img/Slytherin.png"
-import Ravenclaw from "../img/house_img/Ravenclaw.png"
 import hogwart from "../img/hogwarts_school.jpg"
 import NavBar from "./nav-bar";
 import Footer from "./footer";
-import envURL from "../data/characterImages";
 import accountContext from './accountContext'
-
-const Leader = [
-    {
-        name: 'Professor Albus Dumbledore',
-        description: 'Albus Dumbledore was never proud or vain; he could find something to value in anyone, however apparently insignificant or wretched, and I believe that his early losses endowed him with great humanity and sympathy. I shall miss his friendship more than I can say, but my loss is as nothing compared to the Wizarding world’s. That he was the most inspiring and the best loved of all Hogwarts headmasters cannot be in question. He died as he lived: working always for the greater good and, to his last hour, as willing to stretch out a hand to a small boy with dragon pox as he was on the day that I met him.',
-        image: `${envURL}/Albus%20Percival%20Wulfric%20Brian%20Dumbledore1.jpg`
-    },
-    {
-        name: 'Professor Minerva McGonagall',
-        description: 'Professor Minerva McGonagall is the Transfiguration teacher at Hogwarts, head of Gryffindor house and deputy headmistress of Hogwarts during Harry\'s first year. She is described as fair, but very strict. Amongst other things, she led Harry to his sorting in his first year. She has the ability to transform into a tabby cat, because she is animaugus.',
-        image: `${envURL}/Minerva%20McGonagall1.jpg`
-    },
-    {
-        name: 'Professor Filius Flitwick',
-        description: 'Professor Filius Flitwick was the Charms master and head of Ravenclaw house during Harry\'s first year at Hogwarts. He is described as "the best and most knowledgable Charms master alive in the world today." He has a remarkably short stature - Rowling has stated that he has "a dash of goblin blood.',
-        image: `${envURL}/Filius%20Flitwick1.jpg`
-    },
-    {
-        name: 'Professor Severus Snape',
-        description: 'Professor Severus Snape is the Potions master and head of Slytherin house, and is seen as the main secondary antagonist up until the end of the first book. His most notable appearance is during Chapter 8, which is named after him ("The Potions Master"). He teaches in the dungeons\' Potions Classroom.',
-        image: `${envURL}/Severus%20Snape1.jpg`
-    }
-]
+import {Leader, trList} from "../data/superData";
 
 const RenderLeader = ({ leader }) => {
     return(
@@ -46,8 +19,20 @@ const RenderLeader = ({ leader }) => {
             </div>
         </div>
     );
-};
-
+}
+const RenderTr = ({trItem}) => {
+    return (
+        <tr className="row">
+            <th className="col-md-1 d-none d-xl-block d-sm-inline">{trItem.title}</th>
+            <div className="col-12 col-md-11 row">
+                <td className="col-3">{trItem.description[0]}</td>
+                <td className="col-3">{trItem.description[1]}</td>
+                <td className="col-3">{trItem.description[2]}</td>
+                <td className="col-3">{trItem.description[3]}</td>
+            </div>
+        </tr>
+    )
+}
 const Presidents = () => {
     const leaders = Leader.map((leader) => {
         return (
@@ -60,8 +45,8 @@ const Presidents = () => {
     });
 
     return (
-        <div className="container">
-            <h3><span className="mw-headline" id="Heads_of_Hogwarts">Heads of Hogwarts</span></h3>
+        <div className="container presidents">
+            <h3><span className="mw-headline">Heads of Hogwarts</span></h3>
             <dd>
                 <div className="noprint"><p>Main article:
                     <a href="https://harrypotter.fandom.com/wiki/Hogwarts_Headmaster" title="Hogwarts Headmaster">Hogwarts
@@ -81,6 +66,14 @@ const Presidents = () => {
 }
 
 const Houses = () => {
+    const trItems = trList.map((item) => {
+        return (
+            <>
+                <RenderTr trItem = {item}/>
+            </>
+        )
+    })
+
     return (
         <div>
             <div className="row">
@@ -88,116 +81,12 @@ const Houses = () => {
                     <p className="house_title"><strong>Hogwarts Houses</strong></p>
                 </div>
                 <div className="col col-md-6">
-                    <img alt="hogwart" src={hogwart} width="400px" height="auto" />
+                    <img alt="hogwart" src={hogwart} width="60%" height="auto" />
                 </div>
             </div>
             <table className="simple" border="1" >
                 <tbody>
-                <tr className="row">
-                    <th className="col-1 d-none d-sm-inline">Name/Crest
-                    </th>
-                    <div className="col-11 row">
-                        <th className="col-3"><a title="Gryffindor">Gryffindor</a><img alt="Gryffindor" src={Gryffindor} />
-                        </th>
-                        <th className="col-3"><a title="Hufflepuff">Hufflepuff</a><img alt="Hufflepuff" src={Hufflepuff} />
-                        </th>
-                        <th className="col-3"><a title="Ravenclaw">Ravenclaw</a><img alt="Ravenclaw" src={Ravenclaw} />
-                        </th>
-                        <th className="col-3"><a title="Slytherin">Slytherin</a><img alt="Slytherin" src={Slytherin} />
-                        </th>
-                    </div>
-                </tr>
-                <tr className="row">
-                    <th className="col-1 d-none d-sm-inline">Founded By
-                    </th>
-                    <div className="col-11 row">
-                        <td className="col-3"><a  title="Godric Gryffindor">Godric Gryffindor</a>
-                        </td>
-                        <td className="col-3"><a  title="Helga Hufflepuff">Helga Hufflepuff</a>
-                        </td>
-                        <td className="col-3"><a  title="Rowena Ravenclaw">Rowena Ravenclaw</a>
-                        </td>
-                        <td className="col-3"><a  title="Salazar Slytherin">Salazar Slytherin</a>
-                        </td>
-                    </div>
-                </tr>
-                <tr className="row">
-                    <th className="col-1 d-none d-sm-inline">House Ghost
-                    </th>
-                    <div className="col-11 row">
-                        <td className="col-3"><a  title="Nicholas de Mimsy-Porpington">Nearly
-                            Headless Nick</a>
-                        </td>
-                        <td className="col-3"><a  title="Fat Friar">Fat Friar</a>
-                        </td>
-                        <td className="col-3">The <a  title="Helena Ravenclaw">Grey Lady</a>
-                        </td>
-                        <td className="col-3">The <a  title="Bloody Baron">Bloody Baron</a>
-                        </td>
-                    </div>
-                </tr>
-                <tr className="row">
-                    <th className="col-1 d-none d-sm-inline">House symbol
-                    </th>
-                    <div className="col-11 row">
-                        <td className="col-3"><a  title="Lion">Lion</a>
-                        </td>
-                        <td className="col-3"><a  title="Badger">Badger</a>
-                        </td>
-                        <td className="col-3"><a  title="Eagle">Eagle</a>
-                        </td>
-                        <td className="col-3"><a  title="Snake">Serpent</a>
-                        </td>
-                    </div>
-                </tr>
-                <tr className="row">
-                    <th className="col-1 d-none d-sm-inline">House colours
-                    </th>
-                    <div className="col-11 row">
-                        <td className="col-3">Deep red and gold
-                        </td>
-                        <td className="col-3">Yellow and black
-                        </td>
-                        <td className="col-3">Blue and bronze
-                        </td>
-                        <td className="col-3">Green and silver
-                        </td>
-                    </div>
-                </tr>
-                <tr className="row">
-                    <th className="col-1 d-none d-sm-inline">Description
-                    </th>
-                    <div className="col-11 row">
-                        <td className="col-3">Well known for courage, bravery, daring, nerve, and chivalry.
-                        </td>
-                        <td className="col-3">Well known for loyalty, patience, hard work, fair-play, honesty, and tolerance.
-                        </td>
-                        <td className="col-3">Values intelligence, wit, cleverness, creativity, and wisdom.
-                        </td>
-                        <td className="col-3">Values ambition, leadership, cunning, determination, and resourcefulness.
-                        </td>
-                    </div>
-                </tr>
-                <tr className="row">
-                    <th className="col-1 d-none d-sm-inline">Common room
-                    </th>
-                    <div className="col-11 row">
-                        <td className="col-3">The entrance to the common room was on the seventh floor hidden behind a portrait of the <a
-                            title="Fat Lady">Fat Lady</a>. To enter, the correct password must be
-                            provided.
-                        </td>
-                        <td className="col-3">Located near the kitchens. To enter, one must tap a fake barrel in the rhythm "<a
-                             title="Helga Hufflepuff">Helga Hufflepuff</a>." It was the only
-                            common room to have a way to keep students from other houses out (by dumping vinegar on them).
-                        </td>
-                        <td className="col-3">Located in a high tower, and the interior was decorated with blue and bronze. To enter, one must
-                            answer a riddle from an eagle door knocker.
-                        </td>
-                        <td className="col-3">Located in the dungeons, underneath the Black Lake, and hidden behind a stone wall. To enter,
-                            the correct password must be provided.
-                        </td>
-                    </div>
-                </tr>
+                {trItems}
                 </tbody>
             </table>
         </div>
