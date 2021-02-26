@@ -4,6 +4,7 @@ import NavBar from "./nav-bar";
 import Footer from "./footer";
 import accountContext from './accountContext'
 import {Leader, trList} from "../data/superData";
+import loading from "../img/loading.jpg";
 
 const RenderLeader = ({ leader }) => {
     return(
@@ -23,12 +24,12 @@ const RenderLeader = ({ leader }) => {
 const RenderTr = ({trItem}) => {
     return (
         <tr className="row">
-            <th className="col-md-2 d-none d-xl-block d-sm-inline">{trItem.title}</th>
+            <th className="col-md-2 d-none d-xl-block d-sm-inline item_title">{trItem.title}</th>
             <div className="col-12 col-md-10 row">
-                <td className="col-3">{trItem.description[0]}</td>
-                <td className="col-3">{trItem.description[1]}</td>
-                <td className="col-3">{trItem.description[2]}</td>
-                <td className="col-3">{trItem.description[3]}</td>
+                <td className="col-3 item0">{trItem.description[0]}</td>
+                <td className="col-3 item1">{trItem.description[1]}</td>
+                <td className="col-3 item2">{trItem.description[2]}</td>
+                <td className="col-3 item3">{trItem.description[3]}</td>
             </div>
         </tr>
     )
@@ -82,7 +83,7 @@ const Houses = () => {
                 </div>
 
             </div>
-            <table className="simple" border="1" >
+            <table className="simpletable" border="1" >
                 <tbody>
                 {trItems}
                 </tbody>
@@ -106,7 +107,7 @@ export const About = () => {
         );
     } else {
         return (
-            <div>You are not log in!</div>
+            <img src={loading} alt="loading" width="100%" height="auto" />
         )
     }
 }

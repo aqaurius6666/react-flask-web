@@ -4,6 +4,7 @@ import Footer from "./footer";
 import houseImages from "../data/houseImages";
 import envURL from "../data/characterImages";
 import accountContext from "./accountContext";
+import loading from "../img/loading.jpg";
 
 const checkHouseImg = (house) => {
     switch(house) {
@@ -126,6 +127,6 @@ export const Info = () => {
             </div>
         )
     } else {
-        return <div>Loading...</div>
+        <img src={loading} alt="loading" width="100%" height="auto" />
     }
 }

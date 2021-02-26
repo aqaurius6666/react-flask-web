@@ -1,4 +1,8 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url('https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Mrs+Saint+Delafield&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Great+Vibes&family=Mrs+Saint+Delafield&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fredericka+the+Great&family=Great+Vibes&family=Mrs+Saint+Delafield&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fredericka+the+Great&family=Great+Vibes&family=Mrs+Saint+Delafield&family=Playfair+Display&display=swap');
 
 :root {
     --background: #092834;
@@ -6,6 +10,11 @@
     --root: #F0F7D4;
     --pad: #347B98;
     --active: #B2D732;
+    --Sign_font: 'Mrs Saint Delafield', cursive;
+    --Great_Vibes: 'Great Vibes', cursive;
+    --White_Black_Chi: 'Fredericka the Great', cursive;
+    --Hand_nghieng_nhe: 'Dancing Script', cursive;
+    --body_font: 'Playfair Display', serif;
 }
 
 .row-header {
@@ -37,7 +46,6 @@
     background-color: white;
 }
 
-
 .login {
     position: absolute;
     padding-left: 400px;
@@ -51,6 +59,7 @@ body{
 .navbar-dark {
     background-color: #218c74;
     padding-left: 5vw;
+    color: coral;
 }
 
 .nav-link {
@@ -96,7 +105,6 @@ body{
 }
 
 body {
-    font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -238,4 +246,47 @@ body {
     background-color: #218c74;
     padding-bottom: 3%;
     padding-left: 5%;
+}
+
+.signature {
+    font-family: var(--Great_Vibes);
+    font-size: 25px;
+}
+
+.white_black_chi {
+    font-family: var(--White_Black_Chi);
+    color: black;
+}
+
+.letter_font {
+    font-family: var(--Hand_nghieng_nhe);
+    font-size: 17px;
+}
+
+.body_font {
+    font-family: var(--body_font);
+}
+
+.simpletable {
+
+}
+
+.item_title {
+    background-color: #FDA7DF;
+}
+
+.item0 {
+    background-color: #e55039;
+}
+
+.item1 {
+    background-color: #e1b12c;
+}
+
+.item2 {
+    background-color: #3498db;
+}
+
+.item3 {
+    background-color: #2ecc71;
 }
