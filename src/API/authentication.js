@@ -108,6 +108,8 @@ function logout() {
     currentAccountSubject.next(null)
     localStorage.removeItem('token')
     currentTokenSubject.next(null)
+    localStorage.removeItem('user')
+    currentUserSubject.next(null)
     history.push('/login')
 
 }

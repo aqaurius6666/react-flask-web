@@ -52,7 +52,7 @@ const Subject = (props) => {
 
 export const Info = () => {
     const account = authenticationService.currentAccountValue
-    const [student, setStudent] = useState(userService.currentUser)
+    const [student, setStudent] = useState(userService.currentUserValue)
     const { setLoading } = useContext(loadingContext)
     useEffect(() => {
         setLoading(true)
