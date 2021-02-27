@@ -71,10 +71,9 @@ body{
 }
 
 .student_image {
-    padding: 10px;
-    height:200px;
+    height:180px;
     width: auto;
-    border-color: red;
+    align-items: center;
 }
 
 .house_title {
@@ -260,33 +259,38 @@ body {
 
 .letter_font {
     font-family: var(--Hand_nghieng_nhe);
-    font-size: 17px;
+    font-size: 18.7px;
 }
 
 .body_font {
     font-family: var(--body_font);
 }
 
-.simpletable {
-
-}
-
 .item_title {
     background-color: #FDA7DF;
+    border-color: black;
 }
 
 .item0 {
     background-color: #e55039;
+    border-color: black;
 }
 
 .item1 {
     background-color: #e1b12c;
+    border-color: black;
 }
 
 .item2 {
     background-color: #3498db;
+    border-color: black;
 }
 
 .item3 {
     background-color: #2ecc71;
+    border-color: black;
+}
+
+#Spinner {
+    size: 20px;
 }

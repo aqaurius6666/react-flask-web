@@ -4,7 +4,7 @@ import NavBar from "./nav-bar";
 import Footer from "./footer";
 import accountContext from './accountContext'
 import {Leader, trList} from "../data/superData";
-import loading from "../img/loading.jpg";
+import Loading from "./loading";
 
 const RenderLeader = ({ leader }) => {
     return(
@@ -106,8 +106,6 @@ export const About = () => {
             </div>
         );
     } else {
-        return (
-            <img src={loading} alt="loading" width="100%" height="auto" />
-        )
+        return <Loading />
     }
 }

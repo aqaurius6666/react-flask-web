@@ -10,9 +10,9 @@ function Footer() {
                     <div className="col-4 offset-1 col-sm-3">
                         <h6>Links</h6>
                         <ul>
-                            <li><Link className="footer_link" to='/'>Home</Link></li>
-                            <li><Link className="footer_link" to='/about'>About</Link></li>
-                            <li><Link className="footer_link" to='/info'>Info</Link></li>
+                            <li><a className="footer_link" to='/'>Home</a></li>
+                            <li><a className="footer_link" to='/about'>About</a></li>
+                            <li><a className="footer_link" to='/info'>Info</a></li>
                         </ul>
                     </div>
                     <div className="col-7 col-sm-3">

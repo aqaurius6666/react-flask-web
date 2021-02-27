@@ -4,7 +4,7 @@ import Footer from "./footer";
 import houseImages from "../data/houseImages";
 import envURL from "../data/characterImages";
 import accountContext from "./accountContext";
-import loading from "../img/loading.jpg";
+import Loading from "./loading";
 
 const checkHouseImg = (house) => {
     switch(house) {
@@ -32,16 +32,16 @@ const Subject = (props) => {
             <td className="col-3">
                 <p>{props.sname}</p>
             </td>
-            <td className="col-2 text-center">
+            <td className="col-3 col-md-2">
                 <p>{props.sid}</p>
             </td>
-            <td className="col-2 text-center">
+            <td className="d-none d-sm-block col-md-2">
                 <p>{props.tinchi}</p>
             </td>
-            <td className="col-2 text-center">
+            <td className="col-3 col-md-2">
                 <p>{props.teacher}</p>
             </td>
-            <td className="col-3 text-center">
+            <td className="col-3">
                 <p>{props.address}</p>
             </td>
         </tr>
@@ -58,7 +58,7 @@ export const Info = () => {
     },[])
 
     if (!account) {
-        return <div>You are not log in!</div>
+        return <Loading />
     }
     if (student) {
         console.log(student)
@@ -71,7 +71,7 @@ export const Info = () => {
                         ? `Student` : `Teacher`}'s Infomation</h3>
                     <hr />
                 </div>
-                <div>
+                <div className="container">
                     <table className="row" border="2" cellPadding="15" cellSpacing="0">
                         <tr className="col-12 row">
                             <th className="col-6 col-md-3 col-lg-2">
@@ -101,16 +101,16 @@ export const Info = () => {
                             <td className="col-3">
                                 <h4>Môn học</h4>
                             </td>
-                            <td className="col-2 text-center">
+                            <td className="col-3 col-md-2">
                                 <h4>Mã môn học</h4>
                             </td>
-                            <td className="col-2 text-center">
+                            <td className="d-none d-sm-block col-md-2">
                                 <h4>Số tín</h4>
                             </td>
-                            <td className="col-2 text-center">
+                            <td className="col-3 col-md-2">
                                 <h4>Giáo viên</h4>
                             </td>
-                            <td className="col-3 text-center">
+                            <td className="col-3">
                                 <h4>Phòng học</h4>
                             </td>
                         </tr>
@@ -126,8 +126,6 @@ export const Info = () => {
             </div>
         )
     } else {
-        return (
-            <img src={loading} alt="loading" width="100%" height="auto" />
-        )
+        return <Loading />
     }
 }

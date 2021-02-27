@@ -2,12 +2,12 @@ import { useContext} from "react"
 import React from 'react'
 import logo from "../img/hogwarts_sm_logo.svg"
 import hogwart from "../img/four_houses.jpg"
-import loading from "../img/loading.jpg"
 import NavBar from "./nav-bar";
 import Footer from "./footer";
 import accountContext from "./accountContext"
 import {NotificationList} from "../data/superData"
 import Header from "./header";
+import Loading from "./loading";
 
 const MediaComponent = (props) => {
     let media = props.media
@@ -114,9 +114,7 @@ export const Home = () => {
             </div>
         );
     } else {
-        return (
-            <img src={loading} alt="loading" width="100%" height="auto" />
-        )
+        return <Loading />
     }
 }
 

@@ -1,8 +1,8 @@
 import {Jumbotron} from "react-bootstrap";
 import React from "react";
-import witch from '../img/witch.svg'
+import fh from '../img/cat.gif'
 import hat from '../img/hat.svg'
-import logo from "../img/hogwarts_sm_logo.svg"
+import giphy from "../img/giphy.gif"
 
 const Header = () => {
     return (
@@ -10,6 +10,7 @@ const Header = () => {
             <div className="row container">
                 <div className="col-12 col-md-6">
                     <h2 className='white_black_chi'>WELCOME TO HOGWARTS
+                    <img className="d-inline d-sm-none" src={giphy} alt="logo" width="20%" height="auto"/>
                         <img src={hat} alt="logo" width="10%" height="auto"/></h2>
                     <blockquote className='signature'>
                         “ Welcome to Hogwarts. I hope you have a great time here. ”
@@ -19,8 +20,8 @@ const Header = () => {
                     </p>
                 </div>
                 <div className="d-none d-sm-block col-md-6">
-                    <img src={witch} alt="logo" width="60%" height="auto"/>
-                    <img src={logo} alt="loading" width="40%" height="auto" />
+                    <img src={giphy} alt="logo" width="40%" height="auto"/>
+                    <img src={fh} alt="fh" width="20%" height="auto" />
                 </div>
             </div>
         </Jumbotron>
