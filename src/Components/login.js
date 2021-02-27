@@ -14,6 +14,7 @@ export const Login = () => {
             console.log(msg)
             setAccount(account)
             history.push("/")
+            window.location = '/'
         })
     }
     return (
