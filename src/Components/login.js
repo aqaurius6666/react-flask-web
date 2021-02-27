@@ -1,20 +1,17 @@
 import React, { useState, useContext } from "react"
 import {Link} from "react-router-dom"
-import { api_login } from "../API/action"
+import { authenticationService } from "../API/authentication"
 import history from "../history"
 import accountContext from "./accountContext"
 
 export const Login = () => {
-    const {setAccount} = useContext(accountContext)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const handleSubmit = (e) => {
         e.preventDefault()
-        api_login(username, password, (msg, account) => {
-            console.log(msg)
-            setAccount(account)
-            history.push("/")
-        })
+        authenticationService.login(username, password).then(
+            history.push('/')
+        )
     }
     return (
         <div className="login-container">

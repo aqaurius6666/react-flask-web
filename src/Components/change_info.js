@@ -1,14 +1,21 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { api_get_user, api_update_student } from "../API/action"
+import { authenticationService, userService } from "../API/authentication"
+import { loadingContext } from "./loadingContext"
 
 export const ChangeInfo = () => {
-    const [form, setForm] = useState(undefined)
+    const [form, setForm] = useState(userService.currentUserValue)
+    const {setLoading} = useContext(loadingContext)
     useEffect(() => {
-        api_get_user((data) => setForm(data))
+        setLoading(true)
+        userService.getUser().then(data => {
+            setForm(data)
+            setLoading(false)
+        })
     }, [])
     const onSubmitForm = (e) => {
         e.preventDefault()
-        api_update_student(form, (msg) => console.log(msg))
+        userService.updateUser(form)
     }
     if (form) {
         return (

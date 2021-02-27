@@ -5,9 +5,11 @@ import houseImages from "../data/houseImages";
 import envURL from "../data/characterImages";
 import accountContext from "./accountContext";
 import Loading from "./loading";
+import { authenticationService, userService } from "../API/authentication";
+import { loadingContext } from "./loadingContext";
 
 const checkHouseImg = (house) => {
-    switch(house) {
+    switch (house) {
         case 'Gryffindor':
             return houseImages[0]
         case 'Slytherin':
@@ -49,19 +51,18 @@ const Subject = (props) => {
 }
 
 export const Info = () => {
-    const {account} = useContext(accountContext)
-    
-    const [student, setStudent] = useState()
-    
+    const account = authenticationService.currentAccountValue
+    const [student, setStudent] = useState(userService.currentUser)
+    const { setLoading } = useContext(loadingContext)
     useEffect(() => {
-        api_get_user((data) => setStudent(data))
-    },[])
+        setLoading(true)
+        userService.getUser().then(data => {
+            setStudent(data)
+            setLoading(false)
+        }).catch(() => setLoading(false))
+    }, [])
 
-    if (!account) {
-        return <Loading />
-    }
     if (student) {
-        console.log(student)
         let house_img = checkHouseImg(student.house)
         return (
             <div>
@@ -76,14 +77,14 @@ export const Info = () => {
                         <tr className="col-12 row">
                             <th className="col-6 col-md-3 col-lg-2">
                                 <img className="student_image"
-                                     src={findCharacterImage(student.name)}
-                                     alt="student" />
+                                    src={findCharacterImage(student.name)}
+                                    alt="student" />
                             </th>
                             <th className="col-6 col-md-6 col-lg-8">
                                 <h5>{student.role === 'Student'
                                     ? `Student` : `Teacher`}'s ID:
                                     {student.role === 'Student'
-                                            ? student.sid : student.tid}</h5>
+                                        ? student.sid : student.tid}</h5>
                                 <h5>Full Name: {student.name}</h5>
                                 <h5>Date of Birth: {student.dob}</h5>
                                 <h5>House: {student.house}</h5>
@@ -116,9 +117,9 @@ export const Info = () => {
                         </tr>
 
                         <Subject sname="Phòng chống nghệ thuật hắc ám" sid="PCNTHA1"
-                                 tinchi="3" teacher="Severus Snape" address="101-Slytherin" />
+                            tinchi="3" teacher="Severus Snape" address="101-Slytherin" />
                         <Subject sname="Bùa Chú" sid="BC1" tinchi="3"
-                                 teacher="Albus Dumbledore" address="101 Gryffindor" />
+                            teacher="Albus Dumbledore" address="101 Gryffindor" />
                     </table>
                 </div>
                 <br />

@@ -5,6 +5,7 @@ import Footer from "./footer";
 import accountContext from './accountContext'
 import {Leader, trList} from "../data/superData";
 import Loading from "./loading";
+import { authenticationService } from '../API/authentication';
 
 const RenderLeader = ({ leader }) => {
     return(
@@ -93,7 +94,7 @@ const Houses = () => {
 }
 
 export const About = () => {
-    const {account} = useContext(accountContext)
+    const account = authenticationService.currentAccountValue
     if (account) {
         return (
             <div className="about">

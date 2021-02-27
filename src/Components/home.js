@@ -8,6 +8,7 @@ import accountContext from "./accountContext"
 import {NotificationList} from "../data/superData"
 import Header from "./header";
 import Loading from "./loading";
+import { authenticationService } from "../API/authentication";
 
 const MediaComponent = (props) => {
     let media = props.media
@@ -101,7 +102,7 @@ const Notification = () => {
 }
 
 export const Home = () => {
-    const {account} = useContext(accountContext)
+    const account = authenticationService.currentAccountValue
     if (account) {
         return (
             <div className="home">

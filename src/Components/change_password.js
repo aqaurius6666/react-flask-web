@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react"
 import { api_update_passowrd } from "../API/action"
+import { authenticationService } from "../API/authentication"
 import accountContext from "./accountContext"
 
 export const ChangePassword = () => {
@@ -8,7 +9,7 @@ export const ChangePassword = () => {
         "password": "",
         "conf_password": ""
     })
-    const { account } = useContext(accountContext)
+    const account = authenticationService.currentAccountValue
 
     const onSubmitForm = (e) => {
         e.preventDefault()

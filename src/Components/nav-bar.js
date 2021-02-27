@@ -1,14 +1,15 @@
 import React, { useContext } from 'react'
 import {Nav, Navbar} from "react-bootstrap";
 import { logout } from '../API/action';
+import { authenticationService } from '../API/authentication';
 import logo1 from "../img/hogwart.svg";
 import accountContext from './accountContext';
 
 const NavBar = () => {
-    const {account, setAccout} = useContext(accountContext)
+    const account = authenticationService.currentAccountValue
 
     const handleLogOut =() => {
-        logout(() => setAccout(undefined))
+        authenticationService.logout()
     }
     
     if (account) {
