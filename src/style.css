@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Great+Vibes&family=Mrs+Saint+Delafield&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fredericka+the+Great&family=Great+Vibes&family=Mrs+Saint+Delafield&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Fredericka+the+Great&family=Great+Vibes&family=Mrs+Saint+Delafield&family=Playfair+Display&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Brygada+1918&display=swap');
 :root {
     --background: #092834;
     --borders: #FE2712;
@@ -14,7 +14,8 @@
     --Great_Vibes: 'Great Vibes', cursive;
     --White_Black_Chi: 'Fredericka the Great', cursive;
     --Hand_nghieng_nhe: 'Dancing Script', cursive;
-    --body_font: 'Playfair Display', serif;
+    --header_font: 'Playfair Display', serif;
+    --body_font: 'Brygada 1918', serif;
 }
 
 .row-header {
@@ -262,6 +263,10 @@ body {
     font-size: 18.7px;
 }
 
+.header_font {
+    font-family: var(--header_font);
+}
+
 .body_font {
     font-family: var(--body_font);
 }
@@ -289,8 +294,4 @@ body {
 .item3 {
     background-color: #2ecc71;
     border-color: black;
-}
-
-#Spinner {
-    size: 20px;
 }

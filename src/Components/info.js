@@ -65,12 +65,12 @@ export const Info = () => {
         return (
             <div>
                 <br /> <br />
-                <div className="container header text-center">
+                <div className="container header text-center body_font">
                     <h3>{student.role === 'Student'
                         ? `Student` : `Teacher`}'s Infomation</h3>
                     <hr />
                 </div>
-                <div className="container">
+                <div className="container body_font">
                     <table className="row" border="2" cellPadding="15" cellSpacing="0">
                         <tr className="col-12 row">
                             <th className="col-6 col-md-3 col-lg-2">

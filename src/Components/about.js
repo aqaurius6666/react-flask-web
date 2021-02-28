@@ -8,6 +8,7 @@ import { authenticationService } from '../API/authentication';
 
 const RenderLeader = ({ leader }) => {
     return(
+        <>
         <div className="container row">
             <div className="col-12 col-md-6">
                 <img width="300px" height="auto" src={leader.image} alt={leader.name} />
@@ -19,31 +20,26 @@ const RenderLeader = ({ leader }) => {
                 <p>{leader.description}</p>
             </div>
         </div>
+        <hr />
+        </>
     );
 }
 const RenderTr = ({trItem}) => {
     return (
-        <tr className="row">
-            <th className="col-md-2 d-none d-xl-block d-sm-inline item_title">{trItem.title}</th>
-            <div className="col-12 col-md-10 row">
+        <thead className="row">
+            <td className="col-md-2 d-none d-xl-block d-sm-inline item_title">{trItem.title}</td>
+            <tr className="col-12 col-md-10 row">
                 <td className="col-3 item0">{trItem.description[0]}</td>
                 <td className="col-3 item1">{trItem.description[1]}</td>
                 <td className="col-3 item2">{trItem.description[2]}</td>
                 <td className="col-3 item3">{trItem.description[3]}</td>
-            </div>
-        </tr>
+            </tr>
+        </thead>
     )
 }
 const Presidents = () => {
-    const leaders = Leader.map((leader) => {
-        return (
-            <>
-                <RenderLeader leader={leader} />
-                <hr />
-            </>
-
-        );
-    });
+    const leaders = Leader
+        .map((leader, i) => <RenderLeader key={i} leader={leader} />)
 
     return (
         <div className="container presidents">
@@ -67,26 +63,18 @@ const Presidents = () => {
 }
 
 const Houses = () => {
-    const trItems = trList.map((item) => {
-        return (
-            <>
-                <RenderTr trItem = {item}/>
-            </>
-        )
-    })
-
+    const trItems = trList
+        .map((item, i) => <RenderTr key={i} trItem = {item}/>)
     return (
         <div className="container">
             <div>
                 <div>
-                    <h3><span className="mw-headline">I. Heads of Hogwarts</span></h3>
+                    <h3><span className="mw-headline">I. Houses of Hogwarts</span></h3>
                 </div>
 
             </div>
             <table className="simpletable" border="1" >
-                <tbody>
                 {trItems}
-                </tbody>
             </table>
         </div>
     )
@@ -99,9 +87,11 @@ export const About = () => {
             <div className="about">
                 <NavBar />
                 <Header />
-                <br />
-                <Houses />
-                <Presidents />
+                <div className="body_font">
+                    <br />
+                    <Houses />
+                    <Presidents />
+                </div>
                 <Footer/>
             </div>
         );

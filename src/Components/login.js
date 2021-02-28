@@ -22,7 +22,7 @@ export const Login = () => {
                         <input type="password" placeholder="Password"
                                onChange={(e) => setPassword(e.target.value)} value={password} />
                         <button type="submit" value="Login" className="btn btn-dark btn-lg">login</button>
-                        <p className="message">Not registered? <Link exact to="/register">Create an account</Link>
+                        <p className="message">Not registered? <Link to="/register">Create an account</Link>
                         </p>
                     </form>
                 </div>

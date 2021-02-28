@@ -36,7 +36,7 @@ const Introductory = () => {
             <div className="container">
                 <div className="row row-header">
                     <div className="col-12 col-sm-8">
-                        <h1 className="body_font">Hogwarts School of<br/>Witchcraft and Wizardry!</h1>
+                        <h1 className="header_font">Hogwarts School of<br/>Witchcraft and Wizardry!</h1>
                         <p className="letter_font">Hogwarts is divided into four houses, each bearing the last name of its founder:
                             Godric Gryffindor, Salazar Slytherin, Rowena Ravenclaw and Helga Hufflepuff.
                             Throughout the school year, the houses compete for the House Cup, gaining and losing
