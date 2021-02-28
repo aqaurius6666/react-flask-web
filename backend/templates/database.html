@@ -1,17 +1,14 @@
 <html>
-
 <body>
     <form method="POST">
-        <textarea name="scripts""></textarea>
+        <textarea style="width:100%; height:200px; padding: 12px 20px; border: 2px solid #ccc; border-radius: 4px; font-size: 16px; resize: none;" name="scripts"></textarea>
         <div>
             <button>Run</button>
         </div>
     </form>
-    {% if data: %}
-    <div>Data:</div>
-    <table border="1px solid black">
+        <table style="border: 1px solid black; background-color: white; width: 100%; height: auto">
         {% for col in header: %}
-        <td>
+        <td style="background-color: red">
             {{col}}
         </td>
         {% endfor %}
@@ -25,10 +22,5 @@
         </tr>
         {% endfor %}
     </table>
-    {% endif %}
-    {% if error: %}
-        <div>{{error}}</div>
-    {% endif %}
 </body>
-
 </html>
