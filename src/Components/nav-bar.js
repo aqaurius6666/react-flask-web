@@ -6,7 +6,7 @@ import logo1 from "../img/hogwart.svg";
 import accountContext from './accountContext';
 
 const NavBar = () => {
-    const account = authenticationService.currentAccountValue
+    const account = authenticationService.currentAccountValue()
 
     const handleLogOut =() => {
         authenticationService.logout()

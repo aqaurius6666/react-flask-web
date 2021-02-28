@@ -1,9 +1,9 @@
 
 import { BehaviorSubject } from 'rxjs'
 import history from '../history'
-const currentAccountSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('account')))
+const currentAccountSubject = new BehaviorSubject(JSON.stringify(localStorage.getItem('account')))
 const currentTokenSubject = new BehaviorSubject(localStorage.getItem('token'))
-const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')))
+const currentUserSubject = new BehaviorSubject(JSON.stringify(localStorage.getItem('user')))
 
 
 export const authenticationService = {
@@ -11,34 +11,38 @@ export const authenticationService = {
     logout,
     check_auth,
     currentAccount: currentAccountSubject.asObservable(),
-    get currentAccountValue() { return currentAccountSubject.value },
-    get currentTokenValue() { return currentTokenSubject.value }
+    currentAccountValue,
+    currentTokenValue
 
 };
+function currentAccountValue() {return JSON.parse(currentAccountSubject.value)}
+function currentTokenValue() { 
+    return currentTokenSubject.value }
 
 export const userService = {
     getUser,
     updateUser,
-    currentUser: JSON.parse(localStorage.getItem('user')),
-    get currentUserValue() { return currentUserSubject.value }
+    currentUserValue
 
 }
+function currentUserValue() {
 
+    return JSON.parse(currentUserSubject.value)
+}
 function updateUser(student) {
     const requestOptions = {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
-            'x-access-token': authenticationService.currentTokenValue
+            'x-access-token': authenticationService.currentTokenValue()
         },
-        body: JSON.stringify(student) 
+        body: JSON.stringify(student)
     };
     return fetch(`https://it-must-be-ok.herokuapp.com/api/student`, requestOptions)
         .then(handleResponse)
         .then(data => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             const { token } = data
-            console.log("here")
             localStorage.setItem('token', token)
             currentTokenSubject.next(token)
         });
@@ -48,7 +52,7 @@ function check_auth() {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'x-access-token': authenticationService.currentTokenValue
+            'x-access-token': authenticationService.currentTokenValue()
         }
     };
 
@@ -57,7 +61,6 @@ function check_auth() {
         .then(data => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             const { token } = data
-            console.log("here")
             localStorage.setItem('token', token)
             currentTokenSubject.next(token)
         });
@@ -67,7 +70,7 @@ function getUser() {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
-            'x-access-token': authenticationService.currentTokenValue
+            'x-access-token': authenticationService.currentTokenValue()
         }
     };
 
@@ -77,7 +80,7 @@ function getUser() {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             const { user } = data
             localStorage.setItem('user', JSON.stringify(user))
-            currentUserSubject.next(user)
+            currentUserSubject.next(JSON.stringify(user))
             return user
         });
 }
@@ -95,7 +98,7 @@ function login(username, password) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             const { account, token } = data
             localStorage.setItem('account', JSON.stringify(account))
-            currentAccountSubject.next(account)
+            currentAccountSubject.next(JSON.stringify(account))
             localStorage.setItem('token', token)
             currentTokenSubject.next(token)
             return account
@@ -105,11 +108,14 @@ function login(username, password) {
 function logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('account')
-    currentAccountSubject.next(null)
+    currentAccountSubject.complete()
+    //currentAccountSubject.next(null)
     localStorage.removeItem('token')
-    currentTokenSubject.next(null)
+    currentTokenSubject.complete()
+    //currentTokenSubject.next(null)
     localStorage.removeItem('user')
-    currentUserSubject.next(null)
+    //currentUserSubject.next(null)
+    currentUserSubject.complete()
     history.push('/login')
 
 }

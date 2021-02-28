@@ -94,7 +94,7 @@ const Houses = () => {
 }
 
 export const About = () => {
-    const account = authenticationService.currentAccountValue
+    const account = authenticationService.currentAccountValue()
     if (account) {
         return (
             <div className="about">

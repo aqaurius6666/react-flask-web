@@ -9,7 +9,7 @@ export const ChangePassword = () => {
         "password": "",
         "conf_password": ""
     })
-    const account = authenticationService.currentAccountValue
+    const account = authenticationService.currentAccountValue()
 
     const onSubmitForm = (e) => {
         e.preventDefault()

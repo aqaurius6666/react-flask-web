@@ -51,8 +51,8 @@ const Subject = (props) => {
 }
 
 export const Info = () => {
-    const account = authenticationService.currentAccountValue
-    const [student, setStudent] = useState(userService.currentUserValue)
+    const account = authenticationService.currentAccountValue()
+    const [student, setStudent] = useState(userService.currentUserValue())
     const { setLoading } = useContext(loadingContext)
     useEffect(() => {
         setLoading(true)
@@ -63,6 +63,7 @@ export const Info = () => {
     }, [])
 
     if (student) {
+
         let house_img = checkHouseImg(student.house)
         return (
             <div>

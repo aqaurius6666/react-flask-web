@@ -102,7 +102,7 @@ const Notification = () => {
 }
 
 export const Home = () => {
-    const account = authenticationService.currentAccountValue
+    const account = authenticationService.currentAccountValue()
     if (account) {
         return (
             <div className="home">
