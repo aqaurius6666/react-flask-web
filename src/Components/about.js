@@ -1,8 +1,7 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import Header from './header'
 import NavBar from "./nav-bar";
 import Footer from "./footer";
-import accountContext from './accountContext'
 import {Leader, trList} from "../data/superData";
 import Loading from "./loading";
 import { authenticationService } from '../API/authentication';
@@ -94,7 +93,7 @@ const Houses = () => {
 }
 
 export const About = () => {
-    const account = authenticationService.currentAccountValue
+    const account = authenticationService.currentAccountValue()
     if (account) {
         return (
             <div className="about">

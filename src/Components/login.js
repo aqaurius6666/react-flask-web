@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react"
+import React, { useState } from "react"
 import {Link} from "react-router-dom"
 import { authenticationService } from "../API/authentication"
 import history from "../history"
-import accountContext from "./accountContext"
 
 export const Login = () => {
     const [username, setUsername] = useState("")

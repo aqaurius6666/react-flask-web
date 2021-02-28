@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { api_get_user, api_update_student } from "../API/action"
-import { authenticationService, userService } from "../API/authentication"
+import { userService } from "../API/authentication"
 import { loadingContext } from "./loadingContext"
 
 export const ChangeInfo = () => {
