@@ -60,15 +60,25 @@ body{
 .navbar-dark {
     background-color: #218c74;
     padding-left: 5vw;
+    padding-top: 0.13vw;
+    padding-bottom: 0.13vw;
     color: coral;
 }
 
-.nav-link {
-    color: white;
+.navbar-padding {
+    padding-left: 2vw;
+}
+
+.login-nav-margin {
+    margin: 0 0 0 24vw;
+}
+
+#login-nav-link {
+    color: yellow;
 }
 
 #navbarcollapse {
-    padding: 0 0 0 50px;
+    padding: 0 0 0 2vw;
 }
 
 .student_image {
@@ -295,3 +305,5 @@ body {
     background-color: #2ecc71;
     border-color: black;
 }
+
+

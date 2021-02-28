@@ -15,19 +15,24 @@ const NavBar = () => {
             <>
                 <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top white_black_chi"
                         expand="lg">
-                    <a className="navbar-brand" href="/">
-                        <img src={logo1} height="40" width="auto" alt="logo1"/></a>
-                    <Navbar.Brand href="/">HOGWARTS ACADEMY</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="navbarcollapse">
-                        <Nav className="mr-auto row">
-                            <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/about">About</Nav.Link>
-                            <Nav.Link href="/info">Info</Nav.Link>
-                            <Nav.Link href="/update">Update</Nav.Link>
-                            <Nav.Link href="/login" onClick={handleLogOut}>Log out</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
+                        <div className="navbar-padding d-none d-xl-block"> </div>
+                        <a className="navbar-brand" href="/">
+                            <img src={logo1} height="40vw" width="auto" alt="logo1"/></a>
+                        <Navbar.Brand href="/">HOGWARTS ACADEMY</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="navbarcollapse">
+                            <Nav className="mr-auto row">
+                                <Nav.Link href="/"><i className="fa fa-home" aria-hidden="true" /> Home</Nav.Link>
+                                <Nav.Link href="/about"><i className="fa fa-info-circle" aria-hidden="true" />  About</Nav.Link>
+                                <Nav.Link href="/info"><i className="fa fa-user" aria-hidden="true" /> Personal Info</Nav.Link>
+                                <Nav.Link href="/#"><i className="fa fa-book" aria-hidden="true" /> Courses</Nav.Link>
+                                <Nav.Link href="/update"><i className="fa fa-wrench" aria-hidden="true"/> Update</Nav.Link>
+                                <div className="login-nav-margin d-none d-xl-block"> </div>
+                                <Nav.Link id="login-nav-link" href="/login" onClick={handleLogOut}>
+                                    <i className="fa fa-sign-out" aria-hidden="true" />Log out
+                                </Nav.Link>
+                            </Nav>
+                        </Navbar.Collapse>
                 </Navbar>
             </>
         )
@@ -35,14 +40,17 @@ const NavBar = () => {
         return(
             <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top white_black_chi"
                     expand="lg">
+                <div className="navbar-padding d-none d-xl-block"> </div>
                 <a className="navbar-brand" href="/">
                     <img src={logo1} height="40" width="auto" alt="logo1"/></a>
                 <Navbar.Brand href="#">HOGWARTS ACADEMY</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto row">
-                        <Nav.Link href="/login" onClick={handleLogOut}>Log in</Nav.Link>
-                        <Nav.Link href="/register" onClick={handleLogOut}>Register</Nav.Link>
+                        <Nav.Link href="/login" onClick={handleLogOut}>
+                            <i className="fa fa-sign-in" aria-hidden="true" /> Log in</Nav.Link>
+                        <Nav.Link href="/register" onClick={handleLogOut}>
+                            <i className="fa fa-user-plus" aria-hidden="true" /> Register</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

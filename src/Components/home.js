@@ -36,12 +36,12 @@ const Introductory = () => {
             <div className="container">
                 <div className="row row-header">
                     <div className="col-12 col-sm-8">
-                        <h1 className="header_font">Hogwarts School of<br/>Witchcraft and Wizardry!</h1>
+                        <h1 className="header_font">Hogwarts School <span className="d-none d-sm-block">of Witchcraft and Wizardry!</span></h1>
                         <p className="letter_font">Hogwarts is divided into four houses, each bearing the last name of its founder:
                             Godric Gryffindor, Salazar Slytherin, Rowena Ravenclaw and Helga Hufflepuff.
                             Throughout the school year, the houses compete for the House Cup, gaining and losing
-                            points based on actions such as performance in class and rule violations. The house with
-                            the highest end-of-year total wins and has its colours displayed in the Great Hall for the
+                            points based on actions such as performance in class and rule violations.
+                            <span className="d-none d-sm-block">The house with the highest end-of-year total wins and has its colours displayed in the Great Hall for the
                             following school year. Each house also has its own Quidditch team that competes for the
                             Quidditch Cup. These two competitions breed rivalries between the houses. Houses at Hogwarts
                             are living and learning communities for their students. Each house is under the authority
@@ -50,7 +50,7 @@ const Introductory = () => {
                             punishment, and responding to emergencies in their houses, among other things. Each year,
                             year level groups of every separate house share the same dormitory and classes. The dormitory
                             and common room of a House are, barring rare exceptions, inaccessible to students belonging
-                            to other Houses.</p>
+                            to other Houses.</span></p>
                     </div>
                     <div className="col-12 col-sm-4 align-self-center">
                         <img alt="logo" width="auto" height="400px" src={hogwart} />

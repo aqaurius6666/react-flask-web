@@ -8,6 +8,7 @@ const Header = () => {
     return (
         <Jumbotron className="headerComponent">
             <div className="row container">
+                <div className="d-none d-sm-block col-md-1"> </div>
                 <div className="col-12 col-md-6">
                     <h2 className='white_black_chi'>WELCOME TO HOGWARTS
                     <img className="d-inline d-sm-none" src={giphy} alt="logo" width="20%" height="auto"/>
@@ -19,9 +20,9 @@ const Header = () => {
                         - Albus Dumbledore -
                     </p>
                 </div>
-                <div className="d-none d-sm-block col-md-6">
-                    <img src={giphy} alt="logo" width="40%" height="auto"/>
-                    <img src={fh} alt="fh" width="20%" height="auto" />
+                <div className="d-none d-sm-block col-md-5">
+                    <img src={giphy} alt="logo" width="50%" height="auto"/>
+                    <img src={fh} alt="fh" width="30%" height="auto" />
                 </div>
             </div>
         </Jumbotron>
