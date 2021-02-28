@@ -70,6 +70,7 @@ class Course(db.Model):
     tid = db.Column(db.String(4), db.ForeignKey('teacher.tid'))
     place = db.Column(db.String(16, convert_unicode=True))
     credit = db.Column(db.Integer)
+    time = db.Column(db.String(2))
     refer = db.Column(db.String(128))
 
     score = db.relationship('Score', backref='course')

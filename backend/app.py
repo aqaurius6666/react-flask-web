@@ -1,6 +1,7 @@
 
 from flask import Flask, jsonify, request, render_template, url_for
 from sqlalchemy.engine import create_engine
+from werkzeug.datastructures import Headers
 from .database.model import (db,
                             Student, Teacher, Course, Score, House, Account)
 from werkzeug.security import generate_password_hash, check_password_hash     
@@ -15,7 +16,7 @@ app = Flask(__name__)
 CORS(app)
 HEROKU = "config_heroku.py"
 LOCAL = "config_local.py"
-app.config.from_pyfile(HEROKU)
+app.config.from_pyfile(LOCAL)
 db.init_app(app)
 def token_required(f):
     @wraps(f)
@@ -54,15 +55,15 @@ def database():
         print("Scripts: ", scripts)
         print("Result: ")
         with db.session.connection() as conn:
+            result = conn.execute(scripts)
             try:
-                result = conn.execute(scripts).fetchall()
-                return render_template("database.html", data = result)
+                result = result.fetchall()
+                header = result[0].keys()
+                return render_template("database.html", data = result, header = header)
             except Exception as e:
-                print(e)
-                return render_template("database.html", error = e)
-            finally:
                 db.session.commit()
-                return render_template("database.html")
+                return render_template("database.html", error = e)
+
         
     return render_template('database.html')
 
@@ -85,10 +86,19 @@ def get_houses():
 @app.route('/api/teachers', methods=['GET'])
 def get_teachers():
     return jsonify([teacher.to_dict() for teacher in Teacher.query.all()])
+@app.route('/api/teachers/<house>', methods=['GET'])
+def get_teachers_by_house(house):
+    array = [teacher.to_dict() for teacher in Teacher.query.filter_by(house=house).all()]
+    return jsonify({"array" : array, 
+                    "length" : len(array)
+                    })
 
 @app.route('/api/courses', methods=['GET'])
 def get_courses():
-    return jsonify([course.to_dict() for course in Course.query.all()])
+    array = [course.to_dict() for course in Course.query.all()]
+    return jsonify({"array" : array, 
+                    "length" : len(array)
+                    })
 
 #-------------------------------------------------------------------------------------------------------------
 # CREATE METHODS
@@ -125,6 +135,23 @@ def create_house():
         db.session.commit()
     return jsonify({"message" : "Created house successfully!"})
 
+@app.route('/api/courses', methods=['POST'])
+def create_course():
+    data = request.json
+    if 'is_list' in data.keys():
+        if data['is_list']:
+            pass
+    else:
+        course = Course(cid=get_cid(data['name']), 
+                                    name=data['name'], 
+                                    tid=data['teacher'], 
+                                    credit=data['credit'], 
+                                    time=data['time'],
+                                    place=data['place'])
+        db.session.add(course)
+        db.session.commit()
+    return jsonify({"message" : "Created course successfully!"})
+
 @app.route('/api/teachers', methods=['POST'])
 def create_teacher():
     data = request.json
@@ -133,17 +160,6 @@ def create_teacher():
     db.session.commit()
     return jsonify({"message" : "Created teacher successfully!"})
 
-@app.route('/api/courses', methods=['POST'])
-def create_course():
-    data = request.json
-    course = Course(cid=data['cid'], 
-                    name=data['name'], 
-                    credit = data['credit'],
-                    teacher=Teacher.query.filter_by(name=data['teacher']).first())
-
-    db.session.add(course)
-    db.session.commit()
-    return jsonify({"message" : "Created course successfully!"})
 
 @app.route('/api/accounts', methods=['POST'])
 def create_account():

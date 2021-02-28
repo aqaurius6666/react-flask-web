@@ -1,4 +1,4 @@
-from .database.model import Account, Student, House, Teacher
+from .database.model import Account, Course, Student, House, Teacher
 from .database.model import db
 from random import choice
 import uuid
@@ -87,3 +87,8 @@ def standardize(name):
 
 def get_sid_from_id(id):
     return str(1000 + int(id))
+def get_cid(name):
+    name = name[:3].upper()
+    filter = name + "%"
+    id = str(len(Course.query.filter(Course.cid.like(filter)).all()))
+    return name + id

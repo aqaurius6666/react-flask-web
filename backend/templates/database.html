@@ -8,12 +8,20 @@
         </div>
     </form>
     {% if data: %}
+    <div>Data:</div>
     <table border="1px solid black">
+        {% for col in header: %}
+        <td>
+            {{col}}
+        </td>
+        {% endfor %}
         {% for row in data: %}
         <tr>
             {% for item in row: %}
-                <th>{{item}}</th>
-            {% endfor%}
+            <td>
+                {{item}}
+            </td>
+            {% endfor %}
         </tr>
         {% endfor %}
     </table>
