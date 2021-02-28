@@ -21,7 +21,7 @@ const checkHouseImg = (house) => {
     }
 }
 
-const findCharacterImage = (name) => {
+const findCharacterImage = (name = "Unknown") => {
     let URL = name.replace(/\s/g, '%20')
     return `${envURL}/${URL}1.jpg`
 }
@@ -61,7 +61,6 @@ export const Info = () => {
     }, [])
 
     if (student) {
-
         let house_img = checkHouseImg(student.house)
         return (
             <div>
