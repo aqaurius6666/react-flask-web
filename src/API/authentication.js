@@ -1,9 +1,9 @@
 import { BehaviorSubject } from 'rxjs'
 import history from '../history'
 
-const currentAccountSubject = new BehaviorSubject(JSON.stringify(localStorage.getItem('account')))
+const currentAccountSubject = new BehaviorSubject(localStorage.getItem('account'))
 const currentTokenSubject = new BehaviorSubject(localStorage.getItem('token'))
-const currentUserSubject = new BehaviorSubject(JSON.stringify(localStorage.getItem('user')))
+const currentUserSubject = new BehaviorSubject(localStorage.getItem('user'))
 
 export const authenticationService = {
     login,
@@ -12,7 +12,7 @@ export const authenticationService = {
     currentAccount: currentAccountSubject.asObservable(),
     currentAccountValue,
     currentTokenValue
-
+    
 };
 function currentAccountValue() {return JSON.parse(currentAccountSubject.value)}
 function currentTokenValue() {
@@ -25,7 +25,6 @@ export const userService = {
 
 }
 function currentUserValue() {
-
     return JSON.parse(currentUserSubject.value)
 }
 function updateUser(student) {
@@ -78,8 +77,9 @@ function getUser() {
         .then(data => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             const { user } = data
-            localStorage.setItem('user', JSON.stringify(user))
-            currentUserSubject.next(JSON.stringify(user))
+            const strUser = JSON.stringify(user)
+            localStorage.setItem('user', strUser)
+            currentUserSubject.next(strUser)
             return user
         });
 }
@@ -96,8 +96,9 @@ function login(username, password) {
         .then(data => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             const { account, token } = data
-            localStorage.setItem('account', JSON.stringify(account))
-            currentAccountSubject.next(JSON.stringify(account))
+            const strAccount = JSON.stringify(account)
+            localStorage.setItem('account', strAccount)
+            currentAccountSubject.next(strAccount)
             localStorage.setItem('token', token)
             currentTokenSubject.next(token)
             return account
