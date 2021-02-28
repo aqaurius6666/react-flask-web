@@ -1,10 +1,9 @@
 
 import { BehaviorSubject } from 'rxjs'
 import history from '../history'
-const currentAccountSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('account')))
+const currentAccountSubject = new BehaviorSubject(localStorage.getItem('account'))
 const currentTokenSubject = new BehaviorSubject(localStorage.getItem('token'))
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')))
-
 
 export const authenticationService = {
     login,

@@ -1,9 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
-import { api_get_user } from "../API/action"
 import Footer from "./footer";
 import houseImages from "../data/houseImages";
 import envURL from "../data/characterImages";
-import accountContext from "./accountContext";
 import Loading from "./loading";
 import { authenticationService, userService } from "../API/authentication";
 import { loadingContext } from "./loadingContext";
