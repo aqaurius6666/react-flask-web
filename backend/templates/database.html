@@ -1,12 +1,16 @@
 <html>
+
 <body>
     <form method="POST">
-        <textarea style="width:100%; height:200px; padding: 12px 20px; border: 2px solid #ccc; border-radius: 4px; font-size: 16px; resize: none;" name="scripts"></textarea>
+        <textarea
+            style="width:100%; height:200px; padding: 12px 20px; border: 2px solid #ccc; border-radius: 4px; font-size: 16px; resize: none;"
+            name="scripts">{{scripts}}</textarea>
         <div>
             <button>Run</button>
         </div>
     </form>
-        <table style="border: 1px solid black; background-color: white; width: 100%; height: auto">
+    {% if data %}
+    <table style="border: 1px solid black; background-color: white; width: 100%; height: auto">
         {% for col in header: %}
         <td style="background-color: red">
             {{col}}
@@ -22,5 +26,12 @@
         </tr>
         {% endfor %}
     </table>
+    {% endif %}
+    {% if error %}
+    <div>
+        Error: {{error}}
+    </div>
+    {% endif%}
 </body>
+
 </html>

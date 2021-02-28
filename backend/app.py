@@ -52,17 +52,23 @@ def database():
 
     if request.method == 'POST':
         scripts = request.form['scripts']
-        print("Scripts: ", scripts)
-        print("Result: ")
+        statement = scripts.split(' ')[0].lower()
         with db.session.connection() as conn:
-            result = conn.execute(scripts)
             try:
-                result = result.fetchall()
-                header = result[0].keys()
-                return render_template("database.html", data = result, header = header)
+                result = conn.execute(scripts)
+                if statement == 'select':
+                    result = result.fetchall()
+                    header = result[0].keys()
+                    return render_template('database.html', data=result, header=header, scripts = scripts)
+                elif statement == 'update':
+                    db.session.commit()
+                elif statement == 'insert':
+                    db.session.commit()
             except Exception as e:
-                db.session.commit()
-                return render_template("database.html", error = e)
+                return render_template('database.html', error = e)
+
+
+            
 
         
     return render_template('database.html')
