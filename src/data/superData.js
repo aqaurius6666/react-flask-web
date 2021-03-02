@@ -25,6 +25,11 @@ export const Leader = [
         name: 'Professor Severus Snape',
         description: 'Professor Severus Snape is the Potions master and head of Slytherin house, and is seen as the main secondary antagonist up until the end of the first book. His most notable appearance is during Chapter 8, which is named after him ("The Potions Master"). He teaches in the dungeons\' Potions Classroom.',
         image: `${envURL}/Severus%20Snape1.jpg`
+    },
+    {
+        name: 'Professor Pomona Sprout',
+        description: 'Professor Pomona Sprout was a witch who worked as Head of Hufflepuff House and Head of the Herbology department at Hogwarts School of Witchcraft and Wizardry. She attended the school in her youth, where she was Sorted into Hufflepuff and excelled at Herbology. Some time after her graduation, Sprout returned to Hogwarts to teach.',
+        image: `${envURL}/Pomona%20Sprout1.jpg`
     }
 ]
 export const trList = [
@@ -127,4 +132,34 @@ export const NotificationList = [
         alert: "Danh sách sinh viên đăng kí thi chọn đội tuyển Olympic Pháp Thuật toàn quốc lần thứ XX năm 2021",
         date: "08/ 09/ 2020"
     }
+]
+export const SubjectList = [
+    {
+        description: 'Astronomy is the only field of study at Hogwarts that has a direct equivalent in the Muggle world. Astronomy classes take place in the Astronomy Tower, the tallest tower in Hogwarts.',
+        name: 'Astronomy'
+    },
+    {
+        description: 'Charms is the type of spells concerned with giving an object new and unexpected properties, and hence this class mainly consists on learning those sorts of spells. Charms classes are described as notoriously noisy and chaotic, as the lessons are largely practical.',
+        name: 'Charms'
+    },
+    {
+        description: 'Defence Against the Dark Arts, commonly shortened to D.A.D.A., is the class that teaches students defensive techniques to defend against the Dark Arts, and to be protected from dark creatures.',
+        name: 'Defence Against the Dark Arts'
+    },
+    {
+        description: 'Herbology is the study of magical plants and how to take care of, utilise and combat them. There are at least three greenhouses, holding a variety of magical plants of varying degrees of lethality.',
+        name: 'Herbology'
+    },
+    {
+        description: 'History of Magic is the study of magical history. Cuthbert Binns\' lessons are depicted as some of the most boring at Hogwarts. They are only lectures, given without pause, about significant events in wizarding history.',
+        name: 'History of Magic'
+    },
+    {
+        description: 'Potions is described as the art of creating mixtures with magical effects. It requires the correct mixing and stirring of ingredients at the right times and temperatures.',
+        name: 'Potions'
+    },
+    {
+        description: 'Transfiguration is the art of changing the form or appearance of an object, and hence this is what this class teaches. Transfiguration is a theory-based subject, including topics such as "Switching Spells',
+        name: 'Transfiguration'
+    },
 ]

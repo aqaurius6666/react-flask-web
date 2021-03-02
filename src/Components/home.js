@@ -1,7 +1,6 @@
 import React from 'react'
 import logo from "../img/hogwarts_sm_logo.svg"
 import hogwart from "../img/four_houses.jpg"
-import NavBar from "./nav-bar";
 import Footer from "./footer";
 import {NotificationList} from "../data/superData"
 import Header from "./header";
@@ -104,7 +103,6 @@ export const Home = () => {
     if (account) {
         return (
             <div className="home">
-                <NavBar/>
                 <Header/>
                 <Introductory />
                 <hr className="hr"/>

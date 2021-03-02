@@ -93,7 +93,20 @@ body{
     text-align: center;
 }
 
+.video {
+    width: 80%;
+    height: auto;
+}
 
+.video-react .video-react-video {
+    width: 100%;
+    height: auto;
+}
+
+.video-react.video-react-fluid, .video-react.video-react-16-9, .video-react.video-react-4-3 {
+    width: 100%;
+    height: auto;
+}
 
 /*login page*/
 

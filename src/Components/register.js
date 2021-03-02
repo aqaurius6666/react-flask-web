@@ -19,6 +19,7 @@ export const RegisterForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        /*
         if (checkPassword(password, password2)) {
             api_register(username, password, (msg) => {
                 console.log(msg)
@@ -26,7 +27,10 @@ export const RegisterForm = () => {
                 )
         } else {
             console.log("password not match")
-        }
+        } */
+        alert('Chức năng này tạm thời bị khóa')
+        alert('username: 1001, password: 1001')
+        history.push('/login')
         
     }
     const checkPassword = (pass, pass2) => {

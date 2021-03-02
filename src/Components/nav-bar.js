@@ -25,7 +25,7 @@ const NavBar = () => {
                                 <Nav.Link href="/"><i className="fa fa-home" aria-hidden="true" /> Home</Nav.Link>
                                 <Nav.Link href="/about"><i className="fa fa-info-circle" aria-hidden="true" />  About</Nav.Link>
                                 <Nav.Link href="/info"><i className="fa fa-user" aria-hidden="true" /> Personal Info</Nav.Link>
-                                <Nav.Link href="/#"><i className="fa fa-book" aria-hidden="true" /> Courses</Nav.Link>
+                                <Nav.Link href="/courses"><i className="fa fa-book" aria-hidden="true" /> Courses</Nav.Link>
                                 <Nav.Link href="/update"><i className="fa fa-wrench" aria-hidden="true"/> Update</Nav.Link>
                                 <div className="login-nav-margin d-none d-xl-block"> </div>
                                 <Nav.Link id="login-nav-link" href="/login" onClick={handleLogOut}>
