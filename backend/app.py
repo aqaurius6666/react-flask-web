@@ -1,5 +1,5 @@
 
-from flask import Flask, jsonify, request, render_template, url_for
+from flask import Flask, json, jsonify, request, render_template, url_for
 from sqlalchemy.engine import create_engine
 from werkzeug.datastructures import Headers
 from .database.model import (db,
@@ -16,7 +16,7 @@ app = Flask(__name__)
 CORS(app)
 HEROKU = "config_heroku.py"
 LOCAL = "config_local.py"
-app.config.from_pyfile(LOCAL)
+app.config.from_pyfile(HEROKU)
 db.init_app(app)
 def token_required(f):
     @wraps(f)
@@ -76,7 +76,9 @@ def database():
 #-------------------------------------------------------------------------------------------------------------
 # GET LIST METHODS
 #-------------------------------------------------------------------------------------------------------------
-
+@app.route('/api/scores', methods=['GET'])
+def get_scores():
+    return jsonify([score.to_dict() for score in Score.query.all()])
 @app.route('/api/accounts', methods=['GET'])
 def get_accounts():
     return jsonify([account.to_dict() for account in Account.query.all()])
@@ -109,7 +111,19 @@ def get_courses():
 #-------------------------------------------------------------------------------------------------------------
 # CREATE METHODS
 #-------------------------------------------------------------------------------------------------------------
-
+@app.route('/api/scores', methods=['POST'])
+def create_score():
+    data = request.json
+    if 'is_list' in data.keys():
+        pass
+    else:
+        if Course.query.filter_by(cid=data['cid']).first():
+            score = Score(cid=data['cid'], sid=data['sid'], status=0)
+            db.session.add(score)
+        else:
+            return jsonify({'message' : 'CID invalid'}), 400
+        db.session.commit()
+    return jsonify({'message' : 'Create score successfully!'}), 200
 @app.route('/api/students', methods=['POST'])
 def create_user():
     data = request.json
@@ -146,14 +160,14 @@ def create_course():
     data = request.json
     if 'is_list' in data.keys():
         if data['is_list']:
-            pass
+            create_courses_by_list(data['array'])
     else:
-        course = Course(cid=get_cid(data['name']), 
-                                    name=data['name'], 
-                                    tid=data['teacher'], 
-                                    credit=data['credit'], 
-                                    time=data['time'],
-                                    place=data['place'])
+        course = Course(cid=data['cid'], 
+                        name=data['name'], 
+                        tid=data['teacher'], 
+                        credit=data['credit'], 
+                        time=data['time'],
+                        place=data['place'])
         db.session.add(course)
         db.session.commit()
     return jsonify({"message" : "Created course successfully!"})
@@ -198,6 +212,36 @@ def get_user(current):
 @token_required
 def get_account(current):
     return jsonify({"account" : current.to_dict()})
+
+@app.route('/api/student/scores', methods=['GET'])
+@token_required
+def get_scores_student(current):
+    student = current.get_user()
+    return jsonify({'score' : [score.to_dict() for score in student.score]})
+
+
+#-------------------------------------------------------------------------------------------------------------
+# CREATE SPECIFIC METHODS
+#-------------------------------------------------------------------------------------------------------------
+
+@app.route('/api/student/scores', methods=['POST'])
+@token_required
+def create_score_student(current):
+    student = current.get_user()
+    data = request.json
+    if 'is_list' in data.keys():
+        try:
+            create_score_student_by_list(data['array'], student)
+        except Exception as e:
+   
+            return jsonify({'message': e.args[0]}), 400
+    elif Course.query.filter_by(cid=data['cid']).first():
+            score = Score(cid=data['cid'], student=student)
+            db.session.add(score)
+    else:
+        return jsonify({'message': 'CID invalid'}), 400
+    db.session.commit()
+    return jsonify({'message' : 'Create score successfully'}), 200
 
 
 #-------------------------------------------------------------------------------------------------------------
@@ -338,3 +382,4 @@ def create_table():
 def drop():
     db.drop_all()
     return jsonify({"message" : "Dropped tables successfully!"})
+

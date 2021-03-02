@@ -83,7 +83,8 @@ class Course(db.Model):
             'place' : self.place,
             'tid' : self.tid,
             'credit' : self.credit,
-            'refer' : self.refer
+            'refer' : self.refer,
+            'time' : self.time.upper() if self.time else self.time
         }
     def get_scores(self):
         return self.score

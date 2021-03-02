@@ -1,4 +1,4 @@
-from .database.model import Account, Course, Student, House, Teacher
+from .database.model import Account, Course, Score, Student, House, Teacher
 from .database.model import db
 from random import choice
 import uuid
@@ -29,7 +29,7 @@ def encode_auth_token(id, key):
     """
     try:
         payload = {
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=3),
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=10),
             'iat': datetime.datetime.utcnow(),
             'pid': id
         }
@@ -92,3 +92,25 @@ def get_cid(name):
     filter = name + "%"
     id = str(len(Course.query.filter(Course.cid.like(filter)).all()))
     return name + id
+
+def create_courses_by_list(array):
+    for each in array:
+        course = Course(cid=get_cid(each['name']),
+                        name=each['name'],
+                        credit=each['credit'],
+                        tid=each['tid'],
+                        time=each['time'],
+                        place=each['place']
+                )
+        db.session.add(course)
+    db.session.commit()
+
+def create_score_student_by_list(array, student):
+    for each in array:
+        if Course.query.filter_by(cid=each['cid']).first():
+            score = Score(cid=each['cid'], student=student)
+            db.session.add(score)
+        else:
+            cid = each['cid']
+            raise Exception('CID invalid: {}'.format(cid))
+    db.session.commit()
