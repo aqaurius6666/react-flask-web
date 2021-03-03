@@ -16,7 +16,7 @@ app = Flask(__name__)
 CORS(app)
 HEROKU = "config_heroku.py"
 LOCAL = "config_local.py"
-app.config.from_pyfile(HEROKU)
+app.config.from_pyfile(LOCAL)
 db.init_app(app)
 def token_required(f):
     @wraps(f)
@@ -98,15 +98,12 @@ def get_teachers():
 def get_teachers_by_house(house):
     array = [teacher.to_dict() for teacher in Teacher.query.filter_by(house=house).all()]
     return jsonify({"array" : array, 
-                    "length" : len(array)
-                    })
-
+                    "length" : len(array)})
 @app.route('/api/courses', methods=['GET'])
 def get_courses():
     array = [course.to_dict() for course in Course.query.all()]
     return jsonify({"array" : array, 
-                    "length" : len(array)
-                    })
+                    "length" : len(array)})
 
 #-------------------------------------------------------------------------------------------------------------
 # CREATE METHODS
@@ -175,7 +172,9 @@ def create_course():
 @app.route('/api/teachers', methods=['POST'])
 def create_teacher():
     data = request.json
-    teacher = Teacher(tid=data['tid'], name=data['name'], of_house=House.query.filter_by(name=data['house']).first())
+    teacher = Teacher(tid=data['tid'], 
+                        name=data['name'], 
+                        of_house=House.query.filter_by(name=data['house']).first())
     db.session.add(teacher)
     db.session.commit()
     return jsonify({"message" : "Created teacher successfully!"})
@@ -186,15 +185,18 @@ def create_account():
     data = request.json
     if Account.query.filter_by(username=data['username']).first():
         return jsonify({"message" : "This account has already created!"}), 400
-    new_student = Student(sid=get_new_id(), name = "", of_house=get_random_house())
-    db.session.add(new_student)
+    id = get_new_id()
+    if data['role'] == "Student":
+        student = Student(sid=id, name="", house=get_random_house())
+        db.session.add(student)
+    else:
+        teacher = Teacher(tid=id, name="", house=get_random_house())
+        db.session.add(teacher)
 
     account = Account(pid=str(uuid.uuid4()), 
                     username=data['username'], 
                     password=generate_password_hash(data['password'], method='sha256'),
-                    student=new_student
-    )
-
+                    id=id)
     db.session.add(account)
     db.session.commit()
     return jsonify({"message" : "Created account successfully!"}), 201

@@ -6,17 +6,12 @@ from werkzeug.security import generate_password_hash
 import datetime
 import jwt
 def get_new_id():
-    
-    last_id = Student.query.order_by(Student.sid.desc()).first()
-    if last_id:
-        last_id = str(int(last_id.sid) + 1)
-    else:
-        last_id = "1000"
-    return last_id
+    last_id = len(Student.query.all()) + len(Teacher.query.all())
+    return str(1000+last_id)
 
 def get_random_house():
-    '''return random house object'''
-    return choice(House.query.all())
+    '''return random house name'''
+    return choice(House.query.all()).name
 
 def info(account, student):
     temp = {**account.to_dict(), **student.to_dict()}
