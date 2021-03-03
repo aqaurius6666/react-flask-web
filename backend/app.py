@@ -16,7 +16,7 @@ app = Flask(__name__)
 CORS(app)
 HEROKU = "config_heroku.py"
 LOCAL = "config_local.py"
-app.config.from_pyfile(LOCAL)
+app.config.from_pyfile(HEROKU)
 db.init_app(app)
 def token_required(f):
     @wraps(f)
@@ -220,6 +220,12 @@ def get_account(current):
 def get_scores_student(current):
     student = current.get_user()
     return jsonify({'score' : [score.to_dict() for score in student.score]})
+@app.route('/api/student/schedule', methods=['GET'])
+@token_required
+def get_schedule(current):
+    student = current.get_user()
+    current_course = [score.course for score in student.score if score.status==0]
+    return jsonify({"schedule" : [course.to_schedule() for course in current_course]}), 200
 
 
 #-------------------------------------------------------------------------------------------------------------
@@ -238,7 +244,7 @@ def create_score_student(current):
    
             return jsonify({'message': e.args[0]}), 400
     elif Course.query.filter_by(cid=data['cid']).first():
-            score = Score(cid=data['cid'], student=student)
+            score = Score(cid=data['cid'], student=student, status=0)
             db.session.add(score)
     else:
         return jsonify({'message': 'CID invalid'}), 400

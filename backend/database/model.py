@@ -86,6 +86,15 @@ class Course(db.Model):
             'refer' : self.refer,
             'time' : self.time.upper() if self.time else self.time
         }
+    def to_schedule(self):
+        """Return object data in easily serializeable format"""
+        return {
+            'cid' : self.cid,
+            'name' : self.name,
+            'place' : self.place,
+            'tid' : self.tid,
+            'time' : self.time.upper() if self.time else self.time
+        }
     def get_scores(self):
         return self.score
 class Score(db.Model):

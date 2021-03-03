@@ -70,7 +70,7 @@ def create_students_by_list(array):
 
         account = Account(pid=str(uuid.uuid4()),
                             username=id,
-                            password=generate_password_hash(id, method='sha256'),
+                            password=generate_password_hash(f"a{id}", method='sha256'),
                             id=id)
         db.session.add(account)
     db.session.commit()
@@ -102,10 +102,20 @@ def create_courses_by_list(array):
 
 def create_score_student_by_list(array, student):
     for each in array:
-        if Course.query.filter_by(cid=each['cid']).first():
-            score = Score(cid=each['cid'], student=student)
-            db.session.add(score)
+        cid = each['cid']
+        if Course.query.filter_by(cid=cid).first():
+            if check_time_course_valid(student, cid):
+                score = Score(cid=cid, student=student, status=0)
+                db.session.add(score)
+            else:
+                raise Exception(f'Time error: {cid}')
         else:
-            cid = each['cid']
-            raise Exception('CID invalid: {}'.format(cid))
+            raise Exception(f'CID invalid: {cid}')
     db.session.commit()
+
+def check_time_course_valid(student, course):
+    student_cid = [score.cid for score in Score.query.filter_by(sid=student.sid, status=0).all()]
+    student_time = [course.time for course in [Course.query.filter_by(cid=cid).first() for cid in student_cid]]
+    if Course.query.filter_by(cid=course).first().time in student_time:
+        return False
+    return True
