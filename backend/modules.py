@@ -101,8 +101,7 @@ def create_courses_by_list(array):
     db.session.commit()
 
 def create_score_student_by_list(array, student):
-    for each in array:
-        cid = each['cid']
+    for cid in array:
         if Course.query.filter_by(cid=cid).first():
             if check_time_course_valid(student, cid):
                 score = Score(cid=cid, student=student, status=0)
