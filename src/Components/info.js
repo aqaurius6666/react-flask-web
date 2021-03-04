@@ -3,7 +3,7 @@ import Footer from "./footer";
 import houseImages from "../data/houseImages";
 import envURL from "../data/characterImages";
 import Loading from "./loading";
-import { authenticationService, userService } from "../API/authentication";
+import { userService } from "../API/service";
 import { loadingContext } from "./loadingContext";
 
 const checkHouseImg = (house) => {
@@ -49,7 +49,6 @@ const Subject = (props) => {
 }
 
 export const Info = () => {
-    const account = authenticationService.currentAccountValue()
     const [student, setStudent] = useState(userService.currentUserValue())
     const { setLoading } = useContext(loadingContext)
     useEffect(() => {

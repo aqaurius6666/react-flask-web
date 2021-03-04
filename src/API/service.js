@@ -9,6 +9,7 @@ export const authenticationService = {
     login,
     logout,
     check_auth,
+    register,
     currentAccount: currentAccountSubject.asObservable(),
     currentAccountValue,
     currentTokenValue
@@ -22,7 +23,21 @@ export const userService = {
     getUser,
     updateUser,
     currentUserValue
+}
+function register({username, password, role}) {
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username, password, role})
+    };
 
+    return fetch(`https://it-must-be-ok.herokuapp.com/api/accounts`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            console.log(data)
+        });
 }
 function currentUserValue() {
     return JSON.parse(currentUserSubject.value)
@@ -41,6 +56,7 @@ function updateUser(student) {
         .then(data => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             const { token } = data
+            console.log(data)
             localStorage.setItem('token', token)
             currentTokenSubject.next(token)
         });

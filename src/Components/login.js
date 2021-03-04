@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import {Link} from "react-router-dom"
-import { authenticationService } from "../API/authentication"
+import { authenticationService } from "../API/service"
 import history from "../history"
 
 export const Login = () => {

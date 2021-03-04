@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { api_update_passowrd } from "../API/action"
-import { authenticationService } from "../API/authentication"
+import { authenticationService } from "../API/service"
 
 export const ChangePassword = () => {
     const [form, setForm] = useState({

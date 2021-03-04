@@ -1,40 +1,37 @@
 import React, { useState } from 'react'
-import { api_register } from '../API/action'
 import history from '../history'
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { authenticationService } from '../API/service';
 
 
 
 export const Register = () => {
     return (
         <>
-        <RegisterForm/>
+            <RegisterForm />
         </>
     )
 }
 export const RegisterForm = () => {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const [password2, setPassword2] = useState("")
 
+    const [form, setForm] = useState({
+        "username": "",
+        "password": "",
+        "password2": "",
+        "role": ""
+    })
     const handleSubmit = (e) => {
         e.preventDefault()
-        /*
-        if (checkPassword(password, password2)) {
-            api_register(username, password, (msg) => {
-                console.log(msg)
-                history.push('/login')}
-                )
+        console.log(form)
+        if (validate_form()) {
+            authenticationService.register(form)
+            history.push('/login')
         } else {
             console.log("password not match")
-        } */
-        alert('Chức năng này tạm thời bị khóa')
-        alert('username: 1001, password: 1001')
-        history.push('/login')
-        
+        }
     }
-    const checkPassword = (pass, pass2) => {
-        return pass === pass2
+    const validate_form = () => {
+        return form.password == form.password2
     }
     return (
         <div className="login-container">
@@ -42,11 +39,16 @@ export const RegisterForm = () => {
                 <div className="form">
                     <form className="register-form" onSubmit={handleSubmit}>
                         <input type="text" placeholder="Username"
-                               onChange={(e) => setUsername(e.target.value)} value={username} />
+                            onChange={(e) => setForm({ ...form, username: e.target.value })} />
                         <input type="password" placeholder="Password"
-                               onChange={(e) => setPassword(e.target.value)} value={password} />
+                            onChange={(e) => setForm({ ...form, password: e.target.value })} />
                         <input type="password" placeholder="Conf. Password"
-                               onChange={(e) => setPassword2(e.target.value)} value={password2} />
+                            onChange={(e) => setForm({ ...form, password2: e.target.value })} />
+                        <label>Role: </label>
+                        <select name="role" onChange={(e) => setForm({...form, role: e.target.value})}>
+                            <option value="Student" selected >Student</option>
+                            <option value="Teacher">Teacher</option>
+                        </select>
                         <button>create</button>
                         <p className="message">Already registered? <Link to="/login">Sign In</Link></p>
                     </form>
@@ -55,6 +57,6 @@ export const RegisterForm = () => {
 
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

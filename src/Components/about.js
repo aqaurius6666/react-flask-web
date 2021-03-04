@@ -3,7 +3,7 @@ import Header from './header'
 import Footer from "./footer";
 import {Leader, trList, SubjectList} from "../data/superData";
 import Loading from "./loading";
-import { authenticationService } from '../API/authentication';
+import { authenticationService } from '../API/service';
 import envURL from "../data/characterImages";
 import video from "../img/Hogwarts Subjects.mp4";
 
