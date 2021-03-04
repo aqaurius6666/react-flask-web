@@ -50,7 +50,7 @@ const Subject = (props) => {
 
 export const Info = () => {
     const [student, setStudent] = useState(userService.currentUserValue())
-    const { setLoading } = useContext(loadingContext)
+    const { loading, setLoading } = useContext(loadingContext)
     useEffect(() => {
         setLoading(true)
         userService.getUser().then(data => {
@@ -59,7 +59,8 @@ export const Info = () => {
         }).catch(() => setLoading(false))
     }, [])
 
-    if (student) {
+    if (!loading) {
+        console.log(student)
         let house_img = checkHouseImg(student.house)
         return (
             <div>
@@ -124,6 +125,9 @@ export const Info = () => {
             </div>
         )
     } else {
-        return <Loading />
+        return (
+            <>
+            </>
+        )
     }
 }

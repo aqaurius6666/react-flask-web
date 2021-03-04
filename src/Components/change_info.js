@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react"
+import React from "react"
 import { userService } from "../API/service"
-import { loadingContext } from "./loadingContext"
 
 export const ChangeInfo = (props) => {
     const { setForm, form } = props

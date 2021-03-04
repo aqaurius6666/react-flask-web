@@ -11,6 +11,7 @@ import { authenticationService } from "./API/service";
 import { loadingContext } from "./Components/loadingContext";
 import Slider from "./Components/courses";
 import Courses from "./Components/courses";
+import Loading from "./Components/loading";
 
 function App() {
     const [account, setAccount] = useState()
@@ -22,6 +23,7 @@ function App() {
         <>
             <loadingContext.Provider value={{ loading, setLoading }}>
                 <NavBar />
+                { loading ? <Loading/> : null}
                 <Switch>
                     <Route exact path="/" component={() => <Home />} />
                     <Route exact path="/login" component={() => <Login />} />
