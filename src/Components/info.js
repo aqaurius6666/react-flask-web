@@ -22,6 +22,7 @@ const checkHouseImg = (house) => {
 }
 
 const findCharacterImage = (name = "Unknown") => {
+    if(name === "") return `${envURL}/Unknown1.jpg`
     let URL = name.replace(/\s/g, '%20')
     return `${envURL}/${URL}1.jpg`
 }

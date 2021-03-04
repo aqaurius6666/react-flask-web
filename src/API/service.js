@@ -99,7 +99,6 @@ function getUser() {
             return user
         });
 }
-
 function login(username, password) {
     const requestOptions = {
         method: 'POST',
