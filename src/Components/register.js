@@ -18,7 +18,7 @@ export const RegisterForm = () => {
         "username": "",
         "password": "",
         "password2": "",
-        "role": ""
+        "role": "Student"
     })
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -27,11 +27,11 @@ export const RegisterForm = () => {
             authenticationService.register(form)
             history.push('/login')
         } else {
-            console.log("password not match")
+            alert("Password not match")
         }
     }
     const validate_form = () => {
-        return form.password == form.password2
+        return form.password === form.password2
     }
     return (
         <div className="login-container">
@@ -46,7 +46,7 @@ export const RegisterForm = () => {
                             onChange={(e) => setForm({ ...form, password2: e.target.value })} />
                         <label>Role: </label>
                         <select name="role" onChange={(e) => setForm({...form, role: e.target.value})}>
-                            <option value="Student" selected >Student</option>
+                            <option value="Student">Student</option>
                             <option value="Teacher">Teacher</option>
                         </select>
                         <button>create</button>
