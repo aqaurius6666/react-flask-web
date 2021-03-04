@@ -24,6 +24,57 @@ export const userService = {
     updateUser,
     currentUserValue
 }
+export const courseService = {
+    getCourses,
+    registerCourse,
+    getStudentCourse,
+}
+function getCourses() {
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    return fetch(`https://it-must-be-ok.herokuapp.com/api/courses`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            return data
+        });
+}
+function getStudentCourse() {
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token' : authenticationService.currentTokenValue()
+        }
+    };
+
+    return fetch(`https://it-must-be-ok.herokuapp.com/api/student/scores`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            console.log(data)
+        });
+}
+function registerCourse(array) {
+    console.log(JSON.stringify({...array, is_list:true}))
+    const requestOptions = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token' : authenticationService.currentTokenValue()
+        },
+        body: JSON.stringify({...array, is_list:true})
+    };
+
+    return fetch(`https://it-must-be-ok.herokuapp.com/api/student/scores`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            console.log(data)
+        });
+}
 function register({username, password, role}) {
     const requestOptions = {
         method: 'POST',
@@ -53,12 +104,8 @@ function updateUser(student) {
     };
     return fetch(`https://it-must-be-ok.herokuapp.com/api/student`, requestOptions)
         .then(handleResponse)
-        .then(data => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            const { token } = data
-            console.log(data)
-            localStorage.setItem('token', token)
-            currentTokenSubject.next(token)
+        .then(({message}) => {
+            console.log(message)
         });
 }
 function check_auth() {

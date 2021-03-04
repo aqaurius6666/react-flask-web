@@ -7,19 +7,25 @@ import { loadingContext } from "../Components/loadingContext"
 import Loading from "./loading";
 
 export const Update = () => {
-    const [form, setForm] = useState(userService.currentUserValue())
-    const { loading, setLoading } = useContext(loadingContext)
+    const [form, setForm] = useState()
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
         setLoading(true)
         userService.getUser().then(data => {
-            console.log(data)
             setForm(data)
-            setLoading(false)
         })
+        .then(() => setLoading(false))
+        .catch(() => setLoading(false))
+        return () => setLoading(false)
     }, [])
-    if (!loading) {
-        console.log(form)
+    if (loading) {
         return (
+            <Loading />
+        )
+    }
+    return (
+        <>
+
             <div>
                 <br />
                 <br />
@@ -28,7 +34,6 @@ export const Update = () => {
                 <br />
                 <Footer />
             </div>
-        )
-    }
-
+        </>
+    )
 }

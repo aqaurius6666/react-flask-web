@@ -1,4 +1,4 @@
-import React , { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import { Home } from "./Components/home";
 import { Info } from "./Components/info";
@@ -23,8 +23,7 @@ function App() {
         <>
             <loadingContext.Provider value={{ loading, setLoading }}>
                 <NavBar />
-                { loading ? <Loading/> : null}
-                <Switch>
+               <Switch>
                     <Route exact path="/" component={() => <Home />} />
                     <Route exact path="/login" component={() => <Login />} />
                     <Route exact path="/about" component={() => <About />} />
@@ -33,6 +32,7 @@ function App() {
                     <Route exact path="/update" component={() => <Update />} />
                     <Route exact path="/info" component={() => <Info />} />
                 </Switch>
+
             </loadingContext.Provider>
         </>
     )

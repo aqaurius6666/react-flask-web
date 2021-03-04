@@ -3,7 +3,6 @@ import { userService } from "../API/service"
 
 export const ChangeInfo = (props) => {
     const { setForm, form } = props
-
     const onSubmitForm = (e) => {
         e.preventDefault()
         userService.updateUser(form)
