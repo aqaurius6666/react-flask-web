@@ -95,6 +95,7 @@ class Course(db.Model):
             'tid' : self.tid,
             'time' : self.time.upper() if self.time else self.time
         }
+    d
     def get_scores(self):
         return self.score
 class Score(db.Model):
@@ -108,7 +109,6 @@ class Score(db.Model):
     status = db.Column(db.Integer)
 
     def to_dict(self):
-        """Return object data in easily serializeable format"""
         return {
             'id' : self.id,
             'cid' : self.cid,
@@ -116,8 +116,20 @@ class Score(db.Model):
             'mid' : self.mid,
             'final' : self.final,
             'total' : self.total,
+            'status' : self.status
+            
+        }
+    def to_course_list(self):
+        course = Course.query.filter_by(cid=self.cid).first()
+        return {
+            'cid' : self.cid,
+            'sid' : self.sid,
+            'mid' : self.mid,
+            'final' : self.final,
+            'total' : self.total,
             'status' : self.status,
-            'name' : Course.query.filter_by(cid=self.cid).first().name
+            'name' : course.name,
+            'credit' : course.credit 
         }
 class Teacher(db.Model):
 

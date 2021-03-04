@@ -219,7 +219,7 @@ def get_account(current):
 @token_required
 def get_scores_student(current):
     student = current.get_user()
-    return jsonify({'score' : [score.to_dict() for score in student.score]})
+    return jsonify({'score' : [score.to_course_list() for score in student.score]})
 @app.route('/api/student/schedule', methods=['GET'])
 @token_required
 def get_schedule(current):
