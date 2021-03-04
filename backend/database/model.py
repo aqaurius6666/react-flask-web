@@ -116,7 +116,8 @@ class Score(db.Model):
             'mid' : self.mid,
             'final' : self.final,
             'total' : self.total,
-            'status' : self.status
+            'status' : self.status,
+            'name' : Course.query.filter_by(cid=self.cid).first().name
         }
 class Teacher(db.Model):
 
