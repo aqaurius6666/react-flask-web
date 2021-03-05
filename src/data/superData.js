@@ -211,3 +211,35 @@ export const CourseList = [
     {"cid":"MUG2","credit":2,"name":"Muggle Art","place":"101 Hufflepuff","refer":null,"tid":"1033","time":"C4"},
     {"cid":"MUG3","credit":2,"name":"Muggle Music","place":"102 Hufflepuff","refer":null,"tid":"1074","time":"C5"},
     {"cid":"MUS1","credit":2,"name":"Music","place":"101 Ravenclaw","refer":null,"tid":"1082","time":"C6"},{"cid":"XYL1","credit":2,"name":"Xylomancy","place":"102 Ravenclaw","refer":null,"tid":"1033","time":"C7"}]
+export const TeacherList = [
+    {"degree":null,"dob":"28/06/1881","house":"Gryffindor","name":"Albus Percival Wulfric Brian Dumbledore","role":"Teacher","tid":"1004"},
+    {"degree":null,"dob":"06/12/1928","house":"Gryffindor","name":"Rubeus Hagrid","role":"Teacher","tid":"1005"},
+    {"degree":null,"dob":"10/03/1960","house":"Gryffindor","name":"Remus John Lupin","role":"Teacher","tid":"1015"},
+    {"degree":null,"dob":"04/10/2021","house":"Gryffindor","name":"Minerva McGonagall","role":"Teacher","tid":"1030"},
+    {"degree":null,"dob":"22/12/1970","house":"Ravenclaw","name":"Quirinus Quirrell","role":"Teacher","tid":"1033"},
+    {"degree":null,"dob":"26/01/1964","house":"Ravenclaw","name":"Gilderoy Lockhart","role":"Teacher","tid":"1036"},
+    {"degree":null,"dob":"20/09/1958","house":"Ravenclaw","name":"Filius Flitwick","role":"Teacher","tid":"1037"},
+    {"degree":null,"dob":"01/09/1962","house":"Ravenclaw","name":"Sybill Patricia Trelawney","role":"Teacher","tid":"1038"},
+    {"degree":null,"dob":"06/04/1960","house":"Slytherin","name":"Severus Snape","role":"Teacher","tid":"1046"},
+    {"degree":null,"dob":"26/08/2021","house":"Slytherin","name":"Dolores Jane Umbridge","role":"Teacher","tid":"1051"},
+    {"degree":null,"dob":"28/04/2021","house":"Slytherin","name":"Horace Eugene Flaccus Slughorn","role":"Teacher","tid":"1052"},
+    {"degree":null,"dob":"13/10/2000","house":"Slytherin","name":"Salazar Slytherin","role":"Teacher","tid":"1068"},
+    {"degree":null,"dob":"13/10/2000","house":"Gryffindor","name":"Godric Gryffindor","role":"Teacher","tid":"1069"},
+    {"degree":null,"dob":"13/10/2000","house":"Ravenclaw","name":"Rowena Ravenclaw","role":"Teacher","tid":"1070"},
+    {"degree":null,"dob":"17/02/1946","house":"Slytherin","name":"Cuthbert Binns","role":"Teacher","tid":"1072"},
+    {"degree":null,"dob":"17/03/1976","house":"Hufflepuff","name":"Charity Burbage","role":"Teacher","tid":"1074"},
+    {"degree":null,"dob":"13/10/2000","house":"Hufflepuff","name":"Helga Hufflepuff","role":"Teacher","tid":"1078"},
+    {"degree":null,"dob":"15/05/2021","house":"Hufflepuff","name":"Pomona Sprout","role":"Teacher","tid":"1082"},
+    {"degree":null,"dob":"17/01/1960","house":"Gryffindor","name":"Alastor Moody","role":"Teacher","tid":"1096"},
+    {"degree":null,"dob":"10/02/1918","house":"Gryffindor","name":"Rolanda Hooch","role":"Teacher","tid":"1132"},
+    {"degree":null,"dob":"06/01/1966","house":"Slytherin","name":"Irma Pince","role":"Teacher","tid":"1133"},
+    {"degree":null,"dob":"22/08/1968","house":"Slytherin","name":"Aurora Sinistra","role":"Teacher","tid":"1134"},
+    {"degree":null,"dob":"24/10/1974","house":"Hufflepuff","name":"Septima Vector","role":"Teacher","tid":"1135"}]
+
+export function checkCID(cid) {
+    return CourseList.filter(item => item.cid == cid)[0]
+}
+
+export function checkSID(tid) {
+    return TeacherList.filter(item => item.tid == tid)[0]
+}
