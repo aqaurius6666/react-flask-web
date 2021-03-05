@@ -74,7 +74,7 @@ def database():
     return render_template('database.html')
 
 #-------------------------------------------------------------------------------------------------------------
-# GET LIST METHODS
+# GET METHODS
 #-------------------------------------------------------------------------------------------------------------
 @app.route('/api/scores', methods=['GET'])
 def get_scores():
@@ -104,6 +104,37 @@ def get_courses():
     array = [course.to_dict() for course in Course.query.all()]
     return jsonify({"array" : array, 
                     "length" : len(array)})
+
+#-------------------------------------------------------------------------------------------------------------
+# GET ONE METHODS
+#-------------------------------------------------------------------------------------------------------------
+@app.route('/api/courses/<cid>', methods=['GET'])
+@token_required
+def get_specific_course(current, cid):
+    try:
+        course = Course.query.filter_by(cid=cid).first()
+        return jsonify({"course": course.to_dcit()}), 200
+    except:
+        return jsonify({"message" : "Invaild course id"}), 404
+    
+
+@app.route('/api/students/<sid>', methods=['GET'])
+@token_required
+def get_specific_student(current, sid):
+    try:
+        student = Student.query.filter_by(sid=sid).first()
+        return jsonify({"student": student.to_dcit()}), 200
+    except:
+        return jsonify({"message" : "Invaild student id"}), 404
+
+@app.route('/api/teachers/<tid>', methods=['GET'])
+@token_required
+def get_specific_teacher(current, tid):
+    try:
+        teacher = Teacher.query.filter_by(tid=tid).first()
+        return jsonify({"teacher": teacher.to_dcit()}), 200
+    except:
+        return jsonify({"message" : "Invaild teacher id"}), 404
 
 #-------------------------------------------------------------------------------------------------------------
 # CREATE METHODS
@@ -202,13 +233,14 @@ def create_account():
     return jsonify({"message" : "Created account successfully!"}), 201
 
 #-------------------------------------------------------------------------------------------------------------
-# GET SPECIFIC METHODS
+# GET AUTHENTICATED METHODS
 #-------------------------------------------------------------------------------------------------------------
 
 @app.route('/api/user', methods=['GET'])
 @token_required
 def get_user(current):
-    return jsonify({'user' : current.get_user().to_dict()})
+    return jsonify({ "user" : current.get_user().to_dict(),
+                    "token" : encode_auth_token(current.pid, app.config['SECRET_KEY'])}), 200
 
 @app.route('/api/account', methods=['GET'])
 @token_required
@@ -219,13 +251,15 @@ def get_account(current):
 @token_required
 def get_scores_student(current):
     student = current.get_user()
-    return jsonify({'score' : [score.to_course_list() for score in student.score]})
+    return jsonify({"score" : [score.to_course_list() for score in student.score],
+                    "token" : encode_auth_token(current.pid, app.config['SECRET_KEY'])}), 200
 @app.route('/api/student/schedule', methods=['GET'])
 @token_required
 def get_schedule(current):
     student = current.get_user()
     current_course = [score.course for score in student.score if score.status==0]
-    return jsonify({"schedule" : [course.to_schedule() for course in current_course]}), 200
+    return jsonify({"schedule" : [course.to_schedule() for course in current_course],
+                    "token" : encode_auth_token(current.pid, app.config['SECRET_KEY'])}), 200
 
 
 #-------------------------------------------------------------------------------------------------------------
@@ -249,7 +283,8 @@ def create_score_student(current):
     else:
         return jsonify({'message': 'CID invalid'}), 400
     db.session.commit()
-    return jsonify({'message' : 'Create score successfully'}), 200
+    return jsonify({'message' : 'Create score successfully',
+                    "token" : encode_auth_token(current.pid, app.config['SECRET_KEY'])}), 201
 
 
 #-------------------------------------------------------------------------------------------------------------
@@ -295,7 +330,8 @@ def update_student(current):
             return jsonify({"message" : "Bad input"}), 400
     student.update(data)
     db.session.commit()
-    return jsonify({"student" : student.to_dict(), "message" : "Update successfully!"}), 200
+    return jsonify({"student" : student.to_dict(), "message" : "Update successfully!",
+                    "token" : encode_auth_token(current.pid, app.config['SECRET_KEY'])}), 200
 
 
 @app.route('/api/account', methods=['PUT'])
