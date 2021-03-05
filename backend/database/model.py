@@ -95,7 +95,6 @@ class Course(db.Model):
             'tid' : self.tid,
             'time' : self.time.upper() if self.time else self.time
         }
-    d
     def get_scores(self):
         return self.score
 class Score(db.Model):
