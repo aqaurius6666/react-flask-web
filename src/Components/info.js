@@ -5,6 +5,7 @@ import envURL from "../data/characterImages";
 import Loading from "./loading";
 import { courseService, userService } from "../API/service";
 import { loadingContext } from "./loadingContext";
+import {checkCID, checkSID} from "../data/superData";
 
 const checkHouseImg = (house) => {
     switch (house) {
@@ -27,23 +28,23 @@ const findCharacterImage = (name = "Unknown") => {
     return `${envURL}/${URL}1.jpg`
 }
 
-const Subject = (props) => {
+const Subject = ({props}) => {
     return (
         <tr className="col-12 row text-center">
             <td className="col-3">
-                <p>{props.sname}</p>
+                <p>{props.name}</p>
             </td>
             <td className="col-3 col-md-2">
-                <p>{props.sid}</p>
+                <p>{props.cid}</p>
             </td>
             <td className="d-none d-sm-block col-md-2">
-                <p>{props.tinchi}</p>
+                <p>{props.credit}</p>
             </td>
             <td className="col-3 col-md-2">
-                <p>{props.teacher}</p>
+                <p>{checkSID(checkCID(props.cid).tid).name}</p>
             </td>
             <td className="col-3">
-                <p>{props.address}</p>
+                <p>{checkCID(props.cid).place}</p>
             </td>
         </tr>
     )
@@ -53,6 +54,7 @@ export const Info = () => {
     const [student, setStudent] = useState(userService.currentUserValue())
     const [ courseList, courseList ]
     const [loading, setLoading] = useState(true)
+    const [courses, setCourses] = useState([])
     useEffect(() => {
         setLoading(true)
         userService.getUser().then(data => {
@@ -66,18 +68,21 @@ export const Info = () => {
     useEffect(() => {
         setLoading(true)
         courseService.getStudentCourse()
-            .then(() => setLoading(false))
+            .then((data) => {
+                setCourses(data)
+                setLoading(false)})
             .catch(() => setLoading(false))
         return () => setLoading(false)
 
     }, [])
 
+    let allScore = courses.score
+    var allCourse = null
+    if (allScore !== undefined) allCourse =
+        allScore.map((item, i) => <Subject key={i} props = {item}/>)
 
-    if (loading) {
-        return (
-            <Loading />
-        )
-    }
+    if (loading) return <Loading />
+    if (student)
     return (
         <div>
             <br /> <br />
@@ -130,10 +135,7 @@ export const Info = () => {
                         </td>
                     </tr>
 
-                    <Subject sname="Phòng chống nghệ thuật hắc ám" sid="PCNTHA1"
-                        tinchi="3" teacher="Severus Snape" address="101-Slytherin" />
-                    <Subject sname="Bùa Chú" sid="BC1" tinchi="3"
-                        teacher="Albus Dumbledore" address="101 Gryffindor" />
+                    {allCourse}
                 </table>
             </div>
             <br />

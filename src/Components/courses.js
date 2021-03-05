@@ -1,8 +1,6 @@
 import React, { Suspense, useContext, useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-import Header from "./header";
 import { courseService } from '../API/service';
-import { loadingContext } from '../Components/loadingContext';
 import Loading from './loading';
 
 
@@ -11,11 +9,12 @@ const RegisCourses = (props) => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         courseService.registerCourse(data)
+        alert("Successfully!")
     };
 
     const courseItem = coursesList
         .map((courseItem, i) =>
-            <tr className="col-12 row" >
+            <tr className="col-12 row" key={i} >
                 <td className="col-1"><input type="checkbox" ref={register} name="array" value={courseItem.cid} /></td>
                 <td className="col-1">{courseItem.cid}</td>
                 <td className="col-1">{courseItem.credit}</td>

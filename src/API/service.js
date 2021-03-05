@@ -33,7 +33,8 @@ function getCourses() {
     const requestOptions = {
         method: 'GET',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-access-token' : authenticationService.currentTokenValue()
         }
     };
 
@@ -55,7 +56,7 @@ function getStudentCourse() {
     return fetch(`https://it-must-be-ok.herokuapp.com/api/student/scores`, requestOptions)
         .then(handleResponse)
         .then(data => {
-            console.log(data)
+            return(data)
         });
 }
 function registerCourse(array) {
