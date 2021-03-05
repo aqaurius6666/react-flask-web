@@ -1,32 +1,9 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import Footer from "./footer";
-import houseImages from "../data/houseImages";
-import envURL from "../data/characterImages";
+import { findCharacterImage, checkHouseImg } from '../data/superData'
 import Loading from "./loading";
 import { courseService, userService } from "../API/service";
-import { loadingContext } from "./loadingContext";
 import { checkCID, checkSID } from "../data/superData";
-
-const checkHouseImg = (house) => {
-    switch (house) {
-        case 'Gryffindor':
-            return houseImages[0]
-        case 'Slytherin':
-            return houseImages[1]
-        case 'Hufflepuff':
-            return houseImages[2]
-        case 'Ravenclaw':
-            return houseImages[3]
-        default:
-            return houseImages[2]
-    }
-}
-
-const findCharacterImage = (name = "Unknown") => {
-    if (name === "") return `${envURL}/Unknown1.jpg`
-    let URL = name.replace(/\s/g, '%20')
-    return `${envURL}/${URL}1.jpg`
-}
 
 const Subject = ({ props }) => {
     return (

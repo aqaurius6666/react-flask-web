@@ -4,6 +4,7 @@ import Hufflepuff from "../img/house_img/Hufflepuff.png";
 import Ravenclaw from "../img/house_img/Ravenclaw.png";
 import Slytherin from "../img/house_img/Slytherin.png";
 import React from "react";
+import houseImages from "./houseImages";
 
 export const Leader = [
     {
@@ -242,4 +243,29 @@ export function checkCID(cid) {
 
 export function checkSID(tid) {
     return TeacherList.filter(item => item.tid == tid)[0]
+}
+
+export const findCharacterImage = (name = "Unknown") => {
+    if (name === "") return `${envURL}/Unknown1.jpg`
+    let URL = name.replace(/\s/g, '%20')
+    return `${envURL}/${URL}1.jpg`
+}
+
+export const checkHouseImg = (house) => {
+    switch (house) {
+        case 'Gryffindor':
+            return houseImages[0]
+        case 'Slytherin':
+            return houseImages[1]
+        case 'Hufflepuff':
+            return houseImages[2]
+        case 'Ravenclaw':
+            return houseImages[3]
+        default:
+            return houseImages[2]
+    }
+}
+
+export function checkHaveCourse(courseList, course) {
+    return courseList.includes(course.cid)
 }
