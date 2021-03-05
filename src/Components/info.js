@@ -5,7 +5,7 @@ import envURL from "../data/characterImages";
 import Loading from "./loading";
 import { courseService, userService } from "../API/service";
 import { loadingContext } from "./loadingContext";
-import {checkCID, checkSID} from "../data/superData";
+import { checkCID, checkSID } from "../data/superData";
 
 const checkHouseImg = (house) => {
     switch (house) {
@@ -28,7 +28,7 @@ const findCharacterImage = (name = "Unknown") => {
     return `${envURL}/${URL}1.jpg`
 }
 
-const Subject = ({props}) => {
+const Subject = ({ props }) => {
     return (
         <tr className="col-12 row text-center">
             <td className="col-3">
@@ -52,9 +52,8 @@ const Subject = ({props}) => {
 
 export const Info = () => {
     const [student, setStudent] = useState(userService.currentUserValue())
-    const [ courseList, courseList ]
     const [loading, setLoading] = useState(true)
-    const [courses, setCourses] = useState([])
+    const [allCourse, setAllCourse] = useState([])
     useEffect(() => {
         setLoading(true)
         userService.getUser().then(data => {
@@ -68,78 +67,77 @@ export const Info = () => {
     useEffect(() => {
         setLoading(true)
         courseService.getStudentCourse()
-            .then((data) => {
-                setCourses(data)
-                setLoading(false)})
+            .then(({score}) => {
+                setAllCourse(score.map((item, i) => <Subject key={i} props={item} />))
+                
+            })
+            .then(() => setLoading(false))
             .catch(() => setLoading(false))
         return () => setLoading(false)
 
     }, [])
 
-    let allScore = courses.score
-    var allCourse = null
-    if (allScore !== undefined) allCourse =
-        allScore.map((item, i) => <Subject key={i} props = {item}/>)
+    if (loading || !student || !allCourse) return <Loading />
+    else {
+        return (
+            <div>
+                <br /> <br />
+                <div className="container header text-center body_font">
+                    <h3>{student.role === 'Student'
+                        ? `Student` : `Teacher`}'s Infomation</h3>
+                    <hr />
+                </div>
+                <div className="container body_font">
+                    <table className="row" border="2" cellPadding="15" cellSpacing="0">
+                        <tr className="col-12 row">
+                            <th className="col-6 col-md-3 col-lg-2">
+                                <img className="student_image"
+                                    src={findCharacterImage(student.name)}
+                                    alt="student" />
+                            </th>
+                            <th className="col-6 col-md-6 col-lg-8">
+                                <h5>{student.role === 'Student'
+                                    ? `Student` : `Teacher`}'s ID:
+                                        {student.role === 'Student'
+                                        ? student.sid : student.tid}</h5>
+                                <h5>Full Name: {student.name}</h5>
+                                <h5>Date of Birth: {student.dob}</h5>
+                                <h5>House: {student.house}</h5>
+                                <h5>{student.role === 'Student'
+                                    ? `GPA: ${student.gpa}` : ''}</h5>
+                                <h5>{student.role === 'Student'
+                                    ? `Credit: ${student.credit}` : ''}</h5>
 
-    if (loading) return <Loading />
-    if (student)
-    return (
-        <div>
-            <br /> <br />
-            <div className="container header text-center body_font">
-                <h3>{student.role === 'Student'
-                    ? `Student` : `Teacher`}'s Infomation</h3>
-                <hr />
+                            </th>
+                            <th className="col-lg-2 d-none d-sm-inline">
+                                <img className="student_image" src={checkHouseImg(student.house)} alt="house" />
+                            </th>
+                        </tr>
+                        <tr className="col-12 row text-center">
+                            <td className="col-3">
+                                <h4>Môn học</h4>
+                            </td>
+                            <td className="col-3 col-md-2">
+                                <h4>Mã môn học</h4>
+                            </td>
+                            <td className="d-none d-sm-block col-md-2">
+                                <h4>Số tín</h4>
+                            </td>
+                            <td className="col-3 col-md-2">
+                                <h4>Giáo viên</h4>
+                            </td>
+                            <td className="col-3">
+                                <h4>Phòng học</h4>
+                            </td>
+                        </tr>
+
+                        {allCourse}
+                    </table>
+                </div>
+                <br />
+                <Footer />
             </div>
-            <div className="container body_font">
-                <table className="row" border="2" cellPadding="15" cellSpacing="0">
-                    <tr className="col-12 row">
-                        <th className="col-6 col-md-3 col-lg-2">
-                            <img className="student_image"
-                                src={findCharacterImage(student.name)}
-                                alt="student" />
-                        </th>
-                        <th className="col-6 col-md-6 col-lg-8">
-                            <h5>{student.role === 'Student'
-                                ? `Student` : `Teacher`}'s ID:
-                                    {student.role === 'Student'
-                                    ? student.sid : student.tid}</h5>
-                            <h5>Full Name: {student.name}</h5>
-                            <h5>Date of Birth: {student.dob}</h5>
-                            <h5>House: {student.house}</h5>
-                            <h5>{student.role === 'Student'
-                                ? `GPA: ${student.gpa}` : ''}</h5>
-                            <h5>{student.role === 'Student'
-                                ? `Credit: ${student.credit}` : ''}</h5>
+        )
+    }
 
-                        </th>
-                        <th className="col-lg-2 d-none d-sm-inline">
-                            <img className="student_image" src={checkHouseImg(student.house)} alt="house" />
-                        </th>
-                    </tr>
-                    <tr className="col-12 row text-center">
-                        <td className="col-3">
-                            <h4>Môn học</h4>
-                        </td>
-                        <td className="col-3 col-md-2">
-                            <h4>Mã môn học</h4>
-                        </td>
-                        <td className="d-none d-sm-block col-md-2">
-                            <h4>Số tín</h4>
-                        </td>
-                        <td className="col-3 col-md-2">
-                            <h4>Giáo viên</h4>
-                        </td>
-                        <td className="col-3">
-                            <h4>Phòng học</h4>
-                        </td>
-                    </tr>
-
-                    {allCourse}
-                </table>
-            </div>
-            <br />
-            <Footer />
-        </div>
-    )
 }
