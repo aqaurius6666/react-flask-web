@@ -51,17 +51,27 @@ const Subject = (props) => {
 
 export const Info = () => {
     const [student, setStudent] = useState(userService.currentUserValue())
+    const [ courseList, courseList ]
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         setLoading(true)
-        // userService.getUser().then(data => {
-        //     setStudent(data)
-        // })
+        userService.getUser().then(data => {
+            setStudent(data)
+        })
+            .then(() => setLoading(false))
+            .catch(() => setLoading(false))
+        return () => setLoading(false)
+
+    }, [])
+    useEffect(() => {
+        setLoading(true)
         courseService.getStudentCourse()
             .then(() => setLoading(false))
             .catch(() => setLoading(false))
         return () => setLoading(false)
+
     }, [])
+
 
     if (loading) {
         return (
