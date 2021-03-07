@@ -12,6 +12,7 @@ import { loadingContext } from "./Components/loadingContext";
 import Slider from "./Components/courses";
 import Courses from "./Components/courses";
 import Loading from "./Components/loading";
+import { Grades } from "./Components/grades";
 
 function App() {
     const [account, setAccount] = useState()
@@ -31,6 +32,7 @@ function App() {
                     <Route exact path="/courses" component={() => <Courses />} />
                     <Route exact path="/update" component={() => <Update />} />
                     <Route exact path="/info" component={() => <Info />} />
+                    <Route exact path="/info/score" component={() => <Grades />} />
                 </Switch>
 
             </loadingContext.Provider>
