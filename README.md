@@ -10,7 +10,7 @@ Giáo viên
 Quản lý
 Khách
 
-### User Stores:
+### User Stories:
 #### Tất cả:
 Cần 1 trang hiển thị thông báo, tin tức
 Cần 1 trang giới thiệu thông tin về trường
@@ -39,5 +39,5 @@ Xóa bỏ thành viên
 Flask
 React.js
 Flask-Sqlalchemy
-Backend xây dựng trên Heroku, với database URL của PostgresSQL
+Server backend xây dựng trên Heroku, với database URL của PostgresSQL
 ## Team:
