@@ -33,7 +33,7 @@
 * Xóa bỏ thành viên
 
 ## Thiết kế:
- 
+ ![alt text](https://user-images.githubusercontent.com/54926438/109989011-a97c4180-7d3a-11eb-8811-73b4223fa8c3.png)
 ## Phát triển:
 ### Công nghệ áp dụng:
 * Flask
