@@ -9,6 +9,7 @@ import { Register } from "./Components/register";
 import { Update } from "./Components/update";
 import userContext from "./Components/userContext";
 import {About} from "./Components/about";
+import {Grades} from "./Components/grades";
 function App() {
     const [user, setUser] = useState(initialUser())
     const [user_, setUser_] = useState(initialUser())
@@ -34,6 +35,7 @@ function App() {
                     <Route exact path="/register" component={() => <Register/>} />
                     <Route exact path="/update" component={() => <Update/>} />
                     <Route exact path="/info" component={() => <Info/>} />
+                    <Route exacr path="/grades" component={() => <Grades/>} />
                 </Switch>
             </userContext.Provider>
         </>

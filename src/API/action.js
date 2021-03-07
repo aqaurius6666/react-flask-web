@@ -61,6 +61,20 @@ export const api_get_student = (cb) => {
             cb(undefined)
         })
 }
+export const api_get_score = (cb) => {
+    const url = "https://it-must-be-ok.herokuapp.com/api/scores"
+    fetch(url, {
+        method: "GET",
+        headers: authHeader(),
+    })
+        .then(handleResponse)
+        .then(data => cb(data.score))
+        .catch(msg => {
+            console.log(msg)
+            cb(undefined)
+        })
+}
+
 export const api_update_passowrd = (old_password, password, cb) => {
     const url = "https://it-must-be-ok.herokuapp.com/api/account"
     fetch(url, {
@@ -72,6 +86,7 @@ export const api_update_passowrd = (old_password, password, cb) => {
         .then(data => cb(data.message))
         .catch(error => cb(error))
 }
+
 export const api_update_student = (student, cb) => {
     const url = "https://it-must-be-ok.herokuapp.com/api/student"
     fetch(url, {
