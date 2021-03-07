@@ -1,14 +1,13 @@
 import { useContext } from "react"
 import { Redirect } from "react-router-dom"
-import userContext from "./userContext"
+import accountContext from "./accountContext"
 
 export const AuthenticationApp = (props) => {
-    const {user} = useContext(userContext)
-    if (user) {
+    const {account} = useContext(accountContext)
+    if (account) {
         return <div>Hello {user.sid}</div>
     } else {
         return <Redirect to="/login"/>
-        
     }
 
 }

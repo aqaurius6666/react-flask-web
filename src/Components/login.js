@@ -1,40 +1,40 @@
-import { useState, useContext } from "react"
-import { Redirect } from "react-router-dom"
+import React, { useState, useContext } from "react"
+import {Link} from "react-router-dom"
 import { api_login } from "../API/action"
-import App from "../App"
 import history from "../history"
-import userContext from "./userContext"
-import NavBar from "./nav-bar";
-
+import accountContext from "./accountContext"
 
 export const Login = () => {
-    const {setUser} = useContext(userContext)
+    const {setAccount} = useContext(accountContext)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const handleSubmit = (e) => {
         e.preventDefault()
-        api_login(username, password, (msg, user) => {
+        api_login(username, password, (msg, account) => {
             console.log(msg)
-            setUser(user)
+            setAccount(account)
             history.push("/")
+            window.location = '/'
         })
     }
     return (
-        <div>
-            <br /> <br />
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Username: </label>
-                    <input type="text" onChange={(e) =>
-                        setUsername(e.target.value)} value={username} />
+        <div className="login-container">
+            <div className="login-page">
+                <div className="form">
+                    <form className="login-form" onSubmit={handleSubmit}>
+                        <input type="text" placeholder="Username"
+                               onChange={(e) => setUsername(e.target.value)} value={username} />
+                        <input type="password" placeholder="Password"
+                               onChange={(e) => setPassword(e.target.value)} value={password} />
+                        <button type="submit" value="Login" className="btn btn-dark btn-lg">login</button>
+                        <p className="message">Not registered? <Link exact to="/register">Create an account</Link>
+                        </p>
+                    </form>
                 </div>
-                <div className="form-group">
-                    <label>Password: </label>
-                    <input type="password" onChange={(e) =>
-                        setPassword(e.target.value)} value={password} />
-                </div>
-                <button type="submit" value="Login" className="btn btn-dark btn-lg">Log in</button>
-            </form>
+            </div>
+            <div className="login-padding">
+
+            </div>
         </div>
     )
 }

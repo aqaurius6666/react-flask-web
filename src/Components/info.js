@@ -1,32 +1,131 @@
-import { useContext, useEffect, useState } from "react"
-import { api_get_student } from "../API/action"
-import userContext from "./userContext"
-import {ChangePassword} from "./change_password";
+import React, { useContext, useEffect, useState } from "react"
+import { api_get_user } from "../API/action"
+import Footer from "./footer";
+import houseImages from "../data/houseImages";
+import envURL from "../data/characterImages";
+import accountContext from "./accountContext";
+import Loading from "./loading";
 
+const checkHouseImg = (house) => {
+    switch(house) {
+        case 'Gryffindor':
+            return houseImages[0]
+        case 'Slytherin':
+            return houseImages[1]
+        case 'Hufflepuff':
+            return houseImages[2]
+        case 'Ravenclaw':
+            return houseImages[3]
+        default:
+            return houseImages[2]
+    }
+}
 
-export const Info = (props) => {
-    const {user} = useContext(userContext)
+const findCharacterImage = (name) => {
+    let URL = name.replace(/\s/g, '%20')
+    return `${envURL}/${URL}1.jpg`
+}
+
+const Subject = (props) => {
+    return (
+        <tr className="col-12 row text-center">
+            <td className="col-3">
+                <p>{props.sname}</p>
+            </td>
+            <td className="col-3 col-md-2">
+                <p>{props.sid}</p>
+            </td>
+            <td className="d-none d-sm-block col-md-2">
+                <p>{props.tinchi}</p>
+            </td>
+            <td className="col-3 col-md-2">
+                <p>{props.teacher}</p>
+            </td>
+            <td className="col-3">
+                <p>{props.address}</p>
+            </td>
+        </tr>
+    )
+}
+
+export const Info = () => {
+    const {account} = useContext(accountContext)
     
     const [student, setStudent] = useState()
     
     useEffect(() => {
-        api_get_student((data) => setStudent(data))
+        api_get_user((data) => setStudent(data))
     },[])
-    if (!user) {
-        return <div>You are not log in!</div>
+
+    if (!account) {
+        return <Loading />
     }
     if (student) {
+        console.log(student)
+        let house_img = checkHouseImg(student.house)
         return (
             <div>
                 <br /> <br />
-                <div>Name: {student.name}</div>
-                <div>DoB: {student.dob}</div>
-                <div>House: {student.hid}</div>
-                <div>GPA: {student.gpa}</div>
-                <div>Credit: {student.credit}</div>
+                <div className="container header text-center">
+                    <h3>{student.role === 'Student'
+                        ? `Student` : `Teacher`}'s Infomation</h3>
+                    <hr />
+                </div>
+                <div className="container">
+                    <table className="row" border="2" cellPadding="15" cellSpacing="0">
+                        <tr className="col-12 row">
+                            <th className="col-6 col-md-3 col-lg-2">
+                                <img className="student_image"
+                                     src={findCharacterImage(student.name)}
+                                     alt="student" />
+                            </th>
+                            <th className="col-6 col-md-6 col-lg-8">
+                                <h5>{student.role === 'Student'
+                                    ? `Student` : `Teacher`}'s ID:
+                                    {student.role === 'Student'
+                                            ? student.sid : student.tid}</h5>
+                                <h5>Full Name: {student.name}</h5>
+                                <h5>Date of Birth: {student.dob}</h5>
+                                <h5>House: {student.house}</h5>
+                                <h5>{student.role === 'Student'
+                                    ? `GPA: ${student.gpa}` : ''}</h5>
+                                <h5>{student.role === 'Student'
+                                    ? `Credit: ${student.credit}` : ''}</h5>
+
+                            </th>
+                            <th className="col-lg-2 d-none d-sm-inline">
+                                <img className="student_image" src={house_img} alt="house" />
+                            </th>
+                        </tr>
+                        <tr className="col-12 row text-center">
+                            <td className="col-3">
+                                <h4>Môn học</h4>
+                            </td>
+                            <td className="col-3 col-md-2">
+                                <h4>Mã môn học</h4>
+                            </td>
+                            <td className="d-none d-sm-block col-md-2">
+                                <h4>Số tín</h4>
+                            </td>
+                            <td className="col-3 col-md-2">
+                                <h4>Giáo viên</h4>
+                            </td>
+                            <td className="col-3">
+                                <h4>Phòng học</h4>
+                            </td>
+                        </tr>
+
+                        <Subject sname="Phòng chống nghệ thuật hắc ám" sid="PCNTHA1"
+                                 tinchi="3" teacher="Severus Snape" address="101-Slytherin" />
+                        <Subject sname="Bùa Chú" sid="BC1" tinchi="3"
+                                 teacher="Albus Dumbledore" address="101 Gryffindor" />
+                    </table>
+                </div>
+                <br />
+                <Footer />
             </div>
         )
     } else {
-        return <div>Loading...</div>
+        return <Loading />
     }
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
-import { api_register, logout } from '../API/action'
+import { api_register } from '../API/action'
 import history from '../history'
+import {Link} from "react-router-dom";
 
 
 
@@ -32,24 +33,24 @@ export const RegisterForm = () => {
         return pass === pass2
     }
     return (
-        <div>
-            <br /> <br />
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Username: </label>
-                    <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} />
+        <div className="login-container">
+            <div className="login-page">
+                <div className="form">
+                    <form className="register-form" onSubmit={handleSubmit}>
+                        <input type="text" placeholder="Username"
+                               onChange={(e) => setUsername(e.target.value)} value={username} />
+                        <input type="password" placeholder="Password"
+                               onChange={(e) => setPassword(e.target.value)} value={password} />
+                        <input type="password" placeholder="Conf. Password"
+                               onChange={(e) => setPassword2(e.target.value)} value={password2} />
+                        <button>create</button>
+                        <p className="message">Already registered? <Link to="/login">Sign In</Link></p>
+                    </form>
                 </div>
-                <div className="form-group">
-                    <label>Password: </label>
-                    <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
-                </div>
-                <div className="form-group">
-                    <label>Conf. Password: </label>
-                    <input type="password" onChange={(e) => setPassword2(e.target.value)} value={password2} />
-                </div>
-                <div><button className="btn btn-dark btn-lg">Register</button></div>
-            </form>
-        </div>
+                <div className="login-padding">
 
+                </div>
+            </div>
+        </div>
     )
 }
