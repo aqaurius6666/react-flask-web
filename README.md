@@ -1,6 +1,7 @@
 # Web app: Hogwarts's Students Management Site
 
-## About: Trang web thông tin của trường phù thuỷ Hogwarts. Nơi mà học sinh, giáo viên có thể xem thời gian biểu cũng như chỉnh sửa môn học, thông tin của mình.
+## About: 
+Trang web thông tin của trường phù thuỷ Hogwarts. Nơi mà học sinh, giáo viên có thể xem thời gian biểu cũng như chỉnh sửa môn học, thông tin của mình.
 
 
 ## Kế hoạch:
