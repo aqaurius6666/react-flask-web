@@ -37,7 +37,8 @@ Trang web thông tin của trường phù thuỷ Hogwarts. Nơi mà học sinh, 
 ## Thiết kế:
 ![image](https://user-images.githubusercontent.com/54926438/110320167-7e4b6800-8042-11eb-931b-48a562ac4f97.png)
 
-![alt text](https://github.com/aquarius6666/react-flask-web/issues/1#issuecomment-792744200)
+![ER1](https://user-images.githubusercontent.com/54926438/110325448-f36e6b80-8049-11eb-825d-546436bf205e.png)
+
 ## Phát triển:
 ### Công nghệ áp dụng:
 * Flask
