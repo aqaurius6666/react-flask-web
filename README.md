@@ -35,9 +35,9 @@ Trang web thông tin của trường phù thuỷ Hogwarts. Nơi mà học sinh, 
 * Xóa bỏ thành viên
 
 ## Thiết kế:
-![image (1)](https://user-images.githubusercontent.com/54926438/110444848-13586a80-80f0-11eb-9839-fd6825f76708.png)
+![image (3)](https://user-images.githubusercontent.com/54926438/110513328-ae753280-8138-11eb-8b31-cb39a887cfeb.png)
 
-![ER1](https://user-images.githubusercontent.com/54926438/110325448-f36e6b80-8049-11eb-825d-546436bf205e.png)
+![a](https://user-images.githubusercontent.com/54926438/110513370-bb922180-8138-11eb-9fdd-73e57bd007ba.png)
 
 ## Phát triển:
 ### Công nghệ áp dụng:
