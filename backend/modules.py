@@ -26,7 +26,7 @@ def encode_auth_token(id, key):
         payload = {
             'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=10),
             'iat': datetime.datetime.utcnow(),
-            'pid': id
+            'id': id
         }
         return jwt.encode(
             payload,
