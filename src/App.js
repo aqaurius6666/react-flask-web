@@ -23,7 +23,7 @@ function App() {
     return (
         <>
             <loadingContext.Provider value={{ loading, setLoading }}>
-                <NavBar />
+                 <NavBar />
                <Switch>
                     <Route exact path="/" component={() => <Home />} />
                     <Route exact path="/login" component={() => <Login />} />

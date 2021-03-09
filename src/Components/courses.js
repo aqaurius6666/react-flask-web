@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import { useForm } from "react-hook-form";
 import { courseService } from '../API/service';
 import Loading from './loading';
@@ -7,6 +7,7 @@ import history from "../history"
 
 const RegisCourses = (props) => {
     const {coursesList} = props
+    const [loading, setLoading] = useState(true)
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         courseService.registerCourse(data)
@@ -14,27 +15,42 @@ const RegisCourses = (props) => {
         history.push('/info')
     };
     const [allCourse, setAllCourse] = useState([])
+    const [courseItem, setCourseItem] = useState([])
     useEffect(() => {
+        setLoading(true)
         courseService.getStudentCourse()
             .then(({score}) => {
                 setAllCourse(score.map(score => score.cid))
+            }).then(() => setLoading(false))
+            .catch(() => setLoading(false))
+    }, [])
+
+    useMemo(() => {
+        setLoading(true)
+        courseService.getStudentCourse()
+            .then(() => {
+                setCourseItem(coursesList
+                    .map((courseItem, i) =>
+                        <tr className="col-12 row" key={i} >
+                            <td className="col-1"><input type="checkbox" ref={register}
+                                                         disabled={checkHaveCourse(allCourse, courseItem)}
+                                                         name="array" value={courseItem.cid} /></td>
+                            <td className="col-2 col-md-1">{courseItem.cid}</td>
+                            <td className="d-sm-block d-none col-1 col-md-1">{courseItem.credit}</td>
+                            <td className="col-4 col-md-4">{courseItem.name}</td>
+                            <td className="col-3 col-md-3">{courseItem.place}</td>
+                            <td className="d-sm-block d-none col-1 col-md-1">{courseItem.tid}</td>
+                            <td className="col-2 col-md-1">{courseItem.time}</td>
+                        </tr>))
             })
+            .then(() => setLoading(false))
+            .catch(() => setLoading(false))
+        return () => setLoading(false)
+
     }, [])
 
 
-    const courseItem = coursesList
-        .map((courseItem, i) =>
-            <tr className="col-12 row" key={i} >
-                <td className="col-1"><input type="checkbox" ref={register}
-                                             disabled={checkHaveCourse(allCourse, courseItem)}
-                                             name="array" value={courseItem.cid} /></td>
-                <td className="col-2 col-md-1">{courseItem.cid}</td>
-                <td className="d-sm-block d-none col-1 col-md-1">{courseItem.credit}</td>
-                <td className="col-4 col-md-4">{courseItem.name}</td>
-                <td className="col-3 col-md-3">{courseItem.place}</td>
-                <td className="d-sm-block d-none col-1 col-md-1">{courseItem.tid}</td>
-                <td className="col-2 col-md-1">{courseItem.time}</td>
-            </tr>)
+    if (loading || courseItem.length === 0) return <Loading />
 
     return (
         <div className="container">
@@ -75,7 +91,8 @@ const Courses = () => {
         .catch(() => setLoading(false))
         return () => setLoading(false)
     }, [])
-    if (loading) {
+
+    if (loading || coursesList.length === 0) {
         return (
             <Loading/>
         )

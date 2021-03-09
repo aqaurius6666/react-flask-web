@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import {Link} from "react-router-dom"
 import { authenticationService } from "../API/service"
 import history from "../history"
+import NavBar from "./nav-bar";
+import {loadingContext} from "./loadingContext";
 
 export const Login = () => {
     const [username, setUsername] = useState("")
@@ -14,6 +16,7 @@ export const Login = () => {
     }
     return (
         <div className="login-container">
+            <NavBar />
             <div className="login-page">
                 <div className="form">
                     <form className="login-form" onSubmit={handleSubmit}>

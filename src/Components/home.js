@@ -100,7 +100,6 @@ const Notification = () => {
 
 export const Home = () => {
     const account = authenticationService.currentAccountValue()
-    if (account) {
         return (
             <div className="home">
                 <Header/>
@@ -110,8 +109,6 @@ export const Home = () => {
                 <Footer/>
             </div>
         );
-    } else {
-        return <Loading />
-    }
+
 }
 
