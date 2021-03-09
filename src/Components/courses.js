@@ -40,6 +40,7 @@ const RegisCourses = (props) => {
         <div className="container">
             <div>
                 <div>
+                    <br />
                     <h3><span>Course Registration</span></h3>
                 </div>
 
@@ -56,7 +57,7 @@ const RegisCourses = (props) => {
                         <td className="col-2 col-md-1">TIME</td>
                     </tr>
                     {courseItem}
-                    <input className="btn btn-success" type="submit" />
+                    <button style={{margin:'10px'}} className="btn btn-success" type="submit">Submit</button>
                 </table></form>
             <br />
         </div>

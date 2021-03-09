@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Footer from "./footer";
-import { findCharacterImage, checkHouseImg } from '../data/superData'
+import {findCharacterImage, checkHouseImg, formatTime} from '../data/superData'
 import Loading from "./loading";
 import { courseService, userService } from "../API/service";
 import { checkCID, checkSID } from "../data/superData";
@@ -8,10 +8,10 @@ import { checkCID, checkSID } from "../data/superData";
 const Subject = ({ props }) => {
     return (
         <tr className="col-12 row text-center">
-            <td className="col-3">
+            <td className="col-3 col-md-2">
                 <p>{props.name}</p>
             </td>
-            <td className="col-3 col-md-2">
+            <td className="d-none d-sm-block col-md-2">
                 <p>{props.cid}</p>
             </td>
             <td className="d-none d-sm-block col-md-2">
@@ -20,8 +20,11 @@ const Subject = ({ props }) => {
             <td className="col-3 col-md-2">
                 <p>{checkSID(checkCID(props.cid).tid).name}</p>
             </td>
-            <td className="col-3">
+            <td className="col-3 col-md-2">
                 <p>{checkCID(props.cid).place}</p>
+            </td>
+            <td className="col-3 col-md-2">
+                <p>{formatTime(checkCID(props.cid).time)}</p>
             </td>
         </tr>
     )
@@ -46,13 +49,14 @@ export const Info = () => {
         courseService.getStudentCourse()
             .then(({score}) => {
                 setAllCourse(score.map((item, i) => <Subject key={i} props={item} />))
-                
+                console.log(score)
             })
             .then(() => setLoading(false))
             .catch(() => setLoading(false))
         return () => setLoading(false)
 
     }, [])
+
 
     if (loading || !student || !allCourse) return <Loading />
     else {
@@ -91,20 +95,23 @@ export const Info = () => {
                             </th>
                         </tr>
                         <tr className="col-12 row text-center">
-                            <td className="col-3">
-                                <h4>Môn học</h4>
-                            </td>
                             <td className="col-3 col-md-2">
-                                <h4>Mã môn học</h4>
+                                <h4>Subject</h4>
                             </td>
                             <td className="d-none d-sm-block col-md-2">
-                                <h4>Số tín</h4>
+                                <h4>Code</h4>
+                            </td>
+                            <td className="d-none d-sm-block col-md-2">
+                                <h4>Credits</h4>
                             </td>
                             <td className="col-3 col-md-2">
-                                <h4>Giáo viên</h4>
+                                <h4>Teacher</h4>
                             </td>
-                            <td className="col-3">
-                                <h4>Phòng học</h4>
+                            <td className="col-3 col-md-2">
+                                <h4>Room</h4>
+                            </td>
+                            <td className="col-3 col-md-2">
+                                <h4>Time</h4>
                             </td>
                         </tr>
 
