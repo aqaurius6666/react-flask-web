@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash
 import datetime
 import jwt
 def get_new_id():
-    last_id = len(Student.query.all()) + len(Teacher.query.all())
+    last_id = len(Account.query.all())
     return str(1000+last_id)
 
 def get_random_house():
@@ -54,6 +54,11 @@ def create_houses_by_list(array):
 def create_students_by_list(array):
     for each in array:
         id = get_sid_from_id(each['id'])
+        account = Account(username=id,
+                            password=generate_password_hash(f"a{id}", method='sha256'),
+                            id=id)
+        db.session.add(account)
+        db.session.commit()
         if each['role'] != 'Student':
             teacher = Teacher(tid=id, 
                         name=each['name'], 
@@ -68,11 +73,7 @@ def create_students_by_list(array):
                         of_house=House.query.filter_by(name=each['house']).first())
             db.session.add(student)
 
-        account = Account(pid=str(uuid.uuid4()),
-                            username=id,
-                            password=generate_password_hash(f"a{id}", method='sha256'),
-                            id=id)
-        db.session.add(account)
+        
     db.session.commit()
 
 def standardize(name):

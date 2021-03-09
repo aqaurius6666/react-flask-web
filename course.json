@@ -1,0 +1,438 @@
+{
+    "is_list" : true,
+    "array": [
+        {
+            "cid": "AST0",
+            "credit": 4,
+            "name": "Astronomy",
+            "place": "101 Griffindor",
+            "refer": null,
+            "tid": "1134",
+            "time": "S2"
+        },
+        {
+            "cid": "CHA0",
+            "credit": 4,
+            "name": "Charms",
+            "place": "102 Griffindor",
+            "refer": null,
+            "tid": "1037",
+            "time": "S3"
+        },
+        {
+            "cid": "DEF0",
+            "credit": 4,
+            "name": "Defence Against the Dark Arts",
+            "place": "101 Slytherin",
+            "refer": null,
+            "tid": "1004",
+            "time": "S4"
+        },
+        {
+            "cid": "HER0",
+            "credit": 4,
+            "name": "Herbology",
+            "place": "102 Slytherin",
+            "refer": null,
+            "tid": "1082",
+            "time": "S5"
+        },
+        {
+            "cid": "HIS0",
+            "credit": 4,
+            "name": "History of Magic",
+            "place": "101 Hufflepuff",
+            "refer": null,
+            "tid": "1072",
+            "time": "S6"
+        },
+        {
+            "cid": "POT0",
+            "credit": 4,
+            "name": "Potions",
+            "place": "102 Hufflepuff",
+            "refer": null,
+            "tid": "1046",
+            "time": "S7"
+        },
+        {
+            "cid": "TRA0",
+            "credit": 4,
+            "name": "Transfiguration",
+            "place": "101 Ravenclaw",
+            "refer": null,
+            "tid": "1030",
+            "time": "S2"
+        },
+        {
+            "cid": "ARI0",
+            "credit": 3,
+            "name": "Arithmancy",
+            "place": "102 Ravenclaw",
+            "refer": null,
+            "tid": "1135",
+            "time": "S3"
+        },
+        {
+            "cid": "CAR0",
+            "credit": 3,
+            "name": "Care of Magical Creatures",
+            "place": "101 Griffindor",
+            "refer": null,
+            "tid": "1005",
+            "time": "S4"
+        },
+        {
+            "cid": "DIV0",
+            "credit": 3,
+            "name": "Divination ",
+            "place": "102 Griffindor",
+            "refer": null,
+            "tid": "1051",
+            "time": "S5"
+        },
+        {
+            "cid": "STU0",
+            "credit": 3,
+            "name": "Study of Ancient Runes",
+            "place": "101 Slytherin",
+            "refer": null,
+            "tid": "1133",
+            "time": "S6"
+        },
+        {
+            "cid": "ADV0",
+            "credit": 3,
+            "name": "Advanced Arithmancy Studies",
+            "place": "102 Slytherin",
+            "refer": null,
+            "tid": "1015",
+            "time": "S7"
+        },
+        {
+            "cid": "APP0",
+            "credit": 3,
+            "name": "Apparition",
+            "place": "101 Hufflepuff",
+            "refer": null,
+            "tid": "1096",
+            "time": "S2"
+        },
+        {
+            "cid": "ALC0",
+            "credit": 3,
+            "name": "Alchemy",
+            "place": "102 Hufflepuff",
+            "refer": null,
+            "tid": "1082",
+            "time": "S3"
+        },
+        {
+            "cid": "FLY0",
+            "credit": 3,
+            "name": "Flying",
+            "place": "101 Ravenclaw",
+            "refer": null,
+            "tid": "1132",
+            "time": "S4"
+        },
+        {
+            "cid": "ADV1",
+            "credit": 2,
+            "name": "Advance Apparition",
+            "place": "102 Ravenclaw",
+            "refer": null,
+            "tid": "1074",
+            "time": "S5"
+        },
+        {
+            "cid": "ART0",
+            "credit": 2,
+            "name": "Art",
+            "place": "101 Griffindor",
+            "refer": null,
+            "tid": "1133",
+            "time": "S6"
+        },
+        {
+            "cid": "ANC0",
+            "credit": 2,
+            "name": "Ancient Studies",
+            "place": "102 Griffindor",
+            "refer": null,
+            "tid": "1036",
+            "time": "S7"
+        },
+        {
+            "cid": "GHO0",
+            "credit": 2,
+            "name": "Ghoul Studies",
+            "place": "101 Slytherin",
+            "refer": null,
+            "tid": "1052",
+            "time": "S2"
+        },
+        {
+            "cid": "MAG0",
+            "credit": 2,
+            "name": "Magical Theory",
+            "place": "102 Slytherin",
+            "refer": null,
+            "tid": "1133",
+            "time": "S3"
+        },
+        {
+            "cid": "MUG0",
+            "credit": 2,
+            "name": "Muggle Art",
+            "place": "101 Hufflepuff",
+            "refer": null,
+            "tid": "1033",
+            "time": "S4"
+        },
+        {
+            "cid": "MUG1",
+            "credit": 2,
+            "name": "Muggle Music",
+            "place": "102 Hufflepuff",
+            "refer": null,
+            "tid": "1074",
+            "time": "S5"
+        },
+        {
+            "cid": "MUS0",
+            "credit": 2,
+            "name": "Music",
+            "place": "101 Ravenclaw",
+            "refer": null,
+            "tid": "1082",
+            "time": "S6"
+        },
+        {
+            "cid": "XYL0",
+            "credit": 2,
+            "name": "Xylomancy",
+            "place": "102 Ravenclaw",
+            "refer": null,
+            "tid": "1033",
+            "time": "S7"
+        },
+        {
+            "cid": "AST1",
+            "credit": 4,
+            "name": "Astronomy",
+            "place": "101 Griffindor",
+            "refer": null,
+            "tid": "1134",
+            "time": "C2"
+        },
+        {
+            "cid": "CHA1",
+            "credit": 4,
+            "name": "Charms",
+            "place": "102 Griffindor",
+            "refer": null,
+            "tid": "1037",
+            "time": "C3"
+        },
+        {
+            "cid": "DEF1",
+            "credit": 4,
+            "name": "Defence Against the Dark Arts",
+            "place": "101 Slytherin",
+            "refer": null,
+            "tid": "1004",
+            "time": "C4"
+        },
+        {
+            "cid": "HER1",
+            "credit": 4,
+            "name": "Herbology",
+            "place": "102 Slytherin",
+            "refer": null,
+            "tid": "1082",
+            "time": "C5"
+        },
+        {
+            "cid": "HIS1",
+            "credit": 4,
+            "name": "History of Magic",
+            "place": "101 Hufflepuff",
+            "refer": null,
+            "tid": "1072",
+            "time": "C6"
+        },
+        {
+            "cid": "POT1",
+            "credit": 4,
+            "name": "Potions",
+            "place": "102 Hufflepuff",
+            "refer": null,
+            "tid": "1046",
+            "time": "C7"
+        },
+        {
+            "cid": "TRA1",
+            "credit": 4,
+            "name": "Transfiguration",
+            "place": "101 Ravenclaw",
+            "refer": null,
+            "tid": "1030",
+            "time": "C2"
+        },
+        {
+            "cid": "ARI1",
+            "credit": 3,
+            "name": "Arithmancy",
+            "place": "102 Ravenclaw",
+            "refer": null,
+            "tid": "1135",
+            "time": "C3"
+        },
+        {
+            "cid": "CAR1",
+            "credit": 3,
+            "name": "Care of Magical Creatures",
+            "place": "101 Griffindor",
+            "refer": null,
+            "tid": "1005",
+            "time": "C4"
+        },
+        {
+            "cid": "DIV1",
+            "credit": 3,
+            "name": "Divination ",
+            "place": "102 Griffindor",
+            "refer": null,
+            "tid": "1051",
+            "time": "C5"
+        },
+        {
+            "cid": "STU1",
+            "credit": 3,
+            "name": "Study of Ancient Runes",
+            "place": "101 Slytherin",
+            "refer": null,
+            "tid": "1133",
+            "time": "C6"
+        },
+        {
+            "cid": "ADV2",
+            "credit": 3,
+            "name": "Advanced Arithmancy Studies",
+            "place": "102 Slytherin",
+            "refer": null,
+            "tid": "1015",
+            "time": "C7"
+        },
+        {
+            "cid": "APP1",
+            "credit": 3,
+            "name": "Apparition",
+            "place": "101 Hufflepuff",
+            "refer": null,
+            "tid": "1096",
+            "time": "C2"
+        },
+        {
+            "cid": "ALC1",
+            "credit": 3,
+            "name": "Alchemy",
+            "place": "102 Hufflepuff",
+            "refer": null,
+            "tid": "1082",
+            "time": "C3"
+        },
+        {
+            "cid": "FLY1",
+            "credit": 3,
+            "name": "Flying",
+            "place": "101 Ravenclaw",
+            "refer": null,
+            "tid": "1132",
+            "time": "C4"
+        },
+        {
+            "cid": "ADV3",
+            "credit": 2,
+            "name": "Advance Apparition",
+            "place": "102 Ravenclaw",
+            "refer": null,
+            "tid": "1074",
+            "time": "C5"
+        },
+        {
+            "cid": "ART1",
+            "credit": 2,
+            "name": "Art",
+            "place": "101 Griffindor",
+            "refer": null,
+            "tid": "1133",
+            "time": "C6"
+        },
+        {
+            "cid": "ANC1",
+            "credit": 2,
+            "name": "Ancient Studies",
+            "place": "102 Griffindor",
+            "refer": null,
+            "tid": "1036",
+            "time": "C7"
+        },
+        {
+            "cid": "GHO1",
+            "credit": 2,
+            "name": "Ghoul Studies",
+            "place": "101 Slytherin",
+            "refer": null,
+            "tid": "1052",
+            "time": "C2"
+        },
+        {
+            "cid": "MAG1",
+            "credit": 2,
+            "name": "Magical Theory",
+            "place": "102 Slytherin",
+            "refer": null,
+            "tid": "1133",
+            "time": "C3"
+        },
+        {
+            "cid": "MUG2",
+            "credit": 2,
+            "name": "Muggle Art",
+            "place": "101 Hufflepuff",
+            "refer": null,
+            "tid": "1033",
+            "time": "C4"
+        },
+        {
+            "cid": "MUG3",
+            "credit": 2,
+            "name": "Muggle Music",
+            "place": "102 Hufflepuff",
+            "refer": null,
+            "tid": "1074",
+            "time": "C5"
+        },
+        {
+            "cid": "MUS1",
+            "credit": 2,
+            "name": "Music",
+            "place": "101 Ravenclaw",
+            "refer": null,
+            "tid": "1082",
+            "time": "C6"
+        },
+        {
+            "cid": "XYL1",
+            "credit": 2,
+            "name": "Xylomancy",
+            "place": "102 Ravenclaw",
+            "refer": null,
+            "tid": "1033",
+            "time": "C7"
+        }
+    ],
+    "length": 48
+}

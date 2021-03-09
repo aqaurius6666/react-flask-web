@@ -32,7 +32,7 @@ def token_required(f):
             data = jwt.decode(token, app.config['SECRET_KEY'], algorithms="HS256")
         except:
             return jsonify({"message" : "Token is invalid"}), 401
-        acc = Account.query.filter_by(pid = data['pid']).first()
+        acc = Account.query.filter_by(id = data['id']).first()
         if acc:
             return f(acc, *args, **kwargs)
         else:
@@ -160,8 +160,7 @@ def create_user():
             create_students_by_list(data['array'])
     else:
         user = Student(sid=data['sid'], name=data['name'], of_house=House.query.filter_by(name=data['house']).first())
-        account = Account(pid=str(uuid.uuid4()),
-                            username=data['sid'],
+        account = Account(username=data['sid'],
                             password=generate_password_hash(standardize(data['name']), method='sha256'),
                             student=user)
         db.session.add(user)
@@ -224,8 +223,7 @@ def create_account():
         teacher = Teacher(tid=id, name="", house=get_random_house())
         db.session.add(teacher)
 
-    account = Account(pid=str(uuid.uuid4()), 
-                    username=data['username'], 
+    account = Account(username=data['username'], 
                     password=generate_password_hash(data['password'], method='sha256'),
                     id=id)
     db.session.add(account)
@@ -240,7 +238,7 @@ def create_account():
 @token_required
 def get_user(current):
     return jsonify({ "user" : current.get_user().to_dict(),
-                    "token" : encode_auth_token(current.pid, app.config['SECRET_KEY'])}), 200
+                    "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
 
 @app.route('/api/account', methods=['GET'])
 @token_required
@@ -252,14 +250,14 @@ def get_account(current):
 def get_scores_student(current):
     student = current.get_user()
     return jsonify({"score" : [score.to_course_list() for score in student.score],
-                    "token" : encode_auth_token(current.pid, app.config['SECRET_KEY'])}), 200
+                    "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
 @app.route('/api/student/schedule', methods=['GET'])
 @token_required
 def get_schedule(current):
     student = current.get_user()
     current_course = [score.course for score in student.score if score.status==0]
     return jsonify({"schedule" : [course.to_schedule() for course in current_course],
-                    "token" : encode_auth_token(current.pid, app.config['SECRET_KEY'])}), 200
+                    "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
 
 
 #-------------------------------------------------------------------------------------------------------------
@@ -284,7 +282,7 @@ def create_score_student(current):
         return jsonify({'message': 'CID invalid'}), 400
     db.session.commit()
     return jsonify({'message' : 'Create score successfully',
-                    "token" : encode_auth_token(current.pid, app.config['SECRET_KEY'])}), 201
+                    "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 201
 
 
 #-------------------------------------------------------------------------------------------------------------
@@ -299,7 +297,7 @@ def login():
         return jsonify({"message" : "Username or password is incorrect!"}), 401
     
     if check_password_hash(account.password, data['password']):
-        return jsonify({"token" : encode_auth_token(account.pid, app.config.get('SECRET_KEY')),
+        return jsonify({"token" : encode_auth_token(account.id, app.config.get('SECRET_KEY')),
                         "account" : account.to_dict(),
                         "message" : "Login successfully!"
                         }), 200
@@ -310,7 +308,7 @@ def login():
 @app.route('/api/authentication', methods=['GET'])
 @token_required
 def check(current):
-    return jsonify({"token" : encode_auth_token(current.pid, app.config['SECRET_KEY']),
+    return jsonify({"token" : encode_auth_token(current.id, app.config['SECRET_KEY']),
                     "account" : current.to_dict() 
                     })
 
@@ -331,7 +329,7 @@ def update_student(current):
     student.update(data)
     db.session.commit()
     return jsonify({"student" : student.to_dict(), "message" : "Update successfully!",
-                    "token" : encode_auth_token(current.pid, app.config['SECRET_KEY'])}), 200
+                    "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
 
 
 @app.route('/api/account', methods=['PUT'])
@@ -355,7 +353,7 @@ def update_account(current):
 @app.route('/api/delete/account/<id>', methods=['DELETE'])
 def delete_account(id):
     try:
-        account = Account.query.filter_by(pid=id).first()
+        account = Account.query.filter_by(id=id).first()
         db.session.delete(account)
         db.session.commit()
         return jsonify({"message" : "Delete successfully!"}), 200

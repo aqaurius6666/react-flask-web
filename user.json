@@ -1,0 +1,1117 @@
+{
+    "is_list" : true,
+    "array": [
+        {
+            "id": 1,
+            "name": "Harry James Potter",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "31/07/1980",
+            "role": "Student"
+        },
+        {
+            "id": 2,
+            "name": "Ronald Bilius Weasley",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "01/03/1980",
+            "role": "Student"
+        },
+        {
+            "id": 3,
+            "name": "Hermione Jean Granger",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "19/09/1979",
+            "role": "Student"
+        },
+        {
+            "id": 6,
+            "name": "Neville Longbottom",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "30/07/1980",
+            "role": "Student"
+        },
+        {
+            "id": 7,
+            "name": "Fred Weasley",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "19/05/1978",
+            "role": "Student"
+        },
+        {
+            "id": 8,
+            "name": "George Weasley",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "19/05/1978",
+            "role": "Student"
+        },
+        {
+            "id": 9,
+            "name": "Ginevra (Ginny) Molly Weasley",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "11/08/1981",
+            "role": "Student"
+        },
+        {
+            "id": 10,
+            "name": "Dean Thomas",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "17/08/1979",
+            "role": "Student"
+        },
+        {
+            "id": 11,
+            "name": "Seamus Finnigan",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "19/06/1979",
+            "role": "Student"
+        },
+        {
+            "id": 17,
+            "name": "Percy Ignatius Weasley",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "09/10/1976",
+            "role": "Student"
+        },
+        {
+            "id": 18,
+            "name": "(Bill) William Arthur Weasley",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "29/11/1970",
+            "role": "Student"
+        },
+        {
+            "id": 19,
+            "name": "Charles Weasley",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "12/12/1972",
+            "role": "Student"
+        },
+        {
+            "id": 20,
+            "name": "Lee Jordan ",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "02/02/1977",
+            "role": "Student"
+        },
+        {
+            "id": 21,
+            "name": "Oliver Wood",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "25/02/1975",
+            "role": "Student"
+        },
+        {
+            "id": 22,
+            "name": "Angelina Johnson",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "22/12/1977",
+            "role": "Student"
+        },
+        {
+            "id": 23,
+            "name": "Katie Bell",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "22/11/1978",
+            "role": "Student"
+        },
+        {
+            "id": 24,
+            "name": "Alicia Spinnet",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "05/11/1977",
+            "role": "Student"
+        },
+        {
+            "id": 25,
+            "name": "Lavender Brown",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "17/08/1979",
+            "role": "Student"
+        },
+        {
+            "id": 26,
+            "name": "Parvati Patil",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "08/08/1979",
+            "role": "Student"
+        },
+        {
+            "id": 27,
+            "name": "Romilda Vane",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "19/07/1981",
+            "role": "Student"
+        },
+        {
+            "id": 28,
+            "name": "Colin Creevey",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "14/06/1981",
+            "role": "Student"
+        },
+        {
+            "id": 29,
+            "name": "Cormac McLaggen",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "22/11/1978",
+            "role": "Student"
+        },
+        {
+            "id": 34,
+            "name": "Cho Chang",
+            "gender": "Female",
+            "house": "Ravenclaw",
+            "dob": "09/07/1978",
+            "role": "Student"
+        },
+        {
+            "id": 35,
+            "name": "Luna Lovegood",
+            "gender": "Female",
+            "house": "Ravenclaw",
+            "dob": "14/05/1981",
+            "role": "Student"
+        },
+        {
+            "id": 41,
+            "name": "Padma Patil",
+            "gender": "Female",
+            "house": "Ravenclaw",
+            "dob": "12/12/1979",
+            "role": "Student"
+        },
+        {
+            "id": 42,
+            "name": "Michael Corner",
+            "gender": "Male",
+            "house": "Ravenclaw",
+            "dob": "22/02/1979",
+            "role": "Student"
+        },
+        {
+            "id": 43,
+            "name": "Marietta Edgecombe",
+            "gender": "Female",
+            "house": "Ravenclaw",
+            "dob": "10/05/1978",
+            "role": "Student"
+        },
+        {
+            "id": 44,
+            "name": "Terry Boot",
+            "gender": "Male",
+            "house": "Ravenclaw",
+            "dob": "15/05/1979",
+            "role": "Student"
+        },
+        {
+            "id": 45,
+            "name": "Anthony Goldstein",
+            "gender": "Male",
+            "house": "Ravenclaw",
+            "dob": "17/08/1979",
+            "role": "Student"
+        },
+        {
+            "id": 47,
+            "name": "Draco Malfoy",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "05/06/1980",
+            "role": "Student"
+        },
+        {
+            "id": 48,
+            "name": "Vincent Crabbe",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "23/12/1979",
+            "role": "Student"
+        },
+        {
+            "id": 49,
+            "name": "Gregory Goyle",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "05/05/1979",
+            "role": "Student"
+        },
+        {
+            "id": 56,
+            "name": "Pansy Parkinson",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "17/08/1979",
+            "role": "Student"
+        },
+        {
+            "id": 57,
+            "name": "Blaise Zabini",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "03/06/1979",
+            "role": "Student"
+        },
+        {
+            "id": 59,
+            "name": "Theodore Nott",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "03/06/1979",
+            "role": "Student"
+        },
+        {
+            "id": 61,
+            "name": "Millicent Bulstrode",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "12/09/1979",
+            "role": "Student"
+        },
+        {
+            "id": 62,
+            "name": "Graham Montague",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "14/05/1981",
+            "role": "Student"
+        },
+        {
+            "id": 64,
+            "name": "Marcus Flint",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "11/11/1975",
+            "role": "Student"
+        },
+        {
+            "id": 65,
+            "name": "Penelope Clearwater",
+            "gender": "Male",
+            "house": "Ravenclaw",
+            "dob": "11/11/1975",
+            "role": "Student"
+        },
+        {
+            "id": 66,
+            "name": "Roger Davies",
+            "gender": "Male",
+            "house": "Ravenclaw",
+            "dob": "02/02/1977",
+            "role": "Student"
+        },
+        {
+            "id": 67,
+            "name": "Marcus Belby",
+            "gender": "Male",
+            "house": "Ravenclaw",
+            "dob": "19/05/1978",
+            "role": "Student"
+        },
+        {
+            "id": 83,
+            "name": "Newton Scamander",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "24/02/1897",
+            "role": "Student"
+        },
+        {
+            "id": 84,
+            "name": "Cedric Diggory",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "06/11/1977",
+            "role": "Student"
+        },
+        {
+            "id": 85,
+            "name": "Justin Finch-Fletchley",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "13/07/1979",
+            "role": "Student"
+        },
+        {
+            "id": 86,
+            "name": "Zacharias Smith",
+            "gender": "Female",
+            "house": "Hufflepuff",
+            "dob": "25/01/1979",
+            "role": "Student"
+        },
+        {
+            "id": 87,
+            "name": "Hannah Abbott",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "19/06/1979",
+            "role": "Student"
+        },
+        {
+            "id": 88,
+            "name": "Ernest Macmillan",
+            "gender": "Female",
+            "house": "Hufflepuff",
+            "dob": "25/03/1980",
+            "role": "Student"
+        },
+        {
+            "id": 89,
+            "name": "Susan Bones",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "19/06/1979",
+            "role": "Student"
+        },
+        {
+            "id": 124,
+            "name": "Dennis Creevey",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "03/12/1982",
+            "role": "Student"
+        },
+        {
+            "id": 125,
+            "name": "Albus Severus Potter",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "17/07/2005",
+            "role": "Student"
+        },
+        {
+            "id": 126,
+            "name": "Scorpius Hyperion Malfoy",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "15/09/2005",
+            "role": "Student"
+        },
+        {
+            "id": 127,
+            "name": "Edward Remus Lupin",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "20/12/1998",
+            "role": "Student"
+        },
+        {
+            "id": 128,
+            "name": "James Sirius Potter",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "22/11/2003",
+            "role": "Student"
+        },
+        {
+            "id": 129,
+            "name": "Rose Granger-Weasley",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "21/11/2005",
+            "role": "Student"
+        },
+        {
+            "id": 4,
+            "name": "Albus Percival Wulfric Brian Dumbledore",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "28/06/1881",
+            "role": "Teacher"
+        },
+        {
+            "id": 5,
+            "name": "Rubeus Hagrid",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "06/12/1928",
+            "role": "Teacher"
+        },
+        {
+            "id": 15,
+            "name": "Remus John Lupin",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "10/03/1960",
+            "role": "Teacher"
+        },
+        {
+            "id": 30,
+            "name": "Minerva McGonagall",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "04/10/2021",
+            "role": "Teacher"
+        },
+        {
+            "id": 33,
+            "name": "Quirinus Quirrell",
+            "gender": "Male",
+            "house": "Ravenclaw",
+            "dob": "22/12/1970",
+            "role": "Teacher"
+        },
+        {
+            "id": 36,
+            "name": "Gilderoy Lockhart",
+            "gender": "Male",
+            "house": "Ravenclaw",
+            "dob": "26/01/1964",
+            "role": "Teacher"
+        },
+        {
+            "id": 37,
+            "name": "Filius Flitwick",
+            "gender": "Male",
+            "house": "Ravenclaw",
+            "dob": "20/09/1958",
+            "role": "Teacher"
+        },
+        {
+            "id": 38,
+            "name": "Sybill Patricia Trelawney",
+            "gender": "Female",
+            "house": "Ravenclaw",
+            "dob": "01/09/1962",
+            "role": "Teacher"
+        },
+        {
+            "id": 46,
+            "name": "Severus Snape",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "06/04/1960",
+            "role": "Teacher"
+        },
+        {
+            "id": 51,
+            "name": "Dolores Jane Umbridge",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "26/08/2021",
+            "role": "Teacher"
+        },
+        {
+            "id": 52,
+            "name": "Horace Eugene Flaccus Slughorn",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "28/04/2021",
+            "role": "Teacher"
+        },
+        {
+            "id": 68,
+            "name": "Salazar Slytherin",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "13/10/2000",
+            "role": "Teacher"
+        },
+        {
+            "id": 69,
+            "name": "Godric Gryffindor",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "13/10/2000",
+            "role": "Teacher"
+        },
+        {
+            "id": 70,
+            "name": "Rowena Ravenclaw",
+            "gender": "Male",
+            "house": "Ravenclaw",
+            "dob": "13/10/2000",
+            "role": "Teacher"
+        },
+        {
+            "id": 72,
+            "name": "Cuthbert Binns",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "17/02/1946",
+            "role": "Teacher"
+        },
+        {
+            "id": 74,
+            "name": "Charity Burbage",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "17/03/1976",
+            "role": "Teacher"
+        },
+        {
+            "id": 78,
+            "name": "Helga Hufflepuff",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "13/10/2000",
+            "role": "Teacher"
+        },
+        {
+            "id": 82,
+            "name": "Pomona Sprout",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "15/05/2021",
+            "role": "Teacher"
+        },
+        {
+            "id": 96,
+            "name": "Alastor Moody",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "17/01/1960",
+            "role": "Teacher"
+        },
+        {
+            "id": 132,
+            "name": "Rolanda Hooch",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "10/02/1918",
+            "role": "Teacher"
+        },
+        {
+            "id": 133,
+            "name": "Irma Pince",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "06/01/1966",
+            "role": "Teacher"
+        },
+        {
+            "id": 134,
+            "name": "Aurora Sinistra",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "22/08/1968",
+            "role": "Teacher"
+        },
+        {
+            "id": 135,
+            "name": "Septima Vector",
+            "gender": "Female",
+            "house": "Hufflepuff",
+            "dob": "24/10/1974",
+            "role": "Teacher"
+        },
+        {
+            "id": 16,
+            "name": "Peter Pettigrew",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "23/08/1959",
+            "role": "Student"
+        },
+        {
+            "id": 39,
+            "name": "Garrick Ollivander",
+            "gender": "Male",
+            "house": "Ravenclaw",
+            "dob": "28/09/1908",
+            "role": "Student"
+        },
+        {
+            "id": 40,
+            "name": "Myrtle Elizabeth Warren (Moaning Myrtle)",
+            "gender": "Female",
+            "house": "Ravenclaw",
+            "dob": "16/10/1928",
+            "role": "Student"
+        },
+        {
+            "id": 50,
+            "name": "Bellatrix Lestrange",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "19/09/1951",
+            "role": "Student"
+        },
+        {
+            "id": 58,
+            "name": "Tom Marvolo Riddle",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "31/12/1926",
+            "role": "Student"
+        },
+        {
+            "id": 60,
+            "name": "Rodolphus Lestrange",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "13/03/1964",
+            "role": "Student"
+        },
+        {
+            "id": 63,
+            "name": "Bloody Baron",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "06/06/1961",
+            "role": "Student"
+        },
+        {
+            "id": 71,
+            "name": "Nicholas de Mimsy-Porpington",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "19/02/1401",
+            "role": "Student"
+        },
+        {
+            "id": 73,
+            "name": "Barty Crouch Jr.",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "10/01/1962",
+            "role": "Student"
+        },
+        {
+            "id": 75,
+            "name": "Firenze",
+            "gender": "Female",
+            "house": "Hufflepuff",
+            "dob": "17/02/1946",
+            "role": "Student"
+        },
+        {
+            "id": 76,
+            "name": "Alecto Carrow",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "19/10/1981",
+            "role": "Student"
+        },
+        {
+            "id": 77,
+            "name": "Amycus Carrow",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "11/07/1982",
+            "role": "Student"
+        },
+        {
+            "id": 79,
+            "name": "Fat Friar",
+            "gender": "Female",
+            "house": "Hufflepuff",
+            "dob": "12/06/1947",
+            "role": "Student"
+        },
+        {
+            "id": 80,
+            "name": "Helena Ravenclaw",
+            "gender": "Female",
+            "house": "Ravenclaw",
+            "dob": "06/06/1961",
+            "role": "Student"
+        },
+        {
+            "id": 81,
+            "name": "Nymphadora Tonks",
+            "gender": "Female",
+            "house": "Hufflepuff",
+            "dob": "14/04/1972",
+            "role": "Student"
+        },
+        {
+            "id": 90,
+            "name": "Walden Macnair",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "05/07/1970",
+            "role": "Student"
+        },
+        {
+            "id": 91,
+            "name": "Augustus Rookwood",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "22/10/1964",
+            "role": "Student"
+        },
+        {
+            "id": 92,
+            "name": "Antonin Dolohov",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "11/07/1950",
+            "role": "Student"
+        },
+        {
+            "id": 93,
+            "name": "Corban Yaxley",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "21/02/1970",
+            "role": "Student"
+        },
+        {
+            "id": 94,
+            "name": "Igor Karkaroff",
+            "gender": "Male",
+            "house": "Beauxbatons Academy of Magic",
+            "dob": "23/06/1965",
+            "role": "Student"
+        },
+        {
+            "id": 95,
+            "name": "Kingsley Shacklebolt",
+            "gender": "Male",
+            "house": "Durmstrang Institute",
+            "dob": "12/05/1973",
+            "role": "Student"
+        },
+        {
+            "id": 99,
+            "name": "Rufus Scrimgeour",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "22/08/1968",
+            "role": "Student"
+        },
+        {
+            "id": 100,
+            "name": "Cornelius Oswald Fudge",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "13/03/1964",
+            "role": "Student"
+        },
+        {
+            "id": 101,
+            "name": "Barty Crouch Sr.",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "19/10/1940",
+            "role": "Student"
+        },
+        {
+            "id": 103,
+            "name": "Dedalus Diggle",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "13/03/1964",
+            "role": "Student"
+        },
+        {
+            "id": 104,
+            "name": "Elphias Doge",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "09/07/1880",
+            "role": "Student"
+        },
+        {
+            "id": 105,
+            "name": "Fleur Isabelle Delacour",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "07/05/1977",
+            "role": "Student"
+        },
+        {
+            "id": 106,
+            "name": "Aberforth Dumbledore",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "16/05/1883",
+            "role": "Student"
+        },
+        {
+            "id": 107,
+            "name": "Mundungus Fletcher",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "24/10/1962",
+            "role": "Student"
+        },
+        {
+            "id": 108,
+            "name": "Sturgis Podmore",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "11/05/1956",
+            "role": "Student"
+        },
+        {
+            "id": 109,
+            "name": "Hestia Jones",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "05/09/1978",
+            "role": "Student"
+        },
+        {
+            "id": 110,
+            "name": "Marlene McKinnon",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "17/02/1946",
+            "role": "Student"
+        },
+        {
+            "id": 111,
+            "name": "Fabian Prewett",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "17/02/1946",
+            "role": "Student"
+        },
+        {
+            "id": 112,
+            "name": "Gideon Prewett",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "17/02/1946",
+            "role": "Student"
+        },
+        {
+            "id": 113,
+            "name": "Emmeline Vance",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "22/10/1964",
+            "role": "Student"
+        },
+        {
+            "id": 114,
+            "name": "Edgar Bones",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "17/02/1946",
+            "role": "Student"
+        },
+        {
+            "id": 115,
+            "name": "Dorcas Meadowes",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "17/02/1946",
+            "role": "Student"
+        },
+        {
+            "id": 116,
+            "name": "Benjy Fenwick",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "17/02/1946",
+            "role": "Student"
+        },
+        {
+            "id": 117,
+            "name": "Madame Olympe Maxime",
+            "gender": "Female",
+            "house": "Hufflepuff",
+            "dob": "17/02/1946",
+            "role": "Student"
+        },
+        {
+            "id": 118,
+            "name": "Gabrielle Delacour",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "27/09/1985",
+            "role": "Student"
+        },
+        {
+            "id": 119,
+            "name": "Viktor Krum",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "23/07/1976",
+            "role": "Student"
+        },
+        {
+            "id": 120,
+            "name": "Petunia Dursley",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "17/01/1960",
+            "role": "Student"
+        },
+        {
+            "id": 121,
+            "name": "Vernon Dursley",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "08/04/1954",
+            "role": "Student"
+        },
+        {
+            "id": 122,
+            "name": "Dudley Dursley",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "21/10/1980",
+            "role": "Student"
+        },
+        {
+            "id": 123,
+            "name": "Marge Dursley",
+            "gender": "Male",
+            "house": "Hufflepuff",
+            "dob": "08/04/1954",
+            "role": "Student"
+        },
+        {
+            "id": 130,
+            "name": "Argus Filch",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "12/10/1951",
+            "role": "Student"
+        },
+        {
+            "id": 131,
+            "name": "Poppy Pomfrey",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "24/10/1954",
+            "role": "Student"
+        },
+        {
+            "id": 136,
+            "name": "Wilhelmina Grubbly-Plank",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "17/02/1946",
+            "role": "Student"
+        },
+        {
+            "id": 137,
+            "name": "Fenrir Greyback",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "27/06/1945",
+            "role": "Student"
+        },
+        {
+            "id": 138,
+            "name": "Gellert Grindelwald",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "20/05/1883",
+            "role": "Student"
+        },
+        {
+            "id": 139,
+            "name": "Dobby",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "28/06/2021",
+            "role": "Student"
+        },
+        {
+            "id": 12,
+            "name": "Lily J. Potter",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "06/04/1960",
+            "role": "Student"
+        },
+        {
+            "id": 13,
+            "name": "James Potter",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "27/03/1960",
+            "role": "Student"
+        },
+        {
+            "id": 14,
+            "name": "Sirius Black",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "03/11/1959",
+            "role": "Student"
+        },
+        {
+            "id": 31,
+            "name": "Molly Weasley",
+            "gender": "Female",
+            "house": "Gryffindor",
+            "dob": "04/12/1949",
+            "role": "Student"
+        },
+        {
+            "id": 32,
+            "name": "Arthur Weasley",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "06/02/1950",
+            "role": "Student"
+        },
+        {
+            "id": 53,
+            "name": "Lucius Malfoy",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "24/04/1954",
+            "role": "Student"
+        },
+        {
+            "id": 54,
+            "name": "Narcissa Malfoy",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "19/03/1955",
+            "role": "Student"
+        },
+        {
+            "id": 55,
+            "name": "Regulus Arcturus Black",
+            "gender": "Female",
+            "house": "Slytherin",
+            "dob": "25/12/1961",
+            "role": "Student"
+        },
+        {
+            "id": 97,
+            "name": "Alice Longbottom",
+            "gender": "Male",
+            "house": "Slytherin",
+            "dob": "17/02/1946",
+            "role": "Student"
+        },
+        {
+            "id": 98,
+            "name": "Frank Longbottom",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "23/11/1957",
+            "role": "Student"
+        },
+        {
+            "id": 102,
+            "name": "Amos Diggory",
+            "gender": "Male",
+            "house": "Gryffindor",
+            "dob": "17/02/1946",
+            "role": "Student"
+        }
+    ]
+}

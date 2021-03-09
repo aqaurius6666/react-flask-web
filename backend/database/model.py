@@ -7,19 +7,16 @@ db = SQLAlchemy()
 
 class Account(db.Model):
 
-    pid = db.Column(db.String(36), primary_key=True)
-    username = db.Column(db.String(36), unique=True)
+    username = db.Column(db.String(36))
     password = db.Column(db.String(128))
-    
-    id = db.Column(db.String(4))
+    id = db.Column(db.String(4), primary_key=True)
 
 
     def to_dict(self):
         """Return object data in easily serializeable format"""
         return {
-            'pid' : self.pid,
+            'id' : self.id,
             'username' : self.username,
-            'id' : self.id
         }
     def get_user(self):
         s = Student.query.filter_by(sid=self.id).first()
@@ -28,7 +25,7 @@ class Account(db.Model):
 
 class Student(db.Model):
 
-    sid = db.Column(db.String(4), primary_key=True)
+    sid = db.Column(db.String(4), db.ForeignKey('account.id'), primary_key=True)
     name = db.Column(db.String(64, convert_unicode=True), nullable=False)
     house = db.Column(db.String(16, convert_unicode=True), db.ForeignKey('house.name'))
     dob = db.Column(db.Date)
@@ -106,6 +103,7 @@ class Score(db.Model):
     final = db.Column(db.Float)
     total = db.Column(db.Float)
     status = db.Column(db.Integer)
+    semester = db.Column(db.String(4), nullable=False)
 
     def to_dict(self):
         return {
@@ -115,7 +113,8 @@ class Score(db.Model):
             'mid' : self.mid,
             'final' : self.final,
             'total' : self.total,
-            'status' : self.status
+            'status' : self.status,
+            'semester' : self.semester
             
         }
     def to_course_list(self):
@@ -128,11 +127,12 @@ class Score(db.Model):
             'total' : self.total,
             'status' : self.status,
             'name' : course.name,
+            'semester' : self.semester,
             'credit' : course.credit 
         }
 class Teacher(db.Model):
 
-    tid = db.Column(db.String(4), primary_key=True)
+    tid = db.Column(db.String(4), db.ForeignKey('account.id'), primary_key=True)
     name = db.Column(db.String(64, convert_unicode=True), nullable=False)
     house = db.Column(db.String(16, convert_unicode=True), db.ForeignKey('house.name'))
     dob = db.Column(db.Date)

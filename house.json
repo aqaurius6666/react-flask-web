@@ -1,0 +1,21 @@
+{
+    "is_list": true,
+    "array": [
+        {
+            "admin": null,
+            "name": "Gryffindor"
+        },
+        {
+            "admin": null,
+            "name": "Slytherin"
+        },
+        {
+            "admin": null,
+            "name": "Hufflepuff"
+        },
+        {
+            "admin": null,
+            "name": "Ravenclaw"
+        }
+    ]
+}
