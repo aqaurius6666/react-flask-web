@@ -2,30 +2,37 @@ import React, { useState } from 'react'
 import history from '../history'
 import { Link } from "react-router-dom";
 import { authenticationService } from '../API/service';
+import Loading from './loading';
 
 
 
 export const Register = () => {
+    const [loading, setLoading] = useState(false)
     return (
         <>
-            <RegisterForm />
+            <RegisterForm loading={loading} setLoading={setLoading}/>
         </>
     )
 }
-export const RegisterForm = () => {
-
+export const RegisterForm = (props) => {
+    
     const [form, setForm] = useState({
         "username": "",
         "password": "",
         "password2": "",
         "role": "Student"
     })
+    const {loading, setLoading} = props
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(form)
+        setLoading(true)
         if (validate_form()) {
-            authenticationService.register(form)
-            history.push('/login')
+            authenticationService.register(form).then(() => {
+                setLoading(false)
+                history.push('/login')
+            }).catch(() => {
+                setLoading(false)
+            })
         } else {
             alert("Password not match")
         }
@@ -33,6 +40,7 @@ export const RegisterForm = () => {
     const validate_form = () => {
         return form.password === form.password2
     }
+    if (loading) return <Loading/>
     return (
         <div className="login-container">
             <div className="login-page">

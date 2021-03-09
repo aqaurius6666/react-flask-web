@@ -2,7 +2,7 @@ import React from 'react'
 import logo from "../img/hogwarts_sm_logo.svg"
 import hogwart from "../img/four_houses.jpg"
 import Footer from "./footer";
-import {NotificationList} from "../data/superData"
+import { NotificationList } from "../data/superData"
 import Header from "./header";
 import Loading from "./loading";
 import { authenticationService } from "../API/service";
@@ -37,9 +37,9 @@ const Introductory = () => {
                     <div className="col-12 col-sm-8">
                         <h1 className="header_font">Hogwarts School <span className="d-none d-sm-block">of Witchcraft and Wizardry!</span></h1>
                         <p className="letter_font">Hogwarts is divided into four houses, each bearing the last name of its founder:
-                            Godric Gryffindor, Salazar Slytherin, Rowena Ravenclaw and Helga Hufflepuff.
-                            Throughout the school year, the houses compete for the House Cup, gaining and losing
-                            points based on actions such as performance in class and rule violations.
+                        Godric Gryffindor, Salazar Slytherin, Rowena Ravenclaw and Helga Hufflepuff.
+                        Throughout the school year, the houses compete for the House Cup, gaining and losing
+                        points based on actions such as performance in class and rule violations.
                             <span className="d-none d-sm-block">The house with the highest end-of-year total wins and has its colours displayed in the Great Hall for the
                             following school year. Each house also has its own Quidditch team that competes for the
                             Quidditch Cup. These two competitions breed rivalries between the houses. Houses at Hogwarts
@@ -99,19 +99,14 @@ const Notification = () => {
 }
 
 export const Home = () => {
-    const account = authenticationService.currentAccountValue()
-    if (account) {
-        return (
-            <div className="home">
-                <Header/>
-                <Introductory />
-                <hr className="hr"/>
-                <Notification/>
-                <Footer/>
-            </div>
-        );
-    } else {
-        return <Loading />
-    }
+    return (
+        <div className="home">
+            <Header />
+            <Introductory />
+            <hr className="hr" />
+            <Notification />
+            <Footer />
+        </div>
+    );
 }
 

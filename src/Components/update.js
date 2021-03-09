@@ -18,6 +18,7 @@ export const Update = () => {
         .catch(() => setLoading(false))
         return () => setLoading(false)
     }, [])
+
     if (loading) {
         return (
             <Loading />

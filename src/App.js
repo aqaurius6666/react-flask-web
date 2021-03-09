@@ -13,9 +13,10 @@ import Slider from "./Components/courses";
 import Courses from "./Components/courses";
 import Loading from "./Components/loading";
 import { Grades } from "./Components/grades";
+import history from "./history";
 
 function App() {
-    const [account, setAccount] = useState()
+    const [account, setAccount] = useState(authenticationService.currentAccountValue)
     const [loading, setLoading] = useState(false)
     useEffect(() => {
         authenticationService.currentAccount.subscribe((x) => setAccount(x))

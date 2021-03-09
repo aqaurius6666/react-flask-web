@@ -54,6 +54,7 @@ export const Info = () => {
 
     }, [])
 
+    
     if (loading || !student || !allCourse) return <Loading />
     else {
         return (

@@ -27,7 +27,7 @@ export const userService = {
 export const courseService = {
     getCourses,
     registerCourse,
-    getStudentCourse,
+    getStudentCourse
 }
 function getCourses() {
     const requestOptions = {
@@ -37,7 +37,7 @@ function getCourses() {
             'x-access-token' : authenticationService.currentTokenValue()
         }
     };
-
+    
     return fetch(`https://it-must-be-ok.herokuapp.com/api/courses`, requestOptions)
         .then(handleResponse)
         .then(data => {
@@ -59,6 +59,7 @@ function getStudentCourse() {
             return(data)
         });
 }
+
 function registerCourse(array) {
     console.log(JSON.stringify({...array, is_list:true}))
     const requestOptions = {
