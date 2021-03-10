@@ -47,8 +47,7 @@ const RegisCourses = (props) => {
             .catch(() => setLoading(false))
         return () => setLoading(false)
 
-    }, [])
-
+    }, [allCourse])
 
     if (loading || courseItem.length === 0) return <Loading />
 
