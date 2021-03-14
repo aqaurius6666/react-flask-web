@@ -105,32 +105,32 @@ export const trList = [
 export const NotificationList = [
     {
         link: "https://uet.vnu.edu.vn/wp-content/uploads/2020/11/DS-SV-ho%C3%A3n-n%E1%BB%99p-h%E1%BB%8Dc-ph%C3%AD.pdf",
-        alert: "Danh sách sinh viên được hoãn nộp học phí kì I (2020-2021)",
+        alert: "List of students who are delayed to pay tuition fees for the first semester (2020-2021)",
         date: "08/ 09/ 2020"
     },
     {
         link: "https://uet.vnu.edu.vn/wp-content/uploads/2020/11/DANH-SACH-THU-K1.20-21-TT23-1.pdf",
-        alert: "DANH SÁCH CHƯƠNG TRÌNH ĐÀO TẠO CLC 2020-2021",
+        alert: "List of high quality training programs 2020-2021",
         date: "29/ 06/ 2020"
     },
     {
         link: "https://uet.vnu.edu.vn/wp-content/uploads/2021/01/Danh-s%C3%A1ch-SV-4.pdf",
-        alert: "Triệu tập sinh viên tham dự Hội thảo giới thiệu chương trình MB MAGIC CUP",
+        alert: "Summon students to attend the seminar on introduction of MB MAGIC CUP program",
         date: "28/ 06/ 2020"
     },
     {
         link: "https://uet.vnu.edu.vn/wp-content/uploads/2021/01/2021_1_Ket-qua-Quy-gui_Danh-s%C3%A1ch-nh%E1%BA%ADn-HB.pdf",
-        alert: "Sinh viên nhận học bổng Kumho Asiana học kỳ 1, năm học 2020-2021",
+        alert: "Students receiving Kumho Asiana scholarship semester 1, school year 2020-2021",
         date: "15/ 05/ 2020"
     },
     {
         link: "https://uet.vnu.edu.vn/wp-content/uploads/2021/01/Thong-bao-so-1-Olympic-vat-ly-2021.pdf",
-        alert: "Sinh viên đăng ký thi chọn đội tuyển Quidditch sinh viên toàn quốc lần thứ XXIII năm 2021",
+        alert: "Students register for the XXIII National Student Quidditch Team Selection Contest in 2021",
         date: "07/ 05/ 2020"
     },
     {
         link: "https://uet.vnu.edu.vn/wp-content/uploads/2021/01/2021_1_Ket-qua-Quy-gui_Danh-s%C3%A1ch-nh%E1%BA%ADn-HB.pdf",
-        alert: "Danh sách sinh viên đăng kí thi chọn đội tuyển Olympic Pháp Thuật toàn quốc lần thứ XX năm 2021",
+        alert: "List of students registering for the 20th National Magic Olympic team in 2021",
         date: "08/ 09/ 2020"
     }
 ]
@@ -268,4 +268,34 @@ export const checkHouseImg = (house) => {
 
 export function checkHaveCourse(courseList, course) {
     return courseList.includes(course.cid)
+}
+
+export function formatTime(time) {
+    let res = "";
+    switch (time[1]) {
+        case '2':
+            res += 'Monday'
+            break;
+        case '3':
+            res += 'Tuesday'
+            break;
+        case '4':
+            res += 'Wednesday'
+            break;
+        case '5':
+            res += 'Thursday'
+            break;
+        case '6':
+            res += 'Friday'
+            break;
+        case '7':
+            res += 'Saturday'
+            break;
+        case '8':
+            res += 'Sunday'
+            break;
+        default: res += ''
+    }
+    res += (time[0] === 'S' ? `'s Morning` : `'s Evening`)
+    return res
 }

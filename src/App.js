@@ -23,6 +23,7 @@ function App() {
     }, [])
     return (
         <>
+<<<<<<< HEAD
             <NavBar />
             <Switch>
                 <Route exact path="/" component={() => <Home />} />
@@ -34,6 +35,22 @@ function App() {
                 <Route exact path="/info" component={() => <Info />} />
                 <Route exact path="/info/score" component={() => <Grades />} />
             </Switch>
+=======
+            <loadingContext.Provider value={{ loading, setLoading }}>
+                 <NavBar />
+               <Switch>
+                    <Route exact path="/" component={() => <Home />} />
+                    <Route exact path="/login" component={() => <Login />} />
+                    <Route exact path="/about" component={() => <About />} />
+                    <Route exact path="/register" component={() => <Register />} />
+                    <Route exact path="/courses" component={() => <Courses />} />
+                    <Route exact path="/update" component={() => <Update />} />
+                    <Route exact path="/info" component={() => <Info />} />
+                    <Route exact path="/info/score" component={() => <Grades />} />
+                </Switch>
+
+            </loadingContext.Provider>
+>>>>>>> 5a78c9c213e813c374310c3dbf52c2fa19b5f988
         </>
     )
 }

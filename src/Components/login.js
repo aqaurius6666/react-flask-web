@@ -19,6 +19,7 @@ export const Login = () => {
     if (loading) return <Loading/>
     return (
         <div className="login-container">
+            <NavBar />
             <div className="login-page">
                 <div className="form">
                     <form className="login-form" onSubmit={handleSubmit}>

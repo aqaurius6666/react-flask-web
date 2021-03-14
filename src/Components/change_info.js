@@ -19,7 +19,7 @@ export const ChangeInfo = (props) => {
 
                 <div>
                     <label>Date of birth: </label>
-                    <input value={form.dob ? form.dob : ""} placeholder="dd/mm/yyyy"
+                    <input type='date' value={form.dob ? form.dob : ""} placeholder="dd/mm/yyyy"
                         onChange={(e) => setForm({ ...form, dob: e.target.value })} />
                 </div>
                 <div>

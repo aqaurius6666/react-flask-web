@@ -68,7 +68,7 @@ const Notification = () => {
                 <div className="col-md">
                     <div className="col1-1">
                         <div className="box-header">
-                            <h4>&nbsp;&nbsp;&nbsp;<i className="fa fa-bell" aria-hidden="true" />&nbsp;&nbsp;Tin tức mới nhất</h4>
+                            <h4>&nbsp;&nbsp;&nbsp;<i className="fa fa-bell" aria-hidden="true" />&nbsp;&nbsp;Notification</h4>
                         </div>
 
                         <div className="news" id="TinMoiNhat">

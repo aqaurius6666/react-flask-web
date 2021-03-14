@@ -26,15 +26,14 @@ export const Update = () => {
     }
     return (
         <>
-
-            <div>
-                <br />
-                <br />
+            <br />
+            <br />
+            <div className="container">
                 <ChangeInfo form={form} setForm={setForm} />
                 <ChangePassword />
-                <br />
-                <Footer />
             </div>
+            <br />
+            <Footer />
         </>
     )
 }

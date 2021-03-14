@@ -47,8 +47,11 @@ const NavBar = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto row">
+                        <div className="login-nav-margin d-none d-xl-block"> </div>
+                        <div className="login-nav-margin d-none d-xl-block"> </div>
                         <Nav.Link href="/login" onClick={handleLogOut}>
-                            <i className="fa fa-sign-in" aria-hidden="true" /> Log in</Nav.Link>
+                            <i className="fa fa-sign-in" aria-hidden="true" />Log in
+                        </Nav.Link>
                         <Nav.Link href="/register" onClick={handleLogOut}>
                             <i className="fa fa-user-plus" aria-hidden="true" /> Register</Nav.Link>
                     </Nav>
