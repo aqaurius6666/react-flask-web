@@ -79,6 +79,20 @@ def database():
 @app.route('/api/scores', methods=['GET'])
 def get_scores():
     return jsonify([score.to_dict() for score in Score.query.all()])
+
+
+@app.route('/api/users', methods=['POST'])
+def query_user():
+    name = request.args.get('name')
+    print(name)
+    student = db.session.query(Student).filter(Student.name.like(f'%{name}%'))\
+                                        .with_entities(Student.sid, Student.name)
+    teacher = db.session.query(Teacher).filter(Teacher.name.like(f'%{name}%'))\
+                                        .with_entities(Teacher.tid, Teacher.name)
+    array = student.union(teacher).all()
+    return jsonify({'array' : array,
+                    'length' : len(array)})
+
 @app.route('/api/accounts', methods=['GET'])
 def get_accounts():
     return jsonify([account.to_dict() for account in Account.query.all()])
