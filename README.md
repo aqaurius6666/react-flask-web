@@ -44,7 +44,7 @@ class Account(db.Model):
 
     username = db.Column(db.String(36))
     password = db.Column(db.String(128))
-ode=T    id = db.Column(db.String(4), primary_key=True) // Khóa chính
+    id = db.Column(db.String(4), primary_key=True) // Khóa chính
 class Student(db.Model):
 
     sid = db.Column(db.String(4), db.ForeignKey('account.id'), primary_key=True) // sid là khóa ngoại trỏ vào id của Account. Khóa chính
