@@ -40,6 +40,25 @@ Trang web thông tin của trường phù thuỷ Hogwarts. Nơi mà học sinh, 
 ![a](https://user-images.githubusercontent.com/54926438/110513370-bb922180-8138-11eb-9fdd-73e57bd007ba.png)
 
 ## Phát triển:
+1. Giải quyết vấn đề tra cứu thông tin của người khác:
+* Sử dụng kỹ thuật debounce search
+* Về backend, ta dùng truy vấn LIKE. LIKE trong SQLAlchemy sẽ có dạng là 
+```python 
+{table_name}.{column_name}.like({pattern})
+```
+* Vì chương trình được thực thi trên Postgresql của Heroku, Postgresql có phân biệt hoa thường nên phải dùng `or_` để tìm kiếm theo 2 trường hợp thường và viết hoa chữ cái đầu:
+```python
+student = db.session.query(Student).filter(or_(Student.name.like(f'%{name}%'), Student.name.like(f'%{upper_case_name}%'))).with_entities(Student.sid, Student.name)
+```
+* Ta chỉ lấy giá trị 2 cột sid và name `with_entities(Student.sid, Student.name)` 
+* Tương tự như vậy với bảng Teacher:
+```python
+teacher = db.session.query(Teacher).filter(or_(Teacher.name.like(f'%{name}%'), Teacher.name.like(f'%{upper_case_name}%'))).with_entities(Teacher.tid, Teacher.name)
+```
+* Ta union 2 kết quả này lại và gửi lại response:
+```python
+array = student.union(teacher).all()
+```
 ### Công nghệ áp dụng:
 * Flask
 * React.js
