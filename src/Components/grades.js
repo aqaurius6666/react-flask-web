@@ -22,9 +22,8 @@ export const Grades = (props) => {
     return (
         <div class="row row-content">
             <div class="col-12">
-                <h2>Score</h2>
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-bordered">
                         <thead class="thead-dark">
                             <tr>
                                 <th>No.</th>
@@ -37,6 +36,9 @@ export const Grades = (props) => {
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td colspan="7" class="align-content-center text-center"><h4>Semester: {score[1].semester}</h4></td>
+                            </tr>
                             {
                                 score.map((data, key) => {
                                     creditCount += data.credit;
