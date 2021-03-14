@@ -14,8 +14,7 @@ export const Login = () => {
         authenticationService.login(username, password).then(() => {
             setLoading(false)
             history.push('/')
-        }
-        )
+        })
     }
     if (loading) return <Loading/>
     return (
