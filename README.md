@@ -50,8 +50,6 @@ Trang web thông tin của trường phù thuỷ Hogwarts. Nơi mà học sinh, 
 
 ```{r, class.output="scroll-100"}
 
-```python
-
 class Account(db.Model):
 
     username = db.Column(db.String(36))
@@ -103,7 +101,6 @@ class House(db.Model):
     students = db.relationship('Student', backref='of_house') // các student của 1 House
     teachers = db.relationship('Teacher', backref='of_house') // các teacher của 1 
 
-```
 ```
 ## Phát triển:
 1. Giải quyết vấn đề tra cứu thông tin của người khác:
