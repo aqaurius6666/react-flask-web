@@ -1,6 +1,6 @@
 
 from flask import Flask, json, jsonify, request, render_template, url_for
-from sqlalchemy.engine import create_engine
+from sqlalchemy import or_
 from werkzeug.datastructures import Headers
 from .database.model import (db,
                             Student, Teacher, Course, Score, House, Account)
@@ -84,14 +84,17 @@ def get_scores():
 @app.route('/api/users', methods=['GET'])
 def query_user():
     name = request.args.get('name')
-    print(name)
-    student = db.session.query(Student).filter(Student.name.like(f'%{name}%'))\
+    upper_case_name = name.capitalize()
+    # not case sensitive
+    #student = db.session.query(Student).filter(Student.name.like(f'%{name}%'))\
+    #                                    .with_entities(Student.sid, Student.name)
+    #teacher = db.session.query(Teacher).filter(Teacher.name.like(f'%{name}%'))\
+    #                                    .with_entities(Teacher.tid, Teacher.name)
+    # case sensitive
+    student = db.session.query(Student).filter(or_(Student.name.like(f'%{name}%'), Student.name.like(f'%{upper_case_name}%')))\
                                         .with_entities(Student.sid, Student.name)
-    print(student.all())
-    teacher = db.session.query(Teacher).filter(Teacher.name.like(f'%{name}%'))\
+    teacher = db.session.query(Teacher).filter(or_(Teacher.name.like(f'%{name}%'), Teacher.name.like(f'%{upper_case_name}%')))\
                                         .with_entities(Teacher.tid, Teacher.name)
-    print(teacher.all())
-    
     array = student.union(teacher).all()
     return jsonify({'array' : array,
                     'length' : len(array)})
