@@ -81,7 +81,7 @@ def get_scores():
     return jsonify([score.to_dict() for score in Score.query.all()])
 
 
-@app.route('/api/users', methods=['POST'])
+@app.route('/api/users', methods=['GET'])
 def query_user():
     name = request.args.get('name')
     print(name)
