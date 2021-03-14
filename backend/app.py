@@ -87,8 +87,11 @@ def query_user():
     print(name)
     student = db.session.query(Student).filter(Student.name.like(f'%{name}%'))\
                                         .with_entities(Student.sid, Student.name)
+    print(student.all())
     teacher = db.session.query(Teacher).filter(Teacher.name.like(f'%{name}%'))\
                                         .with_entities(Teacher.tid, Teacher.name)
+    print(teacher.all())
+    
     array = student.union(teacher).all()
     return jsonify({'array' : array,
                     'length' : len(array)})
