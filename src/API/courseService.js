@@ -4,6 +4,7 @@ import handleResponse from "./handleResponse";
 const courseService = {
     getCourses,
     registerCourse,
+    getStudentCourse,
     getStudentCourseById
 }; export default courseService;
 
@@ -33,6 +34,21 @@ function getStudentCourseById(id) {
     };
 
     return fetch(`https://it-must-be-ok.herokuapp.com/api/student/${id}/scores`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            return(data)
+        });
+}
+function getStudentCourse() {
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token' : authenticationService.currentTokenValue()
+        }
+    };
+
+    return fetch(`https://it-must-be-ok.herokuapp.com/api/student/scores`, requestOptions)
         .then(handleResponse)
         .then(data => {
             return(data)
