@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react"
 import Footer from "./footer";
-import {findCharacterImage, checkHouseImg, formatTime} from '../data/superData'
+import { findCharacterImage, checkHouseImg, formatTime } from '../data/superData'
 import Loading from "./loading";
 import { checkCID, checkSID } from "../data/superData";
-import {Grades} from "./grades";
+import { Grades } from "./grades";
 import userService from "../API/userService";
 import courseService from "../API/courseService";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import history from "../history"
-import {getAllStudent} from "../API/service";
+import { getAllStudent } from "../API/service";
+import authenticationService from "../API/authenticationService";
 
 const Subject = ({ props }) => {
     return (
@@ -53,7 +54,7 @@ const handleOnFocus = () => {
 }
 
 export const Info = (props) => {
-    const {id} = props
+    const { id } = props
     const [student, setStudent] = useState()
     const [allStudent, setAllStudent] = useState([])
     const [loading, setLoading] = useState(true)
@@ -71,7 +72,7 @@ export const Info = (props) => {
     useEffect(() => {
         setLoading(true)
         courseService.getStudentCourseById(id)
-            .then(({score}) => {
+            .then(({ score }) => {
                 setAllCourse(score.map((item, i) => <Subject key={i} props={item} />))
                 console.log(score)
             })
@@ -168,9 +169,11 @@ export const Info = (props) => {
                     </table>
                 </div>
                 <br />
+                {id == authenticationService.getId() &&
                 <div class="row">
                     <a class="btn btn-info offset-5 col-2" href="/info/score" component={() => <Grades />}>Results</a>
-                </div>
+                </div> }
+
                 <Footer />
             </div>
         )
