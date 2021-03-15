@@ -272,7 +272,7 @@ def get_account(current):
 @app.route('/api/student/<sid>/scores', methods=['GET'])
 @token_required
 def get_scores_student_by_sid(current, sid):
-    student = Student.query.filter(sid=sid).first()
+    student = Student.query.filter_by(sid=sid).first()
     return jsonify({"score" : [score.to_course_list() for score in student.score],
                     "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
 
