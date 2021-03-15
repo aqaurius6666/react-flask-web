@@ -32,12 +32,12 @@ const RegisCourses = (props) => {
                 setCourseItem(coursesList
                     .map((courseItem, i) =>
                         <tr className="col-12 row" key={i} >
-                            <td className="col-1"><input type="checkbox" ref={register}
+                            <td className="col-2"><input type="checkbox" ref={register}
                                                          disabled={checkHaveCourse(allCourse, courseItem)}
                                                          name="array" value={courseItem.cid} /></td>
                             <td className="col-2 col-md-1">{courseItem.cid}</td>
                             <td className="d-sm-block d-none col-1 col-md-1">{courseItem.credit}</td>
-                            <td className="col-4 col-md-4">{courseItem.name}</td>
+                            <td className="col-3 col-md-3">{courseItem.name}</td>
                             <td className="col-3 col-md-3">{courseItem.place}</td>
                             <td className="d-sm-block d-none col-1 col-md-1">{courseItem.tid}</td>
                             <td className="col-2 col-md-1">{courseItem.time}</td>
@@ -63,17 +63,18 @@ const RegisCourses = (props) => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <table border="1" className="row">
                     <tr className="col-12 row" >
-                        <td className="col-1"> </td>
+                        <td className="col-2"> </td>
                         <td className="col-2 col-md-1">CID</td>
                         <td className="d-sm-block d-none col-1 col-md-1">CREDITS</td>
-                        <td className="col-4 col-md-4">NAME</td>
+                        <td className="col-3 col-md-3">NAME</td>
                         <td className="col-3 col-md-3">PLACE</td>
                         <td className="d-sm-block d-none col-md-1">TID</td>
                         <td className="col-2 col-md-1">TIME</td>
                     </tr>
                     {courseItem}
                     <button style={{margin:'10px'}} className="btn btn-success" type="submit">Submit</button>
-                </table></form>
+                </table>
+            </form>
             <br />
         </div>
     )

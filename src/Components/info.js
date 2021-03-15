@@ -8,7 +8,7 @@ import userService from "../API/userService";
 import courseService from "../API/courseService";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import history from "../history"
-import {getAllStudent} from "../API/service";
+import {getAllStudent, getAllTeacher} from "../API/service";
 
 const Subject = ({ props }) => {
     return (
@@ -93,8 +93,6 @@ export const Info = (props) => {
             })
             .then(() => setLoading(false))
             .catch(() => setLoading(false))
-        return () => setLoading(false)
-
     }, [])
 
     if (loading || !student || !allCourse || !allStudent) return <Loading />
@@ -103,14 +101,15 @@ export const Info = (props) => {
             <div>
                 <br /> <br />
                 <div className="container header text-center body_font">
-                    <div style={{ width: '20vw' }}>
+                    <div style={{ width: '380px' }}>
                         <ReactSearchAutocomplete
                             items={allStudent}
                             onSearch={handleOnSearch}
                             onSelect={handleOnSelect}
                             onFocus={handleOnFocus}
                             autoFocus
-                            maxResults={5}
+                            placeholder="Full Name"
+                            maxResults={2}
                             inputDebounce={500}
                         />
                     </div>
