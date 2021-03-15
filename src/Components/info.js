@@ -4,6 +4,8 @@ import {findCharacterImage, checkHouseImg, formatTime} from '../data/superData'
 import Loading from "./loading";
 import { courseService, userService } from "../API/service";
 import { checkCID, checkSID } from "../data/superData";
+import {Grades} from "./grades";
+import {Route} from "react-router-dom";
 
 const Subject = ({ props }) => {
     return (
@@ -114,11 +116,13 @@ export const Info = () => {
                                 <h4>Time</h4>
                             </td>
                         </tr>
-
                         {allCourse}
                     </table>
                 </div>
                 <br />
+                <div class="row">
+                    <a class="btn btn-info offset-5 col-2" href="/info/score" component={() => <Grades />}>Results</a>
+                </div>
                 <Footer />
             </div>
         )
