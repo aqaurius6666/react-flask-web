@@ -28,8 +28,8 @@ function App() {
                 <Route exact path="/courses" component={() => <Courses />} />
                 <Route exact path="/update" component={() => <Update />} />
                 <Route exact path="/info" component={() => <Info id={authenticationService.getId()}/>} />
-                <Route path="/info/*" component={() => <Info id="1002"/>} />
                 <Route exact path="/info/score" component={() => <Grades />} />
+                <Route path="/info/:studentId" component={(props) => <Info id={props.match.params.studentId}/>} />
             </Switch>
         </>
     )

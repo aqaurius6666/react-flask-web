@@ -6,6 +6,9 @@ import { checkCID, checkSID } from "../data/superData";
 import {Grades} from "./grades";
 import userService from "../API/userService";
 import courseService from "../API/courseService";
+import { ReactSearchAutocomplete } from 'react-search-autocomplete';
+import history from "../history"
+import {getAllStudent} from "../API/service";
 
 const Subject = ({ props }) => {
     return (
@@ -32,9 +35,27 @@ const Subject = ({ props }) => {
     )
 }
 
+const handleOnSearch = (string, results) => {
+    // getStudentById()
+    console.log("Search")
+    console.log(string, results)
+}
+
+const handleOnSelect = (item) => {
+    // getStudentByName(item.name).then(data => console.log(data))
+    history.push(`/info/${item.id}`)
+    console.log(item)
+
+}
+
+const handleOnFocus = () => {
+    console.log('Focused')
+}
+
 export const Info = (props) => {
     const {id} = props
     const [student, setStudent] = useState()
+    const [allStudent, setAllStudent] = useState([])
     const [loading, setLoading] = useState(true)
     const [allCourse, setAllCourse] = useState([])
     useEffect(() => {
@@ -59,14 +80,40 @@ export const Info = (props) => {
         return () => setLoading(false)
 
     }, [])
+    useEffect(() => {
+        setLoading(true)
+        getAllStudent()
+            .then((data) => {
+                setAllStudent(data.map((item) => (
+                    {
+                        id: item.sid,
+                        name: item.name
+                    }
+                )))
+            })
+            .then(() => setLoading(false))
+            .catch(() => setLoading(false))
+        return () => setLoading(false)
 
-    
-    if (loading || !student || !allCourse) return <Loading />
+    }, [])
+
+    if (loading || !student || !allCourse || !allStudent) return <Loading />
     else {
         return (
             <div>
                 <br /> <br />
                 <div className="container header text-center body_font">
+                    <div style={{ width: '20vw' }}>
+                        <ReactSearchAutocomplete
+                            items={allStudent}
+                            onSearch={handleOnSearch}
+                            onSelect={handleOnSelect}
+                            onFocus={handleOnFocus}
+                            autoFocus
+                            maxResults={5}
+                            inputDebounce={500}
+                        />
+                    </div>
                     <h3>{student.role === 'Student'
                         ? `Student` : `Teacher`}'s Infomation</h3>
                     <hr />
