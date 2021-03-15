@@ -15,7 +15,7 @@ export const Grades = (props) => {
             .catch(() => setLoading(false))
         return () => setLoading(false)
     }, [])
-    //console.log(score)
+    console.log(score)
     if (loading || !score || !account) return <Loading />
     var count = 1;
     var creditCount = 0;
