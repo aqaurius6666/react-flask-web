@@ -254,27 +254,47 @@ def create_account():
 # GET AUTHENTICATED METHODS
 #-------------------------------------------------------------------------------------------------------------
 
-@app.route('/api/user', methods=['GET'])
+@app.route('/api/user/<id>', methods=['GET'])
+@token_required
+def get_user_by_id(current, id):
+    return jsonify({ "user" : Account.query.filter_by(id=id).first().get_user().to_dict(),
+                    "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
+@app.route('/api/user', methods=['GET'])    
 @token_required
 def get_user(current):
-    return jsonify({ "user" : current.get_user().to_dict(),
+    return jsonify({ "user" :current.get_user().to_dict(),
                     "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
-
 @app.route('/api/account', methods=['GET'])
 @token_required
 def get_account(current):
     return jsonify({"account" : current.to_dict()})
+
+@app.route('/api/student/<sid>/scores', methods=['GET'])
+@token_required
+def get_scores_student_by_sid(current, sid):
+    student = Student.query.filter(sid=sid).first()
+    return jsonify({"score" : [score.to_course_list() for score in student.score],
+                    "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
 
 @app.route('/api/student/scores', methods=['GET'])
 @token_required
 def get_scores_student(current):
     student = current.get_user()
     return jsonify({"score" : [score.to_course_list() for score in student.score],
-                    "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
+                    "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200    
+
 @app.route('/api/student/schedule', methods=['GET'])
 @token_required
 def get_schedule(current):
     student = current.get_user()
+    current_course = [score.course for score in student.score if score.status==0]
+    return jsonify({"schedule" : [course.to_schedule() for course in current_course],
+                    "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
+
+@app.route('/api/student/<sid>/schedule', methods=['GET'])
+@token_required
+def get_schedule_by_sid(current, sid):
+    student = Student.query.filter_by(sid=sid).first()
     current_course = [score.course for score in student.score if score.status==0]
     return jsonify({"schedule" : [course.to_schedule() for course in current_course],
                     "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
