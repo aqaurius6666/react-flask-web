@@ -44,8 +44,8 @@ const handleOnSearch = (string, results) => {
 const handleOnSelect = (item) => {
     // getStudentByName(item.name).then(data => console.log(data))
     history.push(`/info/${item.id}`)
+    window.location.reload();
     console.log(item)
-
 }
 
 const handleOnFocus = () => {
