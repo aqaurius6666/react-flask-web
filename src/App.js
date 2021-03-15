@@ -7,17 +7,13 @@ import NavBar from "./Components/nav-bar";
 import { Register } from "./Components/register";
 import { Update } from "./Components/update";
 import { About } from "./Components/about";
-import { authenticationService } from "./API/service";
-import { loadingContext } from "./Components/loadingContext";
-import Slider from "./Components/courses";
 import Courses from "./Components/courses";
-import Loading from "./Components/loading";
 import { Grades } from "./Components/grades";
-import history from "./history";
+import authenticationService from "./API/authenticationService";
+import userService from "./API/userService";
 
 function App() {
-    const [account, setAccount] = useState(authenticationService.currentAccountValue)
-    const [loading, setLoading] = useState(false)
+    const [ ,setAccount] = useState(authenticationService.currentAccountValue)
     useEffect(() => {
         authenticationService.currentAccount.subscribe((x) => setAccount(x))
     }, [])
@@ -31,7 +27,8 @@ function App() {
                 <Route exact path="/register" component={() => <Register />} />
                 <Route exact path="/courses" component={() => <Courses />} />
                 <Route exact path="/update" component={() => <Update />} />
-                <Route exact path="/info" component={() => <Info />} />
+                <Route exact path="/info" component={() => <Info id={authenticationService.getId()}/>} />
+                <Route path="/info/*" component={() => <Info id="1002"/>} />
                 <Route exact path="/info/score" component={() => <Grades />} />
             </Switch>
         </>

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-import { authenticationService } from "../API/service"
+import authenticationService from "../API/authenticationService"
 import history from "../history"
 import Loading from "./loading"
 

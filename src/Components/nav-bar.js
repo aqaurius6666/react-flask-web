@@ -1,6 +1,6 @@
 import React from 'react'
 import {Nav, Navbar} from "react-bootstrap";
-import { authenticationService } from '../API/service';
+import authenticationService from '../API/authenticationService';
 import logo1 from "../img/hogwart.svg";
 
 const NavBar = () => {

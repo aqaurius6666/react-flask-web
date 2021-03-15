@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
-import { authenticationService, courseService } from "../API/service"
+import authenticationService from '../API/authenticationService';
+import courseService from "../API/courseService";
 import Loading from "./loading"
 
 export const Grades = (props) => {
@@ -15,7 +16,6 @@ export const Grades = (props) => {
             .catch(() => setLoading(false))
         return () => setLoading(false)
     }, [])
-    console.log(score)
     if (loading || !score || !account) return <Loading />
     var count = 1;
     var creditCount = 0;

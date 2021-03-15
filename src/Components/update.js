@@ -1,10 +1,9 @@
 import { ChangePassword } from "./change_password"
 import { ChangeInfo } from './change_info'
 import Footer from "./footer";
-import React, { useContext, useEffect, useState } from "react";
-import { userService } from "../API/service";
-import { loadingContext } from "../Components/loadingContext"
+import React, { useEffect, useState } from "react";
 import Loading from "./loading";
+import userService from "../API/userService";
 
 export const Update = () => {
     const [form, setForm] = useState()

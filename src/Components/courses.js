@@ -1,19 +1,15 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import { useForm } from "react-hook-form";
-import { courseService } from '../API/service';
 import Loading from './loading';
 import {checkHaveCourse} from "../data/superData";
 import history from "../history"
+import courseService from '../API/courseService';
 
 const RegisCourses = (props) => {
     const {coursesList} = props
     const [loading, setLoading] = useState(true)
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => {
-        courseService.registerCourse(data)
-        alert("Successfully!")
-        history.push('/info')
-    };
+    
     const [allCourse, setAllCourse] = useState([])
     const [courseItem, setCourseItem] = useState([])
     useEffect(() => {
@@ -24,7 +20,11 @@ const RegisCourses = (props) => {
             }).then(() => setLoading(false))
             .catch(() => setLoading(false))
     }, [])
-
+    const onSubmit = data => {
+        courseService.registerCourse(data)
+        alert("Successfully!")
+        history.push('/info')
+    };
     useMemo(() => {
         setLoading(true)
         courseService.getStudentCourse()

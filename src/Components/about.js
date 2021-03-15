@@ -3,9 +3,11 @@ import Header from './header'
 import Footer from "./footer";
 import {Leader, trList, SubjectList} from "../data/superData";
 import Loading from "./loading";
-import { authenticationService } from '../API/service';
+
+
 import envURL from "../data/characterImages";
 import video from "../img/Hogwarts Subjects.mp4";
+import authenticationService from '../API/authenticationService';
 
 const findSubjectImage = (name = "Unknown") => {
     let URL = name.replace(/\s/g, '%20')

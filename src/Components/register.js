@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import history from '../history'
 import { Link } from "react-router-dom";
-import { authenticationService } from '../API/service';
+import authenticationService from '../API/authenticationService';
 import Loading from './loading';
 
 

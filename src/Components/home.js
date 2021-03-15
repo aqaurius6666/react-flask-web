@@ -4,8 +4,6 @@ import hogwart from "../img/four_houses.jpg"
 import Footer from "./footer";
 import { NotificationList } from "../data/superData"
 import Header from "./header";
-import Loading from "./loading";
-import { authenticationService } from "../API/service";
 
 const MediaComponent = (props) => {
     let media = props.media

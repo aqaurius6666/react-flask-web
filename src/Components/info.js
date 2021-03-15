@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react"
 import Footer from "./footer";
 import {findCharacterImage, checkHouseImg, formatTime} from '../data/superData'
 import Loading from "./loading";
-import { courseService, userService } from "../API/service";
 import { checkCID, checkSID } from "../data/superData";
 import {Grades} from "./grades";
-import {Route} from "react-router-dom";
+import userService from "../API/userService";
+import courseService from "../API/courseService";
 
 const Subject = ({ props }) => {
     return (
@@ -32,13 +32,14 @@ const Subject = ({ props }) => {
     )
 }
 
-export const Info = () => {
-    const [student, setStudent] = useState(userService.currentUserValue())
+export const Info = (props) => {
+    const {id} = props
+    const [student, setStudent] = useState()
     const [loading, setLoading] = useState(true)
     const [allCourse, setAllCourse] = useState([])
     useEffect(() => {
         setLoading(true)
-        userService.getUser().then(data => {
+        userService.getUserValueById(id).then(data => {
             setStudent(data)
         })
             .then(() => setLoading(false))
@@ -48,7 +49,7 @@ export const Info = () => {
     }, [])
     useEffect(() => {
         setLoading(true)
-        courseService.getStudentCourse()
+        courseService.getStudentCourseById(id)
             .then(({score}) => {
                 setAllCourse(score.map((item, i) => <Subject key={i} props={item} />))
                 console.log(score)
