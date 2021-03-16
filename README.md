@@ -38,61 +38,65 @@ Trang web thông tin của trường phù thuỷ Hogwarts. Nơi mà học sinh, 
 ![image (3)](https://user-images.githubusercontent.com/54926438/110513328-ae753280-8138-11eb-8b31-cb39a887cfeb.png)
 
 ![a](https://user-images.githubusercontent.com/54926438/110513370-bb922180-8138-11eb-9fdd-73e57bd007ba.png)
-* ORM: 
+<details>
+  <summary>
+    ORM
+  </summary>
+  ```python
+    class Account(db.Model):
 
-```python
-class Account(db.Model):
-
-    username = db.Column(db.String(36))
-    password = db.Column(db.String(128))
-    id = db.Column(db.String(4), primary_key=True) // Khóa chính
+        username = db.Column(db.String(36))
+        password = db.Column(db.String(128))
+        id = db.Column(db.String(4), primary_key=True) // Khóa chính
 
 
-class Student(db.Model):
+    class Student(db.Model):
 
-    sid = db.Column(db.String(4), db.ForeignKey('account.id'), primary_key=True) // sid là khóa ngoại trỏ vào id của Account. Khóa chính
-    name = db.Column(db.String(64, convert_unicode=True), nullable=False) // convert_unicode=True : Để nhận các ký tự unicode
-    house = db.Column(db.String(16, convert_unicode=True), db.ForeignKey('house.name')) // house là khóa ngoại trỏ vào name của House
-    dob = db.Column(db.Date)
-    credit = db.Column(db.Integer)
-    gpa = db.Column(db.Float)
-    hobby = db.Column(db.String(128, convert_unicode=True))
-    description = db.Column(db.String(512, convert_unicode=True))
+        sid = db.Column(db.String(4), db.ForeignKey('account.id'), primary_key=True) // sid là khóa ngoại trỏ vào id của Account. Khóa chính
+        name = db.Column(db.String(64, convert_unicode=True), nullable=False) // convert_unicode=True : Để nhận các ký tự unicode
+        house = db.Column(db.String(16, convert_unicode=True), db.ForeignKey('house.name')) // house là khóa ngoại trỏ vào name của House
+        dob = db.Column(db.Date)
+        credit = db.Column(db.Integer)
+        gpa = db.Column(db.Float)
+        hobby = db.Column(db.String(128, convert_unicode=True))
+        description = db.Column(db.String(512, convert_unicode=True))
 
-    score = db.relationship('Score', backref='student') //relationship của SQLAlchemy để tiện cho việc truy xuất: các score của 1 Student
-    
-class Course(db.Model):
+        score = db.relationship('Score', backref='student') //relationship của SQLAlchemy để tiện cho việc truy xuất: các score của 1 Student
 
-    cid = db.Column(db.String(4), primary_key=True) // Khóa chính
-    name = db.Column(db.String(32, convert_unicode=True), nullable=False)
-    tid = db.Column(db.String(4), db.ForeignKey('teacher.tid')) // tid là khóa ngoại trỏ vào tid của Teacher
-    place = db.Column(db.String(16, convert_unicode=True))
-    credit = db.Column(db.Integer)
-    time = db.Column(db.String(2))
-    refer = db.Column(db.String(128))
+    class Course(db.Model):
 
-    score = db.relationship('Score', backref='course') // các score của 1 Course
-    
-class Score(db.Model):
+        cid = db.Column(db.String(4), primary_key=True) // Khóa chính
+        name = db.Column(db.String(32, convert_unicode=True), nullable=False)
+        tid = db.Column(db.String(4), db.ForeignKey('teacher.tid')) // tid là khóa ngoại trỏ vào tid của Teacher
+        place = db.Column(db.String(16, convert_unicode=True))
+        credit = db.Column(db.Integer)
+        time = db.Column(db.String(2))
+        refer = db.Column(db.String(128))
 
-    id = db.Column(db.Integer, primary_key=True) // Khóa chính
-    cid = db.Column(db.String(4), db.ForeignKey('course.cid')) // cid là khóa ngoại trỏ đến cid của Course
-    sid = db.Column(db.String(4), db.ForeignKey('student.sid')) // sid là khóa ngoại trỏ đến sid của Student
-    mid = db.Column(db.Float)
-    final = db.Column(db.Float)
-    total = db.Column(db.Float)
-    status = db.Column(db.Integer)
-    semester = db.Column(db.String(4), nullable=False)
-    
-class House(db.Model):
+        score = db.relationship('Score', backref='course') // các score của 1 Course
 
-    name = db.Column(db.String(16, convert_unicode=True), primary_key=True) // Khóa chính
-    admin = db.Column(db.String(4))
+    class Score(db.Model):
 
-    students = db.relationship('Student', backref='of_house') // các student của 1 House
-    teachers = db.relationship('Teacher', backref='of_house') // các teacher của 1 House
+        id = db.Column(db.Integer, primary_key=True) // Khóa chính
+        cid = db.Column(db.String(4), db.ForeignKey('course.cid')) // cid là khóa ngoại trỏ đến cid của Course
+        sid = db.Column(db.String(4), db.ForeignKey('student.sid')) // sid là khóa ngoại trỏ đến sid của Student
+        mid = db.Column(db.Float)
+        final = db.Column(db.Float)
+        total = db.Column(db.Float)
+        status = db.Column(db.Integer)
+        semester = db.Column(db.String(4), nullable=False)
 
-```
+    class House(db.Model):
+
+        name = db.Column(db.String(16, convert_unicode=True), primary_key=True) // Khóa chính
+        admin = db.Column(db.String(4))
+
+        students = db.relationship('Student', backref='of_house') // các student của 1 House
+        teachers = db.relationship('Teacher', backref='of_house') // các teacher của 1 House
+
+    ```
+</details>
+ 
 ## Phát triển:
 1. Giải quyết vấn đề tra cứu thông tin của người khác:
 * Sử dụng kỹ thuật debounce search
