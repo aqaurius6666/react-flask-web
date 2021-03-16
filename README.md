@@ -38,11 +38,12 @@ Trang web thông tin của trường phù thuỷ Hogwarts. Nơi mà học sinh, 
 ![image (3)](https://user-images.githubusercontent.com/54926438/110513328-ae753280-8138-11eb-8b31-cb39a887cfeb.png)
 
 ![a](https://user-images.githubusercontent.com/54926438/110513370-bb922180-8138-11eb-9fdd-73e57bd007ba.png)
-<details>
-  <summary>
-    ORM
-  </summary>
-  ```python
+
+<details><summary>ORM: </summary>
+<p>
+
+```python
+
     class Account(db.Model):
 
         username = db.Column(db.String(36))
@@ -94,7 +95,9 @@ Trang web thông tin của trường phù thuỷ Hogwarts. Nơi mà học sinh, 
         students = db.relationship('Student', backref='of_house') // các student của 1 House
         teachers = db.relationship('Teacher', backref='of_house') // các teacher của 1 House
 
-    ```
+```
+
+</p>
 </details>
  
 ## Phát triển:
