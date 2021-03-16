@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react"
 import Footer from "./footer";
 import {findCharacterImage, checkHouseImg, formatTime} from '../data/superData'
 import Loading from "./loading";
-import { courseService, userService } from "../API/service";
 import { checkCID, checkSID } from "../data/superData";
 import {Grades} from "./grades";
-import {Route} from "react-router-dom";
+import userService from "../API/userService";
+import courseService from "../API/courseService";
+import { ReactSearchAutocomplete } from 'react-search-autocomplete';
+import history from "../history"
+import {getAllStudent, getAllTeacher} from "../API/service";
 
 const Subject = ({ props }) => {
     return (
@@ -32,13 +35,32 @@ const Subject = ({ props }) => {
     )
 }
 
-export const Info = () => {
-    const [student, setStudent] = useState(userService.currentUserValue())
+const handleOnSearch = (string, results) => {
+    // getStudentById()
+    console.log("Search")
+    console.log(string, results)
+}
+
+const handleOnSelect = (item) => {
+    // getStudentByName(item.name).then(data => console.log(data))
+    history.push(`/info/${item.id}`)
+    window.location.reload();
+    console.log(item)
+}
+
+const handleOnFocus = () => {
+    console.log('Focused')
+}
+
+export const Info = (props) => {
+    const {id} = props
+    const [student, setStudent] = useState()
+    const [allStudent, setAllStudent] = useState([])
     const [loading, setLoading] = useState(true)
     const [allCourse, setAllCourse] = useState([])
     useEffect(() => {
         setLoading(true)
-        userService.getUser().then(data => {
+        userService.getUserValueById(id).then(data => {
             setStudent(data)
         })
             .then(() => setLoading(false))
@@ -48,7 +70,7 @@ export const Info = () => {
     }, [])
     useEffect(() => {
         setLoading(true)
-        courseService.getStudentCourse()
+        courseService.getStudentCourseById(id)
             .then(({score}) => {
                 setAllCourse(score.map((item, i) => <Subject key={i} props={item} />))
                 console.log(score)
@@ -58,14 +80,39 @@ export const Info = () => {
         return () => setLoading(false)
 
     }, [])
+    useEffect(() => {
+        setLoading(true)
+        getAllStudent()
+            .then((data) => {
+                setAllStudent(data.map((item) => (
+                    {
+                        id: item.sid,
+                        name: item.name
+                    }
+                )))
+            })
+            .then(() => setLoading(false))
+            .catch(() => setLoading(false))
+    }, [])
 
-
-    if (loading || !student || !allCourse) return <Loading />
+    if (loading || !student || !allCourse || !allStudent) return <Loading />
     else {
         return (
             <div>
                 <br /> <br />
                 <div className="container header text-center body_font">
+                    <div style={{ width: '380px' }}>
+                        <ReactSearchAutocomplete
+                            items={allStudent}
+                            onSearch={handleOnSearch}
+                            onSelect={handleOnSelect}
+                            onFocus={handleOnFocus}
+                            autoFocus
+                            placeholder="Full Name"
+                            maxResults={2}
+                            inputDebounce={500}
+                        />
+                    </div>
                     <h3>{student.role === 'Student'
                         ? `Student` : `Teacher`}'s Infomation</h3>
                     <hr />

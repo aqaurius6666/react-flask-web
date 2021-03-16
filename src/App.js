@@ -7,35 +7,30 @@ import NavBar from "./Components/nav-bar";
 import { Register } from "./Components/register";
 import { Update } from "./Components/update";
 import { About } from "./Components/about";
-import { authenticationService } from "./API/service";
-import { loadingContext } from "./Components/loadingContext";
-import Slider from "./Components/courses";
 import Courses from "./Components/courses";
-import Loading from "./Components/loading";
 import { Grades } from "./Components/grades";
+import authenticationService from "./API/authenticationService";
+import userService from "./API/userService";
 
 function App() {
-    const [account, setAccount] = useState()
-    const [loading, setLoading] = useState(false)
+    const [ ,setAccount] = useState(authenticationService.currentAccountValue)
     useEffect(() => {
         authenticationService.currentAccount.subscribe((x) => setAccount(x))
     }, [])
     return (
         <>
-            <loadingContext.Provider value={{ loading, setLoading }}>
-                 <NavBar />
-               <Switch>
-                    <Route exact path="/" component={() => <Home />} />
-                    <Route exact path="/login" component={() => <Login />} />
-                    <Route exact path="/about" component={() => <About />} />
-                    <Route exact path="/register" component={() => <Register />} />
-                    <Route exact path="/courses" component={() => <Courses />} />
-                    <Route exact path="/update" component={() => <Update />} />
-                    <Route exact path="/info" component={() => <Info />} />
-                    <Route exact path="/info/score" component={() => <Grades />} />
-                </Switch>
-
-            </loadingContext.Provider>
+            <NavBar />
+            <Switch>
+                <Route exact path="/" component={() => <Home />} />
+                <Route exact path="/login" component={() => <Login />} />
+                <Route exact path="/about" component={() => <About />} />
+                <Route exact path="/register" component={() => <Register />} />
+                <Route exact path="/courses" component={() => <Courses />} />
+                <Route exact path="/update" component={() => <Update />} />
+                <Route exact path="/info" component={() => <Info id={authenticationService.getId()}/>} />
+                <Route exact path="/info/score" component={() => <Grades />} />
+                <Route exact path="/info/:studentId" component={(props) => <Info id={props.match.params.studentId}/>} />
+            </Switch>
         </>
     )
 }

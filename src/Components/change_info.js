@@ -1,5 +1,5 @@
 import React from "react"
-import { userService } from "../API/service"
+import userService from "../API/userService"
 
 export const ChangeInfo = (props) => {
     const { setForm, form } = props
