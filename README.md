@@ -40,16 +40,8 @@ Trang web thông tin của trường phù thuỷ Hogwarts. Nơi mà học sinh, 
 ![a](https://user-images.githubusercontent.com/54926438/110513370-bb922180-8138-11eb-9fdd-73e57bd007ba.png)
 * ORM: 
 
-```{css, echo=FALSE}
-.scroll-100 {
-  max-height: 100px;
-  overflow-y: auto;
-  background-color: inherit;
-}
 ```
-
-```{r, class.output="scroll-100"}
-
+python
 class Account(db.Model):
 
     username = db.Column(db.String(36))
