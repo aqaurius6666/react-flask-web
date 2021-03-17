@@ -1,5 +1,6 @@
 
 from datetime import datetime
+from sqlalchemy.ext.hybrid import hybrid_property
 from enum import unique
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import backref
@@ -102,9 +103,15 @@ class Score(db.Model):
     sid = db.Column(db.String(4), db.ForeignKey('student.sid'))
     mid = db.Column(db.Float, default=0.0)
     final = db.Column(db.Float,default=0.0)
-    total = db.column_property( (mid * 0.4 + final * 0.6) * (final != 0) )
+    
 
     semester = db.Column(db.String(4), default = str(datetime.utcnow().year))
+
+    @hybrid_property
+    def total(self):
+        if self.mid:
+            return self.mid * 0.3 + self.final * 0.6
+        return 0.0
 
     def to_dict(self):
         return {
