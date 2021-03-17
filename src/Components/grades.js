@@ -28,7 +28,13 @@ export const Grades = (props) => {
                     <thead >
                         <tr>
                             <td colSpan="7" className="align-content-center text-center">
-                                <h4>Semester: {score[1].semester}</h4>
+                                <h4>Semester: {() => {
+                                    if (score[1].semester == undefined) {
+                                        return null
+                                    } else {
+                                        return score[1].semester
+                                    }
+                                }}</h4>
                             </td>
                         </tr>
                         <tr>

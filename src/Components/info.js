@@ -1,22 +1,79 @@
 import React, { useEffect, useState } from "react"
 import Footer from "./footer";
-import {findCharacterImage, checkHouseImg, formatTime} from '../data/superData'
+import { findCharacterImage, checkHouseImg, formatTime } from '../data/superData'
 import Loading from "./loading";
 import { checkCID, checkSID } from "../data/superData";
-import {Grades} from "./grades";
+import { Grades } from "./grades";
 import userService from "../API/userService";
 import courseService from "../API/courseService";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import history from "../history"
 import {getAllStudent, getAllTeacher} from "../API/service";
-import {deleteCourses} from '../API/courseService'
+import authenticationService from "../API/authenticationService";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Modal from "react-bootstrap/Modal";
+import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+
+function MydModalWithGrid(props, value) {
+    return (
+        <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Using Grid in Modal
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body className="show-grid">
+                <Container>
+                    <Row>
+                        <Col xs={12} md={8}>
+                            {value.name}
+                        </Col>
+                        <Col xs={6} md={4}>
+                            .col-xs-6 .col-md-4
+                        </Col>
+                    </Row>
+
+                    <Row>
+                        <Col xs={6} md={4}>
+                            .col-xs-6 .col-md-4
+                        </Col>
+                        <Col xs={6} md={4}>
+                            .col-xs-6 .col-md-4
+                        </Col>
+                        <Col xs={6} md={4}>
+                            .col-xs-6 .col-md-4
+                        </Col>
+                    </Row>
+                </Container>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={props.onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+    );
+}
+
+const detailInformation = (props) => {
+    return (
+        alert(props)
+    )
+}
 
 const Subject = ({ props }) => {
+    const [modalShow, setModalShow] = useState(false);
     return (
         <tr className="col-12 row text-center">
             <td className="col-3 col-md-2">
                 <p>{props.name}</p>
-                <button onClick={deleteCourses(props.cid)}>X</button>
+                <button onClick={() => courseService.deleteCourse(props.cid)}>X</button>
+                <button onClick={() => detailInformation(props)}>i</button>
+                <Button variant="primary" onClick={() => setModalShow(true)}>
+                    ii
+                </Button>
+
+                <MydModalWithGrid show={modalShow} onHide={() => setModalShow(false)} value={props} />
             </td>
             <td className="d-none d-sm-block col-md-2">
                 <p>{props.cid}</p>
@@ -55,7 +112,7 @@ const handleOnFocus = () => {
 }
 
 export const Info = (props) => {
-    const {id} = props
+    const { id } = props
     const [student, setStudent] = useState()
     const [allStudent, setAllStudent] = useState([])
     const [loading, setLoading] = useState(true)
@@ -69,11 +126,11 @@ export const Info = (props) => {
             .catch(() => setLoading(false))
         return () => setLoading(false)
 
-    }, [])
+    }, [id])
     useEffect(() => {
         setLoading(true)
         courseService.getStudentCourseById(id)
-            .then(({score}) => {
+            .then(({ score }) => {
                 setAllCourse(score.map((item, i) => <Subject key={i} props={item} />))
                 console.log(score)
             })
@@ -81,7 +138,7 @@ export const Info = (props) => {
             .catch(() => setLoading(false))
         return () => setLoading(false)
 
-    }, [])
+    }, [id])
     useEffect(() => {
         setLoading(true)
         getAllStudent()
@@ -169,9 +226,12 @@ export const Info = (props) => {
                     </table>
                 </div>
                 <br />
-                <div class="row">
-                    <a class="btn btn-info offset-5 col-2" href="/info/score" component={() => <Grades />}>Results</a>
-                </div>
+                {id == authenticationService.getId() &&
+                    <div class="row">
+                        <a class="btn btn-info offset-5 col-2" href="/info/score" component={() => <Grades />}>Results</a>
+                    </div>
+                }
+
                 <Footer />
             </div>
         )

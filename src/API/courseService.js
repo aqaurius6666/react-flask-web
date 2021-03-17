@@ -1,3 +1,4 @@
+import { BASE_URL } from "../config";
 import authenticationService from "./authenticationService";
 import handleResponse from "./handleResponse";
 
@@ -5,7 +6,8 @@ const courseService = {
     getCourses,
     registerCourse,
     getStudentCourse,
-    getStudentCourseById
+    getStudentCourseById,
+    deleteCourse
 }; export default courseService;
 
 function getCourses() {
@@ -17,7 +19,7 @@ function getCourses() {
         }
     };
     
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/courses`, requestOptions)
+    return fetch(`${BASE_URL}/api/courses`, requestOptions)
         .then(handleResponse)
         .then(data => {
             return data
@@ -33,7 +35,7 @@ function getStudentCourseById(id) {
         }
     };
 
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/student/${id}/scores`, requestOptions)
+    return fetch(`${BASE_URL}/api/student/${id}/scores`, requestOptions)
         .then(handleResponse)
         .then(data => {
             return(data)
@@ -48,7 +50,7 @@ function getStudentCourse() {
         }
     };
 
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/student/scores`, requestOptions)
+    return fetch(`${BASE_URL}/api/student/scores`, requestOptions)
         .then(handleResponse)
         .then(data => {
             return(data)
@@ -58,7 +60,6 @@ function getStudentCourse() {
 
 
 function registerCourse(array) {
-    console.log(JSON.stringify({...array, is_list:true}))
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -68,14 +69,14 @@ function registerCourse(array) {
         body: JSON.stringify({...array, is_list:true})
     };
 
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/student/scores`, requestOptions)
+    return fetch(`${BASE_URL}/api/student/scores`, requestOptions)
         .then(handleResponse)
         .then(data => {
             console.log(data)
         });
 }
 
-export function deleteCourses(cid) {
+function deleteCourse(cid) {
     const requestOptions = {
         method: 'DELETE',
         headers: {
@@ -84,7 +85,7 @@ export function deleteCourses(cid) {
         }
     };
 
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/student/scores/${cid}`, requestOptions)
+    return fetch(`${BASE_URL}/api/student/scores/${cid}`, requestOptions)
         .then(handleResponse)
         .then(data => {
             return data

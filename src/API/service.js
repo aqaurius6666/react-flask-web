@@ -1,5 +1,6 @@
 import handleResponse from './handleResponse';
 import authenticationService from './authenticationService'
+import { BASE_URL } from '../config';
 export function getAllStudent() {
     const requestOptions = {
         method: 'GET',
@@ -8,7 +9,7 @@ export function getAllStudent() {
             'x-access-token': authenticationService.currentTokenValue()
         }
     };
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/students`, requestOptions)
+    return fetch(`${BASE_URL}/api/students`, requestOptions)
         .then(handleResponse)
         .then(data => {
             return(data)
@@ -39,7 +40,7 @@ export function getStudentByName(name) {
         }
     };
     let urlName = name.replace(/\s/g, '+')
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/users?name=${urlName}`, requestOptions)
+    return fetch(`${BASE_URL}/api/users?name=${urlName}`, requestOptions)
         .then(handleResponse)
         .then(data => {
             return(data)

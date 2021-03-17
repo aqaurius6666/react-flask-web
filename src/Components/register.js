@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import authenticationService from '../API/authenticationService';
 import Loading from './loading';
 
-
-
 export const Register = () => {
     const [loading, setLoading] = useState(false)
     return (
