@@ -10,56 +10,7 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import history from "../history"
 import {getAllStudent, getAllTeacher} from "../API/service";
 import authenticationService from "../API/authenticationService";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Modal from "react-bootstrap/Modal";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
-
-function MydModalWithGrid(props, value) {
-    return (
-        <Modal {...props} aria-labelledby="contained-modal-title-vcenter">
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Using Grid in Modal
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body className="show-grid">
-                <Container>
-                    <Row>
-                        <Col xs={12} md={8}>
-                            {value.name}
-                        </Col>
-                        <Col xs={6} md={4}>
-                            .col-xs-6 .col-md-4
-                        </Col>
-                    </Row>
-
-                    <Row>
-                        <Col xs={6} md={4}>
-                            .col-xs-6 .col-md-4
-                        </Col>
-                        <Col xs={6} md={4}>
-                            .col-xs-6 .col-md-4
-                        </Col>
-                        <Col xs={6} md={4}>
-                            .col-xs-6 .col-md-4
-                        </Col>
-                    </Row>
-                </Container>
-            </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
-            </Modal.Footer>
-        </Modal>
-    );
-}
-
-const detailInformation = (props) => {
-    return (
-        alert(props)
-    )
-}
+import {MydModalWithGrid} from "./DialogModal"
 
 const Subject = ({ props }) => {
     const [modalShow, setModalShow] = useState(false);
@@ -67,13 +18,6 @@ const Subject = ({ props }) => {
         <tr className="col-12 row text-center">
             <td className="col-3 col-md-2">
                 <p>{props.name}</p>
-                <button onClick={() => courseService.deleteCourse(props.cid)}>X</button>
-                <button onClick={() => detailInformation(props)}>i</button>
-                <Button variant="primary" onClick={() => setModalShow(true)}>
-                    ii
-                </Button>
-
-                <MydModalWithGrid show={modalShow} onHide={() => setModalShow(false)} value={props} />
             </td>
             <td className="d-none d-sm-block col-md-2">
                 <p>{props.cid}</p>
@@ -84,12 +28,22 @@ const Subject = ({ props }) => {
             <td className="col-3 col-md-2">
                 <p>{checkSID(checkCID(props.cid).tid).name}</p>
             </td>
-            <td className="col-3 col-md-2">
+            <td className="col-6 col-md-4">
+                <button onClick={() => {
+                    courseService.deleteCourse(props.cid)
+                    window.location.reload()
+                }}>X</button>
+                <button onClick={() => setModalShow(true)}>
+                    i
+                </button>
+                <MydModalWithGrid show={modalShow} onHide={() => setModalShow(false)} value={props} />
+            </td>
+            {/* <td className="col-3 col-md-2">
                 <p>{checkCID(props.cid).place}</p>
             </td>
             <td className="col-3 col-md-2">
                 <p>{formatTime(checkCID(props.cid).time)}</p>
-            </td>
+            </td> */}
         </tr>
     )
 }
@@ -215,12 +169,15 @@ export const Info = (props) => {
                             <td className="col-3 col-md-2">
                                 <h4>Teacher</h4>
                             </td>
-                            <td className="col-3 col-md-2">
+                            <td className="col-6 col-md-4">
+                                <h4>Action</h4>
+                            </td>
+                            {/* <td className="col-3 col-md-2">
                                 <h4>Room</h4>
                             </td>
                             <td className="col-3 col-md-2">
                                 <h4>Time</h4>
-                            </td>
+                            </td> */}
                         </tr>
                         {allCourse}
                     </table>
