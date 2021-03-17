@@ -113,15 +113,15 @@ class Score(db.Model):
         total = 0
         if self.mid:
             total = self.mid * 0.4 + self.final * 0.6
-        return self.mid * 0
+        return total
 
     def to_dict(self):
         return {
             'id' : self.id,
             'cid' : self.cid,
             'sid' : self.sid,
-            'mid' : self.mid,
-            'final' : self.final,
+            'mid' : round(self.mid, 2),
+            'final' : round(self.final, 2),
             'total' : round(self.total, 2),
             'semester' : self.semester
             
@@ -131,10 +131,10 @@ class Score(db.Model):
         return {
             'cid' : self.cid,
             'sid' : self.sid,
-            'mid' : self.mid,
-            'final' : self.final,
+            'mid' : round(self.mid, 2),
+            'final' : round(self.final, 2),
+            'total' : round(self.total, 2),
             'name' : course.name,
-            'total' : self.total,
             'semester' : self.semester,
             'credit' : course.credit 
         }

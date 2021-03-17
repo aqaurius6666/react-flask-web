@@ -1,5 +1,5 @@
 
-from random import choices
+from random import choices, random
 from flask import Flask, jsonify, request, render_template
 import json
 import requests
@@ -19,7 +19,7 @@ app = Flask(__name__)
 CORS(app)
 HEROKU = "config_heroku.py"
 LOCAL = "config_local.py"
-app.config.from_pyfile(HEROKU)
+app.config.from_pyfile(LOCAL)
 db.init_app(app)
 def token_required(f):
     @wraps(f)
@@ -532,6 +532,14 @@ def random_course():
                     json = json_object)
 
     return jsonify({'message' : 'Successfully'}), 200
+@app.route('/api/random-scores', methods=['POST'])
+def random_scores():
+    scores = Score.query.all()
+    for score in scores:
+        score.mid = random() * 10
+        score.final = random() * 10
+        db.session.commit()
+    return jsonify({'message' : 'Successfully'}), 200
 
 
     
@@ -539,9 +547,11 @@ def random_course():
 def get_graph():
     course = request.args.get('course')
     scores = Score.query.filter_by(cid=course).all()
-    list_scores = [score.total for score in scores]
+    list_scores = [round(score.total / 10 * 4, 2) for score in scores]
+    print(list_scores)
     x_axis = numpy.arange(0, 4.01, 0.01)
     y_axis = numpy.array([list_scores.count(x) for x in x_axis])
     plt.plot(x_axis, y_axis)
     plt.savefig('image.png')
+    plt.close()
     return jsonify({'message' : 'Successfully'}), 200
