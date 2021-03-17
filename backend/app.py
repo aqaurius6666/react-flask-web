@@ -1,12 +1,12 @@
 
-from flask import Flask, json, jsonify, request, render_template, url_for
+from flask import Flask, jsonify, request, render_template
+import json
+import requests
 from sqlalchemy import or_
-from werkzeug.datastructures import Headers
 from .database.model import (db,
                             Student, Teacher, Course, Score, House, Account)
 from werkzeug.security import generate_password_hash, check_password_hash     
 from flask_cors import CORS
-import uuid
 import jwt
 from functools import wraps
 from .modules import *
@@ -484,3 +484,26 @@ def drop():
     db.drop_all()
     return jsonify({"message" : "Dropped tables successfully!"})
 
+
+@app.route('/api/db/reset-all', methods=['GET'])
+def reset():
+    db.drop_all()
+    db.create_all()
+    with open('house.json') as f:
+        houses = json.load(f)
+        requests.post(url='{}/api/houses'.format(app.config['URL']),
+                        headers = {'Application-Type' : 'Application/json'},
+                        json = houses)
+    with open('user.json') as f:
+        user = json.load(f)
+    
+        requests.post(url='{}/api/students'.format(app.config['URL']),
+                        headers = {'Application-Type' : 'Application/json'},
+                        json = user)
+    with open('course.json') as f:
+        courses = json.load(f)
+    
+        requests.post(url='{}/api/courses'.format(app.config['URL']),
+                        headers = {'Application-Type' : 'Application/json'},
+                        json = courses)
+    return jsonify({'message' : 'Reset successfully'}), 200 
