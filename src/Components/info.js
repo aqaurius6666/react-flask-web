@@ -9,12 +9,14 @@ import courseService from "../API/courseService";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import history from "../history"
 import {getAllStudent, getAllTeacher} from "../API/service";
+import {deleteCourses} from '../API/courseService'
 
 const Subject = ({ props }) => {
     return (
         <tr className="col-12 row text-center">
             <td className="col-3 col-md-2">
                 <p>{props.name}</p>
+                <button onClick={deleteCourses(props.cid)}>X</button>
             </td>
             <td className="d-none d-sm-block col-md-2">
                 <p>{props.cid}</p>

@@ -74,3 +74,19 @@ function registerCourse(array) {
             console.log(data)
         });
 }
+
+export function deleteCourses(cid) {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token' : authenticationService.currentTokenValue()
+        }
+    };
+
+    return fetch(`https://it-must-be-ok.herokuapp.com/api/student/scores/${cid}`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            return data
+        });
+}
