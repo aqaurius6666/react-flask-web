@@ -6,7 +6,8 @@ const courseService = {
     getCourses,
     registerCourse,
     getStudentCourse,
-    getStudentCourseById
+    getStudentCourseById,
+    deleteCourse
 }; export default courseService;
 
 function getCourses() {
@@ -59,7 +60,6 @@ function getStudentCourse() {
 
 
 function registerCourse(array) {
-    console.log(JSON.stringify({...array, is_list:true}))
     const requestOptions = {
         method: 'POST',
         headers: {
@@ -70,6 +70,23 @@ function registerCourse(array) {
     };
 
     return fetch(`${BASE_URL}/api/student/scores`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            console.log(data)
+        });
+}
+
+function deleteCourse(cid) {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token' : authenticationService.currentTokenValue()
+        },
+        body: JSON.stringify({cid})
+    };
+
+    return fetch(`${BASE_URL}/api/student/scores/${cid}`, requestOptions)
         .then(handleResponse)
         .then(data => {
             console.log(data)
