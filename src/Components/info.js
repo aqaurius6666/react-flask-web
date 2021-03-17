@@ -45,8 +45,8 @@ const handleOnSearch = (string, results) => {
 const handleOnSelect = (item) => {
     // getStudentByName(item.name).then(data => console.log(data))
     history.push(`/info/${item.id}`)
+    window.location.reload();
     console.log(item)
-
 }
 
 const handleOnFocus = () => {
@@ -68,7 +68,7 @@ export const Info = (props) => {
             .catch(() => setLoading(false))
         return () => setLoading(false)
 
-    }, [])
+    }, [id])
     useEffect(() => {
         setLoading(true)
         courseService.getStudentCourseById(id)
@@ -80,7 +80,7 @@ export const Info = (props) => {
             .catch(() => setLoading(false))
         return () => setLoading(false)
 
-    }, [])
+    }, [id])
     useEffect(() => {
         setLoading(true)
         getAllStudent()
@@ -170,9 +170,10 @@ export const Info = (props) => {
                 </div>
                 <br />
                 {id == authenticationService.getId() &&
-                <div class="row">
-                    <a class="btn btn-info offset-5 col-2" href="/info/score" component={() => <Grades />}>Results</a>
-                </div> }
+                    <div class="row">
+                        <a class="btn btn-info offset-5 col-2" href="/info/score" component={() => <Grades />}>Results</a>
+                    </div>
+                }
 
                 <Footer />
             </div>

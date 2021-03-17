@@ -10,7 +10,6 @@ import { About } from "./Components/about";
 import Courses from "./Components/courses";
 import { Grades } from "./Components/grades";
 import authenticationService from "./API/authenticationService";
-import userService from "./API/userService";
 
 function App() {
     const [ ,setAccount] = useState(authenticationService.currentAccountValue)

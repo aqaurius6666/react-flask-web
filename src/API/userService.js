@@ -1,4 +1,5 @@
 import {BehaviorSubject} from 'rxjs'
+import { BASE_URL } from '../config';
 import authenticationService from './authenticationService';
 import handleResponse from './handleResponse';
 export const currentUserSubject = new BehaviorSubject(localStorage.getItem('user'))
@@ -21,7 +22,7 @@ function getUserValueById(id) {
             'x-access-token': authenticationService.currentTokenValue()
         },
     };
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/user/${id}`, requestOptions)
+    return fetch(`${BASE_URL}/api/user/${id}`, requestOptions)
         .then(handleResponse)
         .then((data) => {
             return data.user
@@ -37,7 +38,7 @@ function updateUser(student) {
         },
         body: JSON.stringify(student)
     };
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/student`, requestOptions)
+    return fetch(`${BASE_URL}/api/student`, requestOptions)
         .then(handleResponse)
         .then(({message}) => {
             console.log(message)
@@ -53,7 +54,7 @@ function getUser() {
         }
     };
 
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/user`, requestOptions)
+    return fetch(`${BASE_URL}/api/user`, requestOptions)
         .then(handleResponse)
         .then(data => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes

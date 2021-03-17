@@ -37,7 +37,7 @@ export const Grades = (props) => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="7" class="align-content-center text-center"><h4>Semester: {score[1].semester}</h4></td>
+                                <td colspan="7" class="align-content-center text-center"><h4>Semester: {() => {if (score[1].semester == undefined) return null; else {return score[1].semester}} }</h4></td>
                             </tr>
                             {
                                 score.map((data, key) => {

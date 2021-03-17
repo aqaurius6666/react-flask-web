@@ -1,3 +1,4 @@
+import { BASE_URL } from "../config";
 import authenticationService from "./authenticationService";
 import handleResponse from "./handleResponse";
 
@@ -17,7 +18,7 @@ function getCourses() {
         }
     };
     
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/courses`, requestOptions)
+    return fetch(`${BASE_URL}/api/courses`, requestOptions)
         .then(handleResponse)
         .then(data => {
             return data
@@ -33,7 +34,7 @@ function getStudentCourseById(id) {
         }
     };
 
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/student/${id}/scores`, requestOptions)
+    return fetch(`${BASE_URL}/api/student/${id}/scores`, requestOptions)
         .then(handleResponse)
         .then(data => {
             return(data)
@@ -48,7 +49,7 @@ function getStudentCourse() {
         }
     };
 
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/student/scores`, requestOptions)
+    return fetch(`${BASE_URL}/api/student/scores`, requestOptions)
         .then(handleResponse)
         .then(data => {
             return(data)
@@ -68,7 +69,7 @@ function registerCourse(array) {
         body: JSON.stringify({...array, is_list:true})
     };
 
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/student/scores`, requestOptions)
+    return fetch(`${BASE_URL}/api/student/scores`, requestOptions)
         .then(handleResponse)
         .then(data => {
             console.log(data)
