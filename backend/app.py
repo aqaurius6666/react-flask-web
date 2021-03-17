@@ -11,7 +11,9 @@ from flask_cors import CORS
 import jwt
 from functools import wraps
 from .modules import *
-
+import matplotlib.pyplot as plt
+import numpy
+import pickle
 
 app = Flask(__name__)
 CORS(app)
@@ -310,12 +312,10 @@ def get_schedule_by_sid(current, sid):
 def create_score_student(current):
     student = current.get_user()
     data = request.json
-    print(data)
     if 'is_list' in data.keys():
         try:
             create_score_student_by_list(data['array'], student)
         except Exception as e:
-   
             return jsonify({'message': e.args[0]}), 400
     elif Course.query.filter_by(cid=data['cid']).first():
             print(1)
@@ -535,3 +535,13 @@ def random_course():
 
 
     
+@app.route('/api/graph', methods=['GET'])
+def get_graph():
+    course = request.args.get('course')
+    scores = Score.query.filter_by(cid=course).all()
+    list_scores = [score.total for score in scores]
+    x_axis = numpy.arange(0, 4.01, 0.01)
+    y_axis = numpy.array([list_scores.count(x) for x in x_axis])
+    plt.plot(x_axis, y_axis)
+    plt.savefig('image.png')
+    return jsonify({'message' : 'Successfully'}), 200

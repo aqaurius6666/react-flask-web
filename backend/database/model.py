@@ -1,5 +1,6 @@
 
 from datetime import datetime
+from typing import final
 from sqlalchemy.ext.hybrid import hybrid_property
 from enum import unique
 from flask_sqlalchemy import SQLAlchemy
@@ -109,9 +110,10 @@ class Score(db.Model):
 
     @hybrid_property
     def total(self):
+        total = 0
         if self.mid:
-            return self.mid * 0.3 + self.final * 0.6
-        return 0.0
+            total = self.mid * 0.4 + self.final * 0.6
+        return self.mid * 0
 
     def to_dict(self):
         return {
@@ -120,7 +122,7 @@ class Score(db.Model):
             'sid' : self.sid,
             'mid' : self.mid,
             'final' : self.final,
-            'total' : self.total,
+            'total' : round(self.total, 2),
             'semester' : self.semester
             
         }
