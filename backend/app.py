@@ -166,7 +166,7 @@ def create_score():
         pass
     else:
         if Course.query.filter_by(cid=data['cid']).first():
-            score = Score(cid=data['cid'], sid=data['sid'], status=0)
+            score = Score(cid=data['cid'], sid=data['sid'])
             db.session.add(score)
         else:
             return jsonify({'message' : 'CID invalid'}), 400
@@ -280,6 +280,7 @@ def get_scores_student_by_sid(current, sid):
 @token_required
 def get_scores_student(current):
     student = current.get_user()
+    print(student.score)
     return jsonify({"score" : [score.to_course_list() for score in student.score],
                     "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200    
 
@@ -287,15 +288,15 @@ def get_scores_student(current):
 @token_required
 def get_schedule(current):
     student = current.get_user()
-    current_course = [score.course for score in student.score if score.status==0]
-    return jsonify({"schedule" : [course.to_schedule() for course in current_course],
+    current_course = [score.course for score in student.score if score.total == 0]
+    return jsonify({"schedule" : [course.to_schedule() for course in current_course ],
                     "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
 
 @app.route('/api/student/<sid>/schedule', methods=['GET'])
 @token_required
 def get_schedule_by_sid(current, sid):
     student = Student.query.filter_by(sid=sid).first()
-    current_course = [score.course for score in student.score if score.status==0]
+    current_course = [score.course for score in student.score if score.total == 0]
     return jsonify({"schedule" : [course.to_schedule() for course in current_course],
                     "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
 
@@ -316,7 +317,7 @@ def create_score_student(current):
    
             return jsonify({'message': e.args[0]}), 400
     elif Course.query.filter_by(cid=data['cid']).first():
-            score = Score(cid=data['cid'], student=student, status=0)
+            score = Score(cid=data['cid'], student=student)
             db.session.add(score)
     else:
         return jsonify({'message': 'CID invalid'}), 400
@@ -449,6 +450,23 @@ def delete_house(id):
         return jsonify({"message" : "Delete successfully!"}), 200
     except Exception as e:
         return jsonify({"message" : "Failed to delete!"}), 400
+
+#-------------------------------------------------------------------------------------------------------------
+# DELETE AUTHORIZATIOn METHODS
+#-------------------------------------------------------------------------------------------------------------
+
+@app.route('/api/student/scores/<cid>', methods=['DELETE'])
+@token_required
+def delete_own_course(current, cid):
+    try:
+        score = Score.query.filter(Score.cid==cid, Score.mid != None, Score.sid==current.get_user().sid).first()
+        db.session.delete(score)
+        db.session.commit()
+        return jsonify({'message' : 'Delete successfully!'}), 200
+    except Exception as e:
+        print(e)
+        return jsonify({'message' : 'Invalid course!'}), 400
+
 
 
 #-------------------------------------------------------------------------------------------------------------

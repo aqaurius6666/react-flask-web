@@ -3,6 +3,7 @@ from datetime import datetime
 from enum import unique
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import backref
+from werkzeug import datastructures
 db = SQLAlchemy()
 
 class Account(db.Model):
@@ -99,11 +100,11 @@ class Score(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     cid = db.Column(db.String(4), db.ForeignKey('course.cid'))
     sid = db.Column(db.String(4), db.ForeignKey('student.sid'))
-    mid = db.Column(db.Float)
-    final = db.Column(db.Float)
-    total = db.Column(db.Float)
-    status = db.Column(db.Integer)
-    semester = db.Column(db.String(4), nullable=False)
+    mid = db.Column(db.Float, default=0.0)
+    final = db.Column(db.Float,default=0.0)
+    total = db.column_property( (mid * 0.4 + final * 0.6) * (final != 0) )
+
+    semester = db.Column(db.String(4), default = str(datetime.utcnow().year))
 
     def to_dict(self):
         return {
@@ -113,7 +114,6 @@ class Score(db.Model):
             'mid' : self.mid,
             'final' : self.final,
             'total' : self.total,
-            'status' : self.status,
             'semester' : self.semester
             
         }
@@ -124,9 +124,8 @@ class Score(db.Model):
             'sid' : self.sid,
             'mid' : self.mid,
             'final' : self.final,
-            'total' : self.total,
-            'status' : self.status,
             'name' : course.name,
+            'total' : self.total,
             'semester' : self.semester,
             'credit' : course.credit 
         }
