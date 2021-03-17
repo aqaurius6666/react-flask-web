@@ -1,4 +1,5 @@
 
+from random import choices
 from flask import Flask, jsonify, request, render_template
 import json
 import requests
@@ -163,7 +164,7 @@ def get_specific_teacher(current, tid):
 def create_score():
     data = request.json
     if 'is_list' in data.keys():
-        pass
+        create_score_students_by_list(data['array'])
     else:
         if Course.query.filter_by(cid=data['cid']).first():
             score = Score(cid=data['cid'], sid=data['sid'])
@@ -506,4 +507,31 @@ def reset():
         requests.post(url='{}/api/courses'.format(app.config['URL']),
                         headers = {'Application-Type' : 'Application/json'},
                         json = courses)
-    return jsonify({'message' : 'Reset successfully'}), 200 
+    requests.post(url='{}/api/random-courses'.format(app.config['URL']))
+    return jsonify({'message' : 'Reset successfully'}), 200
+
+
+@app.route('/api/random-courses', methods=['POST'])
+def random_course():
+    students = Student.query.all()
+    courses = Course.query.all()
+    number = 6
+    array = []
+    for student in students:
+        choice_course = choices(courses, k=number)
+        courseid = [course.cid for course in choice_course]
+        data = {'sid' : student.sid, 
+                'is_list' : True,
+                'array' : courseid, 
+                'length' : len(courseid)}
+        array.append(data)
+    json_object = {'array' : array, 'length' : len(array), 'is_list' : True}
+
+    requests.post(url='{}/api/scores'.format(app.config['URL']), 
+                    headers = {'Application-Type' : 'Application/json'},
+                    json = json_object)
+
+    return jsonify({'message' : 'Successfully'}), 200
+
+
+    

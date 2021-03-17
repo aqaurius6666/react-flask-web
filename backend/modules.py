@@ -113,6 +113,15 @@ def create_score_student_by_list(array, student):
             raise Exception(f'CID invalid: {cid}')
     db.session.commit()
 
+def create_score_students_by_list(array):
+    for each in array:
+        if 'is_list' in each.keys():
+            try:
+                student = Student.query.filter_by(sid = each['sid']).first()
+                create_score_student_by_list(each['array'], student)
+            except Exception as e:
+                print(e)
+
 def check_time_course_valid(student, course):
     student_cid = [score.cid for score in Score.query.filter(Score.sid==student.sid, Score.total != 0).all()]
     student_time = [course.time for course in [Course.query.filter_by(cid=cid).first() for cid in student_cid]]
