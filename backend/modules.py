@@ -105,8 +105,7 @@ def create_score_student_by_list(array, student):
     for cid in array:
         if Course.query.filter_by(cid=cid).first():
             if check_time_course_valid(student, cid):
-                score = Score(cid=cid, student=student, status=0,           
-                                semester=str(datetime.datetime.now().year))
+                score = Score(cid=cid, student=student)
                 db.session.add(score)
             else:
                 raise Exception(f'Time error: {cid}')
@@ -115,7 +114,7 @@ def create_score_student_by_list(array, student):
     db.session.commit()
 
 def check_time_course_valid(student, course):
-    student_cid = [score.cid for score in Score.query.filter_by(sid=student.sid, status=0).all()]
+    student_cid = [score.cid for score in Score.query.filter(Score.sid==student.sid, Score.total != 0).all()]
     student_time = [course.time for course in [Course.query.filter_by(cid=cid).first() for cid in student_cid]]
     if Course.query.filter_by(cid=course).first().time in student_time:
         return False

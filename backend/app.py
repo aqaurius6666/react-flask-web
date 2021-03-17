@@ -280,7 +280,6 @@ def get_scores_student_by_sid(current, sid):
 @token_required
 def get_scores_student(current):
     student = current.get_user()
-    print(student.score)
     return jsonify({"score" : [score.to_course_list() for score in student.score],
                     "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200    
 
@@ -310,6 +309,7 @@ def get_schedule_by_sid(current, sid):
 def create_score_student(current):
     student = current.get_user()
     data = request.json
+    print(data)
     if 'is_list' in data.keys():
         try:
             create_score_student_by_list(data['array'], student)
@@ -317,6 +317,7 @@ def create_score_student(current):
    
             return jsonify({'message': e.args[0]}), 400
     elif Course.query.filter_by(cid=data['cid']).first():
+            print(1)
             score = Score(cid=data['cid'], student=student)
             db.session.add(score)
     else:
