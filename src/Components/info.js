@@ -8,9 +8,9 @@ import userService from "../API/userService";
 import courseService from "../API/courseService";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 import history from "../history"
-import {getAllStudent, getAllTeacher} from "../API/service";
+import { getAllStudent, getAllTeacher } from "../API/service";
 import authenticationService from "../API/authenticationService";
-import {MydModalWithGrid} from "./DialogModal"
+import { MydModalWithGrid } from "./DialogModal"
 
 const Subject = ({ props }) => {
     const [modalShow, setModalShow] = useState(false);
@@ -31,7 +31,6 @@ const Subject = ({ props }) => {
             <td className="col-6 col-md-4">
                 <button onClick={() => {
                     courseService.deleteCourse(props.cid)
-                    window.location.reload()
                 }}>X</button>
                 <button onClick={() => setModalShow(true)}>
                     i
@@ -85,7 +84,7 @@ export const Info = (props) => {
         setLoading(true)
         courseService.getStudentCourseById(id)
             .then(({ score }) => {
-                setAllCourse(score.map((item, i) => <Subject key={i} props={item} />))
+                setAllCourse(score.map((item, i) => <Subject key={i} props={item} setLoading={setLoading} />))
                 console.log(score)
             })
             .then(() => setLoading(false))

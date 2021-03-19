@@ -68,7 +68,6 @@ function registerCourse(array) {
         },
         body: JSON.stringify({...array, is_list:true})
     };
-
     return fetch(`${BASE_URL}/api/student/scores`, requestOptions)
         .then(handleResponse)
         .then(data => {
