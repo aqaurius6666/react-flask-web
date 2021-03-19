@@ -1,6 +1,5 @@
 
 from datetime import datetime
-from typing import final
 from sqlalchemy.ext.hybrid import hybrid_property
 from enum import unique
 from flask_sqlalchemy import SQLAlchemy

@@ -19,7 +19,7 @@ app = Flask(__name__)
 CORS(app)
 HEROKU = "config_heroku.py"
 LOCAL = "config_local.py"
-app.config.from_pyfile(LOCAL)
+app.config.from_pyfile(HEROKU)
 db.init_app(app)
 def token_required(f):
     @wraps(f)
