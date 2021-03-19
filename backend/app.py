@@ -1,16 +1,17 @@
 
+from backend.error import BadInput, NoPermission
 from random import choices, random
 from flask import Flask, jsonify, request, render_template
 import json
 import requests
-from sqlalchemy import or_
-from .database.model import (db,
+from sqlalchemy import or_, and_
+from backend.database.model import (db,
                             Student, Teacher, Course, Score, House, Account)
 from werkzeug.security import generate_password_hash, check_password_hash     
 from flask_cors import CORS
 import jwt
 from functools import wraps
-from .modules import *
+from backend.modules import *
 
 app = Flask(__name__)
 CORS(app)
@@ -105,7 +106,18 @@ def get_accounts():
 
 @app.route('/api/students', methods=['GET'])
 def get_students():
-    return jsonify([student.to_dict() for student in Student.query.all()])
+    if request.args.get('course'):
+        # Xử lý query url
+        cid = request.args.get('course')
+        if Course.query.filter_by(cid=cid).first():
+
+            array = db.session.query(Student, Score).select_from(Student).join(Score)\
+                            .filter(and_(Score.sid==Student.sid, Score.cid==cid)).all()
+            return jsonify({'array' : [{**each.Student.to_dict(), **each.Score.to_dict()}for each in array]}), 200
+        else:
+            return BadInput()
+
+    return jsonify({'array' : [student.to_dict() for student in Student.query.all()]}), 200
 
 @app.route('/api/houses', methods=['GET'])
 def get_houses():
@@ -135,7 +147,7 @@ def get_specific_course(current, cid):
         course = Course.query.filter_by(cid=cid).first()
         return jsonify({"course": course.to_dcit()}), 200
     except:
-        return jsonify({"message" : "Invaild course id"}), 404
+        return BadInput()
     
 
 @app.route('/api/students/<sid>', methods=['GET'])
@@ -145,7 +157,7 @@ def get_specific_student(current, sid):
         student = Student.query.filter_by(sid=sid).first()
         return jsonify({"student": student.to_dcit()}), 200
     except:
-        return jsonify({"message" : "Invaild student id"}), 404
+        return BadInput()
 
 @app.route('/api/teachers/<tid>', methods=['GET'])
 @token_required
@@ -154,7 +166,8 @@ def get_specific_teacher(current, tid):
         teacher = Teacher.query.filter_by(tid=tid).first()
         return jsonify({"teacher": teacher.to_dcit()}), 200
     except:
-        return jsonify({"message" : "Invaild teacher id"}), 404
+        return BadInput()
+
 
 #-------------------------------------------------------------------------------------------------------------
 # CREATE METHODS
@@ -169,7 +182,7 @@ def create_score():
             score = Score(cid=data['cid'], sid=data['sid'])
             db.session.add(score)
         else:
-            return jsonify({'message' : 'CID invalid'}), 400
+            return BadInput()
         db.session.commit()
     return jsonify({'message' : 'Create score successfully!'}), 200
 @app.route('/api/students', methods=['POST'])
@@ -276,6 +289,15 @@ def get_scores_student_by_sid(current, sid):
     return jsonify({"score" : [score.to_course_list() for score in student.score],
                     "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
 
+@app.route('/api/teacher/courses', methods=['GET'])
+@token_required
+def get_course_teaching(current):
+    teacher = current.get_user()
+    courses = Course.query.filter_by(tid=teacher.tid).all()
+    return jsonify({"courses" : [course.to_dict() for course in courses],
+                    "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
+
+
 @app.route('/api/student/scores', methods=['GET'])
 @token_required
 def get_scores_student(current):
@@ -319,7 +341,7 @@ def create_score_student(current):
             score = Score(cid=data['cid'], student=student)
             db.session.add(score)
     else:
-        return jsonify({'message': 'CID invalid'}), 400
+        return BadInput()
     db.session.commit()
     return jsonify({'message' : 'Create score successfully',
                     "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 201
@@ -371,6 +393,27 @@ def update_student(current):
     return jsonify({"student" : student.to_dict(), "message" : "Update successfully!",
                     "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
 
+@app.route('/api/teacher/score', methods=['PUT'])
+@token_required
+def update_score(current):
+    user = current.get_user()
+    data = request.json
+    if type(user) == Teacher:
+        if user.tid == Course.query.filter_by(cid=data['cid']).first().tid:
+            for each in data['array']:
+                try:
+                    score = Score.query.filter_by(sid=each['sid']).first()
+                    if each['mid']:
+                        score.mid = each['mid']
+                    if each['final']:
+                        score.final = each['final']
+                except:
+                    return BadInput()
+            db.session.commit()
+            return jsonify({'message' : 'Update successfully'}), 200
+    else:
+        return NoPermission()
+    
 
 @app.route('/api/account', methods=['PUT'])
 @token_required
