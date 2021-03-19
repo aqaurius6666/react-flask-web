@@ -29,7 +29,7 @@ function App() {
                 <Route exact path="/info" component={() => <Info id={authenticationService.getId()}/>} />
                 <Route exact path="/info/score" component={() => <Grades />} />
 
-                <Route path="/info/:id" component={(props) => <Info id={props.match.params.id}/>} />
+                <Route path="/info/:id" component={(props) => <Info id={props.match.params.id} isTeacher={true}/>} />
             </Switch>
         </>
     )

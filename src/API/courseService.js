@@ -7,8 +7,46 @@ const courseService = {
     registerCourse,
     getStudentCourse,
     getStudentCourseById,
-    deleteCourse
+    deleteCourse,
+    getCourseTeaching,
+    getStudentInCourse,
+    updateScore,
 }; export default courseService;
+
+function getStudentInCourse(cid) {
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token' : authenticationService.currentTokenValue()
+        }
+    };
+    
+    return fetch(`${BASE_URL}/api/students?course=${cid}`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            console.log(data)
+        });
+}
+function updateScore(cid, array) {
+    const requestOptions = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token' : authenticationService.currentTokenValue()
+        },
+        body: {
+            'cid' : cid,
+            'array' : array
+        }
+    };
+    
+    return fetch(`${BASE_URL}/api/teacher/score`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            console.log(data)
+        });
+}
 
 function getCourses() {
     const requestOptions = {
@@ -23,6 +61,21 @@ function getCourses() {
         .then(handleResponse)
         .then(data => {
             return data
+        });
+}
+function getCourseTeaching() {
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token' : authenticationService.currentTokenValue()
+        }
+    };
+    
+    return fetch(`${BASE_URL}/api/teacher/courses`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            console.log(data)
         });
 }
 
