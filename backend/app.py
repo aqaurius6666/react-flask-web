@@ -11,9 +11,6 @@ from flask_cors import CORS
 import jwt
 from functools import wraps
 from .modules import *
-import matplotlib.pyplot as plt
-import numpy
-import pickle
 
 app = Flask(__name__)
 CORS(app)
@@ -548,10 +545,8 @@ def get_graph():
     course = request.args.get('course')
     scores = Score.query.filter_by(cid=course).all()
     list_scores = [round(score.total / 10 * 4, 2) for score in scores]
-    print(list_scores)
-    x_axis = numpy.arange(0, 4.01, 0.01)
-    y_axis = numpy.array([list_scores.count(x) for x in x_axis])
-    plt.plot(x_axis, y_axis)
-    plt.savefig('image.png')
-    plt.close()
-    return jsonify({'message' : 'Successfully'}), 200
+    x_axis = tuple(list_scores)
+    y_axis = [list_scores.count(x) for x in x_axis]
+    return jsonify({'message' : 'Successfully',
+                    'x_asix' : x_axis,
+                    'y_axis' : y_axis}), 200
