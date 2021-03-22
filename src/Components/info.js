@@ -67,7 +67,6 @@ const handleOnSearch = (string, results) => {
 }
 
 const handleOnSelect = (item) => {
-    // getStudentByName(item.name).then(data => console.log(data))
     history.push(`/info/${item.id}`)
     window.location.reload();
     console.log(item)
@@ -95,21 +94,19 @@ export const Info = (props) => {
     }, [id])
     useEffect(() => {
         setLoading(true)
-        if (0) {
-            courseService.getStudentCourseById(id)
-                .then(({ score }) => {
-                    setAllCourse(score.map((item, i) => <Subject key={i} props={item} setLoading={setLoading} />))
-                    console.log(score)
-                })
-                .then(() => setLoading(false))
-                .catch(() => setLoading(false))
-        }
+        courseService.getStudentCourseById(id)
+            .then(({ score }) => {
+                setAllCourse(score.map((item, i) => <Subject key={i} props={item} />))
+                console.log(score)
+            })
+            .then(() => setLoading(false))
+            .catch(() => setLoading(false))
         return () => setLoading(false)
 
     }, [id])
-    useEffect(() => {
+    useEffect(async () => {
         setLoading(true)
-        getAllStudent()
+        await getAllStudent()
             .then((data) => {
                 setAllStudent(data.map((item) => (
                     {
