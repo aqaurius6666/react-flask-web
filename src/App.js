@@ -10,7 +10,6 @@ import { About } from "./Components/about";
 import Courses from "./Components/courses";
 import { Grades } from "./Components/grades";
 import authenticationService from "./API/authenticationService";
-import userService from "./API/userService";
 
 function App() {
     const [ ,setAccount] = useState(authenticationService.currentAccountValue)
@@ -29,7 +28,8 @@ function App() {
                 <Route exact path="/update" component={() => <Update />} />
                 <Route exact path="/info" component={() => <Info id={authenticationService.getId()}/>} />
                 <Route exact path="/info/score" component={() => <Grades />} />
-                <Route exact path="/info/:studentId" component={(props) => <Info id={props.match.params.studentId}/>} />
+
+                <Route path="/info/:id" component={(props) => <Info id={props.match.params.id} isTeacher={true}/>} />
             </Switch>
         </>
     )

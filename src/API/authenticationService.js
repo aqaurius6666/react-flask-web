@@ -2,6 +2,7 @@ import { BehaviorSubject } from 'rxjs'
 import {currentUserSubject} from './userService'
 import history from '../history'
 import handleResponse from './handleResponse';
+import { BASE_URL } from '../config';
 const currentAccountSubject = new BehaviorSubject(localStorage.getItem('account'))
 const currentTokenSubject = new BehaviorSubject(localStorage.getItem('token'))
 
@@ -30,7 +31,7 @@ function register({username, password, role}) {
         body: JSON.stringify({username, password, role})
     };
 
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/accounts`, requestOptions)
+    return fetch(`${BASE_URL}/api/accounts`, requestOptions)
         .then(handleResponse)
         .then(data => {
             console.log(data)
@@ -45,7 +46,7 @@ function check_auth() {
         }
     };
 
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/authentication`, requestOptions)
+    return fetch(`${BASE_URL}/api/authentication`, requestOptions)
         .then(handleResponse)
         .then(data => {
             const { token } = data
@@ -59,8 +60,7 @@ function login(username, password) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password })
     };
-
-    return fetch(`https://it-must-be-ok.herokuapp.com/api/authentication`, requestOptions)
+    return fetch(`${BASE_URL}/api/authentication`, requestOptions)
         .then(handleResponse)
         .then(data => {
             const { account, token } = data
