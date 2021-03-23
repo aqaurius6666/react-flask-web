@@ -17,7 +17,7 @@ app = Flask(__name__)
 CORS(app)
 HEROKU = "config_heroku.py"
 LOCAL = "config_local.py"
-app.config.from_pyfile(HEROKU)
+app.config.from_pyfile(LOCAL)
 db.init_app(app)
 def token_required(f):
     @wraps(f)
@@ -286,8 +286,11 @@ def get_account(current):
 @token_required
 def get_scores_student_by_sid(current, sid):
     student = Student.query.filter_by(sid=sid).first()
-    return jsonify({"score" : [score.to_course_list() for score in student.score],
-                    "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
+    if student:
+        return jsonify({"score" : [score.to_course_list() for score in student.score],
+                        "token" : encode_auth_token(current.id, app.config['SECRET_KEY'])}), 200
+    else:
+        return BadInput()
 
 @app.route('/api/teacher/courses', methods=['GET'])
 @token_required
