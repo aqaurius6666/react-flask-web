@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react"
 import authenticationService from '../API/authenticationService';
 import courseService from "../API/courseService";
 import Loading from "./loading"
+import Graph from './chart'
+import Button from "react-bootstrap/Button";
 
 export const Grades = (props) => {
+    const [showGraph, setShowGraph] = useState('')
     const account = authenticationService.currentAccountValue()
     const [score, setScore] = useState()
     const [loading, setLoading] = useState(true)
@@ -29,7 +32,7 @@ export const Grades = (props) => {
                         <tr>
                             <td colSpan="7" className="align-content-center text-center">
                                 <h4>Semester: {() => {
-                                    if (score[1].semester == undefined) {
+                                    if (score[1].semester === undefined) {
                                         return null
                                     } else {
                                         return score[1].semester
@@ -45,6 +48,7 @@ export const Grades = (props) => {
                             <th>Final</th>
                             <th>Midterm</th>
                             <th>Total</th>
+                            <th>Statistic</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,6 +64,11 @@ export const Grades = (props) => {
                                         <td>{data.final}</td>
                                         <td>{data.mid}</td>
                                         <td>{data.total}</td>
+                                        <td>
+                                            <Button className="" onClick={() => setShowGraph(data.cid)}>
+                                                <span className="fa fa-bar-chart"></span>
+                                            </Button>
+                                        </td>
                                     </tr>
                                 )
                         })}
@@ -68,6 +77,7 @@ export const Grades = (props) => {
                         </tr>
                     </tbody>
                 </table>
+                <Graph show={showGraph}/>
             </div>
         </div>
         </>

@@ -26,10 +26,9 @@ function App() {
                 <Route exact path="/register" component={() => <Register />} />
                 <Route exact path="/courses" component={() => <Courses />} />
                 <Route exact path="/update" component={() => <Update />} />
-                <Route exact path="/info" component={() => <Info id={authenticationService.getId()}/>} />
                 <Route exact path="/info/score" component={() => <Grades />} />
-
                 <Route path="/info/:id" component={(props) => <Info id={props.match.params.id} isTeacher={true}/>} />
+                <Route exact path="/info" component={() => <Info id={authenticationService.getId()}/>} />
             </Switch>
         </>
     )

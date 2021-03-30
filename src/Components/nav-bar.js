@@ -1,15 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Nav, Navbar} from "react-bootstrap";
 import authenticationService from '../API/authenticationService';
 import logo1 from "../img/hogwart.svg";
+import userService from "../API/userService";
 
 const NavBar = () => {
     const account = authenticationService.currentAccountValue()
-
     const handleLogOut =() => {
         authenticationService.logout()
     }
-    
+
     if (account) {
         return (
             <>
