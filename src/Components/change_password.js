@@ -22,26 +22,26 @@ export const ChangePassword = () => {
     }
     if (form) {
         return (
-            <>
+            <div className="col-7">
                 <h1>Change Password </h1>
                 <form onSubmit={onSubmitForm}>
                     <div>
                         <label>Old password: </label>
-                        <input value={form.old_password} type="password" onChange={(e) => setForm({ ...form, old_password: e.target.value })} />
+                        <input className="form-control" value={form.old_password} type="password" onChange={(e) => setForm({ ...form, old_password: e.target.value })} />
                     </div>
 
                     <div>
                         <label>New password: </label>
-                        <input value={form.password} type="password" onChange={(e) => setForm({ ...form, password: e.target.value })} />
+                        <input className="form-control" value={form.password} type="password" onChange={(e) => setForm({ ...form, password: e.target.value })} />
                     </div>
                     <div>
                         <label>Conf password: </label>
-                        <input value={form.conf_password} type="password" onChange={(e) => setForm({ ...form, conf_password: e.target.value })} />
+                        <input className="form-control" value={form.conf_password} type="password" onChange={(e) => setForm({ ...form, conf_password: e.target.value })} />
                     </div>
 
-                    <button className="btn btn-success">Update</button>
+                    <button className="btn btn-success mt-3">Update</button>
                 </form>
-            </>
+            </div>
         )
     } else {
         return (

@@ -24,15 +24,12 @@ export const Update = () => {
         )
     }
     return (
-        <>
-            <br />
-            <br />
-            <div className="container">
+        <div className="mt-5">
+            <div className="container mb-5">
                 <ChangeInfo form={form} setForm={setForm} />
                 <ChangePassword />
             </div>
-            <br />
             <Footer />
-        </>
+        </div>
     )
 }

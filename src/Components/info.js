@@ -7,7 +7,7 @@ import { Grades } from "./grades";
 import userService from "../API/userService";
 import courseService from "../API/courseService";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete';
-import history from "../history"
+import history from "../history";
 import { getAllStudent, getAllTeacher } from "../API/service";
 import authenticationService from "../API/authenticationService";
 import { MydModalWithGrid } from "./DialogModal";
@@ -131,8 +131,7 @@ export const Info = (props) => {
     else {
         console.log(allStudent)
         return (
-            <div>
-                <br /> <br />
+            <div className="mt-4">
                 <div className="container header text-center body_font">
                     {(isTeacher || student.role === 'Teacher') ?
                         (<div style={{ width: '380px' }}>
