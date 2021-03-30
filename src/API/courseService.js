@@ -111,7 +111,6 @@ function getStudentCourse() {
 }
 
 
-
 function registerCourse(array) {
     const requestOptions = {
         method: 'POST',
