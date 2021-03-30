@@ -49,19 +49,12 @@ const Subject = ({ props }) => {
                 </button>
                 <MydModalWithGrid show={modalShow} onHide={() => setModalShow(false)} value={props} />
             </td>
-            {/* <td className="col-3 col-md-2">
-                <p>{checkCID(props.cid).place}</p>
-            </td>
-            <td className="col-3 col-md-2">
-                <p>{formatTime(checkCID(props.cid).time)}</p>
-            </td> */}
         </tr>
     )
 }
 
 
 const handleOnSearch = (string, results) => {
-    // getStudentById()
     console.log("Search")
     console.log(string, results)
 }
@@ -78,37 +71,35 @@ const handleOnFocus = () => {
 
 export const Info = (props) => {
     const { isTeacher, id } = props
+    const [ teacherSubject, setSubject] = useState([])
     const [student, setStudent] = useState()
     const [allStudent, setAllStudent] = useState([])
     const [loading, setLoading] = useState(true)
     const [allCourse, setAllCourse] = useState([])
-    useEffect(() => {
+    useEffect(async () => {
         setLoading(true)
-        userService.getUserValueById(id).then(data => {
+        await userService.getUserValueById(id).then(data => {
             setStudent(data)
-        })
-            .then(() => setLoading(false))
-            .catch(() => setLoading(false))
-        return () => setLoading(false)
-
-    }, [id])
-    useEffect(() => {
-        setLoading(true)
-        courseService.getStudentCourseById(id)
-            .then(({ score }) => {
-                setAllCourse(score.map((item, i) => <Subject key={i} props={item} />))
-                console.log(score)
-            })
-            .then(() => setLoading(false))
+        }).then(() => setLoading(false))
             .catch(() => setLoading(false))
         return () => setLoading(false)
 
     }, [id])
     useEffect(async () => {
         setLoading(true)
+        await courseService.getStudentCourseById(id)
+            .then(({ score }) => {
+                setAllCourse(score.map((item, i) => <Subject key={i} props={item} />))
+                console.log(score)
+            }).then(() => setLoading(false))
+            .catch(() => setLoading(false))
+        return () => setLoading(false)
+    }, [id])
+    useEffect(async () => {
+        setLoading(true)
         await getAllStudent()
             .then((data) => {
-                setAllStudent(data.map((item) => (
+                setAllStudent(data.array.map((item) => (
                     {
                         id: item.sid,
                         name: item.name
@@ -118,18 +109,27 @@ export const Info = (props) => {
             .then(() => setLoading(false))
             .catch(() => setLoading(false))
     }, [])
-    useEffect(() => {
+    useEffect(async () => {
         setLoading(true)
-        if (1) {
-            courseService.updateScore('DEF0', [])
-                .then(() => setLoading(false))
-                .catch(() => setLoading(false))
-        }
-        return () => setLoading(false)
+        await courseService.getCourseTeaching()
+            .then((data) => {
+                setSubject(data.courses)})
+            .then(() => setLoading(false))
+            .catch(() => setLoading(false))
     }, [])
+    // useEffect(() => {
+    //     setLoading(true)
+    //     if (1) {
+    //         courseService.updateScore('DEF0', [])
+    //             .then(() => setLoading(false))
+    //             .catch(() => setLoading(false))
+    //     }
+    //     return () => setLoading(false)
+    // }, [])
 
     if (loading || !student || !allCourse || !allStudent) return <Loading />
     else {
+        console.log(allStudent)
         return (
             <div>
                 <br /> <br />
@@ -172,6 +172,8 @@ export const Info = (props) => {
                                     ? `GPA: ${student.gpa}` : ''}</h5>
                                 <h5>{student.role === 'Student'
                                     ? `Credit: ${student.credit}` : ''}</h5>
+                                <h5>{student.role === 'Teacher'
+                                    ? `Teach: ${teacherSubject.map(item => item.name).join(',')}` : ''}</h5>
 
                             </th>
                             <th className="col-lg-2 d-none d-sm-inline">

@@ -75,7 +75,7 @@ function getCourseTeaching() {
     return fetch(`${BASE_URL}/api/teacher/courses`, requestOptions)
         .then(handleResponse)
         .then(data => {
-            console.log(data)
+            return(data)
         });
 }
 
