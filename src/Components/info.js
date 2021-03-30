@@ -106,9 +106,9 @@ export const Info = (props) => {
     }, [id])
     useEffect(async () => {
         setLoading(true)
-        await getAllStudent()
-            .then((data) => {
-                setAllStudent(data.map((item) => (
+        getAllStudent()
+            .then(({array}) => {
+                setAllStudent(array.map((item) => (
                     {
                         id: item.sid,
                         name: item.name
@@ -117,15 +117,6 @@ export const Info = (props) => {
             })
             .then(() => setLoading(false))
             .catch(() => setLoading(false))
-    }, [])
-    useEffect(() => {
-        setLoading(true)
-        if (1) {
-            courseService.updateScore('DEF0', [])
-                .then(() => setLoading(false))
-                .catch(() => setLoading(false))
-        }
-        return () => setLoading(false)
     }, [])
 
     if (loading || !student || !allCourse || !allStudent) return <Loading />
