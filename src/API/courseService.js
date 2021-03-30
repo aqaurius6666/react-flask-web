@@ -11,7 +11,22 @@ const courseService = {
     getCourseTeaching,
     getStudentInCourse,
     updateScore,
+    getGraphByCourse
 }; export default courseService;
+function getGraphByCourse(cid) {
+    const requestOptions = {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'x-access-token' : authenticationService.currentTokenValue()
+        }
+    };
+    return fetch(`${BASE_URL}/api/graph?course=${cid}`, requestOptions)
+        .then(handleResponse)
+        .then(data => {
+            return data
+        });
+}
 
 function getStudentInCourse(cid) {
     const requestOptions = {

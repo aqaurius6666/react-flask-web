@@ -23,7 +23,6 @@ export const Grades = (props) => {
     if (loading || !score || !account) return <Loading />
     let count = 1;
     let creditCount = 0;
-    console.log(score);
     return (
         <>
         <div className="container mt-3">
