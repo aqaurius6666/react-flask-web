@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react"
 import authenticationService from '../API/authenticationService';
 import courseService from "../API/courseService";
 import Loading from "./loading"
-import Graph from './chart'
 import Button from "react-bootstrap/Button";
+import Graph from "./chart";
 
 export const Grades = (props) => {
     const [showGraph, setShowGraph] = useState('')

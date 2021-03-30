@@ -1,15 +1,17 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Nav, Navbar} from "react-bootstrap";
 import authenticationService from '../API/authenticationService';
 import logo1 from "../img/hogwart.svg";
 import userService from "../API/userService";
 
 const NavBar = () => {
-    const [authUser, setAuthUser] = useState({})
+    // const [authUser, setAuthUser] = useState(null)
     const account = authenticationService.currentAccountValue()
-    userService.getUserValueById(account.id).then(data => {
-        setAuthUser(data)
-    })
+    // useEffect(() => {
+    //     if (account) userService.getUserValueById(account.id).then(data => {
+    //         setAuthUser(data)
+    //     })
+    // },[account])
 
     const handleLogOut =() => {
         authenticationService.logout()
@@ -30,8 +32,7 @@ const NavBar = () => {
                                 <Nav.Link href="/"><i className="fa fa-home" aria-hidden="true" /> Home</Nav.Link>
                                 <Nav.Link href="/about"><i className="fa fa-info-circle" aria-hidden="true" />  About</Nav.Link>
                                 <Nav.Link href="/info"><i className="fa fa-user" aria-hidden="true" /> Personal Info</Nav.Link>
-                                {authUser.role === 'Student' &&
-                                <Nav.Link href="/courses"><i className="fa fa-book" aria-hidden="true" /> Courses</Nav.Link>}
+                                <Nav.Link href="/courses"><i className="fa fa-book" aria-hidden="true" /> Courses</Nav.Link>
                                 <Nav.Link href="/update"><i className="fa fa-wrench" aria-hidden="true"/> Update</Nav.Link>
                                 <div className="login-nav-margin d-none d-xl-block"> </div>
                                 <Nav.Link id="login-nav-link" href="/login" onClick={handleLogOut}>

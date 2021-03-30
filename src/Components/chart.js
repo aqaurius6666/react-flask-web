@@ -1,6 +1,6 @@
 import React, {Component, useEffect, useState} from 'react';
-import {Bar} from 'react-chartjs-2';
 import courseService from "../API/courseService";
+import {Bar} from "react-chartjs-2";
 
 const state = {
     labels: ['0', '1', '2', '3',
@@ -22,11 +22,10 @@ const fetchData = () => {
     const url = `https://it-must-be-ok.herokuapp.com/`
 }
 
-
 export default class Graph extends Component {
     constructor(props) {
         super(props)
-        
+
         this.state = {
             grades: []
         }
