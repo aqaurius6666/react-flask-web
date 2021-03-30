@@ -4,12 +4,11 @@ import courseService from "../API/courseService";
 
 
 const Graph = (props) => {
-    const { show, tra } = props
+    const { course, house } = props
     const [data, setData] = useState()
 
     useEffect(() => {
-        if (show !== "") {
-            courseService.getGraphByCourse(show).then(({label, data}) => {
+            courseService.getGraph(course, house).then(({label, data}) => {
                 setData({
                     labels: label,
                     datasets: [
@@ -25,9 +24,7 @@ const Graph = (props) => {
                     ]
                 })
             })
-        }
-    }, [show])
-    if (show === "") return (<></>)
+    }, [])
     return (
         <div>
             <Bar
@@ -35,7 +32,7 @@ const Graph = (props) => {
                 options={{
                     title: {
                         display: true,
-                        text: 'Scores Range Course ' + show,
+                        text: 'Scores Range Course ' + course,
                         fontSize: 20
                     },
                     legend: {

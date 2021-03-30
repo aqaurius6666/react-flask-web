@@ -11,9 +11,9 @@ const courseService = {
     getCourseTeaching,
     getStudentInCourse,
     updateScore,
-    getGraphByCourse
+    getGraph
 }; export default courseService;
-function getGraphByCourse(cid) {
+function getGraph(cid, house) {
     const requestOptions = {
         method: 'GET',
         headers: {
@@ -21,7 +21,7 @@ function getGraphByCourse(cid) {
             'x-access-token' : authenticationService.currentTokenValue()
         }
     };
-    return fetch(`${BASE_URL}/api/graph?course=${cid}`, requestOptions)
+    return fetch(`${BASE_URL}/api/graph?course=${cid}&house=${house}`, requestOptions)
         .then(handleResponse)
         .then(data => {
             return data

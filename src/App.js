@@ -11,6 +11,7 @@ import Courses from "./Components/courses";
 import { Grades } from "./Components/grades";
 import authenticationService from "./API/authenticationService";
 import Controller from "./Components/graph";
+import GraphPage from "./Components/graph";
 
 function App() {
     const [ ,setAccount] = useState(authenticationService.currentAccountValue)
@@ -28,7 +29,7 @@ function App() {
                 <Route exact path="/courses" component={() => <Courses />} />
                 <Route exact path="/update" component={() => <Update />} />
                 <Route exact path="/info/score" component={() => <Grades />} />
-                <Route exact path="/test" component={() => <Controller />} />
+                <Route exact path="/test" component={() => <GraphPage />} />
                 <Route path="/info/:id" component={(props) => <Info id={props.match.params.id} isTeacher={true}/>} />
                 <Route exact path="/info" component={() => <Info id={authenticationService.getId()}/>} />
             </Switch>
