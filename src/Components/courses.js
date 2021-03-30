@@ -4,6 +4,7 @@ import Loading from './loading';
 import {checkHaveCourse} from "../data/superData";
 import history from "../history"
 import courseService from '../API/courseService';
+import {Table} from "react-bootstrap";
 
 const RegisCourses = (props) => {
     const {coursesList} = props
@@ -61,7 +62,7 @@ const RegisCourses = (props) => {
 
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <table border="1" className="row" >
+                <Table bordered className="row"  >
                     <tr className="col-12 row" >
                         <td className="col-2"> </td>
                         <td className="col-2 col-md-1">CID</td>
@@ -73,7 +74,7 @@ const RegisCourses = (props) => {
                     </tr>
                     {courseItem}
                     <button style={{margin:'10px'}} className="btn btn-primary" type="submit">Submit</button>
-                </table>
+                </Table>
             </form>
             <br />
         </div>
