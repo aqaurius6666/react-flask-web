@@ -14,6 +14,7 @@ const courseService = {
     getGraph
 }; export default courseService;
 function getGraph(cid, house) {
+    console.log(cid, house)
     const requestOptions = {
         method: 'GET',
         headers: {

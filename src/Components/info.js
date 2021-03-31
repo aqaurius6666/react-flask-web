@@ -72,54 +72,40 @@ const handleOnFocus = () => {
 
 export const Info = (props) => {
     const { isTeacher, id } = props
-    const [ teacherSubject, setSubject] = useState([])
+    const [teacherSubject, setSubject] = useState([])
     const [student, setStudent] = useState()
     const [allStudent, setAllStudent] = useState([])
     const [loading, setLoading] = useState(true)
     const [allCourse, setAllCourse] = useState([])
-    useEffect(async () => {
-        setLoading(true)
-        await userService.getUserValueById(id).then(data => {
-            setStudent(data)
-        }).then(() => setLoading(false))
-            .catch(() => setLoading(false))
-        return () => setLoading(false)
 
-    }, [id])
-    useEffect(async () => {
+    useEffect(() => {
+        let completed = 0
+        let task = 4
         setLoading(true)
-        await courseService.getStudentCourseById(id)
+        const done = () => {
+            if (++completed === task) { setLoading(false) }
+        }
+        userService.getUserValueById(id).then(data => {
+            setStudent(data)
+        }).finally(done)
+        courseService.getStudentCourseById(id)
             .then(({ score }) => {
                 setAllCourse(score.map((item, i) => <Subject key={i} props={item} />))
-                console.log(score)
-            }).then(() => setLoading(false))
-            .catch(() => setLoading(false))
-        return () => setLoading(false)
-    }, [id])
-    useEffect(async () => {
-        setLoading(true)
-        await getAllStudent()
+            }).finally(done)
+        getAllStudent()
             .then((data) => {
                 setAllStudent(data.array.map((item) => (
-                    {
-                        id: item.sid,
-                        name: item.name
-                    }
+                    {id: item.sid,
+                    name: item.name}
                 )))
-            })
-            .then(() => setLoading(false))
-            .catch(() => setLoading(false))
-    }, [])
-    useEffect(async () => {
-        setLoading(true)
-        await courseService.getCourseTeaching()
-            .then((data) => {
-                setSubject(data.courses)
-                setAllCourse(data.courses.map((item, i) => <Subject key={i} props={item} />))
-            })
-            .then(() => setLoading(false))
-            .catch(() => setLoading(false))
-    }, [])
+            }).finally(done)
+        courseService.getCourseTeaching()
+            .then(({courses}) => {
+                setSubject(courses)
+                setAllCourse(courses.map((item, i) => <Subject key={i} props={item} />))
+            }).finally(done)
+    }, [id])
+
     // useEffect(() => {
     //     setLoading(true)
     //     if (1) {

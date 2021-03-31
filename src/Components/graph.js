@@ -3,7 +3,7 @@ import courseService from "../API/courseService"
 import Graph from "./chart";
 
 const FilterGraph = (props) => {
-    const {setData} = props
+    const {data, setData} = props
     const [byCourse, setByCourse] = useState(String)
     const [byHouse, setByHouse] = useState(String)
     const [courses, setCourses] = useState(Array)
@@ -21,8 +21,8 @@ const FilterGraph = (props) => {
 
     }
     return (
-        <form onSubmit={onSubmitForm}>
-            <div>
+        <form onSubmit={onSubmitForm} className=" container mt-4 ">
+            <div >
                 <label>By House</label>
                 <select name="house" onChange={(e) => { setByHouse(e.target.value) }}>
                     <option value="all" selected>All</option>
@@ -53,13 +53,14 @@ const FilterGraph = (props) => {
 
 const GraphPage = () => {
     const [data, setData] = useState({
-        'course' : String,
-        'house' : String,
-        'isShow' : Boolean
+        'course' : "",
+        'house' : "",
+        'isShow' : false
     })
+
     return (
         <>
-        <FilterGraph setData={setData}/>
+        <FilterGraph data={data} setData={setData}/>
         {data.isShow && <Graph data={data}/>}
         </>
     )

@@ -12,17 +12,17 @@ export const Grades = (props) => {
     const [score, setScore] = useState()
     const [loading, setLoading] = useState(true)
     useEffect(() => {
-        setLoading(true)
-        courseService.getStudentCourse().then(({ score }) => {
-            setScore(score)
-        })
-            .then(() => setLoading(false))
-            .catch(() => setLoading(false))
-        return () => setLoading(false)
+        let completed = 0
+        let task = 1
+        const done = () => {
+            if (++completed === task) {setLoading(false)}
+        }
+        courseService.getStudentCourse().then(({ score, total_credit }) => {
+            setScore({score, total_credit})
+        }).finally(done)
     }, [])
     if (loading || !score || !account) return <Loading />
     let count = 1;
-    let creditCount = 0;
     return (
         <>
         <div className="container mt-3">
@@ -52,8 +52,7 @@ export const Grades = (props) => {
                 </thead>
                 <tbody>
                     {
-                        score.map((data, key) => {
-                            creditCount += data.credit;
+                        score.score.map((data, key) => {
                             return (
                                 <tr>
                                     <td>{count++}</td>
@@ -72,7 +71,7 @@ export const Grades = (props) => {
                             )
                     })}
                     <tr>
-                        <td><p>Total credits: {creditCount}</p></td>
+                        <td><p>Total credits: {score.total_credit}</p></td>
                     </tr>
                 </tbody>
             </Table>
