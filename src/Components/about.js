@@ -40,7 +40,7 @@ const Presidents = () => {
         <div className="container presidents">
             <h3><span className="mw-headline">II. Heads of Hogwarts</span></h3>
             <dd>
-                <div className="noprint"><p>Main article:
+                <div><p>Main article:
                     <a href="https://harrypotter.fandom.com/wiki/Hogwarts_Headmaster" title="Hogwarts Headmaster">Hogwarts
                         Headmaster</a>
                 </p>

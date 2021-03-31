@@ -34,10 +34,11 @@ const Subject = ({ props }) => {
                 <button style={{
                     border: "2px solid white",
                     borderRadius: "25px"
-                }} onClick={async () => {
+                }} onClick={() => {
                     if (window.confirm('Sure want to delete?')) {
-                        await courseService.deleteCourse(props.cid)
-                        window.location.reload()
+                        courseService.deleteCourse(props.cid)
+                            .then(() => window.location.reload())
+                            .catch(() => alert("You can't cancel this course!"))
                     }
                 }}><img src={deleteIcon} alt="X" width="20px" height="auto" /></button>
                 <span> </span>
@@ -113,7 +114,9 @@ export const Info = (props) => {
         setLoading(true)
         await courseService.getCourseTeaching()
             .then((data) => {
-                setSubject(data.courses)})
+                setSubject(data.courses)
+                setAllCourse(data.courses.map((item, i) => <Subject key={i} props={item} />))
+            })
             .then(() => setLoading(false))
             .catch(() => setLoading(false))
     }, [])
@@ -129,7 +132,6 @@ export const Info = (props) => {
 
     if (loading || !student || !allCourse || !allStudent) return <Loading />
     else {
-        console.log(allStudent)
         return (
             <div className="mt-4">
                 <div className="container header text-center body_font">
@@ -179,25 +181,23 @@ export const Info = (props) => {
                                 <img className="student_image" src={checkHouseImg(student.house)} alt="house" />
                             </th>
                         </tr>
-                        {student.role === "Student" ?
-                            (<tr className="col-12 row text-center">
-                                <td className="col-4 col-md-3">
-                                    <h4>Subject</h4>
-                                </td>
-                                <td className="d-none d-sm-block col-md-2">
-                                    <h4>Code</h4>
-                                </td>
-                                <td className="d-none d-sm-block col-md-2">
-                                    <h4>Credits</h4>
-                                </td>
-                                <td className="col-4 col-md-3">
-                                    <h4>Teacher</h4>
-                                </td>
-                                <td className="col-4 col-md-2">
-                                    <h4>Action</h4>
-                                </td>
-                            </tr>) : (<></>)
-                        }
+                        <tr className="col-12 row text-center">
+                            <td className="col-4 col-md-3">
+                                <h4>Subject</h4>
+                            </td>
+                            <td className="d-none d-sm-block col-md-2">
+                                <h4>Code</h4>
+                            </td>
+                            <td className="d-none d-sm-block col-md-2">
+                                <h4>Credits</h4>
+                            </td>
+                            <td className="col-4 col-md-3">
+                                <h4>Teacher</h4>
+                            </td>
+                            <td className="col-4 col-md-2">
+                                <h4>Action</h4>
+                            </td>
+                        </tr>
                         {allCourse}
                     </table>
                 </div>
