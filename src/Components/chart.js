@@ -3,12 +3,11 @@ import courseService from "../API/courseService";
 import {Bar} from "react-chartjs-2";
 
 const Graph = (props) => {
-    const { show, tra } = props
+    const { course, house } = props
     const [data, setData] = useState()
 
     useEffect(() => {
-        if (show !== "") {
-            courseService.getGraphByCourse(show).then(({label, data}) => {
+            courseService.getGraph(course, house).then(({label, data}) => {
                 setData({
                     labels: label,
                     datasets: [
@@ -24,16 +23,15 @@ const Graph = (props) => {
                     ]
                 })
             })
-        }
-    }, [show])
-    return show === "" ? (<></>) :(
+    }, [])
+    return (
         <div>
             <Bar
                 data={data}
                 options={{
                     title: {
                         display: true,
-                        text: 'Scores Range Course ' + show,
+                        text: 'Scores Range Course ' + course,
                         fontSize: 20
                     },
                     legend: {
