@@ -27,6 +27,7 @@ export const Update = () => {
         <div className="mt-5">
             <div className="container mb-5">
                 <ChangeInfo form={form} setForm={setForm} />
+                <hr />
                 <ChangePassword />
             </div>
             <Footer />

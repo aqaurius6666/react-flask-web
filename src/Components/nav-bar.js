@@ -35,7 +35,7 @@ const NavBar = () => {
                             <NavLink href="/info"><i className="fa fa-user" aria-hidden="true" /> Personal Info</NavLink>
                             <NavLink href="/courses"><i className="fa fa-book" aria-hidden="true" /> Courses</NavLink>
                             <NavLink href="/update"><i className="fa fa-wrench" aria-hidden="true"/> Update</NavLink>
-                            <NavLink href="/analysis"><i className="fa fa-stack-overflow" aria-hidden="true"/> Analysis</NavLink>
+                            <NavLink href="/analysis"><i className="fa fa-stack-overflow" aria-hidden="true"/> Statistics</NavLink>
 
                             <div className="login-nav-margin d-none d-xl-block"> </div>
                             <NavLink id="login-nav-link" href="/login" onClick={handleLogOut}>

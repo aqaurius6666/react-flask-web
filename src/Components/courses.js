@@ -4,7 +4,7 @@ import Loading from './loading';
 import {checkHaveCourse} from "../data/superData";
 import history from "../history"
 import courseService from '../API/courseService';
-import {Table} from "react-bootstrap";
+import {NavLink, Table} from "react-bootstrap";
 
 const RegisCourses = (props) => {
     const {coursesList} = props
@@ -58,7 +58,7 @@ const RegisCourses = (props) => {
             <div>
                 <div>
                     <br />
-                    <h3><span>Course Registration</span></h3>
+                    <h3><span><i className="fa fa-book" aria-hidden="true" /> Course Registration</span></h3>
                 </div>
 
             </div>

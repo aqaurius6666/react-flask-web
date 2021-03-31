@@ -13,6 +13,7 @@ import authenticationService from "../API/authenticationService";
 import { MydModalWithGrid } from "./DialogModal";
 import deleteIcon from '../img/icons8-delete-bin-64.png';
 import detailIcon from '../img/icons8-view-details-64.png';
+import {NavLink} from "react-bootstrap";
 
 const Subject = ({ props }) => {
     const [modalShow, setModalShow] = useState(false);
@@ -121,6 +122,7 @@ export const Info = (props) => {
         return (
             <div className="mt-4">
                 <div className="container header text-center body_font">
+                    <i className="fa fa-user" aria-hidden="true" />
                     {(isTeacher || student.role === 'Teacher') ?
                         (<div style={{ width: '380px' }}>
                             <ReactSearchAutocomplete

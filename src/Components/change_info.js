@@ -1,5 +1,6 @@
 import React from "react"
 import userService from "../API/userService"
+import {NavLink} from "react-bootstrap";
 
 export const ChangeInfo = (props) => {
     const { setForm, form } = props
@@ -8,8 +9,8 @@ export const ChangeInfo = (props) => {
         userService.updateUser(form)
     }
     return (
-        <div className="col-7 body_font">
-            <h1>Information</h1>
+        <div className="col-7 body_font mb-5">
+            <h1><i className="fa fa-wrench" aria-hidden="true"/> Information</h1>
             <form className="form-group" onSubmit={onSubmitForm}>
                 <div>
                     <label>Hobby: </label>

@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { api_update_passowrd } from "../API/action"
 import authenticationService from "../API/authenticationService"
+import {NavLink} from "react-bootstrap";
 
 
 
@@ -23,7 +24,7 @@ export const ChangePassword = () => {
     if (form) {
         return (
             <div className="col-7 body_font">
-                <h1>Change Password </h1>
+                <h1><i className="fa fa-wrench" aria-hidden="true"/> Change Password </h1>
                 <form onSubmit={onSubmitForm}>
                     <div>
                         <label>Old password: </label>
