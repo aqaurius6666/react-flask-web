@@ -22,7 +22,7 @@ export const ChangePassword = () => {
     }
     if (form) {
         return (
-            <div className="col-7">
+            <div className="col-7 body_font">
                 <h1>Change Password </h1>
                 <form onSubmit={onSubmitForm}>
                     <div>

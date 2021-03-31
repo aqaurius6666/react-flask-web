@@ -54,7 +54,7 @@ const RegisCourses = (props) => {
     if (loading || courseItem.length === 0) return <Loading />
 
     return (
-        <div className="container">
+        <div className="container body_font">
             <div>
                 <div>
                     <br />

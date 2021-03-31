@@ -8,7 +8,7 @@ export const ChangeInfo = (props) => {
         userService.updateUser(form)
     }
     return (
-        <div className="col-7">
+        <div className="col-7 body_font">
             <h1>Information</h1>
             <form className="form-group" onSubmit={onSubmitForm}>
                 <div>

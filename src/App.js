@@ -27,6 +27,7 @@ function App() {
                 <Route exact path="/about" component={() => <About />} />
                 <Route exact path="/register" component={() => <Register />} />
                 <Route exact path="/courses" component={() => <Courses />} />
+                <Route exact path="/analysis" component={() => <GraphPage />} />
                 <Route exact path="/update" component={() => <Update />} />
                 <Route exact path="/info/score" component={() => <Grades />} />
                 <Route exact path="/test" component={() => <GraphPage />} />

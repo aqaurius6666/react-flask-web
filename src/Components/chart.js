@@ -4,7 +4,7 @@ import {Bar} from "react-chartjs-2";
 
 const Graph = (props) => {
     const { course, house } = props.data
-    const [data, setData] = useState()
+    const [data, setData] = useState({})
     useEffect(() => {
             courseService.getGraph(course, house).then(({label, data}) => { 
                 setData({
@@ -24,7 +24,7 @@ const Graph = (props) => {
             })
     }, [course, house])
     return (
-        <div className="container">
+        <div className="container body_font">
             <Bar
                 data={data}
                 options={{

@@ -75,7 +75,6 @@ export const Grades = (props) => {
                     </tr>
                 </tbody>
             </Table>
-            <Graph show={showGraph}/>
         </div>
         <Footer />
         </>

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import courseService from "../API/courseService"
 import Graph from "./chart";
+import Footer from "./footer";
 
 const FilterGraph = (props) => {
     const {data, setData} = props
@@ -22,9 +23,9 @@ const FilterGraph = (props) => {
     }
     return (
         <form onSubmit={onSubmitForm} className=" container mt-4 ">
-            <div >
+            <div className="mb-2 col-5">
                 <label>By House</label>
-                <select name="house" onChange={(e) => { setByHouse(e.target.value) }}>
+                <select className="form-control" name="house" onChange={(e) => { setByHouse(e.target.value) }}>
                     <option value="all" selected>All</option>
                     <option value="Gryffindor">Gryffindor</option>
                     <option value="Hufflepuff">Hufflepuff</option>
@@ -32,9 +33,9 @@ const FilterGraph = (props) => {
                     <option value="Ravenclaw">Ravenclaw</option>
                 </select>
             </div>
-            <div>
+            <div className="mb-2 col-5">
                 <label>By Course</label>
-                <select name="course" onChange={(e) => { setByCourse(e.target.value) }}>
+                <select className="form-control" name="course" onChange={(e) => { setByCourse(e.target.value) }}>
                     <option value="all" id="all" selected>All</option>
 
                     {courses.map((each, key) => {
@@ -44,9 +45,9 @@ const FilterGraph = (props) => {
                     })}
                 </select>
             </div>
-            <button type="submit">
+            <button type="submit" className="btn btn-primary ml-3">
                     Enter
-                </button>
+            </button>
         </form>
     )
 }; 
@@ -60,8 +61,12 @@ const GraphPage = () => {
 
     return (
         <>
+        <div className="mt-4 container body_font">
+            <h1><i className="fa fa-stack-overflow" aria-hidden="true"/> Statistics</h1>
         <FilterGraph data={data} setData={setData}/>
         {data.isShow && <Graph data={data}/>}
+        </div>
+        <Footer />
         </>
     )
 }; export default GraphPage
