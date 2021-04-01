@@ -3,7 +3,7 @@ import logo from '../img/hogwarts_sm_logo.svg'
 
 function Footer() {
     return(
-        <div className="footer">
+        <div className="footer nav-color">
             <div className="container">
                 <div className="row">
                     <div className="col-4 offset-1 col-sm-3">

@@ -18,7 +18,7 @@ export const Login = () => {
     }
     if (loading) return <Loading/>
     return (
-        <div className="login-container">
+        <div className="login-container body_font">
             
             <div className="login-page">
                 <div className="form">
@@ -27,7 +27,7 @@ export const Login = () => {
                             onChange={(e) => setUsername(e.target.value)} value={username} />
                         <input type="password" placeholder="Password"
                             onChange={(e) => setPassword(e.target.value)} value={password} />
-                        <button type="submit" value="Login" className="btn btn-dark btn-lg">login</button>
+                        <button type="submit" value="Login" className="btn btn-primary btn-lg">login</button>
                         <p className="message">Not registered? <Link to="/register">Create an account</Link>
                         </p>
                     </form>

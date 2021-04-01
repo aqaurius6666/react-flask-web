@@ -58,15 +58,24 @@ body{
 }
 
 .navbar-dark {
-    background-color: #218c74;
+    /*background-color: #218c74;*/
     padding-left: 5vw;
     padding-top: 0.13vw;
     padding-bottom: 0.13vw;
-    color: coral;
+    /*color: coral;*/
 }
 
 .navbar-padding {
     padding-left: 2vw;
+}
+
+.nav-color {
+    background: linear-gradient(-90deg, #84cf6a, #16c0b0);
+    -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
+}
+
+#nav-link-dark {
+    color: black;
 }
 
 .login-nav-margin {
@@ -74,7 +83,15 @@ body{
 }
 
 #login-nav-link {
-    color: yellow;
+    color: black;
+}
+
+#login-nav-link:hover {
+    color: antiquewhite;
+}
+
+#login-nav-link:hover {
+    color: darkslateblue;
 }
 
 #navbarcollapse {
@@ -213,7 +230,6 @@ body {
 }
 
 .footer {
-    background-color: #218c74;
     color: black;
     padding-top: 14px;
     margin-top: 20px;
@@ -266,7 +282,6 @@ body {
 }
 
 .headerComponent {
-    background-color: #218c74;
     padding-bottom: 3%;
     padding-left: 5%;
 }

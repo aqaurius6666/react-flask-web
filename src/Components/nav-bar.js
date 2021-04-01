@@ -21,21 +21,21 @@ const NavBar = () => {
     if (account) {
         return (
             <>
-                <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top white_black_chi"
+                <Navbar className="nav-color navbar navbar-dark navbar-expand-sm fixed-top body_font"
                         expand="lg">
                     <div className="ml-5 d-none d-xl-block"> </div>
                     <a className="navbar-brand" href="/">
                         <img src={logo1} height="40vw" width="auto" alt="logo1"/></a>
-                    <Navbar.Brand href="/">HOGWARTS ACADEMY</Navbar.Brand>
+                    <Navbar.Brand id="nav-link-dark" href="/">HOGWARTS ACADEMY</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="navbarcollapse">
                         <Nav className="mr-auto row">
-                            <NavLink href="/"><i className="fa fa-home" aria-hidden="true" /> Home</NavLink>
-                            <NavLink href="/about"><i className="fa fa-info-circle" aria-hidden="true" />  About</NavLink>
-                            <NavLink href="/info"><i className="fa fa-user" aria-hidden="true" /> Personal Info</NavLink>
-                            <NavLink href="/courses"><i className="fa fa-book" aria-hidden="true" /> Courses</NavLink>
-                            <NavLink href="/update"><i className="fa fa-wrench" aria-hidden="true"/> Update</NavLink>
-                            <NavLink href="/analysis"><i className="fa fa-stack-overflow" aria-hidden="true"/> Statistics</NavLink>
+                            <NavLink id="nav-link-dark" href="/"><i className="fa fa-home" aria-hidden="true" /> Home</NavLink>
+                            <NavLink id="nav-link-dark" href="/about"><i className="fa fa-info-circle" aria-hidden="true" />  About</NavLink>
+                            <NavLink id="nav-link-dark" href="/info"><i className="fa fa-user" aria-hidden="true" /> Personal Info</NavLink>
+                            <NavLink id="nav-link-dark" href="/courses"><i className="fa fa-book" aria-hidden="true" /> Courses</NavLink>
+                            <NavLink id="nav-link-dark" href="/update"><i className="fa fa-wrench" aria-hidden="true"/> Update</NavLink>
+                            <NavLink id="nav-link-dark" href="/analysis"><i className="fa fa-stack-overflow" aria-hidden="true"/> Statistics</NavLink>
 
                             <div className="login-nav-margin d-none d-xl-block"> </div>
                             <NavLink id="login-nav-link" href="/login" onClick={handleLogOut}>
@@ -48,22 +48,22 @@ const NavBar = () => {
         )
     } else {
         return(
-            <Navbar className="navbar navbar-dark navbar-expand-sm fixed-top white_black_chi"
+            <Navbar className="nav-color navbar navbar-dark navbar-expand-sm fixed-top body_font"
                     expand="lg">
                 <div className="navbar-padding d-none d-xl-block"> </div>
                 <a className="navbar-brand" href="/">
                     <img src={logo1} height="40" width="auto" alt="logo1"/></a>
-                <Navbar.Brand href="#">HOGWARTS ACADEMY</Navbar.Brand>
+                <Navbar.Brand id="nav-link-dark" href="#">HOGWARTS ACADEMY</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto row">
                         <div className="login-nav-margin d-none d-xl-block"> </div>
                         <div className="login-nav-margin d-none d-xl-block"> </div>
                         <div className="login-nav-margin d-none d-xl-block"> </div>
-                        <NavLink href="/login" onClick={handleLogOut}>
+                        <NavLink id="nav-link-dark" href="/login" onClick={handleLogOut}>
                             <i className="fa fa-sign-in" aria-hidden="true" />Log in
                         </NavLink>
-                        <NavLink href="/register" onClick={handleLogOut}>
+                        <NavLink id="nav-link-dark" href="/register" onClick={handleLogOut}>
                             <i className="fa fa-user-plus" aria-hidden="true" /> Register</NavLink>
                     </Nav>
                 </Navbar.Collapse>

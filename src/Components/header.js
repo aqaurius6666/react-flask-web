@@ -6,7 +6,7 @@ import giphy from "../img/giphy.gif"
 
 const Header = () => {
     return (
-        <Jumbotron className="headerComponent">
+        <Jumbotron className="headerComponent nav-color">
             <div className="row container">
                 <div className="d-none d-sm-block col-md-1"> </div>
                 <div className="col-12 col-md-6">
