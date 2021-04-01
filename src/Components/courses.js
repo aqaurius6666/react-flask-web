@@ -22,10 +22,10 @@ const RegisCourses = (props) => {
             .catch(() => setLoading(false))
     }, [])
     const onSubmit = data => {
-        courseService.registerCourse(data).then(r => {
+        courseService.registerCourse(data).then(() => {
             alert("Successfully!")
             history.push('/info')
-        })
+        }).catch(() => alert("Failed!"))
     };
     useMemo(() => {
         setLoading(true)

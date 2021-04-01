@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { api_update_passowrd } from "../API/action"
 import authenticationService from "../API/authenticationService"
 import {NavLink} from "react-bootstrap";
-
+import history from "../history";
 
 
 export const ChangePassword = () => {
@@ -15,9 +15,10 @@ export const ChangePassword = () => {
 
     const onSubmitForm = (e) => {
         e.preventDefault()
-        api_update_passowrd(form.old_password, form.password, (msg) => console.log(msg))
-
+        api_update_passowrd(form.old_password, form.password)
+        history.push('/')
     }
+
     if (!account) {
         return <div>You are not log in!</div>
     }

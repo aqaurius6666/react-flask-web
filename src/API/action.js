@@ -60,7 +60,7 @@ export const api_get_user = (cb) => {
             cb(undefined)
         })
 }
-export const api_update_passowrd = (old_password, password, cb) => {
+export const api_update_passowrd = (old_password, password) => {
     const url = "https://it-must-be-ok.herokuapp.com/api/account"
     fetch(url, {
         method: "PUT",
@@ -68,8 +68,8 @@ export const api_update_passowrd = (old_password, password, cb) => {
         body: JSON.stringify({ old_password, password })
     })
         .then(handleResponse)
-        .then(data => cb(data.message))
-        .catch(error => cb(error))
+        .then(() => alert("Change password successfully!"))
+        .catch(() => alert("Change password failed!"))
 }
 export const api_update_student = (student, cb) => {
     const url = "https://it-must-be-ok.herokuapp.com/api/student"
