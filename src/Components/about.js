@@ -113,19 +113,18 @@ const Subject = () => {
         <div className="container">
             <h3><span>III. Core Subjects</span></h3>
             <div className="row body_font">
-                <div className="col-6">
+                <div className="col-12 col-md-6">
                     <p>There are a variety of classes taught at Hogwarts School of Witchcraft and Wizardry.
                         These include both the core curriculum and the electives, available from third year
                         forward. In the fifth year, students take the Ordinary Wizarding Level (O.W.L.) exams
                         to determine whether they can achieve a score high enough to continue to N.E.W.T.-level
                         (Nastily Exhausting Wizarding Test) for the class in the remaining two years.
                         Some classes, including the core classes, may be dropped in sixth year.
-                        Specialised classes such as Alchemy become available in sixth year provided there is
-                        sufficient demand.</p>
+                        Specialised classes such as Alchemy become available in sixth year provided there is sufficient demand.</p>
                     <br />
                 </div>
                 <div className="col-1"> </div>
-                <div className="col-5 video">
+                <div className="col-md-5 d-none d-sm-block video">
                     <video width="420" height="auto" controls>
                         <source src={video} type="video/mp4" />
                     </video>

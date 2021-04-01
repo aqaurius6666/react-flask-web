@@ -55,6 +55,7 @@
 body{
     padding:50px 0 0 0;
     z-index:0;
+    background-color: #F0F8FF;
 }
 
 .navbar-dark {
@@ -134,14 +135,23 @@ body{
 }
 
 .login-container {
-    background: #76b852; /* fallback for old browsers */
-    background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-    background: -moz-linear-gradient(right, #76b852, #8DC26F);
-    background: -o-linear-gradient(right, #76b852, #8DC26F);
+    /*background: #76b852; !* fallback for old browsers *!*/
+    /*background: -webkit-linear-gradient(right, #76b852, #8DC26F);*/
+    /*background: -moz-linear-gradient(right, #76b852, #8DC26F);*/
+    /*background: -o-linear-gradient(right, #76b852, #8DC26F);*/
+    /*background: linear-gradient(-90deg, #84cf6a, #16c0b0);*/
+    /*-moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);*/
+    background-image: url("./img/background_1.png");
+    background-repeat: no-repeat;
+    opacity: 1.0;
+}
 
-    background-image: url("./img/background.jpg");
-    background-repeat: repeat;
-    background-size: 50vw ;
+@media only screen and (max-width: 576px) {
+    .login-container{
+        background-image: url("./img/background_2.png");
+        background-repeat: no-repeat;
+        opacity: 1.0;
+    }
 }
 
 body {

@@ -22,8 +22,8 @@ const FilterGraph = (props) => {
 
     }
     return (
-        <form onSubmit={onSubmitForm} className=" container mt-4 ">
-            <div className="mb-2 col-5">
+        <form onSubmit={onSubmitForm} className=" container mt-4 mb-3">
+            <div className="mb-2 col-12 col-md-5">
                 <label>By House</label>
                 <select className="form-control" name="house" onChange={(e) => { setByHouse(e.target.value) }}>
                     <option value="all" selected>All</option>
@@ -33,7 +33,7 @@ const FilterGraph = (props) => {
                     <option value="Ravenclaw">Ravenclaw</option>
                 </select>
             </div>
-            <div className="mb-2 col-5">
+            <div className="mb-2 col-12 col-md-5">
                 <label>By Course</label>
                 <select className="form-control" name="course" onChange={(e) => { setByCourse(e.target.value) }}>
                     <option value="all" id="all" selected>All</option>
@@ -45,9 +45,10 @@ const FilterGraph = (props) => {
                     })}
                 </select>
             </div>
-            <button type="submit" className="btn btn-primary ml-3">
+            <button type="submit" className="btn btn-primary ml-3 mt-2">
                     Enter
             </button>
+            <hr />
         </form>
     )
 }; 

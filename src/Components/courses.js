@@ -37,12 +37,12 @@ const RegisCourses = (props) => {
                             <td className="col-2"><input type="checkbox" ref={register}
                                                          disabled={checkHaveCourse(allCourse, courseItem)}
                                                          name="array" value={courseItem.cid} /></td>
-                            <td className="col-2 col-md-1">{courseItem.cid}</td>
+                            <td className="col-3 col-md-1">{courseItem.cid}</td>
                             <td className="d-sm-block d-none col-1 col-md-1">{courseItem.credit}</td>
-                            <td className="col-3 col-md-3">{courseItem.name}</td>
-                            <td className="col-3 col-md-3">{courseItem.place}</td>
+                            <td className="col-4 col-md-3">{courseItem.name}</td>
+                            <td className="d-none d-sm-inline-block col-md-3">{courseItem.place}</td>
                             <td className="d-sm-block d-none col-1 col-md-1">{courseItem.tid}</td>
-                            <td className="col-2 col-md-1">{courseItem.time}</td>
+                            <td className="col-3 col-md-1">{courseItem.time}</td>
                         </tr>))
             })
             .then(() => setLoading(false))
@@ -63,15 +63,15 @@ const RegisCourses = (props) => {
 
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <Table bordered className="row"  >
+                <Table responsive bordered className="row"  >
                     <tr className="col-12 row" >
                         <td className="col-2"> </td>
-                        <td className="col-2 col-md-1">CID</td>
-                        <td className="d-sm-block d-none col-1 col-md-1">CREDITS</td>
-                        <td className="col-3 col-md-3">NAME</td>
-                        <td className="col-3 col-md-3">PLACE</td>
-                        <td className="d-sm-block d-none col-md-1">TID</td>
-                        <td className="col-2 col-md-1">TIME</td>
+                        <td className="col-3 col-md-1">CID</td>
+                        <td className="d-none d-sm-inline-block col-1 col-md-1">CREDITS</td>
+                        <td className="col-4 col-md-3">NAME</td>
+                        <td className="d-none d-sm-inline-block col-md-3">PLACE</td>
+                        <td className="d-none d-sm-inline-block col-md-1">TID</td>
+                        <td className="col-3 col-md-1">TIME</td>
                     </tr>
                     {courseItem}
                     <button style={{margin:'10px'}} className="btn btn-primary" type="submit">Submit</button>

@@ -26,7 +26,7 @@ const NavBar = () => {
                     <div className="ml-5 d-none d-xl-block"> </div>
                     <a className="navbar-brand" href="/">
                         <img src={logo1} height="40vw" width="auto" alt="logo1"/></a>
-                    <Navbar.Brand id="nav-link-dark" href="/">HOGWARTS ACADEMY</Navbar.Brand>
+                    <Navbar.Brand id="nav-link-dark" href="/">HOGWARTS <span className="d-none d-sm-inline-block">ACADEMY</span></Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="navbarcollapse">
                         <Nav className="mr-auto row">
@@ -53,7 +53,7 @@ const NavBar = () => {
                 <div className="navbar-padding d-none d-xl-block"> </div>
                 <a className="navbar-brand" href="/">
                     <img src={logo1} height="40" width="auto" alt="logo1"/></a>
-                <Navbar.Brand id="nav-link-dark" href="#">HOGWARTS ACADEMY</Navbar.Brand>
+                <Navbar.Brand id="nav-link-dark" href="#">HOGWARTS <span className="d-none d-sm-inline-block">ACADEMY</span></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto row">

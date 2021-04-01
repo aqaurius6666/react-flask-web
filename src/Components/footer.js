@@ -40,19 +40,19 @@ function Footer() {
                            href="https://www.facebook.com/hogwarts">
                             <i className="fa fa-facebook" />
                         </a>
-                        <a className="btn btn-social-icon btn-google"
+                        <a className="d-none d-sm-inline-block btn btn-social-icon btn-google"
                            href="https://www.youtube.com/user/HarryPotter">
                             <i className="fa fa-youtube" />
                         </a>
-                        <a className="btn btn-social-icon btn-linkedin"
+                        <a className="d-none d-sm-inline-block btn btn-social-icon btn-linkedin"
                            href="https://www.linkedin.com/company/hogwarts-testing/">
                             <i className="fa fa-linkedin" />
                         </a>
-                        <a className="btn btn-social-icon btn-twitter"
+                        <a className="d-none d-sm-inline-block btn btn-social-icon btn-twitter"
                            href="https://twitter.com/hogwartslegacy">
                             <i className="fa fa-twitter" />
                         </a>
-                        <a className="btn btn-social-icon btn-instagram"
+                        <a className="d-none d-sm-inline-block btn btn-social-icon btn-instagram"
                            href="https://www.instagram.com/hogwartsofficial_/">
                             <i className="fa fa-instagram" />
                         </a>

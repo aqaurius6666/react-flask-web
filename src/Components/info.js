@@ -192,7 +192,7 @@ export const Info = (props) => {
                 <br />
                 {id === authenticationService.getId() && student.role === "Student" &&
                     <div className="row">
-                        <a className="btn btn-info offset-5 col-2" href={"/info/score"}
+                        <a className="btn btn-info offset-4 col-4" href={"/info/score"}
                             component={() => <Grades />}>Results</a>
                     </div>
                 }
