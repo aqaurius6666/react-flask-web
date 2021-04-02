@@ -4,6 +4,7 @@ import Footer from "./footer";
 import React, { useEffect, useState } from "react";
 import Loading from "./loading";
 import userService from "../API/userService";
+import {useForm} from "react-hook-form";
 
 export const Update = () => {
     const [form, setForm] = useState()
@@ -26,7 +27,8 @@ export const Update = () => {
     return (
         <div className="mt-5">
             <div className="container mb-5">
-                <ChangeInfo form={form} setForm={setForm} />
+                {/*<ChangeInfo form={form} setForm={setForm} />*/}
+                {/*<hr />*/}
                 <ChangePassword />
             </div>
             <Footer />

@@ -26,10 +26,10 @@ export const Grades = (props) => {
     return (
         <>
         <div className="container mt-3">
-            <Table bordered style={{backgroundColor: "#cccccc"}}>
+            <Table responsive bordered variant="success" striped>
                 <thead >
                     <tr>
-                        <td colSpan="7" className="align-content-center text-center">
+                        <td colSpan="8" className="align-content-center text-center">
                             <h4>Semester: {() => {
                                 if (score[1].semester === undefined) {
                                     return null
@@ -71,7 +71,7 @@ export const Grades = (props) => {
                             )
                     })}
                     <tr>
-                        <td><p>Total credits: {score.total_credit}</p></td>
+                        <td colSpan="8"><p><strong>Credits: {score.total_credit}</strong></p></td>
                     </tr>
                 </tbody>
             </Table>
