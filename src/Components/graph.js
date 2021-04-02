@@ -54,8 +54,8 @@ const FilterGraph = (props) => {
 
 const GraphPage = () => {
     const [data, setData] = useState({
-        'course' : "",
-        'house' : "",
+        'course' : "all",
+        'house' : "all",
         'isShow' : false
     })
 
