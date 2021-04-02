@@ -21,7 +21,7 @@ const NavBar = () => {
     if (account) {
         return (
             <>
-                <Navbar className="nav-color navbar navbar-dark navbar-expand-sm fixed-top body_font"
+                <Navbar className="nav-color navbar-dark navbar-expand-lg body_font fixed-top"
                         expand="lg">
                     <div className="ml-5 d-none d-xl-block"> </div>
                     <a className="navbar-brand" href="/">
@@ -50,7 +50,7 @@ const NavBar = () => {
         return(
             <Navbar className="nav-color navbar navbar-dark navbar-expand-sm fixed-top body_font"
                     expand="lg">
-                <div className="navbar-padding d-none d-xl-block"> </div>
+                <div className="ml-5 d-none d-xl-block"> </div>
                 <a className="navbar-brand" href="/">
                     <img src={logo1} height="40" width="auto" alt="logo1"/></a>
                 <Navbar.Brand id="nav-link-dark" href="#">HOGWARTS <span className="d-none d-sm-inline-block">ACADEMY</span></Navbar.Brand>
