@@ -20,15 +20,15 @@ Trang web thông tin của trường phù thuỷ Hogwarts. Nơi mà học sinh, 
 #### Sinh viên:
 * Cần biết những môn học hiện có, thông tin về những môn học
 * Cần tra cứu điểm môn học, điểm tổng kết của bản thân
-* Cần tra thông tin của người khác
 * Cần đăng ký lịch học 
 * Cần thay đổi thông tin bản thân
 * Cần trích xuất thời khóa biểu
 
 #### Giáo viên:
-* Cần biết lịch giảng dạy
 * Cần nhập điểm cho sinh viên
 * Cần sửa đổi tài liệu môn học
+* Thống kê điểm lớp môn học
+* Tra cứu thông tin sinh viên
 
 #### Quản lý:
 * Trích xuất thống kê thành viên
