@@ -33,8 +33,8 @@ const Subject = ({ props }) => {
             </td>
             <td className="col-4 col-md-2">
                 <button style={{
-                    border: "2px solid white",
-                    borderRadius: "25px"
+                    border: "2px solid pink",
+                    borderRadius: "20px"
                 }} onClick={() => {
                     if (window.confirm('Sure want to delete?')) {
                         courseService.deleteCourse(props.cid)
@@ -44,8 +44,8 @@ const Subject = ({ props }) => {
                 }}><img src={deleteIcon} alt="X" width="20px" height="auto" /></button>
                 <span> </span>
                 <button style={{
-                    border: "2px solid white",
-                    borderRadius: "25px"
+                    border: "2px solid pink",
+                    borderRadius: "20px"
                 }} onClick={() => setModalShow(true)}>
                     <img src={detailIcon} alt="i" width="20px" height="auto" />
                 </button>

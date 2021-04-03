@@ -48,7 +48,7 @@ const NavBar = () => {
         )
     } else {
         return(
-            <Navbar className="nav-color navbar navbar-dark navbar-expand-sm fixed-top body_font"
+            <Navbar className="nav-color navbar-dark navbar-expand-lg fixed-top body_font"
                     expand="lg">
                 <div className="ml-5 d-none d-xl-block"> </div>
                 <a className="navbar-brand" href="/">
