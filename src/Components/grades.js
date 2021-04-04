@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react"
 import authenticationService from '../API/authenticationService';
 import courseService from "../API/courseService";
 import Loading from "./loading"
-import {Button, Table} from "react-bootstrap";
-import Graph from "./chart";
+import {Table} from "react-bootstrap";
 import Footer from "./footer";
 
 export const Grades = (props) => {
-    const [showGraph, setShowGraph] = useState('')
     const account = authenticationService.currentAccountValue()
     const [score, setScore] = useState()
     const [loading, setLoading] = useState(true)
@@ -25,11 +23,11 @@ export const Grades = (props) => {
     let count = 1;
     return (
         <>
-        <div className="container mt-3">
-            <Table responsive bordered variant="success" striped>
-                <thead >
+            <div className="container mt-3">
+                <Table responsive bordered variant="success" striped>
+                    <thead >
                     <tr>
-                        <td colSpan="8" className="align-content-center text-center">
+                        <td colSpan="7" className="align-content-center text-center">
                             <h4>Semester: {() => {
                                 if (score[1].semester === undefined) {
                                     return null
@@ -47,10 +45,9 @@ export const Grades = (props) => {
                         <th>Final</th>
                         <th>Midterm</th>
                         <th>Total</th>
-                        <th>Statistic</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
                     {
                         score.score.map((data, key) => {
                             return (
@@ -62,21 +59,16 @@ export const Grades = (props) => {
                                     <td>{data.final}</td>
                                     <td>{data.mid}</td>
                                     <td>{data.total}</td>
-                                    <td>
-                                        <Button className="" onClick={() => setShowGraph(data.cid)}>
-                                            <span className="fa fa-bar-chart" />
-                                        </Button>
-                                    </td>
                                 </tr>
                             )
-                    })}
+                        })}
                     <tr>
-                        <td colSpan="8"><p><strong>Credits: {score.total_credit}</strong></p></td>
+                        <td colSpan="7"><p><strong>Credits: {score.total_credit}</strong></p></td>
                     </tr>
-                </tbody>
-            </Table>
-        </div>
-        <Footer />
+                    </tbody>
+                </Table>
+            </div>
+            <Footer />
         </>
     )
 }

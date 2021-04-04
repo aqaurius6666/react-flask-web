@@ -52,7 +52,7 @@ function check_auth() {
             const { token } = data
             localStorage.setItem('token', token)
             currentTokenSubject.next(token)
-        });
+        })
 }
 function login(username, password) {
     const requestOptions = {
@@ -70,6 +70,9 @@ function login(username, password) {
             localStorage.setItem('token', token)
             currentTokenSubject.next(token)
             return account
+        })
+        .catch(msg => {
+            alert(msg)
         });
 }
 
